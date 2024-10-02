@@ -1,0 +1,42 @@
+{
+  "name": "mywedding",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/react-navigation-menu": "^1.2.0",
+    "@radix-ui/react-select": "^2.1.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "embla-carousel-auto-scroll": "^8.2.1",
+    "embla-carousel-autoplay": "^8.2.1",
+    "embla-carousel-react": "^8.2.1",
+    "framer-motion": "^11.5.4",
+    "lucide-react": "^0.441.0",
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.3.0",
+    "react-parallax-tilt": "^1.7.239",
+    "react-scroll": "^1.9.0",
+    "react-tsparticles": "^2.12.2",
+    "sass": "^1.78.0",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7",
+    "tilt": "^0.2.0",
+    "tsparticles": "^3.5.0",
+    "tsparticles-shape-heart": "^2.12.0",
+    "tsparticles-slim": "^2.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  }
+}
