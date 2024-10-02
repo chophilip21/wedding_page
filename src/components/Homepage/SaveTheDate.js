@@ -35,7 +35,9 @@ const SaveTheDate = ({ language }) => {
 
   const dashedLine = Array(10)
     .fill()
-    .map((_, index) => <div className="w-[2px] h-[5px] my-[3px] bg-gold" />);
+    .map((_, index) => (
+      <div key={index} className="w-[2px] h-[5px] my-[3px] bg-gold" />
+    ));
 
   const story = [
     { year: 2018, text: story_1, img: images.hands },

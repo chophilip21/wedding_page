@@ -12,23 +12,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        {/* Preload images */}
-        <link rel="preload" href="/images/heroSection/1.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/2.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/3.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/4.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/5.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/6.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/7.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/8.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/9.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/10.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/11.jpg" as="image" />
-        <link rel="preload" href="/images/heroSection/12.jpg" as="image" />
-        {/* new */}
-        <link rel="preload" href="/icons/splash.png" as="image" />
-      </head>
       <body className={inter.className}>
         <LanguageDetector />
         {children}

@@ -26,6 +26,7 @@
     "react-scroll": "^1.9.0",
     "react-tsparticles": "^2.12.2",
     "sass": "^1.78.0",
+    "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "tilt": "^0.2.0",

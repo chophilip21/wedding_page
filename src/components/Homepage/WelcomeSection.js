@@ -102,7 +102,7 @@ const WelcomeSection = ({ language }) => {
               <h6>{countdown.hours}</h6>
               <p className="text-sm">
                 {countdown.hours === 1
-                  ? hours.toUpperCase()
+                  ? hour.toUpperCase()
                   : hours.toUpperCase()}
               </p>
             </div>
