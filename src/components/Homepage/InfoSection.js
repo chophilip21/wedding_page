@@ -1,12 +1,33 @@
 import Link from "next/link";
 import React from "react";
+import images from "@/utils/imagesImport";
+import Image from "next/image";
 
 const InfoSection = () => {
   return (
-    <section id="info-section" className="bg-cream px-12 py-12 flex flex-col">
+    <section
+      id="info-section"
+      className="bg-cream px-4 sm:px-12 py-12 flex flex-col relative"
+    >
       {/* Title */}
-      <h2 className="text-3xl font-bold mb-8">The Details</h2>
-      <div className=" w-full text-center flex flex-col items-center gap-12">
+      <div className="w-full flex flex-col items-center px-4 z-10 mb-8 md:mb-12">
+        <Image
+          src={images.bell}
+          alt="glass"
+          width={95}
+          height={95}
+          quality={100}
+          className="mb-4 w-[95px] h-auto brightness-95"
+        />
+        <div className="flex justify-center items-start">
+          <h3 className=" font-bold z-20  -mr-8">THE</h3>
+          <h3 className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light">
+            Details
+          </h3>
+        </div>
+      </div>
+
+      <div className=" w-full text-center flex flex-col items-center gap-8 md:gap-12 z-10">
         {/* Top Detail*/}
         <div className="flex flex-col justify-center items-center">
           <h5 className="mb-4">When & Where</h5>
@@ -31,10 +52,12 @@ const InfoSection = () => {
           </p>
         </div>
 
+        <div className="static md:hidden h-px w-[50px] bg-black opacity-50" />
+
         {/* Middle Details (Left & Right) */}
-        <div className="w-full flex justify-evenly gap-20">
+        <div className="w-full flex flex-col md:flex-row md:justify-evenly max-md:items-center gap-8 md:gap-20">
           {/* Left Detail */}
-          <div className="w-1/2 max-w-[700px] flex flex-col justify-start items-center text-center">
+          <div className="w-full md:w-1/2 max-w-[700px] flex flex-col justify-start items-center text-center">
             <h5 className="mb-4">Accomodations</h5>
             <p className="">
               For our out-of-town guests, we are pleased to offer accommodation
@@ -52,9 +75,9 @@ const InfoSection = () => {
               <span className="font-bold">7 AM to 11 AM</span> each morning
             </p>
           </div>
-
+          <div className="static md:hidden h-px w-[50px] bg-black opacity-50" />
           {/* Right Detail */}
-          <div className="w-1/2 max-w-[700px] flex flex-col justify-start items-center text-center">
+          <div className="w-full md:w-1/2 max-w-[700px] flex flex-col justify-start items-center text-center">
             <h5 className="mb-4">Travel & Transportation</h5>
             {/* <p className="">
               <span className="font-bold">Nearest Airport:</span> Katowice
@@ -79,6 +102,7 @@ const InfoSection = () => {
             </p>
           </div>
         </div>
+        <div className="static md:hidden h-px w-[50px] bg-black opacity-50" />
         {/* bottom Detail*/}
         <div className=" max-w-[700px] flex flex-col justify-center items-center">
           <p className="">

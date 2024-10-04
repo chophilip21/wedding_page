@@ -43,6 +43,8 @@ import cake from "../../public/icons/cake.png";
 import dinner from "../../public/icons/dinner.png";
 import food from "../../public/icons/food.png";
 import drink from "../../public/icons/drink.png";
+import bell from "../../public/icons/bell.png";
+import plane from "../../public/images/plane.png";
 
 const images = {
   welcome_1,
@@ -90,6 +92,8 @@ const images = {
   dinner,
   ceremony,
   cake,
+  bell,
+  plane,
 };
 
 export default images;
