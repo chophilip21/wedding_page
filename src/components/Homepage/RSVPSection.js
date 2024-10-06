@@ -197,7 +197,7 @@ const RSVPSection = () => {
                           }))
                         }
                       />
-                      &nbsp;Yes, I'm Attending
+                      &nbsp;Yes, I&apos;m Attending
                     </label>
                     <label className="">
                       <input
@@ -211,7 +211,7 @@ const RSVPSection = () => {
                           }))
                         }
                       />
-                      &nbsp;No, I'm Not Attending
+                      &nbsp;No, I&apos;m Not Attending
                     </label>
                   </div>
                 </div>
