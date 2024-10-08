@@ -143,6 +143,7 @@ const RSVPSection = () => {
               className="border py-2 px-3 rounded w-full max-lg:max-w-[500px] mb-4 focus:outline-none"
               value={searchTerm}
               onChange={handleSearch}
+              autoComplete="on"
             />
 
             {/* Display search results */}
