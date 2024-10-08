@@ -1,9 +1,8 @@
-export const guestsList = [
+const guestsList = [
   {
     id: 1,
     name: "John Doe",
     guestSide: "Emanuele",
-    gender: "m",
     relationshipIds: [2, 3],
     attending: null,
   },
@@ -11,7 +10,6 @@ export const guestsList = [
     id: 2,
     name: "Jane Doe",
     guestSide: "Emanuele",
-    gender: "f",
     relationshipIds: [1, 3],
     attending: null,
   },
@@ -19,7 +17,6 @@ export const guestsList = [
     id: 3,
     name: "Emily Doe",
     guestSide: "Emanuele",
-    gender: "f",
     relationshipIds: [1, 2],
     attending: null,
   },
@@ -27,7 +24,6 @@ export const guestsList = [
     id: 4,
     name: "Mark Smith",
     guestSide: "Emanuele",
-    gender: "m",
     relationshipIds: [],
     attending: null,
   },
@@ -35,7 +31,6 @@ export const guestsList = [
     id: 5,
     name: "Sarah Johnson",
     guestSide: "Emanuele",
-    gender: "f",
     relationshipIds: [6],
     attending: null,
   },
@@ -43,7 +38,6 @@ export const guestsList = [
     id: 6,
     name: "Michael Brown",
     guestSide: "Emanuele",
-    gender: "m",
     relationshipIds: [5],
     attending: null,
   },
@@ -51,7 +45,6 @@ export const guestsList = [
     id: 7,
     name: "David Wilson",
     guestSide: "Emanuele",
-    gender: "m",
     relationshipIds: [],
     attending: null,
   },
@@ -59,8 +52,9 @@ export const guestsList = [
     id: 8,
     name: "Anna Lee",
     guestSide: "Emanuele",
-    gender: "f",
     relationshipIds: [],
     attending: null,
   },
 ];
+
+module.exports = guestsList;
