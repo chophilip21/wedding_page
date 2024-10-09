@@ -303,3 +303,13 @@ li {
   filter: invert(100%) sepia(0%) saturate(7425%) hue-rotate(141deg)
     brightness(121%) contrast(115%);
 }
+
+.confetti-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+}
