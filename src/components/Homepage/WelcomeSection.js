@@ -49,7 +49,10 @@ const WelcomeSection = ({ language }) => {
       {/* Text Section */}
       <div className="absolute w-full h-full min-h-svh flex flex-col justify-center items-center z-10 gap-0">
         {!countdown.message && (
-          <p className="font-semibold text-white tracking-widest mt-20">
+          <p
+            translate="no"
+            className="font-semibold text-white tracking-widest mt-20"
+          >
             {small_text.toUpperCase()}
           </p>
         )}
@@ -61,9 +64,11 @@ const WelcomeSection = ({ language }) => {
           perspective={1000}
         >
           <div className="flex flex-col md:flex-row w-[240px] md:w-full h-[240px] md:h-auto justify-center md:gap-4 max-md:border max-md:border-[#eec87e] rounded-full max-md:p-4 cursor-default">
-            <h1 className="sloop-script welcome-names">Emanuele</h1>
+            <h1 translate="no" className="sloop-script welcome-names">
+              Emanuele
+            </h1>
 
-            <h1 className="alex-brush welcome-names text-gold">
+            <h1 translate="no" className="alex-brush welcome-names text-gold">
               <span className="max-md:hidden">&nbsp;</span>&
             </h1>
             <h1 className="sloop-script welcome-names ">Karolina</h1>
@@ -93,30 +98,30 @@ const WelcomeSection = ({ language }) => {
         ) : (
           <div className="flex justify-center gap-4 md:gap-8 mt-4 text-[#fffdfc]">
             <div className="flex flex-col justify-center items-center">
-              <h6>{countdown.days}</h6>
-              <p className="text-sm">
+              <h6 translate="no">{countdown.days}</h6>
+              <p translate="no" className="text-sm">
                 {countdown.days === 1 ? day.toUpperCase() : days.toUpperCase()}
               </p>
             </div>
             <div className="flex flex-col justify-center items-center">
-              <h6>{countdown.hours}</h6>
-              <p className="text-sm">
+              <h6 translate="no">{countdown.hours}</h6>
+              <p translate="no" className="text-sm">
                 {countdown.hours === 1
                   ? hour.toUpperCase()
                   : hours.toUpperCase()}
               </p>
             </div>
             <div className="flex flex-col justify-center items-center">
-              <h6>{countdown.minutes}</h6>
-              <p className="text-sm">
+              <h6 translate="no">{countdown.minutes}</h6>
+              <p translate="no" className="text-sm">
                 {countdown.minutes === 1
                   ? minute.toUpperCase()
                   : minutes.toUpperCase()}
               </p>
             </div>
             <div className="flex flex-col justify-center items-center">
-              <h6>{countdown.seconds}</h6>
-              <p className="text-sm">
+              <h6 translate="no">{countdown.seconds}</h6>
+              <p translate="no" className="text-sm">
                 {countdown.seconds === 1
                   ? second.toUpperCase()
                   : seconds.toUpperCase()}
@@ -132,6 +137,7 @@ const WelcomeSection = ({ language }) => {
             duration={1000}
             offset={-70}
             className="mt-20 btn btn-gold"
+            translate="no"
           >
             {button}
           </ScrollLink>

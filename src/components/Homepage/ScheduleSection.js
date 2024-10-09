@@ -74,8 +74,10 @@ const ScheduleSection = () => {
           quality={100}
           className="mb-4 w-[95px] h-auto brightness-95"
         />
-        <h3 className="text-3xl font-bold mb-4 text-white">WEDDING TIMELINE</h3>
-        <p className="text-lg text-center text-white ">
+        <h3 translate="no" className="text-3xl font-bold mb-4 text-white">
+          WEDDING TIMELINE
+        </h3>
+        <p translate="no" className="text-lg text-center text-white ">
           The wedding will be 2 days, 26th and 27th of July
         </p>
       </div>
@@ -91,7 +93,9 @@ const ScheduleSection = () => {
                 dayIndex === 0 ? "md:mb-6" : "md:my-6"
               }`}
             >
-              <h3 className="alex-brush mt-2 text-white">{dayData.day}</h3>
+              <h3 translate="no" className="alex-brush mt-2 text-white">
+                {dayData.day}
+              </h3>
             </div>
             {dayData.events.map((timeline, index) => (
               <div
@@ -137,6 +141,7 @@ const ScheduleSection = () => {
                         }`}
                       >
                         <h6
+                          translate="no"
                           className={` ${
                             index % 2 !== 0 ? "text-left" : "text-right"
                           }`}
@@ -144,6 +149,7 @@ const ScheduleSection = () => {
                           {timeline.time}
                         </h6>
                         <p
+                          translate="no"
                           className={` ${
                             index % 2 !== 0 ? "text-left" : "text-right"
                           }`}

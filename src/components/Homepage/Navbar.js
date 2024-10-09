@@ -51,9 +51,10 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
         {navElements.map((el) => (
           <li key={el.link}>
             <ScrollLink
+              translate="no"
               to={el.link}
               smooth={true}
-              duration={800}
+              duration={1900}
               offset={-70}
               // spy={true}
               // activeClass="text-gold-nav"
@@ -91,13 +92,12 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
             {navElements.map((el) => (
               <li key={el.link}>
                 <ScrollLink
+                  translate="no"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   to={el.link}
                   smooth={true}
-                  duration={800}
+                  duration={1900}
                   offset={-70}
-                  // spy={true}
-                  // activeClass="text-gold-nav"
                   className="cursor-pointer tracking-widest hover:text-gold max-xl:text-[18px]"
                 >
                   {el.name}

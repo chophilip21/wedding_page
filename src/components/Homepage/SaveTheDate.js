@@ -63,10 +63,15 @@ const SaveTheDate = ({ language }) => {
           quality={100}
           className="mb-4 "
         />
-        <h3>{title}</h3>
+        <h3 translate="no">{title}</h3>
         {dashedLine}
-        <h1 className="sloop-script tracking-wider text-black mt-4">{date}</h1>
-        <p>{place}</p>
+        <h1
+          translate="no"
+          className="sloop-script tracking-wider text-black mt-4"
+        >
+          {date}
+        </h1>
+        <p translate="no">{place}</p>
       </div>
       <motion.div
         ref={ref}
@@ -81,7 +86,7 @@ const SaveTheDate = ({ language }) => {
             className="flex flex-col justify-center items-center z-10"
             variants={childVariants}
           >
-            <h6>{item.year}</h6>
+            <h6 translate="no">{item.year}</h6>
             <div className="relative">
               <div className="w-[140px] sm:w-[80px] md:w-[100px] lg:w-[120px] h-[140px]  sm:h-[80px] md:h-[100px] lg:h-[120px] p-6 sm:p-4 border border-gold rounded-full flex justify-center items-center ">
                 <Image
@@ -99,7 +104,7 @@ const SaveTheDate = ({ language }) => {
                 />
               </div>
             </div>
-            <p>{item.text}</p>
+            <p translate="no">{item.text}</p>
           </motion.div>
         ))}
       </motion.div>

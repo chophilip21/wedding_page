@@ -287,7 +287,10 @@ const RSVPSection = () => {
           backgroundImage: `url(${images.collage.src})`,
         }}
       >
-        <h1 className="absolute left-1/2 transform -translate-x-1/2 z-20 transition-transform text-9xl text-gold">
+        <h1
+          translate="no"
+          className="absolute left-1/2 transform -translate-x-1/2 z-20 transition-transform text-9xl text-gold"
+        >
           RSVP
         </h1>
         <div className="overlay z-0"></div>
@@ -298,17 +301,22 @@ const RSVPSection = () => {
         <div className="w-full lg:w-1/2 flex justify-start lg:justify-end">
           <div className="flex flex-col items-start relative w-full max-w-full lg:max-w-lg text-left gap-0 lg:gap-6">
             <div className="flex flex-col items-start max-sm:w-full max-sm:items-center">
-              <h3 className=" font-bold z-20 ml-6 sm:ml-16">Confirm your</h3>
-              <h3 className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light -mt-10">
+              <h3 translate="no" className=" font-bold z-20 ml-6 sm:ml-16">
+                Confirm your
+              </h3>
+              <h3
+                translate="no"
+                className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light -mt-10"
+              >
                 Attendance
               </h3>
             </div>
-            <p className="text-left">
+            <p translate="no" className="text-left">
               Please RSVP by <span className="font-bold">15th May 2025</span> to
               let us know if you will be attending. Simply search for your name
               on the form and confirm whether you will be joining us or not.
             </p>
-            <p className="text-left">
+            <p translate="no" className="text-left">
               You can also let us know if you have any special requests, such as
               dietary restrictions or other needs. We want to make sure everyone
               is comfortable and has a great time!
@@ -318,7 +326,7 @@ const RSVPSection = () => {
         {/* right part*/}
         <div className="w-full lg:w-1/2 flex flex-col justify-start items-start">
           <div className="w-full lg:max-w-[500px] flex flex-col justify-start items-start">
-            <p>- Search your name in the guests list</p>
+            <p translate="no">- Search your name in the guests list</p>
             {/* Search Input */}
             <input
               type="text"
@@ -327,6 +335,7 @@ const RSVPSection = () => {
               value={searchTerm}
               onChange={handleSearch}
               autoComplete="on"
+              translate="no"
             />
 
             {/* Display search results */}
@@ -335,6 +344,7 @@ const RSVPSection = () => {
                 {filteredGuests.map((guest) => (
                   <li
                     key={guest.id}
+                    translate="no"
                     className="cursor-pointer hover:bg-gray-200 p-2 flex justify-start items-center gap-4"
                     onClick={() => handleGuestSelect(guest)}
                   >
@@ -346,19 +356,19 @@ const RSVPSection = () => {
 
             {/* If no guests are found */}
             {searchTerm && filteredGuests.length === 0 && (
-              <p>No guests found with this name</p>
+              <p translate="no">No guests found with this name</p>
             )}
 
             {/* RSVP Form: Only visible after a guest is selected */}
             {selectedGuest && (
               <div className="mt-4 w-full flex flex-col justify-start items-start">
                 {selectedGuest.relationshipIds.length === 0 ? (
-                  <h2 className="text-xl font-bold mb-6 text-left">
+                  <p translate="no" className="text-xl mb-6 text-left">
                     Hi <span className="font-bold">{selectedGuest.name}!</span>{" "}
                     We&apos;re delighted to have you on our guest list!
-                  </h2>
+                  </p>
                 ) : (
-                  <p className="text-xl mb-6 text-left">
+                  <p translate="no" className="text-xl mb-6 text-left">
                     Hi <span className="font-bold">{selectedGuest.name}!</span>{" "}
                     You,{" "}
                     {formatNames(
@@ -376,18 +386,27 @@ const RSVPSection = () => {
                 {/* Main Guest */}
                 <div className=" flex flex-col items-start">
                   {selectedGuest.relationshipIds.length === 0 ? (
-                    <p className="font-semibold text-lg text-left">
+                    <p
+                      translate="no"
+                      className="font-semibold text-lg text-left"
+                    >
                       Are you attending the wedding?{" "}
                     </p>
                   ) : (
-                    <p className="font-semibold text-lg text-left">
+                    <p
+                      translate="no"
+                      className="font-semibold text-lg text-left"
+                    >
                       Select who is attending the wedding. We hope all of you
                       can make it.
                     </p>
                   )}
 
                   <div className="w-full flex justify-between  flex-col sm:flex-row items-start sm:items-center gap-0 sm:gap-4  max-sm:mb-6 pr-6">
-                    <h2 className="text-xl font-bold text-left sm:mt-3">
+                    <h2
+                      translate="no"
+                      className="text-xl font-bold text-left sm:mt-3"
+                    >
                       {selectedGuest.name}
                     </h2>
                     <Select
@@ -407,6 +426,7 @@ const RSVPSection = () => {
                       <SelectTrigger className="w-[215px] px-4 rounded-md bg-neutral-100">
                         <SelectValue
                           className="p-0"
+                          translate="no"
                           placeholder={
                             guestsToRsvp[0]?.attending === "Unknown" ||
                             guestsToRsvp[0]?.attending === "unknown"
@@ -416,9 +436,13 @@ const RSVPSection = () => {
                         />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Yes">Yes</SelectItem>
-                        <SelectItem value="No">No</SelectItem>
-                        <SelectItem value="Unknown">
+                        <SelectItem value="Yes" translate="no">
+                          Yes
+                        </SelectItem>
+                        <SelectItem value="No" translate="no">
+                          No
+                        </SelectItem>
+                        <SelectItem value="Unknown" translate="no">
                           Don&apos;t know yet
                         </SelectItem>
                       </SelectContent>
@@ -430,7 +454,10 @@ const RSVPSection = () => {
                       key={guest.id}
                       className="w-full flex justify-between  flex-col sm:flex-row items-start sm:items-center gap-0 sm:gap-4  max-sm:mb-6 pr-6"
                     >
-                      <h2 className="text-xl font-bold text-left sm:mt-3">
+                      <h2
+                        translate="no"
+                        className="text-xl font-bold text-left sm:mt-3"
+                      >
                         {guest.name}
                       </h2>
                       <Select
@@ -454,6 +481,7 @@ const RSVPSection = () => {
                         >
                           <SelectValue
                             className="p-0"
+                            translate="no"
                             placeholder={
                               guest.attending === "Unknown" ||
                               guest.attending === "unknown"
@@ -463,9 +491,13 @@ const RSVPSection = () => {
                           />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="Yes">Yes</SelectItem>
-                          <SelectItem value="No">No</SelectItem>
-                          <SelectItem value="Unknown">
+                          <SelectItem value="Yes" translate="no">
+                            Yes
+                          </SelectItem>
+                          <SelectItem value="No" translate="no">
+                            No
+                          </SelectItem>
+                          <SelectItem value="Unknown" translate="no">
                             Don&apos;t know yet
                           </SelectItem>
                         </SelectContent>
@@ -479,6 +511,7 @@ const RSVPSection = () => {
                   placeholder="Any special requests? (Dietary restrictions, etc.)"
                   className="border p-2 rounded w-full max-lg:max-w-[500px] sm:my-4 focus:outline-none"
                   value={specialRequests}
+                  translate="no"
                   onChange={(e) => setSpecialRequests(e.target.value)}
                 />
 
@@ -486,13 +519,17 @@ const RSVPSection = () => {
                 <button
                   onClick={handleSubmit}
                   disabled={isLoading}
+                  translate="no"
                   className="btn2 max-sm:mt-4"
                 >
                   {isLoading ? "Loading..." : "Send RSVP"}
                 </button>
                 {/* Error Message */}
                 {errorMessage && (
-                  <p className="text-red-500 mt-4 text-left text-lg">
+                  <p
+                    translate="no"
+                    className="text-red-500 mt-4 text-left text-lg"
+                  >
                     {errorMessage}
                   </p>
                 )}
@@ -500,11 +537,11 @@ const RSVPSection = () => {
                 {/* Thank You Message */}
                 {submitted && errorMessage.length === 0 && (
                   <div className="mt-4 w-full flex flex-col justify-start items-start">
-                    <p className="text-left">
+                    <p translate="no" className="text-left">
                       <span className="font-bold">Thank you!</span> Your RSVP
                       has been submitted.
                     </p>
-                    <p className="text-left text-lg -mt-4">
+                    <p translate="no" className="text-left text-lg -mt-4">
                       Remember that you can change the attendancy any time by{" "}
                       <span className="font-bold">15th May 2025</span>
                     </p>
