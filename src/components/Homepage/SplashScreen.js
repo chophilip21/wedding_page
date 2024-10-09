@@ -24,12 +24,18 @@ const SplashScreen = () => {
         {/* Italian, Polish and English */}
         {["Ciao", "Cześć", "Hello"].map((text, index) => (
           <div key={index} className={styles.textContainer}>
-            <p className={`${styles.word} alex-brush`}>{text}</p>
+            <p translate="no" className={`${styles.word} alex-brush`}>
+              {text}
+            </p>
           </div>
         ))}
         {/* Italian, Polish and English */}
         {["Ciao", "Cześć", "Hello"].map((text, index) => (
-          <p key={index} className={`${styles.word_mobile} alex-brush`}>
+          <p
+            key={index}
+            translate="no"
+            className={`${styles.word_mobile} alex-brush`}
+          >
             {text}
           </p>
         ))}

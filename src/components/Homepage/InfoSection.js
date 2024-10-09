@@ -20,21 +20,31 @@ const InfoSection = () => {
           className="mb-4 w-[95px] h-auto brightness-95"
         />
         <div className="flex justify-center items-start">
-          <h3 className=" font-bold z-20  -mr-8">THE</h3>
-          <h3 className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light">
+          <h3 translate="no" className=" font-bold z-20  -mr-8">
+            THE
+          </h3>
+          <h3
+            translate="no"
+            className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light"
+          >
             Details
           </h3>
         </div>
       </div>
 
-      <div className=" w-full text-center flex flex-col items-center gap-8 md:gap-12 z-10">
+      <div
+        translate="no"
+        className=" w-full text-center flex flex-col items-center gap-8 md:gap-12 z-10"
+      >
         {/* Top Detail*/}
         <div className="flex flex-col justify-center items-center">
-          <h5 className="mb-4">When & Where</h5>
-          <p className="">
+          <h5 translate="no" className="mb-4">
+            When & Where
+          </h5>
+          <p translate="no">
             <span className="font-bold">Dates:</span> 26th and 27th of July 2025
           </p>
-          <p className="mt-[-16px]">
+          <p translate="no" className="mt-[-16px]">
             <span className="font-bold">Location:</span>{" "}
             <Link
               href={`https://maps.app.goo.gl/YXrKUt2u3ceWP4DJ8`}
@@ -44,10 +54,10 @@ const InfoSection = () => {
               Kolonia Łobudzice, Poland
             </Link>{" "}
           </p>
-          <p className="">
+          <p translate="no">
             Ceremony, Party and Accommodations are hold in the same location.
           </p>
-          <p className="">
+          <p translate="no">
             Please <span className="font-bold">No white dresses</span>
           </p>
         </div>
@@ -58,8 +68,10 @@ const InfoSection = () => {
         <div className="w-full flex flex-col md:flex-row md:justify-evenly max-md:items-center gap-8 md:gap-20">
           {/* Left Detail */}
           <div className="w-full md:w-1/2 max-w-[700px] flex flex-col justify-start items-center text-center">
-            <h5 className="mb-4">Accomodations</h5>
-            <p className="">
+            <h5 translate="no" className="mb-4">
+              Accomodations
+            </h5>
+            <p translate="no">
               For our out-of-town guests, we are pleased to offer accommodation
               at the venue for{" "}
               <span className="font-bold">
@@ -69,7 +81,7 @@ const InfoSection = () => {
               know, and we can help you arrange it, though the cost for extra
               nights will be at your own expense.
             </p>
-            <p className=" mt-3">
+            <p translate="no" className=" mt-3">
               <span className="font-bold">Breakfast</span> is included with your
               stay and will be served from{" "}
               <span className="font-bold">7 AM to 11 AM</span> each morning
@@ -78,12 +90,11 @@ const InfoSection = () => {
           <div className="static md:hidden h-px w-[50px] bg-black opacity-50" />
           {/* Right Detail */}
           <div className="w-full md:w-1/2 max-w-[700px] flex flex-col justify-start items-center text-center">
-            <h5 className="mb-4">Travel & Transportation</h5>
-            {/* <p className="">
-              <span className="font-bold">Nearest Airport:</span> Katowice
-              Wojciech Korfanty International Airport {"("}Katowice{")"}
-            </p> */}
-            <p className="">
+            <h5 translate="no" className="mb-4">
+              Travel & Transportation
+            </h5>
+
+            <p translate="no">
               We are organizing transportation from{" "}
               <span className="font-bold">Katowice Airport</span> to the venue
               on <span className="font-bold">Friday, 25th July</span> and
@@ -92,7 +103,7 @@ const InfoSection = () => {
               On <span className="font-bold">Monday, 28th July,</span> we’ll
               provide transport back to the airport (time to be arranged).
             </p>
-            <p className="">
+            <p translate="no">
               If you arrive at a different airport or outside the scheduled
               times, you’ll need to arrange your own transport. The easiest
               option is to take a train or bus to{" "}
@@ -105,7 +116,7 @@ const InfoSection = () => {
         <div className="static md:hidden h-px w-[50px] bg-black opacity-50" />
         {/* bottom Detail*/}
         <div className=" max-w-[700px] flex flex-col justify-center items-center">
-          <p className="">
+          <p translate="no">
             We will let you know more information about the accomodation and
             transportation in private. Or you can always contact us to ask more
             details.
