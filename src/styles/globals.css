@@ -313,3 +313,7 @@ li {
   z-index: 9999;
   pointer-events: none;
 }
+
+.isolate {
+  isolation: isolate;
+}

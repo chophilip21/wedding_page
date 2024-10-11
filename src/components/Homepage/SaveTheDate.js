@@ -14,8 +14,16 @@ const SaveTheDate = ({ language }) => {
 
   const countdown = getCountdown();
 
-  const { title, date, place, story_1, story_2, story_3_future, story_3_past } =
-    translations[language].saveTheDate_section;
+  const {
+    title,
+    title_cursive,
+    date,
+    place,
+    story_1,
+    story_2,
+    story_3_future,
+    story_3_past,
+  } = translations[language].saveTheDate_section;
 
   // Framer Motion variants
   const containerVariants = {
@@ -63,7 +71,18 @@ const SaveTheDate = ({ language }) => {
           quality={100}
           className="mb-4 "
         />
-        <h3 translate="no">{title}</h3>
+        <div className="flex flex-col justify-center items-center">
+          <h3 translate="no" className=" font-bold z-20 ">
+            {title}
+          </h3>
+          <h3
+            translate="no"
+            className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light -mt-8 md:-mt-10"
+          >
+            {title_cursive}
+          </h3>
+        </div>
+
         {dashedLine}
         <h1
           translate="no"
@@ -73,6 +92,7 @@ const SaveTheDate = ({ language }) => {
         </h1>
         <p translate="no">{place}</p>
       </div>
+
       <motion.div
         ref={ref}
         className="w-full flex flex-col sm:flex-row  justify-center items-center gap-4 sm:gap-8 md:gap-20 lg:gap-24 mt-12 sm:mt-16 lg:mt-20 px-4 z-10"

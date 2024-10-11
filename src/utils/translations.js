@@ -22,7 +22,8 @@ const translations = {
       button: "Save the Date",
     },
     saveTheDate_section: {
-      title: "SAVE THE DATE",
+      title: "SAVE",
+      title_cursive: "the date",
       date: "26th of July 2025",
       place: "in Kolonia Łobudzice, Poland",
       story_1: "We met",
@@ -54,7 +55,8 @@ const translations = {
       button: "Segna la Data",
     },
     saveTheDate_section: {
-      title: "SEGNA LA DATA",
+      title: "SEGNA",
+      title_cursive: "La Data",
       date: "26 Luglio 2025",
       place: "a Kolonia Łobudzice, Polonia",
       story_1: "Ci siamo conosciuti",
@@ -86,7 +88,8 @@ const translations = {
       button: "Zapisz Datę",
     },
     saveTheDate_section: {
-      title: "ZAPISZ DATĘ",
+      title: "ZAPISZ", //DATĘ
+      title_cursive: "Datę",
       date: "26 lipca 2025",
       place: "w Kolonii Łobudzice, Polska",
       story_1: "Spotkaliśmy się",

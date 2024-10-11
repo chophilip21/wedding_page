@@ -74,9 +74,17 @@ const ScheduleSection = () => {
           quality={100}
           className="mb-4 w-[95px] h-auto brightness-95"
         />
-        <h3 translate="no" className="text-3xl font-bold mb-4 text-white">
-          WEDDING TIMELINE
-        </h3>
+        <div className="flex flex-col justify-center items-center">
+          <h3 translate="no" className="text-white font-bold z-20 ">
+            WEDDING
+          </h3>
+          <h3
+            translate="no"
+            className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light -mt-8 md:-mt-10"
+          >
+            timeline
+          </h3>
+        </div>
         <p translate="no" className="text-lg text-center text-white ">
           The wedding will be 2 days, 26th and 27th of July
         </p>
