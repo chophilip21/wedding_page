@@ -55,4 +55,5 @@ next-env.d.ts
 .todo
 .vercel
 src/utils/guestsList.js
+src/utils/paymentData.js
 e-k-wedding-website-firebase-adminsdk-tpk2b-3f0dcd0ec9.json
