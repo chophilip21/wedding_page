@@ -46,6 +46,8 @@ import drink from "../../public/icons/drink.png";
 import bell from "../../public/icons/bell.png";
 import collage from "../../public/images/collage.png";
 import gift from "../../public/icons/gift.png";
+import musicsect from "../../public/images/musicsect.jpg";
+import spotify from "../../public/icons/spotify.png";
 
 const images = {
   welcome_1,
@@ -96,6 +98,8 @@ const images = {
   bell,
   collage,
   gift,
+  musicsect,
+  spotify,
 };
 
 export default images;

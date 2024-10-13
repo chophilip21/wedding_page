@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import LanguageDetector from "@/components/LanguageDetector/LanguageDetector";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <LanguageDetector />
         {children}
+        <Toaster />
       </body>
     </html>
   );

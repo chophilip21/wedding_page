@@ -10,7 +10,7 @@ import {
   InfoSection,
   RSVPSection,
   RegistrySection,
-  CommentsSongSection,
+  MusicSection,
   Footer,
 } from "@/components";
 import LanguageDetector from "@/components/LanguageDetector/LanguageDetector";
@@ -70,7 +70,7 @@ export default function Home() {
         <RegistrySection />
 
         {/* Guest Comments and Song Requests Section */}
-        <CommentsSongSection />
+        <MusicSection />
 
         {/* Footer */}
         {/* <Footer /> */}
