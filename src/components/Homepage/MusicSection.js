@@ -161,8 +161,8 @@ const MusicSection = () => {
         </div>
         <p translate="no" className="max-w-[750px] text-white font-medium">
           Help us create the perfect soundtrack for our special day! Share your
-          favorite songs for background ambiance or dance floor fun, and we'll
-          add them to our wedding playlist.
+          favorite songs for background ambiance or dance floor fun, and
+          we&apos;ll add them to our wedding playlist.
         </p>
 
         {/* Music Input */}
