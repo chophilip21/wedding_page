@@ -353,7 +353,7 @@ const MusicSection = () => {
       </div>
 
       {/* Background */}
-      <div className="absolute top-0 w-full h-[300px] bg-gradient-to-b from-blue via-[#233d7475] z-10"></div>
+      <div className="absolute top-0 w-full h-[300px] bg-gradient-to-b from-blue via-[#0c142c5e] z-10"></div>
       <div className="w-full h-full overlay z-[1] backdrop-blur-[2px]"></div>
       {!videoError && (
         <video

@@ -41,7 +41,7 @@ import stripe from "../../public/icons/stripe.png";
 import ceremony from "../../public/icons/ceremony.png";
 import cake from "../../public/icons/cake.png";
 import dinner from "../../public/icons/dinner.png";
-import food from "../../public/icons/food.png";
+import dance from "../../public/icons/dance.png";
 import drink from "../../public/icons/drink.png";
 import bell from "../../public/icons/bell.png";
 import collage from "../../public/images/collage.png";
@@ -91,7 +91,7 @@ const images = {
   glass,
   glasses,
   stripe,
-  food,
+  dance,
   drink,
   dinner,
   ceremony,

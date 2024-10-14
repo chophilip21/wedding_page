@@ -29,21 +29,25 @@ const ScheduleSection = () => {
         {
           time: "4:00 PM",
           title: "Ceremony Begins",
+          description: "Join us as we say 'I do' in a beautiful ceremony.",
           icon: images.ceremony,
         },
         {
           time: "5:00 PM",
           title: "Dinner Served",
+          description: "Indulge in a delicious feast with family and friends.",
           icon: images.dinner,
         },
         {
           time: "10:00 PM",
           title: "Cake Cutting",
+          description: "Savor the sweetness as we cut the cake together.",
           icon: images.cake,
         },
         {
           time: "All Night",
           title: "Eat, Drink, Dance, Repeat!",
+          description: "Celebrate the night away with music, drinks, and joy!",
           icon: images.drink,
         },
       ],
@@ -54,7 +58,9 @@ const ScheduleSection = () => {
         {
           time: "2:00 PM - 10:00 PM",
           title: "Eat, Drink, Dance, Repeat!",
-          icon: images.food,
+          description:
+            "Continue the festivities with more food, drinks, and dancing.",
+          icon: images.dance,
         },
       ],
     },
@@ -63,7 +69,7 @@ const ScheduleSection = () => {
   return (
     <section
       id="schedule-section"
-      className="py-20 px-4 bg-[#233d74] relative flex justify-center items-center flex-col"
+      className="py-20 px-4 sm:px-6 bg-blue relative flex justify-center items-center flex-col"
     >
       <div className="w-full flex flex-col items-center px-4 z-10">
         <Image
@@ -85,107 +91,91 @@ const ScheduleSection = () => {
             timeline
           </h3>
         </div>
-        <p translate="no" className="text-lg text-center text-white ">
+        <p translate="no" className=" text-center text-white ">
           The wedding will be 2 days, 26th and 27th of July
         </p>
       </div>
-      <div className="w-full min-[425px]:w-[90%] sm:w-[500px] md:w-full mt-8 md:mt-12 relative flex flex-col justify-center items-center">
-        <div className="absolute max-md:left-0 top-0 w-px h-full sm:border sm:border-gold border-dashed max-sm:bg-gradient-to-b from-transparent via-gold to-transparent"></div>
-        {timelineData.map((dayData, dayIndex) => (
+      {/* Timeline */}
+      <div className="relative w-full flex flex-col items-center gap-12 mt-12">
+        <div className="absolute  top-0 w-px h-[99%] border border-gold border-dashed z-0"></div>
+        {timelineData.map((day, dayIndex) => (
           <div
             key={dayIndex}
-            className="w-full flex flex-col justify-center items-center "
+            className="w-full flex flex-col items-center gap-12 z-10"
           >
-            <div
-              className={`w-[100px] md:w-[140px] h-[100px] md:h-[140px] flex justify-center items-center  bg-[#233d74] rounded-full border border-gold relative z-10  ${
-                dayIndex === 0 ? "md:mb-6" : "md:my-6"
-              }`}
-            >
+            <div className="w-[95px] h-[95px] md:w-[120px] md:h-[120px] lg:w-[140px] lg:h-[140px] flex justify-center items-center rounded-full border border-gold bg-blue">
               <h3 translate="no" className="alex-brush mt-2 text-white">
-                {dayData.day}
+                {day.day}
               </h3>
             </div>
-            {dayData.events.map((timeline, index) => (
+            {day.events.map((ev, evIndex) => (
               <div
-                key={index}
-                className={`w-full flex justify-center items-center  my-6 md:my-0  ${
-                  index % 2 === 0 ? "flex-row" : "flex-row md:flex-row-reverse"
-                }`}
+                key={evIndex}
+                className="w-full flex flex-col max-md:bg-blue max-md:pt-4"
               >
                 <div
-                  className={`w-full md:w-1/2 flex ${
-                    index % 2 !== 0
-                      ? "justify-start"
-                      : "justify-start md:justify-end"
+                  className={`flex justify-center items-center max-md:flex-col-reverse ${
+                    evIndex % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
                 >
                   <div
-                    className={`w-full relative flex justify-end items-center  ${
-                      index % 2 !== 0
-                        ? "flex-row-reverse ml-[-7px]"
-                        : "flex-row-reverse md:flex-row ml-[-7px] md:mr-[-7px]"
-                    } gap-4 sm:gap-8 `}
+                    className={`w-full md:w-[50%] xl:w-[600px] flex ${
+                      evIndex % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                    } items-center`}
                   >
-                    <motion.div
-                      whileInView={
-                        isMobile
-                          ? null
-                          : index % 2 !== 0
-                          ? { opacity: [0, 1], x: [150, 0] }
-                          : { opacity: [0, 1], x: [-150, 0] }
-                      }
-                      transition={{ duration: 0.5 }}
-                      className={`max-md:w-full flex gap-8 justify-between items-center p-4 xl:p-6 shadow-sm shadow-white bg-cream rounded-sm  ${
-                        index % 2 !== 0
-                          ? "flex-row md:flex-row-reverse ml-[-7px]"
-                          : "flex-row mr-[-7px]"
-                      }`}
+                    <div
+                      className={`flex flex-1 flex-col ${
+                        evIndex % 2 === 0
+                          ? "md:items-end md:mr-6"
+                          : "md:items-start md:ml-6"
+                      } max-md:items-center justify-start max-md:pt-4`}
                     >
-                      <div
-                        className={`flex flex-col ${
-                          index % 2 !== 0
-                            ? "items-start"
-                            : "items-start md:items-end"
+                      <p className="text-center bg-white text-blue rounded-xl px-2 flex justify-center items-center">
+                        {ev.time}
+                      </p>
+
+                      <h5 className="leading-3 text-gold">{ev.title}</h5>
+                      <p
+                        className={`text-white max-md:text-center ${
+                          evIndex % 2 === 0 ? "md:text-right" : "md:text-left"
                         }`}
                       >
-                        <h6
-                          translate="no"
-                          className={` ${
-                            index % 2 !== 0 ? "text-left" : "text-right"
-                          }`}
-                        >
-                          {timeline.time}
-                        </h6>
-                        <p
-                          translate="no"
-                          className={` ${
-                            index % 2 !== 0 ? "text-left" : "text-right"
-                          }`}
-                        >
-                          {timeline.title}
-                        </p>
-                      </div>
-                      <Image
-                        src={timeline.icon}
-                        alt={timeline.title}
-                        width={85}
-                        height={85}
-                        quality={100}
-                        className=" w-[60px] sm:w-[80px] md:w-[100px] xl:w-[120px] h-auto "
-                      />
-                    </motion.div>
-                    <div className="w-[14px] h-[14px] rounded-full bg-gold" />
+                        {ev.description}
+                      </p>
+                    </div>
                     <div
-                      className={`absolute max-md:hidden ${
-                        index % 2 !== 0 ? "left-0" : "right-0"
-                      } w-[14px] h-[14px] rounded-full bg-gold animate-ping duration-[2000ms]`}
-                    />
-                    <div
-                      className={`absolute md:hidden left-0 w-[14px] h-[14px] rounded-full bg-gold animate-ping duration-[2000ms]`}
+                      className={`max-lg:hidden h-px w-[50px] xl:w-[120px] bg-gold flex items-center ${
+                        evIndex % 2 === 0 ? "justify-start" : "justify-end"
+                      }`}
+                    >
+                      <div className="h-[7px] w-[7px] rounded-full bg-gold"></div>
+                    </div>
+                  </div>
+                  <div className="relative w-[90px] h-[90px]  xl:w-[100px] xl:h-[100px] rounded-full bg-gold flex justify-center items-center">
+                    <div className="w-full h-full bg-gold absolute rounded-full z-[1]" />
+                    <Image
+                      src={ev.icon}
+                      alt={ev.title}
+                      width={85}
+                      height={85}
+                      quality={100}
+                      className=" w-[50px] xl:w-[65px] h-auto z-10"
                     />
                   </div>
+                  <div
+                    className={`max-md:hidden w-[50%] xl:w-[600px] ${
+                      evIndex % 2 === 0 ? "items-start" : "items-end"
+                    }`}
+                  >
+                    <p
+                      className={`font-semibold text-white ${
+                        evIndex % 2 !== 0 ? "text-right mr-4" : "text-left ml-4"
+                      }`}
+                    >
+                      {ev.time}
+                    </p>
+                  </div>
                 </div>
-                <div className="w-1/2 hidden md:flex"></div>
               </div>
             ))}
           </div>

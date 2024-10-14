@@ -163,7 +163,7 @@ const RegistrySection = () => {
   return (
     <section
       id="gift-section"
-      className="bg-[#233d74] px-4 sm:px-12 py-12 flex items-center flex-col relative overflow-hidden"
+      className="bg-blue px-4 sm:px-12 py-12 flex items-center flex-col relative overflow-hidden"
     >
       {/* Title */}
       <div className="w-full flex flex-col items-center px-4 z-10 mb-8 md:mb-12">
@@ -189,24 +189,24 @@ const RegistrySection = () => {
       </div>
 
       <div className="relative w-full max-w-[700px] text-white text-center flex flex-col items-center z-10">
-        <p translate="no" className="font-semibold text-center mb-4">
+        <p translate="no" className=" text-center mb-4">
           Your presence at our wedding is the greatest gift we could ask for.
         </p>
         {dashedLine}
-        <p translate="no" className="font-semibold text-center my-4">
+        <p translate="no" className=" text-center my-4">
           However, if you wish to honor us with a gift, we would greatly
           appreciate a monetary contribution to help us build our future
           together.
         </p>
         {dashedLine}
-        <p translate="no" className="font-semibold text-center my-4">
+        <p translate="no" className=" text-center my-4">
           We kindly ask our international guests to consider sending their gift
           via IBAN transfer or a similar method such as Revolut. For our Polish
           guests, contributions can be made online or given in cash at the
           wedding, whichever is more convenient.
         </p>
         {dashedLine}
-        <p translate="no" className="font-semibold text-center my-4">
+        <p translate="no" className=" text-center my-4">
           To access the IBAN details, please click the button below and enter
           the password you received with the invitation, or contact us directly
           for further information.
@@ -552,7 +552,7 @@ const RegistrySection = () => {
         </Dialog>
 
         {dashedLine}
-        <p translate="no" className="font-semibold text-center mt-4 mb-12">
+        <p translate="no" className="text-center mt-4 mb-12">
           In lieu of flowers, which we already have in abundance, we would be
           delighted to receive scratch cards or lottery tickets as a fun and
           exciting way to celebrate our new beginning.
