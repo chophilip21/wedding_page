@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       animation: {
         "spin-slow": "spin-slow 20s linear infinite",
+        "spin-music": "spin-slow 6s linear infinite",
       },
       keyframes: {
         "spin-slow": {

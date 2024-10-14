@@ -9,7 +9,10 @@ import { BsFillSearchHeartFill } from "react-icons/bs";
 import { IoPlay } from "react-icons/io5";
 import { FaStop } from "react-icons/fa";
 import { IoIosAddCircle } from "react-icons/io";
-import { getSpotifyAccessToken } from "@/utils/spotify";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import { useToast } from "@/hooks/use-toast";
+import { Footer } from "@/components";
 
 const MusicSection = () => {
   const videoRef = useRef(null);
@@ -22,6 +25,11 @@ const MusicSection = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
   const [progress, setProgress] = useState(0);
+  const [musicSpin, setMusicSpin] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isAddingTrack, setIsAddingTrack] = useState(false);
+  const [loading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   // Function to fetch search results from the API
   const searchTracks = async (searchQuery) => {
@@ -30,15 +38,19 @@ const MusicSection = () => {
       return;
     }
     try {
+      setIsLoading(true);
       const response = await fetch(
         `/api/search-music?query=${encodeURIComponent(searchQuery)}`
       );
       const data = await response.json();
       setResults(data.tracks.items);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching tracks:", error);
+      setIsLoading(false);
     }
   };
+
   // Handle typing in the input field
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -72,6 +84,8 @@ const MusicSection = () => {
     if (currentlyPlaying === trackId) {
       // Stop current song
       setCurrentlyPlaying(null);
+      setMusicSpin(false);
+      setIsPlaying(false);
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.currentTime = 0; // Reset to start
@@ -80,6 +94,8 @@ const MusicSection = () => {
     } else {
       // Play the selected song
       setCurrentlyPlaying(trackId);
+      setMusicSpin(true);
+      setIsPlaying(true);
       if (audioRef.current) {
         audioRef.current.src = previewUrl;
         audioRef.current.play().catch((error) => {
@@ -94,7 +110,7 @@ const MusicSection = () => {
     if (audioRef.current) {
       const currentProgress =
         (audioRef.current.currentTime / audioRef.current.duration) * 100;
-      setProgress(currentProgress); // Update progress
+      setProgress(currentProgress);
     }
   };
 
@@ -102,28 +118,51 @@ const MusicSection = () => {
   const handleAudioEnd = () => {
     setCurrentlyPlaying(null);
     setProgress(0);
+    setMusicSpin(false);
+    setIsPlaying(false);
   };
 
   // function to add songs to the playlist
   const addTrackToPlaylist = async (trackUri) => {
     try {
+      setIsAddingTrack(true);
       const response = await fetch("/api/add-track", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ trackUri }), // Send the track URI to the API
+        body: JSON.stringify({ trackUri }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        alert("Track added to playlist!");
+        //success toast
+        toast({
+          variant: "success",
+          title: "Song Added to the Playlist",
+          description: "Would you like to add another song?",
+        });
+        setIsAddingTrack(false);
       } else {
         console.error("Failed to add track to playlist:", data);
+        toast({
+          variant: "destructive",
+          title: "Unable to Add Song",
+          description:
+            "We're sorry, but something went wrong on our end. Please try again later.",
+        });
+        setIsAddingTrack(false);
       }
     } catch (error) {
       console.error("Error adding track to playlist:", error);
+      toast({
+        variant: "destructive",
+        title: "Unable to Add Song",
+        description:
+          "We're sorry, but something went wrong on our end. Please try again later.",
+      });
+      setIsAddingTrack(false);
     }
   };
 
@@ -139,12 +178,12 @@ const MusicSection = () => {
   return (
     <section
       id="comment-section"
-      className="relative w-full h-svh bg-center bg-no-repeat bg-cover flex flex-col justify-start"
+      className="relative w-full h-svh bg-center bg-no-repeat bg-cover flex flex-col justify-start overflow-hidden"
       style={{
         backgroundImage: `url(${images.musicsect.src})`,
       }}
     >
-      <div className="w-full h-full z-20 flex flex-col justify-start items-center px-12 pb-12 pt-48">
+      <div className="relative w-full h-full z-20 flex flex-col justify-start items-center px-12 pb-12 pt-48">
         <div className="flex justify-center items-start">
           <h3
             translate="no"
@@ -168,7 +207,7 @@ const MusicSection = () => {
         {/* Music Input */}
         <div
           ref={containerRef}
-          className="max-w-[500px] w-full h-14 bg-slate-50 rounded-md flex justify-center items-center mt-8 py-2 px-3"
+          className="relative max-w-[500px] w-full h-14 bg-slate-50 rounded-md flex justify-center items-center mt-8 py-2 px-3"
         >
           <Image
             src={images.spotify}
@@ -176,7 +215,9 @@ const MusicSection = () => {
             width={95}
             height={95}
             quality={100}
-            className=" w-[35px] h-auto"
+            className={`w-[35px] h-auto ${
+              musicSpin ? "animate-spin-music" : ""
+            }`}
           />
           <Input
             translate="no"
@@ -186,10 +227,33 @@ const MusicSection = () => {
             placeholder="Enter the name of the song"
             className="bg-slate-50 font-serif h-10 mb-4 focus:outline-none focus:ring-0 text-lg border-none mt-4 "
           />
-          <BsFillSearchHeartFill
-            size={30}
-            className="transform scale-x-[-1] text-neutral-500 "
-          />
+          <button
+            onClick={() => {
+              if (query.trim() !== "") {
+                searchTracks(query);
+                setIsFocused(true);
+              }
+            }}
+            className="transform active:scale-[0.98]"
+          >
+            <BsFillSearchHeartFill
+              size={30}
+              className="transform scale-x-[-1] text-neutral-500 "
+            />
+          </button>
+          {/* Display spinner */}
+          {loading && (
+            <div className="absolute right-[-40px]">
+              <Image
+                src={images.spinner}
+                alt="Searching..."
+                width={30}
+                height={30}
+                quality={100}
+                className="animate-spin w-[30px] h-[30px]"
+              />
+            </div>
+          )}
         </div>
 
         {/* Display search results */}
@@ -198,6 +262,9 @@ const MusicSection = () => {
             ref={resultsRef}
             className="max-w-[500px] max-h-[400px] w-full bg-slate-50 rounded-lg mt-1 py-3 px-4 overflow-auto"
           >
+            <p className="text-sm font-serif font-extralight text-red-500">
+              * Some songs can&apos;t play here, but you can still add them.
+            </p>
             <ul className="w-full flex flex-col justify-center items-start gap-2">
               {results.map((track) => (
                 <li
@@ -231,10 +298,16 @@ const MusicSection = () => {
 
                     {/* Add Button */}
                     <button
+                      disabled={isAddingTrack}
                       onClick={() => addTrackToPlaylist(track.uri)}
                       className="transform active:scale-[0.95]"
                     >
-                      <IoIosAddCircle size={35} className="text-green-500" />
+                      <IoIosAddCircle
+                        size={35}
+                        className={`${
+                          isAddingTrack ? "text-green-300" : "text-green-500"
+                        }`}
+                      />
                     </button>
 
                     {/* Progress Bar (positioned below the buttons) */}
@@ -250,6 +323,33 @@ const MusicSection = () => {
             </ul>
           </div>
         )}
+
+        {/* Display fixed stop button and progress */}
+        {isPlaying && (
+          <div className="fixed top-24 right-4 w-[40px] h-[40px]">
+            <button
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center z-20 ml-[3px]"
+              onClick={() => handlePlayPreview(null, currentlyPlaying)}
+            >
+              <FaStop size={22} className=" text-gold mr-[6px]" />
+            </button>
+            <CircularProgressbar
+              value={progress}
+              strokeWidth={3}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+              styles={buildStyles({
+                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                strokeLinecap: "butt",
+
+                // How long animation takes to go from one percentage to another, in seconds
+                pathTransitionDuration: 0.5,
+                // Colors
+                pathColor: `rgb(220, 180, 109)`,
+                trailColor: `transparent`,
+              })}
+            />
+          </div>
+        )}
       </div>
 
       {/* Background */}
@@ -262,19 +362,23 @@ const MusicSection = () => {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-20 mix-blend-screen z-0"
+          className={`absolute inset-0 w-full h-full object-cover object-center opacity-20 mix-blend-screen z-0 ${
+            musicSpin ? "animate-pulse duration-1000" : ""
+          }`}
           onError={() => setVideoError(true)}
           aria-hidden="true"
         >
           <source src="/videos/bg_particles.webm" type="video/webm" />
         </video>
       )}
+
       {/* Hidden audio element */}
       <audio
         ref={audioRef}
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleAudioEnd}
       />
+      <Footer />
     </section>
   );
 };

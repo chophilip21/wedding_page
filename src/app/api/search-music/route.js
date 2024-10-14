@@ -1,19 +1,18 @@
-import { getSpotifyAccessToken } from "@/utils/spotify";
+import { NextResponse } from "next/server";
+import { getClientAccessToken } from "@/utils/spotifyClient";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const query = searchParams.get("query");
 
   if (!query) {
-    return new Response(JSON.stringify({ error: "Query is required" }), {
-      status: 400,
-    });
+    return NextResponse.json({ error: "Query is required" }, { status: 400 });
   }
 
-  const token = await getSpotifyAccessToken();
+  const token = await getClientAccessToken();
   if (!token) {
-    return new Response(
-      JSON.stringify({ error: "Unable to get access token" }),
+    return NextResponse.json(
+      { error: "Unable to get access token" },
       { status: 500 }
     );
   }
@@ -21,18 +20,29 @@ export async function GET(req) {
   try {
     const searchUrl = `https://api.spotify.com/v1/search?q=${encodeURIComponent(
       query
-    )}&type=track&limit=12`;
+    )}&type=track&limit=30`;
     const response = await fetch(searchUrl, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Error searching tracks:", errorData);
+      return NextResponse.json(
+        { error: "Failed to search tracks", details: errorData },
+        { status: response.status }
+      );
+    }
+
     const data = await response.json();
-    return new Response(JSON.stringify(data), { status: 200 });
+    return NextResponse.json(data, { status: 200 });
   } catch (error) {
     console.error("Error fetching tracks:", error);
-    return new Response(JSON.stringify({ error: "Failed to search tracks" }), {
-      status: 500,
-    });
+    return NextResponse.json(
+      { error: "Failed to search tracks", details: error.message },
+      { status: 500 }
+    );
   }
 }

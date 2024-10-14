@@ -30,3 +30,5 @@ https://open.spotify.com/playlist/5C3JaTMND9M73K3l5oJ7rQ?si=ee414d55b4c04662
 spotify id: fc6abc87a5df4713961d38ece2d7e415
 spotify secret: 5538bac511a94abcbb73504142f8de42
 
+
+{"loginUrl":"https://accounts.spotify.com/authorize?client_id=fc6abc87a5df4713961d38ece2d7e415&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fcallback&scope=playlist-modify-public%20playlist-modify-private"}
