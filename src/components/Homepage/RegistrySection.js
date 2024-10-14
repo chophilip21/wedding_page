@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { IoCopyOutline } from "react-icons/io5";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/router";
 
 const RegistrySection = () => {
   const [password, setPassword] = useState("");
@@ -35,20 +36,15 @@ const RegistrySection = () => {
 
     if (password.length > 0) {
       setLoading(true);
-      try {
-        // Assuming password validation is done here
-        const response = await fetch("/api/check-password", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ password }),
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          const response = await fetch("/api/get-payment-info", {
+      //path for opening admin page. No need to protect this too much as this is like a hidden button for convenience and admin page has an auth
+      if (password === process.env.NEXT_PUBLIC_ADMIN_ACCESS_PASSWORD) {
+        window.open("/admin", "_blank");
+        setLoading(false);
+        setIsValid(false);
+        setErrorText("Incorrect password");
+      } else {
+        try {
+          const response = await fetch("/api/check-password", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -56,27 +52,39 @@ const RegistrySection = () => {
             body: JSON.stringify({ password }),
           });
 
-          const paymentResult = await response.json();
+          const result = await response.json();
 
-          if (paymentResult.success) {
-            setIsValid(true);
-            setPaymentInfo(paymentResult.paymentInfo);
-            console.log(paymentInfo);
-            setErrorText("");
+          if (result.success) {
+            const response = await fetch("/api/get-payment-info", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ password }),
+            });
+
+            const paymentResult = await response.json();
+
+            if (paymentResult.success) {
+              setIsValid(true);
+              setPaymentInfo(paymentResult.paymentInfo);
+              console.log(paymentInfo);
+              setErrorText("");
+            } else {
+              setIsValid(false);
+              setErrorText("There is a problem. Try again later or contact us");
+            }
           } else {
             setIsValid(false);
-            setErrorText("There is a problem. Try again later or contact us");
+            setErrorText("Incorrect password");
           }
-        } else {
+        } catch (error) {
           setIsValid(false);
-          setErrorText("Incorrect password");
+          setErrorText("There is a problem. Try again later or contact us");
+          console.log(error);
+        } finally {
+          setLoading(false);
         }
-      } catch (error) {
-        setIsValid(false);
-        setErrorText("There is a problem. Try again later or contact us");
-        console.log(error);
-      } finally {
-        setLoading(false);
       }
     } else {
       setErrorText("Insert password");
