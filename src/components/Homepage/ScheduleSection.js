@@ -69,7 +69,7 @@ const ScheduleSection = () => {
   return (
     <section
       id="schedule-section"
-      className="py-20 px-4 sm:px-6 bg-blue relative flex justify-center items-center flex-col"
+      className="py-12 px-4 sm:px-6 bg-blue relative flex justify-center items-center flex-col"
     >
       <div className="w-full flex flex-col items-center px-4 z-10">
         <Image
@@ -97,7 +97,7 @@ const ScheduleSection = () => {
       </div>
       {/* Timeline */}
       <div className="relative w-full flex flex-col items-center gap-12 mt-12">
-        <div className="absolute  top-0 w-px h-[99%] border border-gold border-dashed z-0"></div>
+        <div className="absolute  top-0 w-px h-[90%] border border-gold border-dashed z-0"></div>
         {timelineData.map((day, dayIndex) => (
           <div
             key={dayIndex}

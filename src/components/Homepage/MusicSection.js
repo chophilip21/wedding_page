@@ -177,7 +177,7 @@ const MusicSection = () => {
 
   return (
     <section
-      id="comment-section"
+      id="music-section"
       className="relative w-full h-svh bg-center bg-no-repeat bg-cover flex flex-col justify-start overflow-hidden"
       style={{
         backgroundImage: `url(${images.musicsect.src})`,

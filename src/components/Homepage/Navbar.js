@@ -12,6 +12,23 @@ import { TfiClose } from "react-icons/tfi";
 const Navbar = ({ language, detectedLanguage, setLanguage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +43,7 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const { welcome, save_the_date, schedule, info, rsvp, registry, comment } =
+  const { welcome, save_the_date, schedule, info, rsvp, registry, music } =
     translations[language].navbar;
 
   const navElements = [
@@ -36,7 +53,7 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
     { name: info, link: "info-section" },
     { name: rsvp, link: "rsvp-section" },
     { name: registry, link: "gift-section" },
-    { name: comment, link: "comment-section" },
+    { name: music, link: "music-section" },
   ];
 
   return (
@@ -55,7 +72,7 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
               to={el.link}
               smooth={true}
               duration={1900}
-              offset={-70}
+              offset={isMobile ? -50 : -62}
               // spy={true}
               // activeClass="text-gold-nav"
               className="cursor-pointer tracking-widest hover:text-gold max-xl:text-[18px]"
@@ -77,28 +94,31 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
       />
       {/* mobile */}
       <div
-        className={`absolute w-full h-screen min-h-screen bg-cream transition-all duration-700 ease-in-out transform z-[999] lg:hidden ${
-          !isMenuOpen ? "translate-y-[-52%]" : " translate-y-[48%]"
-        }`}
+        className={`fixed top-0 left-0 w-full h-screen bg-cream transition-transform duration-700 ease-in-out z-50 lg:hidden ${
+          !isMenuOpen ? "-translate-y-full" : "translate-y-0"
+        } overflow-y-auto`}
       >
-        <div className="relative w-full h-full flex flex-col justify-start items-center pt-2 z-[999]">
+        <div className="relative w-full h-full flex flex-col items-center pt-6">
+          {/* Close Button */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={` text-black absolute top-3`}
+            onClick={() => setIsMenuOpen(false)}
+            className="absolute top-4  text-black focus:outline-none"
+            aria-label="Close Menu"
           >
-            <TfiClose size={18} />
+            <TfiClose size={24} />
           </button>
-          <ul className="flex flex-col gap-12 justify-center items-center mt-20">
+
+          {/* Navigation Links */}
+          <ul className="w-full h-full flex flex-col gap-8 justify-center items-center px-6  ">
             {navElements.map((el) => (
               <li key={el.link}>
                 <ScrollLink
-                  translate="no"
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  onClick={() => setIsMenuOpen(false)}
                   to={el.link}
                   smooth={true}
                   duration={1900}
-                  offset={-70}
-                  className="cursor-pointer tracking-widest hover:text-gold max-xl:text-[18px]"
+                  offset={isMobile ? -51 : -63}
+                  className="cursor-pointer tracking-widest hover:text-gold text-lg transition-colors duration-300"
                 >
                   {el.name}
                 </ScrollLink>

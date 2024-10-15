@@ -6,9 +6,25 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Emanuele & Karolina",
+  title: "Karolina & Emanuele",
   description:
-    "Join us for our special day | Unisciti a noi per il nostro giorno speciale | Dołącz do nas w tym wyjątkowym dniu",
+    "You are invited to our Wedding | Sei invitato al nostro Matrimonio |  Jesteś zaproszony na nasz Ślub",
+  openGraph: {
+    title: "A Home Away From Home | Hazeltree Lodge B&B",
+    description:
+      "You are invited to our Wedding | Sei invitato al nostro Matrimonio |  Jesteś zaproszony na nasz Ślub",
+    url: "https://www.hazeltreelodge.com",
+    siteName: "Karolina & Emanuele",
+    images: [
+      {
+        url: "https://www.hazeltreelodge.com/images/og-image.jpg",
+        width: 1200,
+        height: 600,
+        alt: "Karolina & Emanuele Wedding Website",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {

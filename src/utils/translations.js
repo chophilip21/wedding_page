@@ -4,10 +4,10 @@ const translations = {
       welcome: "Welcome",
       save_the_date: "Save the Date",
       schedule: "Wedding Timeline",
-      info: "Information",
+      info: "Details",
       rsvp: "RSVP",
       registry: "Registry",
-      comment: "Words & Melodies",
+      music: "Playlist",
     },
     welcome_section: {
       small_text: "The wedding of...",
@@ -37,10 +37,10 @@ const translations = {
       welcome: "Benvenuti",
       save_the_date: "Segna la Data",
       schedule: "Timeline Matrimonio",
-      info: "Informazioni",
+      info: "Dettagli",
       rsvp: "RSVP",
       registry: "Lista Nozze",
-      comment: "Dediche & Musica",
+      music: "Playlist",
     },
     welcome_section: {
       small_text: "Il matrimonio di...",
@@ -69,11 +69,11 @@ const translations = {
     navbar: {
       welcome: "Witamy",
       save_the_date: "Zapisz Datę",
-      schedule: "Harmonogram", // Polish for "Schedule" or "Timeline"
-      info: "Informacje",
-      rsvp: "RSVP", // Same as in English and Italian
-      registry: "Lista Prezentów", // For "Gift Registry"
-      comment: "Dedykacje i Piosenki", // A good translation for "Dediche e Canzoni"
+      schedule: "Harmonogram",
+      info: "Bliższe Dane",
+      rsvp: "RSVP",
+      registry: "Lista Prezentów",
+      music: "Lista Odtwarzania",
     },
     welcome_section: {
       small_text: "Ślub...",
