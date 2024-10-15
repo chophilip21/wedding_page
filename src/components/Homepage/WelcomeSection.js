@@ -65,13 +65,13 @@ const WelcomeSection = ({ language }) => {
         >
           <div className="flex flex-col md:flex-row w-[240px] md:w-full h-[240px] md:h-auto justify-center md:gap-4 max-md:border max-md:border-[#eec87e] rounded-full max-md:p-4 cursor-default">
             <h1 translate="no" className="sloop-script welcome-names">
-              Emanuele
+              Karolina
             </h1>
 
             <h1 translate="no" className="alex-brush welcome-names text-gold">
               <span className="max-md:hidden">&nbsp;</span>&
             </h1>
-            <h1 className="sloop-script welcome-names ">Karolina</h1>
+            <h1 className="sloop-script welcome-names ">Emanuele</h1>
           </div>
         </Tilt>
 
