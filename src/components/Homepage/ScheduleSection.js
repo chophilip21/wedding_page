@@ -130,12 +130,18 @@ const ScheduleSection = () => {
                           : "md:items-start md:ml-6"
                       } max-md:items-center justify-start max-md:pt-4`}
                     >
-                      <p className="md:hidden text-center bg-white text-blue rounded-xl px-2 flex justify-center items-center">
+                      <p
+                        translate="no"
+                        className="md:hidden text-center bg-white text-blue rounded-xl px-2 flex justify-center items-center"
+                      >
                         {ev.time}
                       </p>
 
-                      <h5 className="leading-3 text-gold">{ev.title}</h5>
+                      <h5 translate="no" className="leading-3 text-gold">
+                        {ev.title}
+                      </h5>
                       <p
+                        translate="no"
                         className={`text-white max-md:text-center ${
                           evIndex % 2 === 0 ? "md:text-right" : "md:text-left"
                         }`}
@@ -168,6 +174,7 @@ const ScheduleSection = () => {
                     }`}
                   >
                     <p
+                      translate="no"
                       className={`font-semibold text-white ${
                         evIndex % 2 !== 0 ? "text-right mr-4" : "text-left ml-4"
                       } m-0`}

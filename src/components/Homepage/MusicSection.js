@@ -262,7 +262,10 @@ const MusicSection = () => {
             ref={resultsRef}
             className="max-w-[500px] max-h-[400px] w-full bg-slate-50 rounded-lg mt-1 py-3 px-4 overflow-auto"
           >
-            <p className="text-sm font-serif font-extralight text-red-500">
+            <p
+              translate="no"
+              className="text-sm font-serif font-extralight text-red-500"
+            >
               * Some songs can&apos;t play here, but you can still add them.
             </p>
             <ul className="w-full flex flex-col justify-center items-start gap-2">
@@ -272,7 +275,7 @@ const MusicSection = () => {
                   className="w-full flex justify-between items-center border-b last:border-none gap-2"
                 >
                   <div>
-                    <p className="text-left">
+                    <p translate="no" className="text-left">
                       {track.artists[0].name} - {track.name}
                     </p>
                   </div>
@@ -338,12 +341,8 @@ const MusicSection = () => {
               strokeWidth={3}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
               styles={buildStyles({
-                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
                 strokeLinecap: "butt",
-
-                // How long animation takes to go from one percentage to another, in seconds
                 pathTransitionDuration: 0.5,
-                // Colors
                 pathColor: `rgb(220, 180, 109)`,
                 trailColor: `transparent`,
               })}
