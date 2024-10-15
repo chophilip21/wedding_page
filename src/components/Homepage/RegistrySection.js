@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import images from "@/utils/imagesImport";
 import Image from "next/image";
 import {
@@ -24,6 +24,14 @@ const RegistrySection = () => {
   const [errorText, setErrorText] = useState("");
   const [paymentInfo, setPaymentInfo] = useState(null); // Stores payment info
   const { toast } = useToast();
+  const dialogRef = useRef(null);
+
+  // Function to adjust dialog position when the keyboard is visible
+  const handleInputFocus = () => {
+    if (dialogRef.current) {
+      dialogRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const dashedLine = Array(3)
     .fill()
@@ -160,6 +168,20 @@ const RegistrySection = () => {
     return sortCode.replace(/(\d{2})(?=\d)/g, "$1-").slice(0, 8);
   };
 
+  useEffect(() => {
+    // Optionally, listen for focus and blur events on inputs
+    const inputElements = document.querySelectorAll("input");
+    inputElements.forEach((input) => {
+      input.addEventListener("focus", handleInputFocus);
+    });
+
+    return () => {
+      inputElements.forEach((input) => {
+        input.removeEventListener("focus", handleInputFocus);
+      });
+    };
+  }, []);
+
   return (
     <section
       id="gift-section"
@@ -215,7 +237,10 @@ const RegistrySection = () => {
           <DialogTrigger translate="no" className="btn2 mb-4">
             View Info
           </DialogTrigger>
-          <DialogContent className="max-h-[90svh] sm:max-w-[580px] max-sm:w-[95%] max-sm:p-2 max-sm:rounded-md">
+          <DialogContent
+            ref={dialogRef}
+            className="max-h-[90vh] sm:max-w-[580px] max-sm:w-[95%] max-sm:p-2 max-sm:rounded-md"
+          >
             <DialogHeader>
               <DialogTitle translate="no" className="text-3xl font-bold">
                 {!isValid && !paymentInfo
@@ -232,6 +257,9 @@ const RegistrySection = () => {
                       <div className="w-full h-[42px] mb-4 flex border  py-0 pl-0 pr-2 rounded-lg">
                         <Input
                           translate="no"
+                          autoComplete="off"
+                          autoCorrect="off"
+                          spellCheck="false"
                           type={viewPassword ? "text" : "password"}
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
@@ -304,7 +332,7 @@ const RegistrySection = () => {
                       {" "}
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">Account Holder: </span>
                         {paymentInfo.EUR.accountHolder}
@@ -321,7 +349,7 @@ const RegistrySection = () => {
                     <div className="w-full flex items-center justify-between gap-1">
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">IBAN: </span>
                         {paymentInfo.EUR.iban}
@@ -339,7 +367,7 @@ const RegistrySection = () => {
                     <div className="w-full flex items-center justify-between gap-1">
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">Bank Name:</span>
                         {paymentInfo.EUR.bankName}
@@ -357,7 +385,7 @@ const RegistrySection = () => {
                     <div className="w-full flex items-center justify-between gap-1">
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">BIC: </span>
                         {paymentInfo.EUR.bic}
@@ -390,7 +418,7 @@ const RegistrySection = () => {
                       {" "}
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">Account Holder: </span>
                         {paymentInfo.GBP.accountHolder}
@@ -408,7 +436,7 @@ const RegistrySection = () => {
                     <div className="w-full flex items-center justify-between gap-1">
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">Sort Code: </span>
                         {formatSortCode(paymentInfo.GBP.sortCode)}
@@ -426,7 +454,7 @@ const RegistrySection = () => {
                     <div className="w-full flex items-center justify-between gap-1">
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">Account Number: </span>
                         {paymentInfo.GBP.accountNumber}
@@ -444,7 +472,7 @@ const RegistrySection = () => {
                     <div className="w-full flex items-center justify-between gap-1">
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">Bank Name: </span>
                         {paymentInfo.GBP.bankName}
@@ -478,7 +506,7 @@ const RegistrySection = () => {
                     <div className="w-full flex items-center justify-between gap-1">
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">Account Holder: </span>
                         {paymentInfo.PLN.accountHolder}
@@ -496,7 +524,7 @@ const RegistrySection = () => {
                     <div className="w-full flex items-center justify-between gap-1">
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className=" font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">IBAN: </span>
                         {paymentInfo.PLN.iban}
@@ -514,7 +542,7 @@ const RegistrySection = () => {
                     <div className="w-full flex items-center justify-between gap-1">
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">Bank Name: </span>
                         {paymentInfo.PLN.bankName}
@@ -532,7 +560,7 @@ const RegistrySection = () => {
                     <div className="w-full flex items-center justify-between gap-1">
                       <p
                         translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide"
+                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                       >
                         <span className="font-semibold">BIC: </span>
                         {paymentInfo.PLN.bic}
