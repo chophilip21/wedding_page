@@ -7,10 +7,10 @@ import curved_pl from "../../public/images/curved_pl.png";
 import polish from "../../public/icons/polish.png";
 import italian from "../../public/icons/italian.png";
 import english from "../../public/icons/english.png";
-import hands from "../../public/icons/hands.png";
+import met from "../../public/icons/met.png";
 import dove from "../../public/icons/dove.png";
 import engaged from "../../public/icons/engaged.png";
-import rings from "../../public/icons/rings.png";
+import marry from "../../public/icons/marry.png";
 import g_1_1 from "../../public/images/g_1_1.jpg";
 import g_1_2 from "../../public/images/g_1_2.jpg";
 import g_1_3 from "../../public/images/g_1_3.jpg";
@@ -60,8 +60,8 @@ const images = {
   polish,
   italian,
   english,
-  rings,
-  hands,
+  marry,
+  met,
   dove,
   engaged,
   g_1_1,

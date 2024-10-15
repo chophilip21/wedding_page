@@ -48,12 +48,12 @@ const SaveTheDate = ({ language }) => {
     ));
 
   const story = [
-    { year: 2018, text: story_1, img: images.hands },
+    { year: 2018, text: story_1, img: images.met },
     { year: 2022, text: story_2, img: images.engaged },
     {
       year: 2025,
       text: countdown.message ? story_3_past : story_3_future,
-      img: images.rings,
+      img: images.marry,
     },
   ];
 
@@ -93,41 +93,32 @@ const SaveTheDate = ({ language }) => {
         <p translate="no">{place}</p>
       </div>
 
-      <motion.div
-        ref={ref}
-        className="w-full flex flex-col sm:flex-row  justify-center items-center gap-4 sm:gap-8 md:gap-20 lg:gap-24 mt-12 sm:mt-16 lg:mt-20 px-4 z-10"
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={containerVariants}
-      >
+      <div className="w-full flex flex-col sm:flex-row  justify-center items-center gap-8 md:gap-20 lg:gap-24 mt-12 sm:mt-16 lg:mt-20 px-4 z-10">
         {story.map((item, index) => (
-          <motion.div
+          <div
             key={`${item.year} ${index}`}
             className="flex flex-col justify-center items-center z-10"
-            variants={childVariants}
           >
-            <h6 translate="no">{item.year}</h6>
-            <div className="relative">
-              <div className="w-[140px] sm:w-[80px] md:w-[100px] lg:w-[120px] h-[140px]  sm:h-[80px] md:h-[100px] lg:h-[120px] p-6 sm:p-4 border border-gold rounded-full flex justify-center items-center ">
-                <Image
-                  src={item.img}
-                  alt={item.text}
-                  width={85}
-                  height={85}
-                  quality={100}
-                  className={`w-[105px] h-[105px] sm:w-[45px] sm:h-[45px] md:w-[65px] md:h-[65px] lg:w-[85px] lg:h-[85px] relative mb-4 transform ${
-                    index === 2 &&
-                    "md:brightness-150 md:grayscale md:opacity-95 max-md:scale-75"
-                  } ${
-                    index === 0 && "brightness-0 contrast-100 saturate-200"
-                  } ${index === 1 && "mt-2"} z-10`}
-                />
-              </div>
+            <h4 translate="no" className="max-sm:hidden">
+              {item.year}
+            </h4>
+            <div className="w-[140px] sm:w-[160px] h-[140px] sm:h-[160px] border-4 border-gold rounded-full flex justify-center items-center mb-3">
+              <Image
+                src={item.img}
+                alt={item.text}
+                width={85}
+                height={85}
+                quality={100}
+                className={`w-[80px] sm:w-[100px] h-[80px] sm:h-[100px]   z-10`}
+              />
             </div>
+            <h4 translate="no" className="sm:hidden mb-0">
+              {item.year}
+            </h4>
             <p translate="no">{item.text}</p>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
       <ScrollingImages />
     </section>
   );

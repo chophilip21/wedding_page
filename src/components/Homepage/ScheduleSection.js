@@ -130,7 +130,7 @@ const ScheduleSection = () => {
                           : "md:items-start md:ml-6"
                       } max-md:items-center justify-start max-md:pt-4`}
                     >
-                      <p className="text-center bg-white text-blue rounded-xl px-2 flex justify-center items-center">
+                      <p className="md:hidden text-center bg-white text-blue rounded-xl px-2 flex justify-center items-center">
                         {ev.time}
                       </p>
 
@@ -170,7 +170,7 @@ const ScheduleSection = () => {
                     <p
                       className={`font-semibold text-white ${
                         evIndex % 2 !== 0 ? "text-right mr-4" : "text-left ml-4"
-                      }`}
+                      } m-0`}
                     >
                       {ev.time}
                     </p>
