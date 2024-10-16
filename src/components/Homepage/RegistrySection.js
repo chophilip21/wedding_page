@@ -185,7 +185,7 @@ const RegistrySection = () => {
   return (
     <section
       id="gift-section"
-      className="bg-blue px-4 sm:px-12 py-12 flex items-center flex-col relative overflow-hidden"
+      className="relative bg-blue px-4 sm:px-12 py-12 flex items-center flex-col overflow-hidden"
     >
       {/* Title */}
       <div className="w-full flex flex-col items-center px-4 z-10 mb-8 md:mb-12">
@@ -589,6 +589,22 @@ const RegistrySection = () => {
           THANK YOU
         </h3>
       </div>
+      <Image
+        src={images.la2}
+        alt={`Line art 1`}
+        width={650}
+        height={0}
+        quality={100}
+        className={`max-md:hidden absolute w-[250px] md:w-[350px] lg:w-[450px] top-24 xl:top-72 right-0 xl:right-16 z-0 opacity-10 transform rotate-[45deg]`}
+      />
+      <Image
+        src={images.la3}
+        alt={`Line art 2`}
+        width={650}
+        height={0}
+        quality={100}
+        className={`max-md:hidden w-[250px] md:w-[350px] lg:w-[450px] absolute bottom-20 xl:bottom-32 left-0 z-0 opacity-10 transform scale-x-[-1] rotate-[45deg]`}
+      />
     </section>
   );
 };

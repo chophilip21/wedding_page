@@ -51,6 +51,8 @@ import musicset2 from "../../public/images/musicset2.jpg";
 import spotify from "../../public/icons/spotify.png";
 import spinner from "../../public/icons/spinner.png";
 import la1 from "../../public/images/la1.png";
+import la2 from "../../public/images/la2.png";
+import la3 from "../../public/images/la3.png";
 
 const images = {
   welcome_1,
@@ -105,6 +107,8 @@ const images = {
   spotify,
   spinner,
   la1,
+  la2,
+  la3,
   musicset2,
 };
 
