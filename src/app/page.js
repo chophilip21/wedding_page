@@ -58,22 +58,19 @@ export default function Home() {
         <SaveTheDate language={language} />
 
         {/* Wedding Agenda / Schedule Section */}
-        <ScheduleSection />
+        <ScheduleSection language={language} />
 
         {/* Information Section */}
-        <InfoSection />
+        <InfoSection language={language} />
 
         {/* RSVP Section */}
-        <RSVPSection />
+        <RSVPSection language={language} />
 
         {/* Gift Registry Section */}
-        <RegistrySection />
+        <RegistrySection language={language} />
 
-        {/* Guest Comments and Song Requests Section */}
-        <MusicSection />
-
-        {/* Footer */}
-        {/* <Footer /> */}
+        {/* Song Requests Section */}
+        <MusicSection language={language} />
       </div>
     </main>
   );

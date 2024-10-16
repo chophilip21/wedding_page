@@ -19,8 +19,29 @@ import {
 } from "@/components/ui/select";
 import sendEmail from "@/utils/send-email";
 import { motion } from "framer-motion";
+import translations from "@/utils/translations";
 
-const RSVPSection = () => {
+const RSVPSection = ({ language }) => {
+  const {
+    top_title,
+    title,
+    description_1,
+    description_2,
+    label,
+    placeholder,
+    no_found,
+    multiple_guests_1,
+    multiple_guests_2,
+    single_guest_1,
+    single_guest_2,
+    answers,
+    note_placeholder,
+    rsvp_success,
+    error_enter_name,
+    error_submitting,
+    button,
+  } = translations[language].rsvp_section;
+
   const [searchTerm, setSearchTerm] = useState("");
   const [guestsList, setGuestsList] = useState([]);
   const [filteredGuests, setFilteredGuests] = useState([]);
@@ -42,8 +63,6 @@ const RSVPSection = () => {
   useEffect(() => {
     const fetchGuests = async () => {
       try {
-        console.log("Fetching guests from Firestore..."); // Add debug log
-
         // Get a reference to the "guests" collection
         const guestsCollectionRef = collection(db, "guests");
 
@@ -55,14 +74,13 @@ const RSVPSection = () => {
           guestsArray.push({ id: doc.id, ...doc.data() });
         });
 
-        console.log("Guests fetched:", guestsArray); // Log fetched guests
-        setGuestsList(guestsArray); // Set fetched guests into state
+        setGuestsList(guestsArray);
       } catch (error) {
         console.error("Error fetching guests:", error); // Log any error
       }
     };
 
-    fetchGuests(); // Call the function when component mounts
+    fetchGuests();
   }, [submitted]);
 
   // Filter the guests based on the search term
@@ -114,9 +132,7 @@ const RSVPSection = () => {
   // Handle guest selection from search results
   const handleGuestSelect = (guest) => {
     setSelectedGuest(guest);
-    setSearchTerm(""); // Clear the search term to close the search results
-
-    // Reset states
+    setSearchTerm("");
     setSubmitted(false);
     setErrorMessage("");
     setSpecialRequests("");
@@ -145,7 +161,7 @@ const RSVPSection = () => {
   // Handle submitting the RSVP
   const handleSubmit = async () => {
     if (!isAnyCheckboxSelected()) {
-      setErrorMessage("Please enter your answer before submitting");
+      setErrorMessage(error_enter_name);
     } else {
       setErrorMessage("");
       setIsLoading(true);
@@ -161,10 +177,6 @@ const RSVPSection = () => {
           if (guestsToRsvp.length > 1) {
             note = `${note} ---> RSVP done by ${selectedGuest?.name}`.trim();
           }
-
-          console.log(
-            `Updating guest ${guest.name} with attending: ${guest.attending}`
-          );
 
           await updateDoc(guestDocRef, {
             attending: guest.attending,
@@ -196,7 +208,6 @@ const RSVPSection = () => {
           }
 
           // Prepare the email data
-
           const emailData = {
             subject: `New RSVP from ${selectedGuest?.name || "Guest"}`,
             message: emailContent || "No content provided",
@@ -220,7 +231,7 @@ const RSVPSection = () => {
           setShowConfetti(true);
         }
       } catch (error) {
-        setErrorMessage("Error submitting RSVP. Please try again.");
+        setErrorMessage(error_submitting);
         console.error("Error updating Firestore:", error);
         setIsLoading(false);
       }
@@ -245,13 +256,13 @@ const RSVPSection = () => {
     } else if (names.length === 1) {
       return (
         <>
-          and <span className="font-bold">{names[0]}</span>
+          {multiple_guests_1.and} <span className="font-bold">{names[0]}</span>
         </>
       );
     } else if (names.length === 2) {
       return (
         <>
-          <span className="font-bold">{names[0]}</span> and{" "}
+          <span className="font-bold">{names[0]}</span> {multiple_guests_1.and}
           <span className="font-bold">{names[1]}</span>
         </>
       );
@@ -259,7 +270,8 @@ const RSVPSection = () => {
       return (
         <>
           <span className="font-bold">{names.slice(0, -1).join(", ")},</span>{" "}
-          and <span className="font-bold">{names[names.length - 1]}</span>
+          {multiple_guests_1.and}{" "}
+          <span className="font-bold">{names[names.length - 1]}</span>
         </>
       );
     }
@@ -300,7 +312,7 @@ const RSVPSection = () => {
           translate="no"
           className="absolute left-1/2 transform -translate-x-1/2 z-20 transition-transform text-9xl text-gold"
         >
-          RSVP
+          {top_title}
         </motion.h1>
         <div className="overlay z-0"></div>
       </div>
@@ -311,35 +323,39 @@ const RSVPSection = () => {
           <div className="flex flex-col items-start relative w-full max-w-full lg:max-w-lg text-left gap-0 lg:gap-6">
             <div className="flex flex-col items-start max-sm:w-full max-sm:items-center">
               <h3 translate="no" className=" font-bold z-20 ml-6 sm:ml-16">
-                Confirm your
+                {title.main}
               </h3>
               <h3
                 translate="no"
                 className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light -mt-10"
               >
-                Attendance
+                {title.sub}
               </h3>
             </div>
             <p translate="no" className="text-left">
-              Please RSVP by <span className="font-bold">15th May 2025</span> to
-              let us know if you will be attending. Simply search for your name
-              on the form and confirm whether you will be joining us or not.
+              {description_1.map((item, index) =>
+                typeof item === "string" ? (
+                  item
+                ) : (
+                  <span key={index} className="font-bold">
+                    {item.text}
+                  </span>
+                )
+              )}
             </p>
             <p translate="no" className="text-left">
-              You can also let us know if you have any special requests, such as
-              dietary restrictions or other needs. We want to make sure everyone
-              is comfortable and has a great time!
+              {description_2}
             </p>
           </div>
         </div>
         {/* right part*/}
         <div className="w-full lg:w-1/2 flex flex-col justify-start items-start">
           <div className="w-full lg:max-w-[500px] flex flex-col justify-start items-start">
-            <p translate="no">- Search your name in the guests list</p>
+            <p translate="no">- {label}</p>
             {/* Search Input */}
             <input
               type="text"
-              placeholder="Search for your name..."
+              placeholder={placeholder}
               className="border py-2 px-3 rounded w-full max-lg:max-w-[500px] mb-4 focus:outline-none"
               value={searchTerm}
               onChange={handleSearch}
@@ -365,7 +381,7 @@ const RSVPSection = () => {
 
             {/* If no guests are found */}
             {searchTerm && filteredGuests.length === 0 && (
-              <p translate="no">No guests found with this name</p>
+              <p translate="no">{no_found}</p>
             )}
 
             {/* RSVP Form: Only visible after a guest is selected */}
@@ -373,13 +389,15 @@ const RSVPSection = () => {
               <div className="mt-4 w-full flex flex-col justify-start items-start">
                 {selectedGuest.relationshipIds.length === 0 ? (
                   <p translate="no" className="text-xl mb-6 text-left">
-                    Hi <span className="font-bold">{selectedGuest.name}!</span>{" "}
-                    We&apos;re delighted to have you on our guest list!
+                    {single_guest_1.hi}
+                    <span className="font-bold">{selectedGuest.name}!</span>
+                    {single_guest_1.are_invited}
                   </p>
                 ) : (
                   <p translate="no" className="text-xl mb-6 text-left">
-                    Hi <span className="font-bold">{selectedGuest.name}!</span>{" "}
-                    You,{" "}
+                    {multiple_guests_1.hi}{" "}
+                    <span className="font-bold">{selectedGuest.name}!</span>
+                    {multiple_guests_1.you}
                     {formatNames(
                       guestsList
                         .filter((g) =>
@@ -387,8 +405,7 @@ const RSVPSection = () => {
                         )
                         .map((g) => g.name)
                     )}
-                    , are warmly invited to join us on our special day.
-                    Celebrating with all of you will make it unforgettable!
+                    {multiple_guests_1.are_invited}
                   </p>
                 )}
 
@@ -399,15 +416,14 @@ const RSVPSection = () => {
                       translate="no"
                       className="font-semibold text-lg text-left"
                     >
-                      Are you attending the wedding?{" "}
+                      {single_guest_2}
                     </p>
                   ) : (
                     <p
                       translate="no"
                       className="font-semibold text-lg text-left"
                     >
-                      Select who is attending the wedding. We hope all of you
-                      can make it.
+                      {multiple_guests_2}
                     </p>
                   )}
 
@@ -439,20 +455,22 @@ const RSVPSection = () => {
                           placeholder={
                             guestsToRsvp[0]?.attending === "Unknown" ||
                             guestsToRsvp[0]?.attending === "unknown"
-                              ? "Don't know yet"
-                              : guestsToRsvp[0]?.attending
+                              ? answers.unknown
+                              : guestsToRsvp[0]?.attending === "Yes"
+                              ? answers.yes
+                              : answers.no
                           }
                         />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="Yes" translate="no">
-                          Yes
+                          {answers.yes}
                         </SelectItem>
                         <SelectItem value="No" translate="no">
-                          No
+                          {answers.no}
                         </SelectItem>
                         <SelectItem value="Unknown" translate="no">
-                          Don&apos;t know yet
+                          {answers.unknown}
                         </SelectItem>
                       </SelectContent>
                     </Select>
@@ -482,9 +500,12 @@ const RSVPSection = () => {
                       >
                         <SelectTrigger
                           value={
-                            guest.attending === "Unknown".toLowerCase()
-                              ? "Don't know yet"
-                              : guest.attending
+                            guest.attending === "Unknown" ||
+                            guest.attending === "unknown"
+                              ? answers.unknown
+                              : guest.attending === "Yes"
+                              ? answers.yes
+                              : answers.no
                           }
                           className="w-[215px] px-4 rounded-md bg-neutral-100"
                         >
@@ -494,20 +515,22 @@ const RSVPSection = () => {
                             placeholder={
                               guest.attending === "Unknown" ||
                               guest.attending === "unknown"
-                                ? "Don't know yet"
-                                : guest.attending
+                                ? answers.unknown
+                                : guest.attending === "Yes"
+                                ? answers.yes
+                                : answers.no
                             }
                           />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="Yes" translate="no">
-                            Yes
+                            {answers.yes}
                           </SelectItem>
                           <SelectItem value="No" translate="no">
-                            No
+                            {answers.no}
                           </SelectItem>
                           <SelectItem value="Unknown" translate="no">
-                            Don&apos;t know yet
+                            {answers.unknown}
                           </SelectItem>
                         </SelectContent>
                       </Select>
@@ -517,7 +540,7 @@ const RSVPSection = () => {
 
                 {/* Textarea for special requests */}
                 <textarea
-                  placeholder="Any special requests? (Dietary restrictions, etc.)"
+                  placeholder={note_placeholder}
                   className="border p-2 rounded w-full max-lg:max-w-[500px] sm:my-4 focus:outline-none"
                   value={specialRequests}
                   translate="no"
@@ -531,7 +554,7 @@ const RSVPSection = () => {
                   translate="no"
                   className="btn2 max-sm:mt-4"
                 >
-                  {isLoading ? "Loading..." : "Send RSVP"}
+                  {isLoading ? button.loading : button.submit}
                 </button>
                 {/* Error Message */}
                 {errorMessage && (
@@ -547,12 +570,19 @@ const RSVPSection = () => {
                 {submitted && errorMessage.length === 0 && (
                   <div className="mt-4 w-full flex flex-col justify-start items-start">
                     <p translate="no" className="text-left">
-                      <span className="font-bold">Thank you!</span> Your RSVP
-                      has been submitted.
+                      <span className="font-bold">{rsvp_success.thanks}</span>{" "}
+                      {rsvp_success.submitted}
                     </p>
                     <p translate="no" className="text-left text-lg -mt-4">
-                      Remember that you can change the attendancy any time by{" "}
-                      <span className="font-bold">15th May 2025</span>
+                      {rsvp_success.change_by.map((item, index) =>
+                        typeof item === "string" ? (
+                          item
+                        ) : (
+                          <span key={index} className="font-bold">
+                            {item.text}
+                          </span>
+                        )
+                      )}
                     </p>
                   </div>
                 )}

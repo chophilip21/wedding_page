@@ -15,8 +15,38 @@ import { IoCopyOutline } from "react-icons/io5";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import translations from "@/utils/translations";
 
-const RegistrySection = () => {
+const RegistrySection = ({ language }) => {
+  const {
+    title,
+    description_1,
+    description_2,
+    description_3,
+    description_4,
+    description_5,
+    button,
+    thanks,
+    error_from_api,
+    error_incorrect_password,
+    error_insert_password,
+    account_holder,
+    iban,
+    bank_name,
+    bic,
+    sort_code,
+    account_number,
+    eur,
+    gbp,
+    pln,
+    toast_copied,
+    toast_error,
+    dialog_title,
+    placeholder,
+    submit_button,
+    copy_all,
+  } = translations[language].registry_section;
+
   const [password, setPassword] = useState("");
   const [viewPassword, setViewPassword] = useState(false);
   const [isValid, setIsValid] = useState(null); // null means no attempt yet
@@ -57,7 +87,7 @@ const RegistrySection = () => {
         window.open("/admin", "_blank");
         setLoading(false);
         setIsValid(false);
-        setErrorText("Incorrect password");
+        setErrorText(error_incorrect_password);
       } else {
         try {
           const response = await fetch("/api/check-password", {
@@ -88,22 +118,22 @@ const RegistrySection = () => {
               setErrorText("");
             } else {
               setIsValid(false);
-              setErrorText("There is a problem. Try again later or contact us");
+              setErrorText(error_from_api);
             }
           } else {
             setIsValid(false);
-            setErrorText("Incorrect password");
+            setErrorText(error_incorrect_password);
           }
         } catch (error) {
           setIsValid(false);
-          setErrorText("There is a problem. Try again later or contact us");
+          setErrorText(error_from_api);
           console.log(error);
         } finally {
           setLoading(false);
         }
       }
     } else {
-      setErrorText("Insert password");
+      setErrorText(error_insert_password);
       setLoading(false);
       setIsValid(null);
     }
@@ -114,24 +144,24 @@ const RegistrySection = () => {
 
     if (currency === "eur") {
       copiedText += `
-      Account Holder: ${paymentInfo.EUR.accountHolder}
-  IBAN: ${paymentInfo.EUR.iban}
-  Bank Name: ${paymentInfo.EUR.bankName}
-  BIC: ${paymentInfo.EUR.bic}
+      ${account_holder} ${paymentInfo.EUR.accountHolder}
+  ${iban} ${paymentInfo.EUR.iban}
+  ${bank_name} ${paymentInfo.EUR.bankName}
+  ${bic} ${paymentInfo.EUR.bic}
       `;
     } else if (currency === "gbp") {
       copiedText += `
-      Account Holder: ${paymentInfo.GBP.accountHolder}
-  Sort Code: ${paymentInfo.GBP.sortCode}
-  Account Number: ${paymentInfo.GBP.accountNumber}
-  Bank Name: ${paymentInfo.GBP.bankName}
+      ${account_holder} ${paymentInfo.GBP.accountHolder}
+  ${sort_code} ${paymentInfo.GBP.sortCode}
+  ${account_number} ${paymentInfo.GBP.accountNumber}
+  ${bank_name} ${paymentInfo.GBP.bankName}
       `;
     } else if (currency === "pln") {
       copiedText += `
-       Account Holder: ${paymentInfo.PLN.accountHolder}
-  IBAN: ${paymentInfo.PLN.iban}
-  Bank Name: ${paymentInfo.PLN.bankName}
-  BIC: ${paymentInfo.PLN.bic}
+       ${account_holder} ${paymentInfo.PLN.accountHolder}
+  ${iban} ${paymentInfo.PLN.iban}
+  ${bank_name} ${paymentInfo.PLN.bankName}
+  ${bic} ${paymentInfo.PLN.bic}
       `;
     } else {
       return;
@@ -141,14 +171,14 @@ const RegistrySection = () => {
       .writeText(copiedText)
       .then(() => {
         toast({
-          title: "Copied",
+          title: toast_copied,
         });
       })
       .catch((err) => {
         console.error("Failed to copy: ", err);
         toast({
           variant: "destructive",
-          title: "Could not copy it",
+          title: toast_error,
         });
       });
   };
@@ -160,14 +190,14 @@ const RegistrySection = () => {
       .writeText(copiedText)
       .then(() => {
         toast({
-          title: "Copied",
+          title: toast_copied,
         });
       })
       .catch((err) => {
         console.error("Failed to copy: ", err);
         toast({
           variant: "destructive",
-          title: "Could not copy it",
+          title: toast_error,
         });
       });
   };
@@ -213,13 +243,13 @@ const RegistrySection = () => {
         />
         <div className="flex flex-col justify-center items-center">
           <h3 translate="no" className="text-white font-bold z-20 ">
-            GIFT
+            {title.main}
           </h3>
           <h3
             translate="no"
             className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light -mt-8 md:-mt-10"
           >
-            Registry
+            {title.sub}
           </h3>
         </div>
       </motion.div>
@@ -233,7 +263,7 @@ const RegistrySection = () => {
           translate="no"
           className=" text-center mb-4"
         >
-          Your presence at our wedding is the greatest gift we could ask for.
+          {description_1}
         </motion.p>
         {dashedLine}
         <motion.p
@@ -244,9 +274,7 @@ const RegistrySection = () => {
           translate="no"
           className=" text-center my-4"
         >
-          However, if you wish to honor us with a gift, we would greatly
-          appreciate a monetary contribution to help us build our future
-          together.
+          {description_2}
         </motion.p>
         {dashedLine}
         <motion.p
@@ -257,10 +285,7 @@ const RegistrySection = () => {
           translate="no"
           className=" text-center my-4"
         >
-          We kindly ask our international guests to consider sending their gift
-          via IBAN transfer or a similar method such as Revolut. For our Polish
-          guests, contributions can be made online or given in cash at the
-          wedding, whichever is more convenient.
+          {description_3}
         </motion.p>
         {dashedLine}
         <motion.p
@@ -271,9 +296,7 @@ const RegistrySection = () => {
           translate="no"
           className=" text-center my-4"
         >
-          To access the IBAN details, please click the button below and enter
-          the password you received with the invitation, or contact us directly
-          for further information.
+          {description_4}
         </motion.p>
         <motion.div
           initial="hidden"
@@ -281,10 +304,12 @@ const RegistrySection = () => {
           variants={secondaryVariants}
           viewport={{ once: true, amount: 0.2 }}
         >
-          {" "}
           <Dialog>
-            <DialogTrigger translate="no" className="btn2 mb-4">
-              View Info
+            <DialogTrigger
+              translate="no"
+              className="bg-transparent text-gold border border-gold px-3 py-2 rounded-full mb-4 transition-all duration-300 hover:bg-gold hover:text-white"
+            >
+              {button}
             </DialogTrigger>
             <DialogContent
               ref={dialogRef}
@@ -293,8 +318,8 @@ const RegistrySection = () => {
               <DialogHeader>
                 <DialogTitle translate="no" className="text-3xl font-bold">
                   {!isValid && !paymentInfo
-                    ? "Enter the password"
-                    : "The password is correct"}
+                    ? dialog_title.before
+                    : dialog_title.after}
                 </DialogTitle>
                 <DialogDescription className="flex flex-col items-center">
                   {!isValid && !paymentInfo && (
@@ -312,7 +337,7 @@ const RegistrySection = () => {
                             type={viewPassword ? "text" : "password"}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter password"
+                            placeholder={placeholder}
                             className="font-serif mb-4 focus:outline-none focus:ring-0 text-lg border-none"
                           />
                           <button
@@ -337,7 +362,9 @@ const RegistrySection = () => {
                           disabled={loading}
                           className="bg-[#233d74] hover:bg-gold text-lg w-fit"
                         >
-                          {loading ? "Checking..." : "Submit"}
+                          {loading
+                            ? submit_button.loading
+                            : submit_button.submit}
                         </Button>
                         {isValid === false && errorText.length > 0 && (
                           <span
@@ -365,14 +392,14 @@ const RegistrySection = () => {
                   <div className="w-full text-left flex flex-col justify-start items-start">
                     <div className="w-full flex justify-between gap-2">
                       <h5 translate="no" className="font-sans font-semibold">
-                        EUR
+                        {eur}
                       </h5>{" "}
                       <button
                         translate="no"
                         onClick={() => copyToClipboardEntireBox("eur")}
                         className="flex items-center gap-1 mr-2 text-sm text-[#233d74] underline underline-offset-2"
                       >
-                        <IoCopyOutline /> Copy All
+                        <IoCopyOutline /> {copy_all}
                       </button>
                     </div>
                     <div className="w-full flex flex-col items-start justify-start p-4 bg-gray-100">
@@ -384,7 +411,7 @@ const RegistrySection = () => {
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
                           <span className="font-semibold">
-                            Account Holder:{" "}
+                            {account_holder}
                           </span>
                           {paymentInfo.EUR.accountHolder}
                         </p>
@@ -402,7 +429,7 @@ const RegistrySection = () => {
                           translate="no"
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
-                          <span className="font-semibold">IBAN: </span>
+                          <span className="font-semibold">{iban}</span>
                           {paymentInfo.EUR.iban}
                         </p>{" "}
                         <button
@@ -420,9 +447,9 @@ const RegistrySection = () => {
                           translate="no"
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
-                          <span className="font-semibold">Bank Name:</span>
+                          <span className="font-semibold">{bank_name}</span>
                           {paymentInfo.EUR.bankName}
-                        </p>{" "}
+                        </p>
                         <button
                           onClick={() =>
                             copyTextToCLipboard(paymentInfo.EUR.bankName)
@@ -438,7 +465,7 @@ const RegistrySection = () => {
                           translate="no"
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
-                          <span className="font-semibold">BIC: </span>
+                          <span className="font-semibold">{bic}</span>
                           {paymentInfo.EUR.bic}
                         </p>
                         <button
@@ -456,25 +483,24 @@ const RegistrySection = () => {
                   <div className="w-full text-left flex flex-col justify-start items-start">
                     <div className="w-full flex justify-between gap-2">
                       <h5 translate="no" className="font-sans font-semibold">
-                        GBP
-                      </h5>{" "}
+                        {gbp}
+                      </h5>
                       <button
                         translate="no"
                         onClick={() => copyToClipboardEntireBox("gbp")}
                         className="flex items-center gap-1 mr-2 text-sm text-[#233d74] underline underline-offset-2"
                       >
-                        <IoCopyOutline /> Copy All
+                        <IoCopyOutline /> {copy_all}
                       </button>
                     </div>
                     <div className="w-full flex flex-col items-start justify-start p-4 bg-gray-100">
                       <div className="w-full flex items-center justify-between gap-1">
-                        {" "}
                         <p
                           translate="no"
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
                           <span className="font-semibold">
-                            Account Holder:{" "}
+                            {account_holder}
                           </span>
                           {paymentInfo.GBP.accountHolder}
                         </p>
@@ -493,7 +519,7 @@ const RegistrySection = () => {
                           translate="no"
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
-                          <span className="font-semibold">Sort Code: </span>
+                          <span className="font-semibold">{sort_code}</span>
                           {formatSortCode(paymentInfo.GBP.sortCode)}
                         </p>
                         <button
@@ -512,7 +538,7 @@ const RegistrySection = () => {
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
                           <span className="font-semibold">
-                            Account Number:{" "}
+                            {account_number}
                           </span>
                           {paymentInfo.GBP.accountNumber}
                         </p>
@@ -531,7 +557,7 @@ const RegistrySection = () => {
                           translate="no"
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
-                          <span className="font-semibold">Bank Name: </span>
+                          <span className="font-semibold">{bank_name}</span>
                           {paymentInfo.GBP.bankName}
                         </p>
                         <button
@@ -549,14 +575,14 @@ const RegistrySection = () => {
                   <div className="w-full text-left flex flex-col justify-start items-start">
                     <div className="w-full flex justify-between gap-2">
                       <h5 translate="no" className="font-sans font-semibold">
-                        PLN
+                        {pln}
                       </h5>{" "}
                       <button
                         translate="no"
                         onClick={() => copyToClipboardEntireBox("pln")}
                         className="flex items-center gap-1 mr-2 text-sm text-[#233d74] underline underline-offset-2"
                       >
-                        <IoCopyOutline /> Copy All
+                        <IoCopyOutline /> {copy_all}
                       </button>
                     </div>
                     <div className="w-full flex flex-col items-start justify-start p-4 bg-gray-100">
@@ -566,7 +592,7 @@ const RegistrySection = () => {
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
                           <span className="font-semibold">
-                            Account Holder:{" "}
+                            {account_holder}
                           </span>
                           {paymentInfo.PLN.accountHolder}
                         </p>
@@ -585,7 +611,7 @@ const RegistrySection = () => {
                           translate="no"
                           className=" font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
-                          <span className="font-semibold">IBAN: </span>
+                          <span className="font-semibold">{iban}</span>
                           {paymentInfo.PLN.iban}
                         </p>
                         <button
@@ -603,7 +629,7 @@ const RegistrySection = () => {
                           translate="no"
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
-                          <span className="font-semibold">Bank Name: </span>
+                          <span className="font-semibold">{bank_name}</span>
                           {paymentInfo.PLN.bankName}
                         </p>
                         <button
@@ -621,7 +647,7 @@ const RegistrySection = () => {
                           translate="no"
                           className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
-                          <span className="font-semibold">BIC: </span>
+                          <span className="font-semibold">{bic}</span>
                           {paymentInfo.PLN.bic}
                         </p>
                         <button
@@ -650,9 +676,7 @@ const RegistrySection = () => {
           translate="no"
           className="text-center mt-4 mb-12"
         >
-          In lieu of flowers, which we already have in abundance, we would be
-          delighted to receive scratch cards or lottery tickets as a fun and
-          exciting way to celebrate our new beginning.
+          {description_5}
         </motion.p>
         <motion.h3
           initial="hidden"
@@ -662,7 +686,7 @@ const RegistrySection = () => {
           translate="no"
           className="font-bold text-center text-gold"
         >
-          THANK YOU
+          {thanks}
         </motion.h3>
       </div>
       <Image
@@ -671,7 +695,7 @@ const RegistrySection = () => {
         width={650}
         height={0}
         quality={100}
-        className={`max-md:hidden absolute w-[250px] md:w-[350px] lg:w-[450px] top-24 xl:top-72 right-0 xl:right-16 z-0 opacity-10 transform rotate-[45deg]`}
+        className={`max-md:hidden absolute w-[250px] md:w-[350px] lg:w-[450px] top-24 xl:top-72 right-0 xl:right-16 z-0 opacity-30 transform rotate-[45deg]`}
       />
       <Image
         src={images.la3}
@@ -679,7 +703,7 @@ const RegistrySection = () => {
         width={650}
         height={0}
         quality={100}
-        className={`max-md:hidden w-[250px] md:w-[350px] lg:w-[450px] absolute bottom-20 xl:bottom-32 left-0 z-0 opacity-10 transform scale-x-[-1] rotate-[45deg]`}
+        className={`max-md:hidden w-[250px] md:w-[350px] lg:w-[450px] absolute bottom-20 xl:bottom-32 left-0 z-0 opacity-30 transform scale-x-[-1] rotate-[45deg]`}
       />
     </section>
   );

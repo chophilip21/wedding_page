@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import images from "@/utils/imagesImport";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import translations from "@/utils/translations";
 
-const ScheduleSection = () => {
-  const [isMobile, setIsMobile] = useState(false);
+const ScheduleSection = ({ language }) => {
   const primaryVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -18,60 +18,46 @@ const ScheduleSection = () => {
     visible: { opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.1 } },
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const { title, description, day_1, day_2 } =
+    translations[language].schedule_section;
 
   const timelineData = [
     {
-      day: "Day 1",
+      day: day_1.title,
       events: [
         {
-          time: "4:00 PM",
-          title: "Ceremony Begins",
-          description: "Join us as we say 'I do' in a beautiful ceremony.",
+          time: day_1.events.ceremony.time,
+          title: day_1.events.ceremony.title,
+          description: day_1.events.ceremony.description,
           icon: images.ceremony,
         },
         {
-          time: "5:00 PM",
-          title: "Dinner Served",
-          description: "Indulge in a delicious feast with family and friends.",
+          time: day_1.events.dinner.time,
+          title: day_1.events.dinner.title,
+          description: day_1.events.dinner.description,
           icon: images.dinner,
         },
         {
-          time: "10:00 PM",
-          title: "Cake Cutting",
-          description: "Savor the sweetness as we cut the cake together.",
+          time: day_1.events.cake_cutting.time,
+          title: day_1.events.cake_cutting.title,
+          description: day_1.events.cake_cutting.description,
           icon: images.cake,
         },
         {
-          time: "All Night",
-          title: "Eat, Drink, Dance, Repeat!",
-          description: "Celebrate the night away with music, drinks, and joy!",
+          time: day_1.events.party.time,
+          title: day_1.events.party.title,
+          description: day_1.events.party.description,
           icon: images.drink,
         },
       ],
     },
     {
-      day: "Day 2",
+      day: day_2.title,
       events: [
         {
-          time: "2:00 PM - 10:00 PM",
-          title: "Eat, Drink, Dance, Repeat!",
-          description:
-            "Continue the festivities with more food, drinks, and dancing.",
+          time: day_2.events.party_continues.time,
+          title: day_2.events.party_continues.title,
+          description: day_2.events.party_continues.description,
           icon: images.dance,
         },
       ],
@@ -100,17 +86,17 @@ const ScheduleSection = () => {
         />
         <div className="flex flex-col justify-center items-center">
           <h3 translate="no" className="text-white font-bold z-20 ">
-            WEDDING
+            {title.main}
           </h3>
           <h3
             translate="no"
             className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light -mt-8 md:-mt-10"
           >
-            Timeline
+            {title.sub}
           </h3>
         </div>
         <p translate="no" className=" text-center text-white ">
-          The wedding will be 2 days, 26th and 27th of July
+          {description}
         </p>
       </motion.div>
       {/* Timeline */}
@@ -121,7 +107,7 @@ const ScheduleSection = () => {
             key={dayIndex}
             className="w-full flex flex-col items-center gap-12 z-10"
           >
-            <div className="w-[95px] h-[95px] md:w-[120px] md:h-[120px] lg:w-[140px] lg:h-[140px] flex justify-center items-center rounded-full border border-gold bg-blue">
+            <div className="w-[103px] h-[103px] md:w-[128px] md:h-[128px] lg:w-[148px] lg:h-[148px] flex justify-center items-center rounded-full border border-gold bg-blue">
               <h3 translate="no" className="alex-brush mt-2 text-white">
                 {day.day}
               </h3>

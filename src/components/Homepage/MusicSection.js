@@ -14,8 +14,18 @@ import "react-circular-progressbar/dist/styles.css";
 import { useToast } from "@/hooks/use-toast";
 import { Footer } from "@/components";
 import { motion } from "framer-motion";
+import translations from "@/utils/translations";
 
-const MusicSection = () => {
+const MusicSection = ({ language }) => {
+  const {
+    title,
+    description,
+    placeholder,
+    small_note,
+    toast_success,
+    toast_error,
+  } = translations[language].music_section;
+
   const videoRef = useRef(null);
   const containerRef = useRef(null);
   const resultsRef = useRef(null);
@@ -145,17 +155,16 @@ const MusicSection = () => {
         //success toast
         toast({
           variant: "success",
-          title: "Song Added to the Playlist",
-          description: "Would you like to add another song?",
+          title: toast_success.title,
+          description: toast_success.description,
         });
         setIsAddingTrack(false);
       } else {
         console.error("Failed to add track to playlist:", data);
         toast({
           variant: "destructive",
-          title: "Unable to Add Song",
-          description:
-            "We're sorry, but something went wrong on our end. Please try again later.",
+          title: toast_error.title,
+          description: toast_error.description,
         });
         setIsAddingTrack(false);
       }
@@ -163,9 +172,8 @@ const MusicSection = () => {
       console.error("Error adding track to playlist:", error);
       toast({
         variant: "destructive",
-        title: "Unable to Add Song",
-        description:
-          "We're sorry, but something went wrong on our end. Please try again later.",
+        title: toast_error.title,
+        description: toast_error.description,
       });
       setIsAddingTrack(false);
     }
@@ -200,19 +208,17 @@ const MusicSection = () => {
             translate="no"
             className=" sm:text-7xl font-bold z-20  -mr-5 sm:-mr-8 text-white"
           >
-            OUR
+            {title.main}
           </h3>
           <h3
             translate="no"
             className="text-gold text-6xl sm:text-9xl alex-brush z-10 transform font-light"
           >
-            Playlist
+            {title.sub}
           </h3>
         </div>
         <p translate="no" className="md:max-w-[750px] text-white font-medium">
-          Help us shape the perfect soundtrack! Share your favorite songs for
-          background vibes or dance floor fun, and we&apos;ll add them to our
-          wedding playlist.
+          {description}
         </p>
 
         {/* Music Input */}
@@ -235,7 +241,7 @@ const MusicSection = () => {
             type="text"
             value={query}
             onChange={handleInputChange}
-            placeholder="Type the song name"
+            placeholder={placeholder}
             className="bg-slate-50 font-serif h-10 mb-4 focus:outline-none focus:ring-0 text-lg border-none mt-4 "
           />
           <button
@@ -277,7 +283,7 @@ const MusicSection = () => {
               translate="no"
               className="text-[10px] md:text-sm font-serif font-extralight text-green-500"
             >
-              * Some songs can&apos;t play here, but you can still add them.
+              {small_note}
             </p>
             <ul className="w-full flex flex-col justify-center items-start gap-2">
               {results.map((track) => (
@@ -388,7 +394,7 @@ const MusicSection = () => {
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleAudioEnd}
       />
-      <Footer />
+      <Footer language={language} />
     </section>
   );
 };

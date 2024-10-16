@@ -3,12 +3,15 @@ import React from "react";
 import images from "@/utils/imagesImport";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import translations from "@/utils/translations";
 
-const InfoSection = () => {
+const InfoSection = ({ language }) => {
   const primaryVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
+  const { title, details, accommodations, travel_transport, additional_info } =
+    translations[language].info_section;
 
   return (
     <section
@@ -33,13 +36,13 @@ const InfoSection = () => {
         />
         <div className="flex justify-center items-start">
           <h3 translate="no" className=" font-bold z-20  -mr-8">
-            THE
+            {title.main}
           </h3>
           <h3
             translate="no"
             className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light"
           >
-            Details
+            {title.sub}
           </h3>
         </div>
       </motion.div>
@@ -51,26 +54,47 @@ const InfoSection = () => {
         {/* Top Detail*/}
         <div className="flex flex-col justify-center items-center">
           <h5 translate="no" className="mb-4">
-            When & Where
+            {details.when_where}
           </h5>
           <p translate="no">
-            <span className="font-bold">Dates:</span> 26th and 27th of July 2025
+            {details.dates.map((item, index) =>
+              typeof item === "string" ? (
+                item
+              ) : (
+                <span key={index} className="font-bold">
+                  {item.text}
+                </span>
+              )
+            )}
           </p>
           <p translate="no" className="mt-[-16px]">
-            <span className="font-bold">Location:</span>{" "}
-            <Link
-              href={`https://maps.app.goo.gl/YXrKUt2u3ceWP4DJ8`}
-              target="_blank"
-              className="underline underline-offset-4"
-            >
-              Kolonia Łobudzice, Poland
-            </Link>{" "}
+            {details.location.map((item, index) =>
+              typeof item === "string" ? (
+                item
+              ) : (
+                <span key={index} className="font-bold">
+                  <Link
+                    href={`https://maps.app.goo.gl/YXrKUt2u3ceWP4DJ8`}
+                    target="_blank"
+                    className="underline underline-offset-4"
+                  >
+                    {item.text}
+                  </Link>
+                </span>
+              )
+            )}
           </p>
+          <p translate="no">{details.same_location}</p>
           <p translate="no">
-            Ceremony, Party and Accommodations are hold in the same location.
-          </p>
-          <p translate="no">
-            Please <span className="font-bold">No white dresses</span>
+            {details.no_white_dresses.map((item, index) =>
+              typeof item === "string" ? (
+                item
+              ) : (
+                <span key={index} className="font-bold">
+                  {item.text}
+                </span>
+              )
+            )}
           </p>
         </div>
 
@@ -81,58 +105,66 @@ const InfoSection = () => {
           {/* Left Detail */}
           <div className="w-full md:w-1/2 max-w-[700px] flex flex-col justify-start items-center text-center">
             <h5 translate="no" className="mb-4">
-              Accomodations
+              {accommodations.title}
             </h5>
             <p translate="no">
-              For our out-of-town guests, we are pleased to offer accommodation
-              at the venue for{" "}
-              <span className="font-bold">
-                Friday 25th July, Saturday 26th July, and Sunday 27th July
-              </span>
-              . If you need accommodation for additional days, please let us
-              know, and we can help you arrange it, though the cost for extra
-              nights will be at your own expense.
+              {accommodations.description_1.map((item, index) =>
+                typeof item === "string" ? (
+                  item
+                ) : (
+                  <span key={index} className="font-bold">
+                    {item.text}
+                  </span>
+                )
+              )}
             </p>
             <p translate="no" className=" mt-3">
-              <span className="font-bold">Breakfast</span> is included with your
-              stay and will be served from{" "}
-              <span className="font-bold">7 AM to 11 AM</span> each morning
+              {accommodations.breakfast.map((item, index) =>
+                typeof item === "string" ? (
+                  item
+                ) : (
+                  <span key={index} className="font-bold">
+                    {item.text}
+                  </span>
+                )
+              )}
             </p>
           </div>
           <div className="static md:hidden h-px w-[50px] bg-black opacity-50" />
           {/* Right Detail */}
           <div className="w-full md:w-1/2 max-w-[700px] flex flex-col justify-start items-center text-center">
             <h5 translate="no" className="mb-4">
-              Travel & Transportation
+              {travel_transport.title}
             </h5>
 
             <p translate="no">
-              We are organizing transportation from{" "}
-              <span className="font-bold">Katowice Airport</span> to the venue
-              on <span className="font-bold">Friday, 25th July</span> and
-              recommend all guests arrive by{" "}
-              <span className="font-bold">3PM</span>. We’ll wait for everyone.
-              On <span className="font-bold">Monday, 28th July,</span> we’ll
-              provide transport back to the airport (time to be arranged).
+              {travel_transport.description_1.map((item, index) =>
+                typeof item === "string" ? (
+                  item
+                ) : (
+                  <span key={index} className="font-bold">
+                    {item.text}
+                  </span>
+                )
+              )}
             </p>
             <p translate="no">
-              If you arrive at a different airport or outside the scheduled
-              times, you’ll need to arrange your own transport. The easiest
-              option is to take a train or bus to{" "}
-              <span className="font-bold">Belchatow Central</span>, then a bus
-              to <span className="font-bold">XXX Road</span>, just a 3-minute
-              walk from the venue.
+              {travel_transport.description_2.map((item, index) =>
+                typeof item === "string" ? (
+                  item
+                ) : (
+                  <span key={index} className="font-bold">
+                    {item.text}
+                  </span>
+                )
+              )}
             </p>
           </div>
         </div>
         <div className="static md:hidden h-px w-[50px] bg-black opacity-50" />
         {/* bottom Detail*/}
         <div className=" max-w-[700px] flex flex-col justify-center items-center">
-          <p translate="no">
-            We will let you know more information about the accomodation and
-            transportation in private. Or you can always contact us to ask more
-            details.
-          </p>
+          <p translate="no">{additional_info}</p>
         </div>
       </div>
     </section>

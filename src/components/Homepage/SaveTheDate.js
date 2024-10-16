@@ -5,7 +5,7 @@ import translations from "@/utils/translations";
 import images from "@/utils/imagesImport";
 import Image from "next/image";
 import ScrollingImages from "../ScrollingImages/ScrollingImages";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { getCountdown } from "@/utils/countdownHelper";
 
 const SaveTheDate = ({ language }) => {
