@@ -67,7 +67,7 @@ const ScheduleSection = ({ language }) => {
   return (
     <section
       id="schedule-section"
-      className="py-12 px-4 sm:px-6 bg-blue relative flex justify-center items-center flex-col"
+      className="py-12 px-4 sm:px-6 bg-blue relative flex justify-center items-center flex-col overflow-hidden"
     >
       <motion.div
         initial="hidden"
