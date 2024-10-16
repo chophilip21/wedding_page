@@ -13,11 +13,11 @@ export const metadata = {
     title: "A Home Away From Home | Hazeltree Lodge B&B",
     description:
       "You are invited to our Wedding | Sei invitato al nostro Matrimonio |  Jesteś zaproszony na nasz Ślub",
-    url: "https://www.hazeltreelodge.com",
+    url: "https://emanuelekarolina.vercel.app/",
     siteName: "Karolina & Emanuele",
     images: [
       {
-        url: "https://www.hazeltreelodge.com/images/og-image.jpg",
+        url: "https://emanuelekarolina.vercel.app/images/og-image.jpg",
         width: 1200,
         height: 600,
         alt: "Karolina & Emanuele Wedding Website",

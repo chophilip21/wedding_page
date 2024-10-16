@@ -11,7 +11,6 @@ import {
   RSVPSection,
   RegistrySection,
   MusicSection,
-  Footer,
 } from "@/components";
 import LanguageDetector from "@/components/LanguageDetector/LanguageDetector";
 
