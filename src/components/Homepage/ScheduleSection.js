@@ -5,6 +5,18 @@ import { motion } from "framer-motion";
 
 const ScheduleSection = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const primaryVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+  const secondaryVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.1 } },
+  };
+  const tertiaryVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.1 } },
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -71,7 +83,13 @@ const ScheduleSection = () => {
       id="schedule-section"
       className="py-12 px-4 sm:px-6 bg-blue relative flex justify-center items-center flex-col"
     >
-      <div className="w-full flex flex-col items-center px-4 z-10">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={primaryVariants}
+        viewport={{ once: true, amount: 0.2 }}
+        className="w-full flex flex-col items-center px-4 z-10"
+      >
         <Image
           src={images.glasses}
           alt="glass"
@@ -94,7 +112,7 @@ const ScheduleSection = () => {
         <p translate="no" className=" text-center text-white ">
           The wedding will be 2 days, 26th and 27th of July
         </p>
-      </div>
+      </motion.div>
       {/* Timeline */}
       <div className="relative w-full flex flex-col items-center gap-12 mt-12">
         <div className="absolute  top-0 w-px h-[90%] border border-gold border-dashed z-0"></div>
@@ -123,7 +141,13 @@ const ScheduleSection = () => {
                       evIndex % 2 === 0 ? "flex-row" : "flex-row-reverse"
                     } items-center`}
                   >
-                    <div
+                    <motion.div
+                      initial="hidden"
+                      whileInView="visible"
+                      variants={
+                        evIndex % 2 === 0 ? tertiaryVariants : secondaryVariants
+                      }
+                      viewport={{ once: true, amount: 0.2 }}
                       className={`flex flex-1 flex-col ${
                         evIndex % 2 === 0
                           ? "md:items-end md:mr-6"
@@ -148,7 +172,7 @@ const ScheduleSection = () => {
                       >
                         {ev.description}
                       </p>
-                    </div>
+                    </motion.div>
                     <div
                       className={`max-lg:hidden h-px w-[50px] xl:w-[120px] bg-gold flex items-center ${
                         evIndex % 2 === 0 ? "justify-start" : "justify-end"

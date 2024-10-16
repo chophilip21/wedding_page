@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import sendEmail from "@/utils/send-email";
+import { motion } from "framer-motion";
 
 const RSVPSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,6 +33,10 @@ const RSVPSection = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [pageHeight, setPageHeight] = useState(0);
   const { width, height } = useWindowSize();
+  const primaryVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5 } },
+  };
 
   // Fetch guests from Firestore on component mount
   useEffect(() => {
@@ -287,12 +292,16 @@ const RSVPSection = () => {
           backgroundImage: `url(${images.collage.src})`,
         }}
       >
-        <h1
+        <motion.h1
+          initial="hidden"
+          whileInView="visible"
+          variants={primaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
           translate="no"
           className="absolute left-1/2 transform -translate-x-1/2 z-20 transition-transform text-9xl text-gold"
         >
           RSVP
-        </h1>
+        </motion.h1>
         <div className="overlay z-0"></div>
       </div>
       {/* main section */}

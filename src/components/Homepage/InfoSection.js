@@ -2,15 +2,27 @@ import Link from "next/link";
 import React from "react";
 import images from "@/utils/imagesImport";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const InfoSection = () => {
+  const primaryVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <section
       id="info-section"
       className="bg-cream px-4 sm:px-12 py-12 flex flex-col relative"
     >
       {/* Title */}
-      <div className="w-full flex flex-col items-center px-4 z-10 mb-8 md:mb-12">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={primaryVariants}
+        viewport={{ once: true, amount: 0.2 }}
+        className="w-full flex flex-col items-center px-4 z-10 mb-8 md:mb-12"
+      >
         <Image
           src={images.bell}
           alt="glass"
@@ -30,7 +42,7 @@ const InfoSection = () => {
             Details
           </h3>
         </div>
-      </div>
+      </motion.div>
 
       <div
         translate="no"

@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+"use client";
+
+import React, { useState } from "react";
 import translations from "@/utils/translations";
 import images from "@/utils/imagesImport";
 import Image from "next/image";
@@ -7,11 +9,22 @@ import { motion, useInView } from "framer-motion";
 import { getCountdown } from "@/utils/countdownHelper";
 
 const SaveTheDate = ({ language }) => {
-  // Ref for tracking visibility
-  const ref = useRef(null);
-  const isInView = useInView(ref); // Animation triggers when in view
-  //const isInView = useInView(ref, { once: true }); //repeat once
-
+  const primaryVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+  const secondaryVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.1 } },
+  };
+  const tertiaryVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
+  };
+  const quartaryVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1.6, delay: 0.1 } },
+  };
   const countdown = getCountdown();
 
   const {
@@ -24,22 +37,6 @@ const SaveTheDate = ({ language }) => {
     story_3_future,
     story_3_past,
   } = translations[language].saveTheDate_section;
-
-  // Framer Motion variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3, // Delay between children animations
-      },
-    },
-  };
-
-  const childVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
 
   const dashedLine = Array(10)
     .fill()
@@ -63,15 +60,29 @@ const SaveTheDate = ({ language }) => {
       className="relative w-full flex flex-col items-center pt-16 lg:pt-20 z-10 bg-cream overflow-hidden"
     >
       <div className="w-full flex flex-col items-center px-4 z-10">
-        <Image
-          src={images.dove}
-          alt="rings"
-          width={95}
-          height={95}
-          quality={100}
-          className="mb-4 "
-        />
-        <div className="flex flex-col justify-center items-center">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={primaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <Image
+            src={images.dove}
+            alt="rings"
+            width={95}
+            height={95}
+            quality={100}
+            className="mb-4 "
+          />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={secondaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
+          className="flex flex-col justify-center items-center"
+        >
           <h3 translate="no" className=" font-bold z-20 ">
             {title}
           </h3>
@@ -81,16 +92,28 @@ const SaveTheDate = ({ language }) => {
           >
             {title_cursive}
           </h3>
-        </div>
+        </motion.div>
 
         {dashedLine}
-        <h1
+        <motion.h1
+          initial="hidden"
+          whileInView="visible"
+          variants={primaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
           translate="no"
           className="sloop-script tracking-wider text-black mt-4"
         >
           {date}
-        </h1>
-        <p translate="no">{place}</p>
+        </motion.h1>
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          variants={secondaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
+          translate="no"
+        >
+          {place}
+        </motion.p>
       </div>
 
       <div className="w-full flex flex-col sm:flex-row  justify-center items-center gap-8 md:gap-20 lg:gap-24 mt-12 sm:mt-16 lg:mt-20 px-4 z-10">
@@ -99,10 +122,23 @@ const SaveTheDate = ({ language }) => {
             key={`${item.year} ${index}`}
             className="flex flex-col justify-center items-center z-10"
           >
-            <h4 translate="no" className="max-sm:hidden">
+            <motion.h4
+              initial="hidden"
+              whileInView="visible"
+              variants={quartaryVariants}
+              viewport={{ once: true, amount: 0.2 }}
+              translate="no"
+              className="max-sm:hidden"
+            >
               {item.year}
-            </h4>
-            <div className="w-[140px] sm:w-[160px] h-[140px] sm:h-[160px] border-4 border-gold rounded-full flex justify-center items-center mb-3">
+            </motion.h4>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={tertiaryVariants}
+              viewport={{ once: true, amount: 0.2 }}
+              className="w-[140px] sm:w-[160px] h-[140px] sm:h-[160px] border-4 border-gold rounded-full flex justify-center items-center mb-3"
+            >
               <Image
                 src={item.img}
                 alt={item.text}
@@ -111,11 +147,26 @@ const SaveTheDate = ({ language }) => {
                 quality={100}
                 className={`w-[80px] sm:w-[100px] h-[80px] sm:h-[100px]   z-10`}
               />
-            </div>
-            <h4 translate="no" className="sm:hidden mb-0">
+            </motion.div>
+            <motion.h4
+              initial="hidden"
+              whileInView="visible"
+              variants={quartaryVariants}
+              viewport={{ once: true, amount: 0.2 }}
+              translate="no"
+              className="sm:hidden mb-0"
+            >
               {item.year}
-            </h4>
-            <p translate="no">{item.text}</p>
+            </motion.h4>
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              variants={quartaryVariants}
+              viewport={{ once: true, amount: 0.2 }}
+              translate="no"
+            >
+              {item.text}
+            </motion.p>
           </div>
         ))}
       </div>

@@ -13,6 +13,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useToast } from "@/hooks/use-toast";
 import { Footer } from "@/components";
+import { motion } from "framer-motion";
 
 const MusicSection = () => {
   const videoRef = useRef(null);
@@ -30,6 +31,10 @@ const MusicSection = () => {
   const [isAddingTrack, setIsAddingTrack] = useState(false);
   const [loading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const primaryVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   // Function to fetch search results from the API
   const searchTracks = async (searchQuery) => {
@@ -183,7 +188,13 @@ const MusicSection = () => {
         backgroundImage: `url(${images.musicsect.src})`,
       }}
     >
-      <div className="relative w-full h-full z-20 flex flex-col justify-start items-center px-4 md:px-12 pb-12 pt-32 md:pt-48">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={primaryVariants}
+        viewport={{ once: true, amount: 0.2 }}
+        className="relative w-full h-full z-20 flex flex-col justify-start items-center px-4 md:px-12 pb-12 pt-32 md:pt-48"
+      >
         <div className="flex justify-center items-start">
           <h3
             translate="no"
@@ -349,7 +360,7 @@ const MusicSection = () => {
             />
           </div>
         )}
-      </div>
+      </motion.div>
 
       {/* Background */}
       <div className="absolute top-0 w-full h-[300px] bg-gradient-to-b from-blue via-[#0c142c5e] z-10"></div>

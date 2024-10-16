@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { IoCopyOutline } from "react-icons/io5";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useToast } from "@/hooks/use-toast";
-import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 const RegistrySection = () => {
   const [password, setPassword] = useState("");
@@ -25,6 +25,14 @@ const RegistrySection = () => {
   const [paymentInfo, setPaymentInfo] = useState(null); // Stores payment info
   const { toast } = useToast();
   const dialogRef = useRef(null);
+  const primaryVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+  const secondaryVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5, delay: 0.1 } },
+  };
 
   // Function to adjust dialog position when the keyboard is visible
   const handleInputFocus = () => {
@@ -188,7 +196,13 @@ const RegistrySection = () => {
       className="relative bg-blue px-4 sm:px-12 py-12 flex items-center flex-col overflow-hidden"
     >
       {/* Title */}
-      <div className="w-full flex flex-col items-center px-4 z-10 mb-8 md:mb-12">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={primaryVariants}
+        viewport={{ once: true, amount: 0.2 }}
+        className="w-full flex flex-col items-center px-4 z-10 mb-8 md:mb-12"
+      >
         <Image
           src={images.glass}
           alt="glass"
@@ -208,386 +222,448 @@ const RegistrySection = () => {
             Registry
           </h3>
         </div>
-      </div>
+      </motion.div>
 
       <div className="relative w-full max-w-[700px] text-white text-center flex flex-col items-center z-10">
-        <p translate="no" className=" text-center mb-4">
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          variants={secondaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
+          translate="no"
+          className=" text-center mb-4"
+        >
           Your presence at our wedding is the greatest gift we could ask for.
-        </p>
+        </motion.p>
         {dashedLine}
-        <p translate="no" className=" text-center my-4">
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          variants={secondaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
+          translate="no"
+          className=" text-center my-4"
+        >
           However, if you wish to honor us with a gift, we would greatly
           appreciate a monetary contribution to help us build our future
           together.
-        </p>
+        </motion.p>
         {dashedLine}
-        <p translate="no" className=" text-center my-4">
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          variants={secondaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
+          translate="no"
+          className=" text-center my-4"
+        >
           We kindly ask our international guests to consider sending their gift
           via IBAN transfer or a similar method such as Revolut. For our Polish
           guests, contributions can be made online or given in cash at the
           wedding, whichever is more convenient.
-        </p>
+        </motion.p>
         {dashedLine}
-        <p translate="no" className=" text-center my-4">
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          variants={secondaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
+          translate="no"
+          className=" text-center my-4"
+        >
           To access the IBAN details, please click the button below and enter
           the password you received with the invitation, or contact us directly
           for further information.
-        </p>
-        <Dialog>
-          <DialogTrigger translate="no" className="btn2 mb-4">
-            View Info
-          </DialogTrigger>
-          <DialogContent
-            ref={dialogRef}
-            className="max-h-[90vh] sm:max-w-[580px] max-sm:w-[95%] max-sm:p-2 max-sm:rounded-md"
-          >
-            <DialogHeader>
-              <DialogTitle translate="no" className="text-3xl font-bold">
-                {!isValid && !paymentInfo
-                  ? "Enter the password"
-                  : "The password is correct"}
-              </DialogTitle>
-              <DialogDescription className="flex flex-col items-center">
-                {!isValid && !paymentInfo && (
-                  <>
-                    <form
-                      onSubmit={handlePasswordSubmit}
-                      className="w-full flex flex-col items-center"
-                    >
-                      <div className="w-full h-[42px] mb-4 flex border  py-0 pl-0 pr-2 rounded-lg">
-                        <Input
+        </motion.p>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={secondaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {" "}
+          <Dialog>
+            <DialogTrigger translate="no" className="btn2 mb-4">
+              View Info
+            </DialogTrigger>
+            <DialogContent
+              ref={dialogRef}
+              className="max-h-[90vh] sm:max-w-[580px] max-sm:w-[95%] max-sm:p-2 max-sm:rounded-md"
+            >
+              <DialogHeader>
+                <DialogTitle translate="no" className="text-3xl font-bold">
+                  {!isValid && !paymentInfo
+                    ? "Enter the password"
+                    : "The password is correct"}
+                </DialogTitle>
+                <DialogDescription className="flex flex-col items-center">
+                  {!isValid && !paymentInfo && (
+                    <>
+                      <form
+                        onSubmit={handlePasswordSubmit}
+                        className="w-full flex flex-col items-center"
+                      >
+                        <div className="w-full h-[42px] mb-4 flex border  py-0 pl-0 pr-2 rounded-lg">
+                          <Input
+                            translate="no"
+                            autoComplete="off"
+                            autoCorrect="off"
+                            spellCheck="false"
+                            type={viewPassword ? "text" : "password"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Enter password"
+                            className="font-serif mb-4 focus:outline-none focus:ring-0 text-lg border-none"
+                          />
+                          <button
+                            type="button"
+                            translate="no"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setViewPassword(!viewPassword);
+                            }}
+                            className="active:bg-zinc-200 rounded-full"
+                          >
+                            {viewPassword ? (
+                              <FaRegEye size={20} />
+                            ) : (
+                              <FaRegEyeSlash size={20} />
+                            )}
+                          </button>
+                        </div>
+                        <Button
                           translate="no"
-                          autoComplete="off"
-                          autoCorrect="off"
-                          spellCheck="false"
-                          type={viewPassword ? "text" : "password"}
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          placeholder="Enter password"
-                          className="font-serif mb-4 focus:outline-none focus:ring-0 text-lg border-none"
-                        />
-                        <button
-                          type="button"
-                          translate="no"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setViewPassword(!viewPassword);
-                          }}
-                          className="active:bg-zinc-200 rounded-full"
+                          type="submit"
+                          disabled={loading}
+                          className="bg-[#233d74] hover:bg-gold text-lg w-fit"
                         >
-                          {viewPassword ? (
-                            <FaRegEye size={20} />
-                          ) : (
-                            <FaRegEyeSlash size={20} />
-                          )}
+                          {loading ? "Checking..." : "Submit"}
+                        </Button>
+                        {isValid === false && errorText.length > 0 && (
+                          <span
+                            translate="no"
+                            className="text-red-500 mt-2 text-lg"
+                          >
+                            {errorText}
+                          </span>
+                        )}
+                        {isValid === null && errorText.length > 0 && (
+                          <span
+                            translate="no"
+                            className="text-red-500 mt-2 text-lg"
+                          >
+                            {errorText}
+                          </span>
+                        )}
+                      </form>
+                    </>
+                  )}
+                </DialogDescription>
+              </DialogHeader>
+              {isValid && paymentInfo && (
+                <div className="w-full h-full max-h-[75svh] relative overflow-auto flex flex-col justify-start items-start px-2 py-2 gap-4">
+                  <div className="w-full text-left flex flex-col justify-start items-start">
+                    <div className="w-full flex justify-between gap-2">
+                      <h5 translate="no" className="font-sans font-semibold">
+                        EUR
+                      </h5>{" "}
+                      <button
+                        translate="no"
+                        onClick={() => copyToClipboardEntireBox("eur")}
+                        className="flex items-center gap-1 mr-2 text-sm text-[#233d74] underline underline-offset-2"
+                      >
+                        <IoCopyOutline /> Copy All
+                      </button>
+                    </div>
+                    <div className="w-full flex flex-col items-start justify-start p-4 bg-gray-100">
+                      {/* <div className="w-full flex items-center justify-between gap-1"></div> */}
+                      <div className="w-full flex items-center justify-between gap-1">
+                        {" "}
+                        <p
+                          translate="no"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                        >
+                          <span className="font-semibold">
+                            Account Holder:{" "}
+                          </span>
+                          {paymentInfo.EUR.accountHolder}
+                        </p>
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.EUR.accountHolder)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
                         </button>
                       </div>
-                      <Button
-                        translate="no"
-                        type="submit"
-                        disabled={loading}
-                        className="bg-[#233d74] hover:bg-gold text-lg w-fit"
-                      >
-                        {loading ? "Checking..." : "Submit"}
-                      </Button>
-                      {isValid === false && errorText.length > 0 && (
-                        <span
+                      <div className="w-full flex items-center justify-between gap-1">
+                        <p
                           translate="no"
-                          className="text-red-500 mt-2 text-lg"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
-                          {errorText}
-                        </span>
-                      )}
-                      {isValid === null && errorText.length > 0 && (
-                        <span
+                          <span className="font-semibold">IBAN: </span>
+                          {paymentInfo.EUR.iban}
+                        </p>{" "}
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.EUR.iban)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
+
+                      <div className="w-full flex items-center justify-between gap-1">
+                        <p
                           translate="no"
-                          className="text-red-500 mt-2 text-lg"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
                         >
-                          {errorText}
-                        </span>
-                      )}
-                    </form>
-                  </>
-                )}
-              </DialogDescription>
-            </DialogHeader>
-            {isValid && paymentInfo && (
-              <div className="w-full h-full max-h-[75svh] relative overflow-auto flex flex-col justify-start items-start px-2 py-2 gap-4">
-                <div className="w-full text-left flex flex-col justify-start items-start">
-                  <div className="w-full flex justify-between gap-2">
-                    <h5 translate="no" className="font-sans font-semibold">
-                      EUR
-                    </h5>{" "}
-                    <button
-                      translate="no"
-                      onClick={() => copyToClipboardEntireBox("eur")}
-                      className="flex items-center gap-1 mr-2 text-sm text-[#233d74] underline underline-offset-2"
-                    >
-                      <IoCopyOutline /> Copy All
-                    </button>
-                  </div>
-                  <div className="w-full flex flex-col items-start justify-start p-4 bg-gray-100">
-                    {/* <div className="w-full flex items-center justify-between gap-1"></div> */}
-                    <div className="w-full flex items-center justify-between gap-1">
-                      {" "}
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">Account Holder: </span>
-                        {paymentInfo.EUR.accountHolder}
-                      </p>
-                      <button
-                        onClick={() =>
-                          copyTextToCLipboard(paymentInfo.EUR.accountHolder)
-                        }
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
-                    </div>
-                    <div className="w-full flex items-center justify-between gap-1">
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">IBAN: </span>
-                        {paymentInfo.EUR.iban}
-                      </p>{" "}
-                      <button
-                        onClick={() =>
-                          copyTextToCLipboard(paymentInfo.EUR.iban)
-                        }
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
-                    </div>
+                          <span className="font-semibold">Bank Name:</span>
+                          {paymentInfo.EUR.bankName}
+                        </p>{" "}
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.EUR.bankName)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
 
-                    <div className="w-full flex items-center justify-between gap-1">
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">Bank Name:</span>
-                        {paymentInfo.EUR.bankName}
-                      </p>{" "}
-                      <button
-                        onClick={() =>
-                          copyTextToCLipboard(paymentInfo.EUR.bankName)
-                        }
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
-                    </div>
-
-                    <div className="w-full flex items-center justify-between gap-1">
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">BIC: </span>
-                        {paymentInfo.EUR.bic}
-                      </p>
-                      <button
-                        onClick={() => copyTextToCLipboard(paymentInfo.EUR.bic)}
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
+                      <div className="w-full flex items-center justify-between gap-1">
+                        <p
+                          translate="no"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                        >
+                          <span className="font-semibold">BIC: </span>
+                          {paymentInfo.EUR.bic}
+                        </p>
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.EUR.bic)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="w-full text-left flex flex-col justify-start items-start">
-                  <div className="w-full flex justify-between gap-2">
-                    <h5 translate="no" className="font-sans font-semibold">
-                      GBP
-                    </h5>{" "}
-                    <button
-                      translate="no"
-                      onClick={() => copyToClipboardEntireBox("gbp")}
-                      className="flex items-center gap-1 mr-2 text-sm text-[#233d74] underline underline-offset-2"
-                    >
-                      <IoCopyOutline /> Copy All
-                    </button>
+                  <div className="w-full text-left flex flex-col justify-start items-start">
+                    <div className="w-full flex justify-between gap-2">
+                      <h5 translate="no" className="font-sans font-semibold">
+                        GBP
+                      </h5>{" "}
+                      <button
+                        translate="no"
+                        onClick={() => copyToClipboardEntireBox("gbp")}
+                        className="flex items-center gap-1 mr-2 text-sm text-[#233d74] underline underline-offset-2"
+                      >
+                        <IoCopyOutline /> Copy All
+                      </button>
+                    </div>
+                    <div className="w-full flex flex-col items-start justify-start p-4 bg-gray-100">
+                      <div className="w-full flex items-center justify-between gap-1">
+                        {" "}
+                        <p
+                          translate="no"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                        >
+                          <span className="font-semibold">
+                            Account Holder:{" "}
+                          </span>
+                          {paymentInfo.GBP.accountHolder}
+                        </p>
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.GBP.accountHolder)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
+
+                      <div className="w-full flex items-center justify-between gap-1">
+                        <p
+                          translate="no"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                        >
+                          <span className="font-semibold">Sort Code: </span>
+                          {formatSortCode(paymentInfo.GBP.sortCode)}
+                        </p>
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.GBP.sortCode)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
+
+                      <div className="w-full flex items-center justify-between gap-1">
+                        <p
+                          translate="no"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                        >
+                          <span className="font-semibold">
+                            Account Number:{" "}
+                          </span>
+                          {paymentInfo.GBP.accountNumber}
+                        </p>
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.GBP.accountNumber)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
+
+                      <div className="w-full flex items-center justify-between gap-1">
+                        <p
+                          translate="no"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                        >
+                          <span className="font-semibold">Bank Name: </span>
+                          {paymentInfo.GBP.bankName}
+                        </p>
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.GBP.bankName)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-full flex flex-col items-start justify-start p-4 bg-gray-100">
-                    <div className="w-full flex items-center justify-between gap-1">
-                      {" "}
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">Account Holder: </span>
-                        {paymentInfo.GBP.accountHolder}
-                      </p>
+
+                  <div className="w-full text-left flex flex-col justify-start items-start">
+                    <div className="w-full flex justify-between gap-2">
+                      <h5 translate="no" className="font-sans font-semibold">
+                        PLN
+                      </h5>{" "}
                       <button
-                        onClick={() =>
-                          copyTextToCLipboard(paymentInfo.GBP.accountHolder)
-                        }
-                        className="mb-4"
+                        translate="no"
+                        onClick={() => copyToClipboardEntireBox("pln")}
+                        className="flex items-center gap-1 mr-2 text-sm text-[#233d74] underline underline-offset-2"
                       >
-                        <IoCopyOutline size={18} />
+                        <IoCopyOutline /> Copy All
                       </button>
                     </div>
+                    <div className="w-full flex flex-col items-start justify-start p-4 bg-gray-100">
+                      <div className="w-full flex items-center justify-between gap-1">
+                        <p
+                          translate="no"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                        >
+                          <span className="font-semibold">
+                            Account Holder:{" "}
+                          </span>
+                          {paymentInfo.PLN.accountHolder}
+                        </p>
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.PLN.accountHolder)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
 
-                    <div className="w-full flex items-center justify-between gap-1">
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">Sort Code: </span>
-                        {formatSortCode(paymentInfo.GBP.sortCode)}
-                      </p>
-                      <button
-                        onClick={() =>
-                          copyTextToCLipboard(paymentInfo.GBP.sortCode)
-                        }
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
-                    </div>
+                      <div className="w-full flex items-center justify-between gap-1">
+                        <p
+                          translate="no"
+                          className=" font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                        >
+                          <span className="font-semibold">IBAN: </span>
+                          {paymentInfo.PLN.iban}
+                        </p>
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.PLN.iban)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
 
-                    <div className="w-full flex items-center justify-between gap-1">
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">Account Number: </span>
-                        {paymentInfo.GBP.accountNumber}
-                      </p>
-                      <button
-                        onClick={() =>
-                          copyTextToCLipboard(paymentInfo.GBP.accountNumber)
-                        }
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
-                    </div>
+                      <div className="w-full flex items-center justify-between gap-1">
+                        <p
+                          translate="no"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                        >
+                          <span className="font-semibold">Bank Name: </span>
+                          {paymentInfo.PLN.bankName}
+                        </p>
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.PLN.bankName)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
 
-                    <div className="w-full flex items-center justify-between gap-1">
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">Bank Name: </span>
-                        {paymentInfo.GBP.bankName}
-                      </p>
-                      <button
-                        onClick={() =>
-                          copyTextToCLipboard(paymentInfo.GBP.bankName)
-                        }
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="w-full text-left flex flex-col justify-start items-start">
-                  <div className="w-full flex justify-between gap-2">
-                    <h5 translate="no" className="font-sans font-semibold">
-                      PLN
-                    </h5>{" "}
-                    <button
-                      translate="no"
-                      onClick={() => copyToClipboardEntireBox("pln")}
-                      className="flex items-center gap-1 mr-2 text-sm text-[#233d74] underline underline-offset-2"
-                    >
-                      <IoCopyOutline /> Copy All
-                    </button>
-                  </div>
-                  <div className="w-full flex flex-col items-start justify-start p-4 bg-gray-100">
-                    <div className="w-full flex items-center justify-between gap-1">
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">Account Holder: </span>
-                        {paymentInfo.PLN.accountHolder}
-                      </p>
-                      <button
-                        onClick={() =>
-                          copyTextToCLipboard(paymentInfo.PLN.accountHolder)
-                        }
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
-                    </div>
-
-                    <div className="w-full flex items-center justify-between gap-1">
-                      <p
-                        translate="no"
-                        className=" font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">IBAN: </span>
-                        {paymentInfo.PLN.iban}
-                      </p>
-                      <button
-                        onClick={() =>
-                          copyTextToCLipboard(paymentInfo.PLN.iban)
-                        }
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
-                    </div>
-
-                    <div className="w-full flex items-center justify-between gap-1">
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">Bank Name: </span>
-                        {paymentInfo.PLN.bankName}
-                      </p>
-                      <button
-                        onClick={() =>
-                          copyTextToCLipboard(paymentInfo.PLN.bankName)
-                        }
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
-                    </div>
-
-                    <div className="w-full flex items-center justify-between gap-1">
-                      <p
-                        translate="no"
-                        className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
-                      >
-                        <span className="font-semibold">BIC: </span>
-                        {paymentInfo.PLN.bic}
-                      </p>
-                      <button
-                        onClick={() => copyTextToCLipboard(paymentInfo.PLN.bic)}
-                        className="mb-4"
-                      >
-                        <IoCopyOutline size={18} />
-                      </button>
+                      <div className="w-full flex items-center justify-between gap-1">
+                        <p
+                          translate="no"
+                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                        >
+                          <span className="font-semibold">BIC: </span>
+                          {paymentInfo.PLN.bic}
+                        </p>
+                        <button
+                          onClick={() =>
+                            copyTextToCLipboard(paymentInfo.PLN.bic)
+                          }
+                          className="mb-4"
+                        >
+                          <IoCopyOutline size={18} />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
+              )}
+            </DialogContent>
+          </Dialog>
+        </motion.div>
 
         {dashedLine}
-        <p translate="no" className="text-center mt-4 mb-12">
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          variants={secondaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
+          translate="no"
+          className="text-center mt-4 mb-12"
+        >
           In lieu of flowers, which we already have in abundance, we would be
           delighted to receive scratch cards or lottery tickets as a fun and
           exciting way to celebrate our new beginning.
-        </p>
-        <h3 translate="no" className="font-bold text-center text-gold">
+        </motion.p>
+        <motion.h3
+          initial="hidden"
+          whileInView="visible"
+          variants={primaryVariants}
+          viewport={{ once: true, amount: 0.2 }}
+          translate="no"
+          className="font-bold text-center text-gold"
+        >
           THANK YOU
-        </h3>
+        </motion.h3>
       </div>
       <Image
         src={images.la2}
