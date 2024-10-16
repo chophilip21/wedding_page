@@ -10,7 +10,7 @@ export const metadata = {
   description:
     "You are invited to our Wedding | Sei invitato al nostro Matrimonio |  Jesteś zaproszony na nasz Ślub",
   openGraph: {
-    title: "A Home Away From Home | Hazeltree Lodge B&B",
+    title: "Karolina & Emanuele",
     description:
       "You are invited to our Wedding | Sei invitato al nostro Matrimonio |  Jesteś zaproszony na nasz Ślub",
     url: "https://emanuelekarolina.vercel.app/",
