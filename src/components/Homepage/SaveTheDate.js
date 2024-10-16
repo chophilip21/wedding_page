@@ -120,6 +120,22 @@ const SaveTheDate = ({ language }) => {
         ))}
       </div>
       <ScrollingImages />
+      <Image
+        src={images.la1}
+        alt={`Line art 1`}
+        width={650}
+        height={0}
+        quality={100}
+        className={`max-md:hidden absolute max-md:w-[300px] max-lg:w-[220px] max-xl:w-[350px] max-2xl:w-[450px] max-md:bottom-[900px] md:top-72 right-0 md:right-16 z-0 opacity-10`}
+      />
+      <Image
+        src={images.la1}
+        alt={`Line art 1`}
+        width={650}
+        height={0}
+        quality={100}
+        className={`max-md:hidden absolute max-lg:w-[250px] max-xl:w-[350px] top-72 left-16 z-0 opacity-10 transform scale-x-[-1]`}
+      />
     </section>
   );
 };

@@ -195,7 +195,7 @@ const RegistrySection = () => {
           width={95}
           height={95}
           quality={100}
-          className="mb-4 w-[90px] h-auto brightness-95 "
+          className="mb-4 w-[90px] h-auto brightness-95"
         />
         <div className="flex flex-col justify-center items-center">
           <h3 translate="no" className="text-white font-bold z-20 ">

@@ -88,7 +88,7 @@ const ScheduleSection = () => {
             translate="no"
             className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light -mt-8 md:-mt-10"
           >
-            timeline
+            Timeline
           </h3>
         </div>
         <p translate="no" className=" text-center text-white ">

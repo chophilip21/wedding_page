@@ -178,16 +178,16 @@ const MusicSection = () => {
   return (
     <section
       id="music-section"
-      className="relative w-full h-svh bg-center bg-no-repeat bg-cover flex flex-col justify-start overflow-hidden"
+      className="relative w-full h-[120svh] md:h-svh bg-center bg-no-repeat bg-cover flex flex-col justify-start overflow-hidden"
       style={{
         backgroundImage: `url(${images.musicsect.src})`,
       }}
     >
-      <div className="relative w-full h-full z-20 flex flex-col justify-start items-center px-12 pb-12 pt-48">
+      <div className="relative w-full h-full z-20 flex flex-col justify-start items-center px-4 md:px-12 pb-12 pt-32 md:pt-48">
         <div className="flex justify-center items-start">
           <h3
             translate="no"
-            className=" text-7xl font-bold z-20  -mr-8 text-white"
+            className=" sm:text-7xl font-bold z-20  -mr-5 sm:-mr-8 text-white"
           >
             OUR
           </h3>
@@ -198,16 +198,16 @@ const MusicSection = () => {
             Playlist
           </h3>
         </div>
-        <p translate="no" className="max-w-[750px] text-white font-medium">
-          Help us create the perfect soundtrack for our special day! Share your
-          favorite songs for background ambiance or dance floor fun, and
-          we&apos;ll add them to our wedding playlist.
+        <p translate="no" className="md:max-w-[750px] text-white font-medium">
+          Help us shape the perfect soundtrack! Share your favorite songs for
+          background vibes or dance floor fun, and we&apos;ll add them to our
+          wedding playlist.
         </p>
 
         {/* Music Input */}
         <div
           ref={containerRef}
-          className="relative max-w-[500px] w-full h-14 bg-slate-50 rounded-md flex justify-center items-center mt-8 py-2 px-3"
+          className="relative max-w-[500px] w-full h-14 bg-slate-50 rounded-md flex justify-center items-center mt-2 md:mt-8 py-2 px-3"
         >
           <Image
             src={images.spotify}
@@ -224,7 +224,7 @@ const MusicSection = () => {
             type="text"
             value={query}
             onChange={handleInputChange}
-            placeholder="Enter the name of the song"
+            placeholder="Type the song name"
             className="bg-slate-50 font-serif h-10 mb-4 focus:outline-none focus:ring-0 text-lg border-none mt-4 "
           />
           <button
@@ -264,7 +264,7 @@ const MusicSection = () => {
           >
             <p
               translate="no"
-              className="text-sm font-serif font-extralight text-red-500"
+              className="text-[10px] md:text-sm font-serif font-extralight text-green-500"
             >
               * Some songs can&apos;t play here, but you can still add them.
             </p>
@@ -353,7 +353,7 @@ const MusicSection = () => {
 
       {/* Background */}
       <div className="absolute top-0 w-full h-[300px] bg-gradient-to-b from-blue via-[#0c142c5e] z-10"></div>
-      <div className="w-full h-full overlay z-[1] backdrop-blur-[2px]"></div>
+      <div className="w-full h-full overlay z-[1] md:backdrop-blur-[2px]"></div>
       {!videoError && (
         <video
           ref={videoRef}
@@ -361,7 +361,7 @@ const MusicSection = () => {
           muted
           loop
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover object-center opacity-20 mix-blend-screen z-0 ${
+          className={`absolute inset-0 w-full h-full object-cover object-center opacity-40 md:opacity-20 mix-blend-screen z-0 ${
             musicSpin ? "animate-pulse duration-1000" : ""
           }`}
           onError={() => setVideoError(true)}

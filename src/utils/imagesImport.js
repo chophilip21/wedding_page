@@ -47,8 +47,10 @@ import bell from "../../public/icons/bell.png";
 import collage from "../../public/images/collage.png";
 import gift from "../../public/icons/gift.png";
 import musicsect from "../../public/images/musicsect.jpg";
+import musicset2 from "../../public/images/musicset2.jpg";
 import spotify from "../../public/icons/spotify.png";
 import spinner from "../../public/icons/spinner.png";
+import la1 from "../../public/images/la1.png";
 
 const images = {
   welcome_1,
@@ -102,6 +104,8 @@ const images = {
   musicsect,
   spotify,
   spinner,
+  la1,
+  musicset2,
 };
 
 export default images;

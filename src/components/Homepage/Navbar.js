@@ -71,7 +71,7 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
               translate="no"
               to={el.link}
               smooth={true}
-              duration={1900}
+              duration={isMobile ? 2500 : 1900}
               offset={isMobile ? -50 : -62}
               // spy={true}
               // activeClass="text-gold-nav"
@@ -116,7 +116,7 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
                   onClick={() => setIsMenuOpen(false)}
                   to={el.link}
                   smooth={true}
-                  duration={1900}
+                  duration={isMobile ? 2500 : 1900}
                   offset={isMobile ? -51 : -63}
                   className="cursor-pointer tracking-widest hover:text-gold text-lg transition-colors duration-300"
                 >
