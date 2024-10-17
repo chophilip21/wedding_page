@@ -11,6 +11,9 @@ import {
   GuestManagement,
   PaymentDetails,
 } from "@/components/Admin/adminIndex";
+import { MdDashboard } from "react-icons/md";
+import { IoIosPeople } from "react-icons/io";
+import { GiTakeMyMoney } from "react-icons/gi";
 
 export default function Admin() {
   const [user, setUser] = useState(null);
@@ -118,7 +121,7 @@ export default function Admin() {
             </button>
           </div>
           {/* button to switch tabs */}
-          <div className="w-full flex flex-wrap justify-center bg-neutral-300 py-2 gap-4">
+          <div className="max-sm:hidden w-full flex flex-wrap justify-center bg-neutral-300 py-2 gap-4">
             <button
               onClick={() => setActiveTab("dashboard")}
               className={`w-full sm:w-auto py-2 px-4 text-sm sm:text-base rounded font-semibold 
@@ -153,7 +156,60 @@ export default function Admin() {
               Payment Details
             </button>
           </div>
-
+          {/* MOBILE - Switch tab */}
+          <div className="sm:hidden fixed bottom-0 w-full flex bg-neutral-300 z-[999] ">
+            <button
+              onClick={() => setActiveTab("dashboard")}
+              className={`text-sm flex flex-1 justify-center items-center flex-col py-3 px-2
+      ${
+        activeTab === "dashboard"
+          ? "bg-green-900 text-white"
+          : "bg-transparent  text-black"
+      }`}
+            >
+              <MdDashboard
+                size={30}
+                className={`${
+                  activeTab === "dashboard" ? "text-white" : "text-black"
+                }`}
+              />
+              Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab("guest-management")}
+              className={`text-sm flex flex-1 justify-center items-center flex-col py-3 px-2
+      ${
+        activeTab === "guest-management"
+          ? "bg-green-900 text-white"
+          : "bg-transparent  text-black"
+      }`}
+            >
+              <IoIosPeople
+                size={30}
+                className={`${
+                  activeTab === "guest-management" ? "text-white" : "text-black"
+                }`}
+              />
+              Guests
+            </button>
+            <button
+              onClick={() => setActiveTab("payment-details")}
+              className={`text-sm flex flex-1 justify-center items-center flex-col py-3 px-2
+      ${
+        activeTab === "payment-details"
+          ? "bg-green-900 text-white"
+          : "bg-transparent  text-black"
+      }`}
+            >
+              <GiTakeMyMoney
+                size={30}
+                className={`${
+                  activeTab === "payment-details" ? "text-white" : "text-black"
+                }`}
+              />
+              Bank
+            </button>
+          </div>
           {/* Render Tab Content */}
           <div className="w-full max-w-[1500px] bg-white p-6  shadow-lg mt-4">
             {renderTabContent()}
