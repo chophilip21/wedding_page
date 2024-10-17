@@ -6,6 +6,11 @@ import { auth } from "@/firebase/config";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import Loading from "@/components/Loading/Loading";
+import {
+  Dashboard,
+  GuestManagement,
+  PaymentDetails,
+} from "@/components/Admin/adminIndex";
 
 export default function Admin() {
   const [user, setUser] = useState(null);
@@ -13,6 +18,7 @@ export default function Admin() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const allowedEmail = process.env.NEXT_PUBLIC_ALLOWED_ADMIN_EMAIL;
+  const [activeTab, setActiveTab] = useState("dashboard");
 
   // Function to log in with Google
   const handleGoogleLogin = async () => {
@@ -72,6 +78,19 @@ export default function Admin() {
     };
   }, [allowedEmail]);
 
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "dashboard":
+        return <Dashboard />;
+      case "guest-management":
+        return <GuestManagement />;
+      case "payment-details":
+        return <PaymentDetails />;
+      default:
+        return <Dashboard />;
+    }
+  };
+
   return (
     <div
       className={`relative font-sans min-h-screen flex flex-col items-center ${
@@ -83,8 +102,8 @@ export default function Admin() {
         <p className="font-sans text-red-500 mb-4">{errorMessage}</p>
       )}
       {user ? (
-        <div className="w-full flex justify-center border-b border-neutral-500 pb-4">
-          <div className="flex gap-4">
+        <div className="w-full flex flex-col items-center">
+          <div className="w-full flex justify-center gap-4 border-b border-neutral-300 pb-4">
             <button
               onClick={() => router.push("/")} // This works with the new router
               className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded"
@@ -97,6 +116,47 @@ export default function Admin() {
             >
               Log out
             </button>
+          </div>
+          {/* button to switch tabs */}
+          <div className="w-full flex flex-wrap justify-center bg-neutral-300 py-2 gap-4">
+            <button
+              onClick={() => setActiveTab("dashboard")}
+              className={`w-full sm:w-auto py-2 px-4 text-sm sm:text-base rounded font-semibold 
+      ${
+        activeTab === "dashboard"
+          ? "bg-green-900 text-white"
+          : "bg-transparent border border-green-900 text-black"
+      }`}
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab("guest-management")}
+              className={`w-full sm:w-auto py-2 px-4 text-sm sm:text-base rounded font-semibold 
+      ${
+        activeTab === "guest-management"
+          ? "bg-green-900 text-white"
+          : "bg-transparent border border-green-900 text-black"
+      }`}
+            >
+              Guest Management
+            </button>
+            <button
+              onClick={() => setActiveTab("payment-details")}
+              className={`w-full sm:w-auto py-2 px-4 text-sm sm:text-base rounded font-semibold 
+      ${
+        activeTab === "payment-details"
+          ? "bg-green-900 text-white"
+          : "bg-transparent border border-green-900 text-black"
+      }`}
+            >
+              Payment Details
+            </button>
+          </div>
+
+          {/* Render Tab Content */}
+          <div className="w-full max-w-[1500px] bg-white p-6  shadow-lg mt-4">
+            {renderTabContent()}
           </div>
         </div>
       ) : (
