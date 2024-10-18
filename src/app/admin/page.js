@@ -14,6 +14,8 @@ import {
 import { MdDashboard } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import { GiTakeMyMoney } from "react-icons/gi";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebase/config";
 
 export default function Admin() {
   const [user, setUser] = useState(null);
@@ -22,6 +24,7 @@ export default function Admin() {
   const router = useRouter();
   const allowedEmail = process.env.NEXT_PUBLIC_ALLOWED_ADMIN_EMAIL;
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [guests, setGuests] = useState([]);
 
   // Function to log in with Google
   const handleGoogleLogin = async () => {
@@ -81,32 +84,51 @@ export default function Admin() {
     };
   }, [allowedEmail]);
 
+  // Fetch guests
+  useEffect(() => {
+    // Fetch guests from Firestore
+    const fetchGuests = async () => {
+      setLoading(true);
+      try {
+        const guestsCollectionRef = collection(db, "guests");
+        const querySnapshot = await getDocs(guestsCollectionRef);
+        const guestsArray = querySnapshot.docs.map((doc) => doc.data());
+        setGuests(guestsArray);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching guests:", error);
+        setLoading(false);
+      }
+    };
+    fetchGuests();
+  }, []);
+
   const renderTabContent = () => {
     switch (activeTab) {
       case "dashboard":
-        return <Dashboard />;
+        return <Dashboard guests={guests} />;
       case "guest-management":
-        return <GuestManagement />;
+        return <GuestManagement guests={guests} />;
       case "payment-details":
         return <PaymentDetails />;
       default:
-        return <Dashboard />;
+        return <Dashboard guests={guests} />;
     }
   };
 
   return (
     <div
-      className={`relative font-sans min-h-screen flex flex-col items-center ${
+      className={`relative font-sans min-h-screen flex flex-col items-center max-sm:py-[80px] ${
         user ? "justify-start" : "justify-center"
-      } justify-start bg-gray-100 p-4`}
+      } justify-start bg-gray-100 py-4 sm:px-4`}
     >
-      <h3 className="font-sans mb-6 text-black">Admin Panel</h3>
+      <h3 className="font-sans mb-6 px-1 text-black">Admin Panel</h3>
       {errorMessage && (
-        <p className="font-sans text-red-500 mb-4">{errorMessage}</p>
+        <p className="font-sans text-red-500 mb-4 px-1">{errorMessage}</p>
       )}
       {user ? (
         <div className="w-full flex flex-col items-center">
-          <div className="w-full flex justify-center gap-4 border-b border-neutral-300 pb-4">
+          <div className="w-full flex justify-center gap-4 border-b border-neutral-300 pb-4 max-sm:px-2">
             <button
               onClick={() => router.push("/")} // This works with the new router
               className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded"
@@ -211,7 +233,7 @@ export default function Admin() {
             </button>
           </div>
           {/* Render Tab Content */}
-          <div className="w-full max-w-[1500px] bg-white p-6  shadow-lg mt-4">
+          <div className="w-full max-w-[1500px] bg-white p-4 md:p-6  shadow-lg mt-4">
             {renderTabContent()}
           </div>
         </div>
