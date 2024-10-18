@@ -108,7 +108,7 @@ export default function Admin() {
       case "dashboard":
         return <Dashboard guests={guests} />;
       case "guest-management":
-        return <GuestManagement guests={guests} />;
+        return <GuestManagement guests={guests} setGuests={setGuests} />;
       case "payment-details":
         return <PaymentDetails />;
       default:

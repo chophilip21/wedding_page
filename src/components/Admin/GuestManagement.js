@@ -15,23 +15,44 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { doc, deleteDoc } from "firebase/firestore";
+import { doc, deleteDoc, updateDoc, setDoc } from "firebase/firestore";
 import { db } from "@/firebase/config";
-import { useToast } from "@/hooks/use-toast";
 
-const GuestManagement = ({ guests }) => {
+const GuestManagement = ({ guests, setGuests }) => {
   const [activeSubTab, setActiveSubTab] = useState("view-guests-list");
+  const [selectedGuest, setSelectedGuest] = useState(null);
 
   const renderSubTabContent = () => {
     switch (activeSubTab) {
       case "view-guests-list":
-        return <ViewGuestsList guests={guests} />;
+        return (
+          <ViewGuestsList
+            guests={guests}
+            setGuests={setGuests}
+            setActiveSubTab={setActiveSubTab}
+            setSelectedGuest={setSelectedGuest}
+          />
+        );
       case "edit-add-guest":
-        return <EditAddGuest />;
+        return (
+          <EditAddGuest
+            guests={guests}
+            setGuests={setGuests}
+            selectedGuest={selectedGuest}
+            setSelectedGuest={setSelectedGuest}
+          />
+        );
       case "manage-relationships":
         return <ManageRelationships />;
       default:
-        return <ViewGuestsList guests={guests} />;
+        return (
+          <ViewGuestsList
+            guests={guests}
+            setGuests={setGuests}
+            setActiveSubTab={setActiveSubTab}
+            setSelectedGuest={setSelectedGuest}
+          />
+        );
     }
   };
 
@@ -84,11 +105,20 @@ const GuestManagement = ({ guests }) => {
 
 export default GuestManagement;
 
-const ViewGuestsList = ({ guests }) => {
+const ViewGuestsList = ({
+  guests,
+  setGuests,
+  setActiveSubTab,
+  setSelectedGuest,
+}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("id");
   const [guestsList, setGuestsList] = useState(guests);
-  const { toast } = useToast();
+
+  const handleEditGuest = (guest) => {
+    setSelectedGuest(guest); // Set the selected guest for editing
+    setActiveSubTab("edit-add-guest"); // Switch to edit form
+  };
 
   // Function to delete the guest and update the state
   const handleDeleteGuest = async (guestId) => {
@@ -96,6 +126,7 @@ const ViewGuestsList = ({ guests }) => {
     // Update the local guest list after deletion
     const updatedGuests = guestsList.filter((guest) => guest.id !== guestId);
     setGuestsList(updatedGuests);
+    setGuests(updatedGuests);
   };
 
   const deleteGuest = async (guestId) => {
@@ -111,10 +142,7 @@ const ViewGuestsList = ({ guests }) => {
       alert(`Guest deleted successfully`);
     } catch (error) {
       console.error("Error deleting guest:", error);
-      //   toast({
-      //     variant: "destructive",
-      //     title: "Error deleting the guest",
-      //   });
+      alert(`Error deleting the guests`);
     }
   };
 
@@ -245,12 +273,16 @@ const ViewGuestsList = ({ guests }) => {
                       {guest.guestSide}
                     </p>
                     <p className="font-sans max-sm:text-sm text-left max-sm:mb-[5px]">
-                      <span className="font-semibold">Note:</span> {guest.note}
+                      <span className="font-semibold">Note:</span>{" "}
+                      {guest.note.length === 0 ? "" : guest.note}
                     </p>
                   </div>
                 </div>
                 <div className="max-sm:w-full flex flex-row sm:flex-col gap-2 max-sm:mb-4 max-sm justify-between">
-                  <button className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] rounded-full bg-cyan-600 flex flex-grow justify-center items-center">
+                  <button
+                    onClick={() => handleEditGuest(guest)}
+                    className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] rounded-full bg-cyan-600 flex flex-grow justify-center items-center"
+                  >
                     <FaUserEdit
                       color="white"
                       className="w-[20px] sm:w-[30px] h-[20px] sm:h-[30px]"
@@ -291,8 +323,150 @@ const ViewGuestsList = ({ guests }) => {
   );
 };
 
-const EditAddGuest = ({ guests }) => {
-  return <div>edit or add guests</div>;
+const EditAddGuest = ({
+  selectedGuest,
+  setSelectedGuest,
+  setGuests,
+  guests,
+}) => {
+  const [name, setName] = useState(selectedGuest?.name || "");
+  const [guestSide, setGuestSide] = useState(selectedGuest?.guestSide || "");
+  const [attending, setAttending] = useState(selectedGuest?.attending || "");
+  const [note, setNote] = useState(selectedGuest?.note || "");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (selectedGuest) {
+      // Edit mode
+      try {
+        const guestDocRef = doc(db, "guests", String(selectedGuest.id));
+        await updateDoc(guestDocRef, { name, guestSide, attending, note });
+        setGuests((prevGuests) =>
+          prevGuests.map((guest) =>
+            guest.id === selectedGuest.id
+              ? { ...guest, name, guestSide, attending, note }
+              : guest
+          )
+        );
+        console.log("Guest updated successfully");
+        alert("Guest info updated");
+        setName("");
+        setGuestSide("");
+        setAttending("");
+        setNote("");
+        setSelectedGuest(null);
+      } catch (error) {
+        console.error("Error updating guest:", error);
+        alert("Error updating guest");
+      }
+    } else {
+      // Add mode
+      // Find the highest existing ID
+      const highestId = guests.reduce(
+        (maxId, guest) => Math.max(maxId, guest.id),
+        0
+      );
+      const newGuest = {
+        id: highestId + 1, // Assign the next ID
+        name,
+        guestSide,
+        attending,
+        note,
+      };
+
+      try {
+        const guestDocRef = doc(db, "guests", String(newGuest.id));
+        await setDoc(guestDocRef, newGuest);
+        setGuests((prev) => [...prev, newGuest]);
+        console.log("Guest added successfully");
+        alert("New guest added to the list");
+        // Add the new guest to the guests state, ensuring no duplicates
+        setGuests((prevGuests) => {
+          // Check if the guest is already in the list
+          const guestExists = prevGuests.some(
+            (guest) => guest.id === newGuest.id
+          );
+          if (!guestExists) {
+            return [...prevGuests, newGuest];
+          }
+          return prevGuests;
+        });
+        setName("");
+        setGuestSide("");
+        setAttending("");
+        setNote("");
+      } catch (error) {
+        console.error("Error adding guest:", error);
+        alert("Error adding new guest");
+      }
+    }
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="w-full flex flex-col justify-start items-start gap-4 mt-6"
+    >
+      <div className="max-sm:w-full sm:min-w-[500px] flex flex-col gap-1">
+        <label>Guest Name *</label>
+        <Input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Name"
+          required
+          className="max-w-[500px] border  sm:p-2 w-full focus:outline-none focus:ring-0"
+        />
+      </div>
+      <div className="max-sm:w-full sm:min-w-[500px] flex flex-col gap-1">
+        <label>Side *</label>
+        <select
+          value={guestSide}
+          onChange={(e) => setGuestSide(e.target.value)}
+          required
+          className="max-w-[500px] border  sm:p-2 w-full focus:outline-none focus:ring-0"
+        >
+          <option value="" disabled>
+            Select Side
+          </option>
+          <option value="Emanuele">Emanuele</option>
+          <option value="Karolina">Karolina</option>
+        </select>
+      </div>
+      <div className="max-sm:w-full sm:min-w-[500px] flex flex-col gap-1">
+        <label>Attending *</label>
+        <select
+          value={attending}
+          onChange={(e) => setAttending(e.target.value)}
+          required
+          className="max-w-[500px] border  sm:p-2 w-full focus:outline-none focus:ring-0"
+        >
+          <option value="" disabled>
+            Attending?
+          </option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+      <div className="max-sm:w-full sm:min-w-[500px] flex flex-col gap-1">
+        <label>Note</label>
+        <textarea
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          placeholder="Add a note (optional)"
+          className="max-w-[500px] border  p-2 w-full focus:outline-none focus:ring-0"
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="rounded-lg bg-green-900 text-white p-2 font-bold"
+      >
+        {selectedGuest ? "Update Guest" : "Add Guest"}
+      </button>
+    </form>
+  );
 };
 
 const ManageRelationships = ({ guests }) => {
