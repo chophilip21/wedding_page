@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { FaSearch, FaUserEdit } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { FaSort } from "react-icons/fa6";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import { FaUserEdit } from "react-icons/fa";
+import { IoIosRemoveCircle } from "react-icons/io";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,6 +17,14 @@ import {
 } from "@/components/ui/alert-dialog";
 import { doc, deleteDoc, updateDoc, setDoc } from "firebase/firestore";
 import { db } from "@/firebase/config";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const GuestManagement = ({ guests, setGuests }) => {
   const [activeSubTab, setActiveSubTab] = useState("view-guests-list");
@@ -43,7 +51,7 @@ const GuestManagement = ({ guests, setGuests }) => {
           />
         );
       case "manage-relationships":
-        return <ManageRelationships />;
+        return <ManageRelationships guests={guests} setGuests={setGuests} />;
       default:
         return (
           <ViewGuestsList
@@ -469,6 +477,331 @@ const EditAddGuest = ({
   );
 };
 
-const ManageRelationships = ({ guests }) => {
-  return <div>manage relationships</div>;
+const ManageRelationships = ({ guests, setGuests }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortOption, setSortOption] = useState("id");
+  const [selectedGuest, setSelectedGuest] = useState(null);
+  const [relationshipSearch, setRelationshipSearch] = useState("");
+
+  // Filter and sort guests based on search term and sort option
+  const filteredGuests = guests
+    .filter((guest) =>
+      guest.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .sort((a, b) => {
+      switch (sortOption) {
+        case "id":
+          return a.id - b.id;
+        case "name":
+          return a.name.localeCompare(b.name);
+        case "name-reverse":
+          return b.name.localeCompare(a.name);
+        case "karolina":
+          return a.guestSide === "Karolina" && b.guestSide !== "Karolina"
+            ? -1
+            : 1;
+        case "emanuele":
+          return a.guestSide === "Emanuele" && b.guestSide !== "Emanuele"
+            ? -1
+            : 1;
+        case "with-relationships":
+          return a.relationshipIds?.length > 0 ? -1 : 1;
+        case "without-relationships":
+          return a.relationshipIds?.length === 0 ? -1 : 1;
+        default:
+          return 0;
+      }
+    });
+
+  // Filter for relationship modal
+  const filteredRelationshipGuests = guests
+    .filter(
+      (g) =>
+        g.id !== selectedGuest?.id &&
+        g.name.toLowerCase().includes(relationshipSearch.toLowerCase())
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  // Function to add relationships to both guests
+  const handleAddRelationship = async (relationshipGuest) => {
+    if (!selectedGuest) return;
+
+    const selectedGuestId = selectedGuest.id;
+    const relationshipGuestId = relationshipGuest.id;
+
+    console.log(
+      `Adding relationship between ${selectedGuest.name} and ${relationshipGuest.name}`
+    );
+
+    // Add relationshipGuestId to selectedGuest
+    const updatedSelectedGuestRelationships = Array.from(
+      new Set([...(selectedGuest.relationshipIds || []), relationshipGuestId])
+    );
+
+    // Add selectedGuestId to relationshipGuest
+    const updatedRelationshipGuestRelationships = Array.from(
+      new Set([...(relationshipGuest.relationshipIds || []), selectedGuestId])
+    );
+
+    // Update Firestore for both guests
+    try {
+      const selectedGuestRef = doc(db, "guests", String(selectedGuestId));
+      const relationshipGuestRef = doc(
+        db,
+        "guests",
+        String(relationshipGuestId)
+      );
+
+      // Update the relationships for both guests in Firestore
+      await updateDoc(selectedGuestRef, {
+        relationshipIds: updatedSelectedGuestRelationships,
+      });
+
+      await updateDoc(relationshipGuestRef, {
+        relationshipIds: updatedRelationshipGuestRelationships,
+      });
+
+      // Update local state for both guests
+      setGuests((prevGuests) =>
+        prevGuests.map((guest) => {
+          if (guest.id === selectedGuestId) {
+            return {
+              ...guest,
+              relationshipIds: updatedSelectedGuestRelationships,
+            };
+          }
+          if (guest.id === relationshipGuestId) {
+            return {
+              ...guest,
+              relationshipIds: updatedRelationshipGuestRelationships,
+            };
+          }
+          return guest;
+        })
+      );
+
+      console.log(
+        `Relationship successfully added between ${selectedGuest.name} and ${relationshipGuest.name}`
+      );
+      alert(
+        `Relationship successfully added between ${selectedGuest.name} and ${relationshipGuest.name}`
+      );
+      // Close the modal after adding the relationship
+      setSelectedGuest(null);
+      setRelationshipSearch("");
+    } catch (error) {
+      console.error("Error adding relationship:", error);
+      alert("Error adding relationship");
+    }
+  };
+
+  const handleRemoveRelationship = async (guestId, relationshipGuestId) => {
+    // Find the guest and the relationship guest from the state
+    const guest = guests.find((g) => g.id === guestId);
+    const relationshipGuest = guests.find((g) => g.id === relationshipGuestId);
+
+    if (!guest || !relationshipGuest) {
+      console.error("One or both guests not found");
+      return;
+    }
+
+    // Remove relationshipGuestId from guest's relationshipIds
+    const updatedGuestRelationships = (guest.relationshipIds || []).filter(
+      (id) => id !== relationshipGuestId
+    );
+
+    // Remove guestId from relationshipGuest's relationshipIds
+    const updatedRelationshipGuestRelationships = (
+      relationshipGuest.relationshipIds || []
+    ).filter((id) => id !== guestId);
+
+    // Update Firestore for both guests
+    try {
+      const guestRef = doc(db, "guests", String(guestId));
+      const relationshipGuestRef = doc(
+        db,
+        "guests",
+        String(relationshipGuestId)
+      );
+
+      // Update the relationships for both guests in Firestore
+      await updateDoc(guestRef, {
+        relationshipIds: updatedGuestRelationships,
+      });
+
+      await updateDoc(relationshipGuestRef, {
+        relationshipIds: updatedRelationshipGuestRelationships,
+      });
+
+      // Update local state for both guests
+      setGuests((prevGuests) =>
+        prevGuests.map((g) => {
+          if (g.id === guestId) {
+            return {
+              ...g,
+              relationshipIds: updatedGuestRelationships,
+            };
+          }
+          if (g.id === relationshipGuestId) {
+            return {
+              ...g,
+              relationshipIds: updatedRelationshipGuestRelationships,
+            };
+          }
+          return g;
+        })
+      );
+
+      console.log(
+        `Relationship successfully removed between ${guest.name} and ${relationshipGuest.name}`
+      );
+      alert(
+        `Relationship successfully removed between ${guest.name} and ${relationshipGuest.name}`
+      );
+    } catch (error) {
+      console.error("Error removing relationship:", error);
+      alert("Error removing relationship");
+    }
+  };
+
+  // Render guest list with relationships
+  return (
+    <div className="w-full flex flex-col jusify-start items-start mt-4">
+      {guests.length === 0 ? (
+        <p>Fetching...</p>
+      ) : (
+        <>
+          <div className="w-full flex gap-2 justify-between flex-wrap border-b pb-4 mb-4">
+            {/* Search bar */}
+            <div className="w-full max-w-[400px] flex gap-2 items-center justify-center">
+              <FaSearch className="w-[20px] sm:w-[30px] h-[20px] sm:h-[30px] text-neutral-600" />
+              <Input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search guests by name"
+                className="max-sm:h-[33px] border sm:p-2 w-full focus:outline-none focus:ring-0"
+              />
+            </div>
+
+            {/* Sort options */}
+            <div className="w-full max-w-[400px] flex gap-2 items-center justify-center">
+              <FaSort className="w-[20px] sm:w-[30px] h-[20px] sm:h-[30px] text-neutral-600" />
+              <select
+                value={sortOption}
+                onChange={(e) => setSortOption(e.target.value)}
+                className="w-full border p-1 sm:p-2 focus:outline-none focus:ring-0"
+              >
+                <option value="id">Sort by ID</option>
+                <option value="name">Sort by Name (A-Z)</option>
+                <option value="name-reverse">Sort by Name (Z-A)</option>
+                <option value="karolina">Sort by Karolina's Side</option>
+                <option value="emanuele">Sort by Emanuele's Side</option>
+                <option value="with-relationships">With Relationships</option>
+                <option value="without-relationships">
+                  Without Relationships
+                </option>
+              </select>
+            </div>
+          </div>
+
+          {/* Guest list */}
+          <ul className="w-full border rounded max-h-[650px] sm:max-h-[500px] overflow-y-auto pr-8">
+            {filteredGuests.map((guest) => (
+              <li
+                key={guest.id}
+                className="w-full flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-center border-b last:border-b-0 sm:gap-12"
+              >
+                <div className="flex">
+                  <div className="flex">
+                    <p className="font-sans font-semibold p-2 bg-neutral-200">
+                      {guest.id}
+                    </p>
+                  </div>
+                  <div className="flex flex-col justify-start items-start p-3">
+                    <h6 className="font-sans max-sm:text-base bg-orange-200 p-1 sm:p-2 text-left">
+                      {guest.name}
+                    </h6>
+
+                    <div className="flex flex-wrap mb-4">
+                      {guest.relationshipIds &&
+                      guest.relationshipIds.length > 0 ? (
+                        guest.relationshipIds.map((relId) => {
+                          const relationshipGuest = guests.find(
+                            (g) => g.id === relId
+                          );
+                          return (
+                            <span
+                              key={relId}
+                              className="font-sans text-sm md:text-lg bg-blue-200 px-2 py-1 rounded-full flex items-center gap-1"
+                            >
+                              - {relationshipGuest?.name || relId}
+                              <button
+                                onClick={() =>
+                                  handleRemoveRelationship(
+                                    guest.id,
+                                    relationshipGuest.id
+                                  )
+                                }
+                                className="text-red-500 ml-1"
+                              >
+                                <IoIosRemoveCircle size={26} />
+                              </button>
+                            </span>
+                          );
+                        })
+                      ) : (
+                        <p className="text-gray-500 font-sans text-lg">
+                          No relationships
+                        </p>
+                      )}
+                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button
+                          className="font-sans rounded-sm bg-cyan-600 flex flex-grow justify-center items-center text-white font-semibold px-2"
+                          onClick={() => setSelectedGuest(guest)}
+                        >
+                          Add Relationship
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-h-[600px]">
+                        <DialogHeader>
+                          <DialogTitle className="font-sans">
+                            Add a Relationship
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="w-full h-full overflow-y-auto">
+                          <input
+                            type="text"
+                            value={relationshipSearch}
+                            onChange={(e) =>
+                              setRelationshipSearch(e.target.value)
+                            }
+                            placeholder="Search guest"
+                            className="mb-4 border p-2 w-full"
+                          />
+                          <ul>
+                            {filteredRelationshipGuests.map((guest) => (
+                              <li
+                                key={guest.id}
+                                className="py-2 cursor-pointer hover:bg-gray-200"
+                                onClick={() => handleAddRelationship(guest)}
+                              >
+                                {guest.name}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  );
 };

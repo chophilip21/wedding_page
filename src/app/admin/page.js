@@ -118,7 +118,7 @@ export default function Admin() {
 
   return (
     <div
-      className={`relative font-sans min-h-screen flex flex-col items-center max-sm:py-[80px] ${
+      className={`relative font-sans min-h-screen flex flex-col items-center max-sm:pb-[80px] ${
         user ? "justify-start" : "justify-center"
       } justify-start bg-gray-100 py-4 sm:px-4`}
     >
