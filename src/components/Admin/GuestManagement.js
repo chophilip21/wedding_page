@@ -695,8 +695,8 @@ const ManageRelationships = ({ guests, setGuests }) => {
                 <option value="id">Sort by ID</option>
                 <option value="name">Sort by Name (A-Z)</option>
                 <option value="name-reverse">Sort by Name (Z-A)</option>
-                <option value="karolina">Sort by Karolina's Side</option>
-                <option value="emanuele">Sort by Emanuele's Side</option>
+                <option value="karolina">Sort by Karolina&apos;s Side</option>
+                <option value="emanuele">Sort by Emanuele&apos;s Side</option>
                 <option value="with-relationships">With Relationships</option>
                 <option value="without-relationships">
                   Without Relationships

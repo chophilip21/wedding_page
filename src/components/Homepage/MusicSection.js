@@ -224,7 +224,7 @@ const MusicSection = ({ language }) => {
         {/* Music Input */}
         <div
           ref={containerRef}
-          className="relative max-w-[500px] w-full h-14 bg-slate-50 rounded-md flex justify-center items-center mt-2 md:mt-8 py-2 px-3"
+          className="relative max-w-[500px] w-full h-14 bg-slate-50 rounded-md flex justify-center items-center mt-4 md:mt-8 py-2 px-3"
         >
           <Image
             src={images.spotify}
@@ -260,7 +260,7 @@ const MusicSection = ({ language }) => {
           </button>
           {/* Display spinner */}
           {loading && (
-            <div className="absolute right-[-40px]">
+            <div className="absolute max-sm:top-[-35px] right-0 sm:right-[-40px]">
               <Image
                 src={images.spinner}
                 alt="Searching..."
