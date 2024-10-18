@@ -5,26 +5,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/config";
 
 const Dashboard = ({ guests }) => {
-  //   const [guests, setGuests] = useState([]);
-  //const [loading, setLoading] = useState(true);
-
-  //   useEffect(() => {
-  //     // Fetch guests from Firestore
-  //     const fetchGuests = async () => {
-  //       try {
-  //         const guestsCollectionRef = collection(db, "guests");
-  //         const querySnapshot = await getDocs(guestsCollectionRef);
-  //         const guestsArray = querySnapshot.docs.map((doc) => doc.data());
-  //         setGuests(guestsArray);
-  //         setLoading(false);
-  //       } catch (error) {
-  //         console.error("Error fetching guests:", error);
-  //         setLoading(false);
-  //       }
-  //     };
-  //     fetchGuests();
-  //   }, []);
-
   // Calculations for each section
   const totalGuests = guests?.length;
   const emanueleSideGuests = guests?.filter(

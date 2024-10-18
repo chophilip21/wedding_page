@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import images from "@/utils/imagesImport";
 import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
@@ -18,8 +18,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import sendEmail from "@/utils/send-email";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import translations from "@/utils/translations";
+import Image from "next/image";
 
 const RSVPSection = ({ language }) => {
   const {
@@ -54,10 +55,32 @@ const RSVPSection = ({ language }) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [pageHeight, setPageHeight] = useState(0);
   const { width, height } = useWindowSize();
-  const primaryVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5 } },
+  const containerVariants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 0.2,
+        staggerChildren: 0.2,
+      },
+    },
   };
+
+  const letterVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
+  const ref = useRef(null);
+
+  // Use useScroll with a ref to the image
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  // Parallax effects for collage image for mobile
+  const scale = useTransform(scrollYProgress, [0, 1], [1.5, 1]);
 
   // Fetch guests from Firestore on component mount
   useEffect(() => {
@@ -299,7 +322,7 @@ const RSVPSection = ({ language }) => {
 
       {/* Top section */}
       <div
-        className="relative w-full h-[500px] brightness-95 bg-cover bg-center bg-no-repeat bg-fixed flex justify-center items-center overflow-hidden"
+        className="max-md:hidden relative w-full h-[500px] brightness-95 bg-cover bg-center bg-no-repeat md:bg-fixed flex justify-center items-center overflow-hidden"
         style={{
           backgroundImage: `url(${images.collage.src})`,
         }}
@@ -307,15 +330,54 @@ const RSVPSection = ({ language }) => {
         <motion.h1
           initial="hidden"
           whileInView="visible"
-          variants={primaryVariants}
-          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+          viewport={{ once: true, amount: 0.4 }}
           translate="no"
           className="absolute left-1/2 transform -translate-x-1/2 z-20 transition-transform text-9xl text-gold"
         >
-          {top_title}
+          {top_title.split("").map((char, index) => (
+            <motion.span key={index} variants={letterVariants}>
+              {char}
+            </motion.span>
+          ))}
         </motion.h1>
         <div className="overlay z-0"></div>
       </div>
+
+      {/* Top section - Mobile */}
+      <div className="md:hidden relative w-full h-[500px] overflow-hidden">
+        <motion.div
+          ref={ref}
+          className="absolute w-full h-full"
+          style={{ scale }}
+        >
+          <Image
+            src={images.collage}
+            alt="Collage"
+            width={500}
+            height={700}
+            quality={100}
+            className="absolute top-0 left-0 w-full h-full object-cover transform "
+          />
+        </motion.div>
+
+        <motion.h1
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true, amount: 0.4 }}
+          translate="no"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 transition-transform text-7xl text-gold"
+        >
+          {top_title.split("").map((char, index) => (
+            <motion.span key={index} variants={letterVariants}>
+              {char}
+            </motion.span>
+          ))}
+        </motion.h1>
+        <div className="overlay z-0"></div>
+      </div>
+
       {/* main section */}
       <div className="w-full py-12 px-4 sm:px-6 xl:px-12 bg-cream flex flex-col lg:flex-row justify-center gap-4 lg:gap-12 xl:gap-44">
         {/* left part*/}
