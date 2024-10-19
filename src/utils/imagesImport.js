@@ -29,15 +29,8 @@ import g_3_3 from "../../public/images/g_3_3.jpg";
 import g_3_4 from "../../public/images/g_3_4.jpg";
 import g_3_5 from "../../public/images/g_3_5.jpg";
 import g_3_6 from "../../public/images/g_3_6.jpg";
-import g_4_1 from "../../public/images/g_4_1.jpg";
-import g_4_2 from "../../public/images/g_4_2.jpg";
-import g_4_3 from "../../public/images/g_4_3.jpg";
-import g_4_4 from "../../public/images/g_4_4.jpg";
-import g_4_5 from "../../public/images/g_4_5.jpg";
-import g_4_6 from "../../public/images/g_4_6.jpg";
 import glass from "../../public/icons/glass.png";
 import glasses from "../../public/icons/glasses.png";
-import stripe from "../../public/icons/stripe.png";
 import ceremony from "../../public/icons/ceremony.png";
 import cake from "../../public/icons/cake.png";
 import dinner from "../../public/icons/dinner.png";
@@ -45,7 +38,6 @@ import dance from "../../public/icons/dance.png";
 import drink from "../../public/icons/drink.png";
 import bell from "../../public/icons/bell.png";
 import collage from "../../public/images/collage.png";
-import gift from "../../public/icons/gift.png";
 import musicsect from "../../public/images/musicsect.jpg";
 import musicset2 from "../../public/images/musicset2.jpg";
 import spotify from "../../public/icons/spotify.png";
@@ -86,15 +78,8 @@ const images = {
   g_3_4,
   g_3_5,
   g_3_6,
-  g_4_1,
-  g_4_2,
-  g_4_3,
-  g_4_4,
-  g_4_5,
-  g_4_6,
   glass,
   glasses,
-  stripe,
   dance,
   drink,
   dinner,
@@ -102,7 +87,6 @@ const images = {
   cake,
   bell,
   collage,
-  gift,
   musicsect,
   spotify,
   spinner,
