@@ -1,3 +1,10 @@
+/**
+ * @file route.js
+ * @description API endpoint to verify the guest access password for viewing sensitive details like the IBAN. Password validation is handled on the server-side for security reasons.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import { NextResponse } from "next/server";
 
 // Retrieve the password from environment variables
@@ -21,6 +28,7 @@ export async function POST(request) {
       });
     }
   } catch (error) {
+    // handle any unexpected error
     return NextResponse.json({
       success: false,
       message: "Error processing request",

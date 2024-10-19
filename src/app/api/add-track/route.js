@@ -1,53 +1,20 @@
-// import { NextResponse } from "next/server";
-// import { refreshSpotifyAccessToken } from "@/utils/spotify";
-
-// export async function POST(req) {
-//   const { trackUri } = await req.json();
-//   let accessToken = process.env.SPOTIFY_ACCESS_TOKEN;
-
-//   // If the access token is not present or expired, refresh it
-//   if (!accessToken) {
-//     accessToken = await refreshSpotifyAccessToken();
-//   }
-
-//   try {
-//     const response = await fetch(
-//       `https://api.spotify.com/v1/playlists/${process.env.SPOTIFY_PLAYLIST_ID}/tracks`,
-//       {
-//         method: "POST",
-//         headers: {
-//           Authorization: `Bearer ${accessToken}`,
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           uris: [trackUri],
-//         }),
-//       }
-//     );
-
-//     if (response.ok) {
-//       return NextResponse.json({ message: "Track added successfully!" });
-//     } else {
-//       const errorData = await response.json();
-//       return NextResponse.json(
-//         { error: "Failed to add track", details: errorData },
-//         { status: 400 }
-//       );
-//     }
-//   } catch (error) {
-//     return NextResponse.json(
-//       { error: "Error adding track to playlist", details: error.message },
-//       { status: 500 }
-//     );
-//   }
-// }
+/**
+ * @file route.js
+ * @description API endpoint to add a track to the Spotify playlist. The track is added based on the provided track URI, ensuring it doesn't already exist in the playlist.
+ *              The songs added arrive directly to the playlist of my Spotify account.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
 
 import { NextResponse } from "next/server";
 import { getValidUserAccessToken } from "@/utils/spotifyUser";
 
 export async function POST(req) {
   try {
+    // Parse the request to get the track URI
     const { trackUri } = await req.json();
+
+    // Validate if the track URI is provided
     if (!trackUri) {
       return NextResponse.json(
         { error: "trackUri is required" },
@@ -55,6 +22,7 @@ export async function POST(req) {
       );
     }
 
+    // Get a valid Spotify access token to authenticate API requests
     const accessToken = await getValidUserAccessToken();
     if (!accessToken) {
       return NextResponse.json(
@@ -65,9 +33,7 @@ export async function POST(req) {
 
     const playlistId = process.env.SPOTIFY_PLAYLIST_ID;
 
-    // Step 1: Fetch all tracks in the playlist to check if the track already exists
-    // Note: Spotify API does not support filtering by URI directly in this endpoint.
-    // Therefore, you need to fetch existing tracks and check manually.
+    // Fetch existing tracks from the playlist to check if the track already exists
     const existingTracksResponse = await fetch(
       `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(uri))&limit=100`,
       {
@@ -77,6 +43,7 @@ export async function POST(req) {
       }
     );
 
+    // Handle error when fetching existing tracks
     if (!existingTracksResponse.ok) {
       const errorData = await existingTracksResponse.json();
       console.error("Error Fetching Tracks: ", errorData);
@@ -88,7 +55,7 @@ export async function POST(req) {
 
     const existingTracksData = await existingTracksResponse.json();
 
-    // Check if the track exists
+    // Check if the track is already in the playlist
     const trackExists = existingTracksData.items.some(
       (item) => item.track.uri === trackUri
     );
@@ -98,7 +65,7 @@ export async function POST(req) {
       return NextResponse.json({ message: "Track already in playlist" });
     }
 
-    // Step 2: Add the track to the playlist
+    // Add the track to the playlist since it doesn't exist yet
     const addTrackResponse = await fetch(
       `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
       {
@@ -113,9 +80,11 @@ export async function POST(req) {
       }
     );
 
+    // Handle successful track addition
     if (addTrackResponse.ok) {
       return NextResponse.json({ message: "Track added successfully!" });
     } else {
+      // Handle error when adding the track
       const errorData = await addTrackResponse.json();
       console.log("Error Adding Track: ", errorData);
       return NextResponse.json(
@@ -124,6 +93,7 @@ export async function POST(req) {
       );
     }
   } catch (error) {
+    // Catch any unexpected errors and return a 500 response
     console.log("Catch Block Error: ", error.message);
     return NextResponse.json(
       { error: "Error adding track to playlist", details: error.message },

@@ -1,3 +1,10 @@
+/**
+ * @file translation.js
+ * @description Contains translations for the website in English, Italian, and Polish, covering various sections such as navbar, RSVP, registry, and more.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 const translations = {
   // ENGLISH <---------------------------------------------------------------------------------------
   en: {

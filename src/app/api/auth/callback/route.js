@@ -1,3 +1,12 @@
+/**
+ * @file route.js
+ * @description API endpoint that handles Spotify's redirect after user login and exchanges the authorization code for access and refresh tokens. These tokens allow
+ *              the app to interact with Spotify on behalf of the user (e.g., managing playlists). The tokens should be stored securely for future use in
+ *              authenticated requests.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import { NextResponse } from "next/server";
 import axios from "axios";
 
@@ -8,6 +17,7 @@ export async function GET(req) {
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
   const redirectUri = process.env.SPOTIFY_REDIRECT_URI;
 
+  // If the authorization code is missing, return an error response
   if (!code) {
     return NextResponse.json(
       { error: "Authorization code missing" },
@@ -33,19 +43,17 @@ export async function GET(req) {
       }
     );
 
+    // Destructure the access and refresh tokens from the response
     const { access_token, refresh_token } = response.data;
 
-    // You can store these tokens securely (e.g., in a database or session)
-    // For now, we'll just log them and return a success message
-    console.log("Access Token:", access_token);
-    console.log("Refresh Token:", refresh_token);
-
+    // Return a success message with the tokens
     return NextResponse.json({
       message: "Successfully authenticated with Spotify!",
       access_token,
       refresh_token,
     });
   } catch (error) {
+    // catch unexpected errors
     console.error("Error exchanging authorization code for tokens:", error);
     return NextResponse.json(
       { error: "Failed to authenticate" },
