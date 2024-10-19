@@ -1,4 +1,4 @@
-const { db } = require("./admin");
+const { db } = require("./adminPush");
 const guestsList = require("../utils/guestsList");
 
 // Function to add guests to Firestore

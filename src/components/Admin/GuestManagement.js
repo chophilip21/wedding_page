@@ -129,28 +129,77 @@ const ViewGuestsList = ({
   };
 
   // Function to delete the guest and update the state
+  // const handleDeleteGuest = async (guestId) => {
+  //   await deleteGuest(guestId);
+  //   // Update the local guest list after deletion
+  //   const updatedGuests = guestsList.filter((guest) => guest.id !== guestId);
+  //   setGuestsList(updatedGuests);
+  //   setGuests(updatedGuests);
+  // };
+
   const handleDeleteGuest = async (guestId) => {
-    await deleteGuest(guestId);
-    // Update the local guest list after deletion
-    const updatedGuests = guestsList.filter((guest) => guest.id !== guestId);
-    setGuestsList(updatedGuests);
-    setGuests(updatedGuests);
+    // Find the guest to be deleted
+    const guestToDelete = guestsList.find((guest) => guest.id === guestId);
+
+    if (!guestToDelete) {
+      console.error("Guest not found");
+      alert("Guest not found");
+      return;
+    }
+
+    try {
+      // Find all guests who have a relationship with the guest to be deleted
+      const guestsWithRelationship = guestsList.filter(
+        (guest) =>
+          guest.relationshipIds && guest.relationshipIds.includes(guestId)
+      );
+
+      // Update each guest who has a relationship with the guest to be deleted
+      for (let guest of guestsWithRelationship) {
+        const updatedRelationships = guest.relationshipIds.filter(
+          (id) => id !== guestId
+        );
+
+        // Update Firestore for each guest
+        const guestDocRef = doc(db, "guests", String(guest.id));
+        await updateDoc(guestDocRef, {
+          relationshipIds: updatedRelationships,
+        });
+
+        // Update the local state for each guest
+        guest.relationshipIds = updatedRelationships;
+      }
+
+      // **Place the state update here, after modifying relationships**
+      setGuestsList([...guestsList]); // Trigger re-render with updated relationships
+      setGuests([...guestsList]); // Update the main guests state if necessary
+
+      // Delete the guest from Firestore
+      await deleteGuest(guestId);
+
+      // Update the local guest list after deletion
+      const updatedGuests = guestsList.filter((guest) => guest.id !== guestId);
+      setGuestsList(updatedGuests);
+      setGuests(updatedGuests);
+
+      console.log(`Guest with ID ${guestId} deleted successfully`);
+      alert(`Guest deleted successfully`);
+    } catch (error) {
+      console.error("Error deleting guest and updating relationships:", error);
+      alert(`Error deleting the guest and updating relationships`);
+    }
   };
 
   const deleteGuest = async (guestId) => {
     try {
-      // Get the document reference for the guest
       const guestDocRef = doc(db, "guests", String(guestId));
-
-      // Delete the document
       await deleteDoc(guestDocRef);
-
       console.log(`Guest with ID ${guestId} deleted successfully`);
-
       alert(`Guest deleted successfully`);
     } catch (error) {
       console.error("Error deleting guest:", error);
       alert(`Error deleting the guests`);
+      throw error;
     }
   };
 

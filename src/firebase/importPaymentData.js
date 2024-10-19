@@ -1,4 +1,4 @@
-const { db } = require("./admin");
+const { db } = require("./adminPush");
 const paymentData = require("../utils/paymentData");
 
 // Function to add payment data to Firestore
