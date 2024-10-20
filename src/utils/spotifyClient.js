@@ -1,3 +1,11 @@
+/**
+ * @file spotifyClient.js
+ * @description Handles Spotify client access token management using the client credentials flow. The client access token is fetched and stored in memory with
+ *              its expiry, ensuring it is valid for Spotify API requests.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import axios from "axios";
 import qs from "qs";
 
@@ -5,7 +13,10 @@ import qs from "qs";
 let clientAccessToken = null;
 let clientTokenExpiry = null;
 
-// Function to fetch a new client access token
+/**
+ * Fetches a new client access token using the client credentials flow.
+ * @returns {string|null} - The new client access token, or null if fetching fails.
+ */
 async function fetchClientAccessToken() {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -35,7 +46,10 @@ async function fetchClientAccessToken() {
   }
 }
 
-// Function to get a valid client access token
+/**
+ * Retrieves a valid client access token, fetching a new one if the current token is expired or missing.
+ * @returns {Promise<string|null>} - The valid access token or null if fetching fails.
+ */
 export async function getClientAccessToken() {
   if (clientAccessToken && Date.now() < clientTokenExpiry) {
     return clientAccessToken;

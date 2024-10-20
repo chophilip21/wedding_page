@@ -1,3 +1,10 @@
+/**
+ * @file imagesImport.js
+ * @description Imports and exports all images and icons used throughout the website for easy access in components.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import welcome_1 from "../../public/images/welcome_1.jpg";
 import welcome_2 from "../../public/images/welcome_2.jpg";
 import welcome_3 from "../../public/images/welcome_3.jpg";
@@ -39,7 +46,6 @@ import drink from "../../public/icons/drink.png";
 import bell from "../../public/icons/bell.png";
 import collage from "../../public/images/collage.png";
 import musicsect from "../../public/images/musicsect.jpg";
-import musicset2 from "../../public/images/musicset2.jpg";
 import spotify from "../../public/icons/spotify.png";
 import spinner from "../../public/icons/spinner.png";
 import la1 from "../../public/images/la1.png";
@@ -93,7 +99,6 @@ const images = {
   la1,
   la2,
   la3,
-  musicset2,
 };
 
 export default images;

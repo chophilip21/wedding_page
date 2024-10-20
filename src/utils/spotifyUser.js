@@ -1,3 +1,11 @@
+/**
+ * @file spotifyUser.js
+ * @description Manages the Spotify user access token, including handling its expiry, refreshing it using a refresh token, and providing a valid access token
+ *              for user-related Spotify API requests, such as search music.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import axios from "axios";
 import qs from "qs";
 
@@ -5,20 +13,30 @@ import qs from "qs";
 let userAccessToken = process.env.SPOTIFY_ACCESS_TOKEN || null;
 let userTokenExpiry = null;
 
-// Function to set the user access token and its expiry
+/**
+ * Sets the user access token and its expiry time.
+ * @param {string} token - The new access token.
+ * @param {number} expiresIn - The expiry time of the token in seconds.
+ */
 function setUserAccessToken(token, expiresIn) {
   userAccessToken = token;
   // Set token expiry time (current time + expires_in seconds - buffer)
   userTokenExpiry = Date.now() + (expiresIn - 60) * 1000; // 60-second buffer
 }
 
-// Function to check if the user token is expired
+/**
+ * Checks if the user token has expired.
+ * @returns {boolean} - True if the token is expired or missing, false otherwise.
+ */
 function isUserTokenExpired() {
   if (!userAccessToken || !userTokenExpiry) return true;
   return Date.now() > userTokenExpiry;
 }
 
-// Function to refresh the user access token using the refresh token
+/**
+ * Refreshes the Spotify user access token using the refresh token.
+ * @returns {string|null} - The new access token or null if refreshing fails.
+ */
 export async function refreshSpotifyAccessToken() {
   const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
   const clientId = process.env.SPOTIFY_CLIENT_ID;
@@ -51,7 +69,11 @@ export async function refreshSpotifyAccessToken() {
   }
 }
 
-// Function to get a valid user access token
+/**
+ * Retrieves a valid Spotify user access token. Refreshes the token if it has expired.
+ * @returns {Promise<string>} - The valid access token.
+ * @throws {Error} - If the token cannot be refreshed.
+ */
 export async function getValidUserAccessToken() {
   if (isUserTokenExpired()) {
     const newToken = await refreshSpotifyAccessToken();

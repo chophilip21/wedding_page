@@ -5,6 +5,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * @file globals.css
+ * @description Global styles for the wedding website, including Tailwind CSS classes and default styles from ShadCN.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 /* Handwriting Self Deception Font */
 @font-face {
   font-family: "Self Deception";
@@ -24,8 +31,6 @@
 }
 :root {
   --color-white: #fff;
-  /* --color-gold: #eec87e; */
-  /* --color-gold: #e4bf75; */
   --color-gold: #dcb46d;
   --color-cream-white: #fffdfc;
   --color-peach: #f1efe8;
@@ -152,9 +157,8 @@ li {
   width: 100%;
   height: 100%;
   background-color: #00000080;
-  z-index: 1; /* Ensures it's above the images */
-  pointer-events: none; /* Allows interaction with underlying elements */
-  /* backdrop-filter: sepia(0.7) grayscale(0.3); */
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* Buttons */
@@ -234,6 +238,7 @@ li {
 }
 
 /* experiment */
+
 #wedding-timeline {
   padding: 4rem 0;
   background-color: #ffffff;
@@ -256,7 +261,7 @@ li {
   left: 50%;
   transform: translateX(-50%);
   height: 100%;
-  border-left: 2px solid #e5e7eb; /* gray-200 */
+  border-left: 2px solid #e5e7eb;
 }
 
 .timeline-event {
@@ -284,7 +289,7 @@ li {
   height: 4rem;
   background-color: #ffffff;
   border-radius: 9999px;
-  border: 4px solid #fed7e2; /* pink-200 */
+  border: 4px solid #fed7e2;
   display: flex;
   align-items: center;
   justify-content: center;

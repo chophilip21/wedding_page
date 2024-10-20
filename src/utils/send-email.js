@@ -1,6 +1,13 @@
+/**
+ * @file send-email.js
+ * @description Handles sending emails using the EmailJS service, initialized with environment variables for public key, service ID, and template ID.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import emailjs from "emailjs-com";
 
-// Initialize EmailJS (this is needed once in your app)
+// Initialize EmailJS
 emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
 
 const sendEmail = async (data) => {
@@ -14,7 +21,7 @@ const sendEmail = async (data) => {
 
     return result; // Return the result on success
   } catch (error) {
-    // Log the error and throw it to be handled by the calling function
+    // catch errors
     console.error("Error sending email:", error);
     throw new Error("Failed to send email");
   }
