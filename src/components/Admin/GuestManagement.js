@@ -1,4 +1,11 @@
-import { useState, useEffect } from "react";
+/**
+ * @file GuestManagement.js
+ * @description This component handles guest management functionality including viewing, adding, editing, and managing relationships between guests.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
+import { useState } from "react";
 import { FaSearch, FaUserEdit } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { FaSort } from "react-icons/fa6";
@@ -20,16 +27,16 @@ import { db } from "@/firebase/config";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 
 const GuestManagement = ({ guests, setGuests }) => {
-  const [activeSubTab, setActiveSubTab] = useState("view-guests-list");
-  const [selectedGuest, setSelectedGuest] = useState(null);
+  const [activeSubTab, setActiveSubTab] = useState("view-guests-list"); // Start the active sub tab with view-guests-list
+  const [selectedGuest, setSelectedGuest] = useState(null); // If null no guest is selected
 
+  // Render the sub tabs with a switch statement
   const renderSubTabContent = () => {
     switch (activeSubTab) {
       case "view-guests-list":
@@ -71,6 +78,7 @@ const GuestManagement = ({ guests, setGuests }) => {
       </h4>
 
       <div className=" w-full flex justify-start flex-wrap gap-2 md:gap-4">
+        {/* Buttons to switch between sub tabs */}
         <button
           onClick={() => setActiveSubTab("view-guests-list")}
           className={`h-6 p-2 max-sm:text-sm flex justify-center items-center rounded font-semibold 
@@ -105,7 +113,7 @@ const GuestManagement = ({ guests, setGuests }) => {
           Manage Relationships
         </button>
       </div>
-
+      {/* Render sub tabs */}
       {renderSubTabContent()}
     </div>
   );
@@ -113,34 +121,29 @@ const GuestManagement = ({ guests, setGuests }) => {
 
 export default GuestManagement;
 
+// ViewGuestsList component displays the list of all guests with search and sort functionality.
 const ViewGuestsList = ({
   guests,
   setGuests,
   setActiveSubTab,
   setSelectedGuest,
 }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [sortOption, setSortOption] = useState("id");
-  const [guestsList, setGuestsList] = useState(guests);
+  const [searchTerm, setSearchTerm] = useState(""); // for the search input
+  const [sortOption, setSortOption] = useState("id"); // default sort is by id
+  const [guestsList, setGuestsList] = useState(guests); // pass the guest list into a state
 
+  // function to handle 'Edit Guest'
   const handleEditGuest = (guest) => {
     setSelectedGuest(guest); // Set the selected guest for editing
     setActiveSubTab("edit-add-guest"); // Switch to edit form
   };
 
-  // Function to delete the guest and update the state
-  // const handleDeleteGuest = async (guestId) => {
-  //   await deleteGuest(guestId);
-  //   // Update the local guest list after deletion
-  //   const updatedGuests = guestsList.filter((guest) => guest.id !== guestId);
-  //   setGuestsList(updatedGuests);
-  //   setGuests(updatedGuests);
-  // };
-
+  // function to handle 'Delete Guest' and its relationships
   const handleDeleteGuest = async (guestId) => {
     // Find the guest to be deleted
     const guestToDelete = guestsList.find((guest) => guest.id === guestId);
 
+    // return if the guests to be deleted doesn't exists
     if (!guestToDelete) {
       console.error("Guest not found");
       alert("Guest not found");
@@ -170,9 +173,8 @@ const ViewGuestsList = ({
         guest.relationshipIds = updatedRelationships;
       }
 
-      // **Place the state update here, after modifying relationships**
       setGuestsList([...guestsList]); // Trigger re-render with updated relationships
-      setGuests([...guestsList]); // Update the main guests state if necessary
+      setGuests([...guestsList]); // Update the main guests state
 
       // Delete the guest from Firestore
       await deleteGuest(guestId);
@@ -190,6 +192,7 @@ const ViewGuestsList = ({
     }
   };
 
+  // Function for deleting the guests from Firestore
   const deleteGuest = async (guestId) => {
     try {
       const guestDocRef = doc(db, "guests", String(guestId));
@@ -380,17 +383,20 @@ const ViewGuestsList = ({
   );
 };
 
+// EditAddGuest component handles the form for adding a new guest or editing an existing guest's details.
 const EditAddGuest = ({
   selectedGuest,
   setSelectedGuest,
   setGuests,
   guests,
 }) => {
+  // States for input fields. If they are empty strings, we are in "add guest" mode
   const [name, setName] = useState(selectedGuest?.name || "");
   const [guestSide, setGuestSide] = useState(selectedGuest?.guestSide || "");
   const [attending, setAttending] = useState(selectedGuest?.attending || "");
   const [note, setNote] = useState(selectedGuest?.note || "");
 
+  // Function to handle the submt, with either updating a guest or adding a new one
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -526,11 +532,12 @@ const EditAddGuest = ({
   );
 };
 
+// ManageRelationships component allows users to manage guest relationships by adding or removing connections between guests.
 const ManageRelationships = ({ guests, setGuests }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [sortOption, setSortOption] = useState("id");
-  const [selectedGuest, setSelectedGuest] = useState(null);
-  const [relationshipSearch, setRelationshipSearch] = useState("");
+  const [searchTerm, setSearchTerm] = useState(""); // For the search input
+  const [sortOption, setSortOption] = useState("id"); // default sort is by id
+  const [selectedGuest, setSelectedGuest] = useState(null); // If null no guest is selected
+  const [relationshipSearch, setRelationshipSearch] = useState(""); // for relationships search input
 
   // Filter and sort guests based on search term and sort option
   const filteredGuests = guests
@@ -644,6 +651,7 @@ const ManageRelationships = ({ guests, setGuests }) => {
     }
   };
 
+  // function fro handlisng 'Remove Relationship'
   const handleRemoveRelationship = async (guestId, relationshipGuestId) => {
     // Find the guest and the relationship guest from the state
     const guest = guests.find((g) => g.id === guestId);
@@ -713,7 +721,6 @@ const ManageRelationships = ({ guests, setGuests }) => {
     }
   };
 
-  // Render guest list with relationships
   return (
     <div className="w-full flex flex-col jusify-start items-start mt-4">
       {guests.length === 0 ? (

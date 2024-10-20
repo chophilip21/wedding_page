@@ -1,3 +1,11 @@
+/**
+ * @file LanguageDetector.js
+ * @description A component that detects the user's browser language and sets it to one of the supported languages (English, Italian, Polish).
+ *              Defaults to English if the detected language is not supported.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -18,12 +26,9 @@ const LanguageDetector = () => {
       : "en"; // Default to English if unsupported
 
     setLanguage(detectedLanguage);
-
-    // For now, just confirm it's working with a console log
-    console.log("Detected Language:", detectedLanguage);
   }, []);
 
-  return null; // This component is just for detection right now
+  return null;
 };
 
 export default LanguageDetector;

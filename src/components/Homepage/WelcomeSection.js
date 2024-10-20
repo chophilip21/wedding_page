@@ -1,3 +1,10 @@
+/**
+ * @file ScheduleSection.js
+ * @description This component renders the Welcome section. Multilingual!
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -10,7 +17,7 @@ import Tilt from "react-parallax-tilt";
 
 const WelcomeSection = ({ language }) => {
   const [countdown, setCountdown] = useState(null); // Set initial state as null
-  const [isClient, setIsClient] = useState(false); // Track if we're on the client side
+  const [isClient, setIsClient] = useState(false); // Track if we're on the client side, for the countdown delay
 
   useEffect(() => {
     setIsClient(true); // This will only be true on the client
@@ -23,6 +30,7 @@ const WelcomeSection = ({ language }) => {
     return () => clearInterval(intervalId); // Cleanup on unmount
   }, []);
 
+  // Destructure translation strings
   const {
     small_text,
     days,

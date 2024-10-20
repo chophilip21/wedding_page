@@ -1,11 +1,20 @@
+/**
+ * @file LanguageDropdown.js
+ * @description A component that displays a language selection dropdown, allowing users to switch between supported languages (English, Italian, Polish).
+ *              This component handles its own dropdown menu and selection behavior without using Shadcn.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import React, { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import Image from "next/image";
-import images from "@/utils/imagesImport"; // Assuming you have your flag images here
+import images from "@/utils/imagesImport";
 
 const LanguageDropdown = ({ detectedLanguage, setLanguage }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false); // State that listel to scroll behavior for changing the styles
 
+  // useEffect for handling scrolling behaviour for changing the styles
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -19,6 +28,7 @@ const LanguageDropdown = ({ detectedLanguage, setLanguage }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Group drop down elements for convenience
   const languages = [
     { code: "it", label: "Italiano", flag: images.italian },
     { code: "pl", label: "Polski", flag: images.polish },
@@ -26,10 +36,10 @@ const LanguageDropdown = ({ detectedLanguage, setLanguage }) => {
   ];
 
   const [selectedLanguage, setSelectedLanguage] = useState(null); // Initially null
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // if true, the drop down menu is open
 
+  // Set the selected language based on detectedLanguage when it's available
   useEffect(() => {
-    // Set the selected language based on detectedLanguage when it's available
     const initialLanguage = languages.find(
       (lang) => lang.code === detectedLanguage
     );

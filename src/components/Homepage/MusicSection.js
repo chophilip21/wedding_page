@@ -1,10 +1,18 @@
+/**
+ * @file MusicSection.js
+ * @description This component renders the music suggestion section, where users can search for songs, play previews, and add songs to the playlist.
+ * It includes interaction with the Spotify API and toast notifications. Multilingual!
+ *
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import images from "@/utils/imagesImport";
 import { Input } from "@/components/ui/input";
-import { VscSearch } from "react-icons/vsc";
 import { BsFillSearchHeartFill } from "react-icons/bs";
 import { IoPlay } from "react-icons/io5";
 import { FaStop } from "react-icons/fa";
@@ -17,6 +25,7 @@ import { motion } from "framer-motion";
 import translations from "@/utils/translations";
 
 const MusicSection = ({ language }) => {
+  // Destructure translation strings
   const {
     title,
     description,
@@ -26,21 +35,22 @@ const MusicSection = ({ language }) => {
     toast_error,
   } = translations[language].music_section;
 
-  const videoRef = useRef(null);
-  const containerRef = useRef(null);
-  const resultsRef = useRef(null);
-  const audioRef = useRef(null);
-  const [videoError, setVideoError] = useState(false);
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
-  const [isFocused, setIsFocused] = useState(false);
-  const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
-  const [progress, setProgress] = useState(0);
-  const [musicSpin, setMusicSpin] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isAddingTrack, setIsAddingTrack] = useState(false);
-  const [loading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const videoRef = useRef(null); // Reference for the background video element
+  const containerRef = useRef(null); // Reference for the search input container
+  const resultsRef = useRef(null); // Reference for the search results container
+  const audioRef = useRef(null); // Reference for the audio element playing song previews
+  const [videoError, setVideoError] = useState(false); // State to handle errors in the video element
+  const [query, setQuery] = useState(""); // State for storing the current search query
+  const [results, setResults] = useState([]); // State for storing search results from Spotify
+  const [isFocused, setIsFocused] = useState(false); // State to track if the input field is focused
+  const [currentlyPlaying, setCurrentlyPlaying] = useState(null); // State for the currently playing track ID
+  const [progress, setProgress] = useState(0); // State for the progress of the currently playing song preview
+  const [musicSpin, setMusicSpin] = useState(false); // State to toggle the spin effect for the Spotify icon
+  const [isPlaying, setIsPlaying] = useState(false); // State to track if a song is currently playing
+  const [isAddingTrack, setIsAddingTrack] = useState(false); // State to track if a track is being added to the playlist
+  const [loading, setIsLoading] = useState(false); // State to indicate if the search results are loading
+  const { toast } = useToast(); // Toast hook for displaying success or error messages
+  // Variants for the framer motion animation
   const primaryVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -161,6 +171,7 @@ const MusicSection = ({ language }) => {
         setIsAddingTrack(false);
       } else {
         console.error("Failed to add track to playlist:", data);
+        // error toast
         toast({
           variant: "destructive",
           title: toast_error.title,
@@ -394,6 +405,8 @@ const MusicSection = ({ language }) => {
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleAudioEnd}
       />
+
+      {/* Footer is called here for convenience */}
       <Footer language={language} />
     </section>
   );

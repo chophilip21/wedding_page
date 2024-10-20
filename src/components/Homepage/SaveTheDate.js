@@ -1,3 +1,10 @@
+/**
+ * @file SaveTheDate.js
+ * @description This component renders the 'Save the Date' section. Multilingual!
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 "use client";
 
 import React, { useState } from "react";
@@ -9,6 +16,7 @@ import { motion } from "framer-motion";
 import { getCountdown } from "@/utils/countdownHelper";
 
 const SaveTheDate = ({ language }) => {
+  // Variants for framer motion animations
   const primaryVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -25,8 +33,11 @@ const SaveTheDate = ({ language }) => {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 1.6, delay: 0.1 } },
   };
+
+  // Get the countdown from the helper function
   const countdown = getCountdown();
 
+  // Destructure translation strings
   const {
     title,
     title_cursive,
@@ -38,12 +49,14 @@ const SaveTheDate = ({ language }) => {
     story_3_past,
   } = translations[language].saveTheDate_section;
 
+  // Render custom dashed line
   const dashedLine = Array(10)
     .fill()
     .map((_, index) => (
       <div key={index} className="w-[2px] h-[5px] my-[3px] bg-gold" />
     ));
 
+  // Group story elements for convenience
   const story = [
     { year: 2018, text: story_1, img: images.met },
     { year: 2022, text: story_2, img: images.engaged },
@@ -170,6 +183,7 @@ const SaveTheDate = ({ language }) => {
           </div>
         ))}
       </div>
+      {/* Parallax images are rendered here because are part of this section */}
       <ScrollingImages />
       <Image
         src={images.la1}

@@ -1,14 +1,16 @@
+/**
+ * @file RSVPSection.js
+ * @description This component manages the RSVP section of the wedding website. It allows guests to search their names, select attendance options, and submit special
+ *              requests. The data is retrieved and updated in Firebase Firestore, and email notifications are sent upon submission. Multilingual!
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import React, { useState, useEffect, useRef } from "react";
 import images from "@/utils/imagesImport";
 import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
-import {
-  collection,
-  getDocs,
-  doc,
-  updateDoc,
-  deleteField,
-} from "firebase/firestore";
+import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import {
   Select,
@@ -23,6 +25,7 @@ import translations from "@/utils/translations";
 import Image from "next/image";
 
 const RSVPSection = ({ language }) => {
+  // Destructure translation strings
   const {
     top_title,
     title,
@@ -43,18 +46,20 @@ const RSVPSection = ({ language }) => {
     button,
   } = translations[language].rsvp_section;
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [guestsList, setGuestsList] = useState([]);
-  const [filteredGuests, setFilteredGuests] = useState([]);
-  const [selectedGuest, setSelectedGuest] = useState(null);
-  const [specialRequests, setSpecialRequests] = useState("");
-  const [guestsToRsvp, setGuestsToRsvp] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [searchTerm, setSearchTerm] = useState(""); // For the search input
+  const [guestsList, setGuestsList] = useState([]); // Initialise empty array to store the guest list
+  const [filteredGuests, setFilteredGuests] = useState([]); // Initialise empty array to store the filtered guest list
+  const [selectedGuest, setSelectedGuest] = useState(null); // If null no guest is selected
+  const [specialRequests, setSpecialRequests] = useState(""); // to store special requests
+  const [guestsToRsvp, setGuestsToRsvp] = useState([]); // Initialise empty array to store the guests to rsvp
+  const [errorMessage, setErrorMessage] = useState(""); // Error message string
   const [isLoading, setIsLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [pageHeight, setPageHeight] = useState(0);
-  const { width, height } = useWindowSize();
+  const [submitted, setSubmitted] = useState(false); // State to check submission of rsvp
+  const [showConfetti, setShowConfetti] = useState(false); // State to show confetti after submission
+  const [pageHeight, setPageHeight] = useState(0); // State to store the height of the page
+  const { width, height } = useWindowSize(); // Retrieve width and height from useWindowSize
+
+  // Variants for framer motion animation
   const containerVariants = {
     hidden: { opacity: 1 },
     visible: {
@@ -65,13 +70,12 @@ const RSVPSection = ({ language }) => {
       },
     },
   };
-
   const letterVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
   };
 
-  const ref = useRef(null);
+  const ref = useRef(null); // reference for framer motion animation
 
   // Use useScroll with a ref to the image
   const { scrollYProgress } = useScroll({
@@ -99,7 +103,7 @@ const RSVPSection = ({ language }) => {
 
         setGuestsList(guestsArray);
       } catch (error) {
-        console.error("Error fetching guests:", error); // Log any error
+        console.error("Error fetching guests:", error);
       }
     };
 

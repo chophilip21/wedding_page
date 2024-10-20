@@ -1,14 +1,21 @@
+/**
+ * @file SplashScreen.js
+ * @description This component renders the Splash Screen, visible when opening/reloading the website.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 "use client";
 
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Homepage.module.scss";
 
 const SplashScreen = () => {
+  // Disable scrolling when splash screen is mounted
   useEffect(() => {
-    // Disable scrolling when splash screen is mounted
     document.body.style.overflow = "hidden";
 
-    // Re-enable scrolling after the splash animation is done (e.g., 6 seconds)
+    // Re-enable scrolling after the splash animation is done (e.g., 4 seconds)
     const timer = setTimeout(() => {
       document.body.style.overflow = "auto";
     }, 4000); // Match this to the total animation time of the splash screen
@@ -18,6 +25,7 @@ const SplashScreen = () => {
       document.body.style.overflow = "auto"; // Ensure scrolling is re-enabled in cleanup
     };
   }, []);
+
   return (
     <>
       <div className={styles.splashScreen}>

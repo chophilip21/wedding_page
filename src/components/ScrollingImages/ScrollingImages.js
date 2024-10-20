@@ -1,3 +1,10 @@
+/**
+ * @file ScrollingImages.js
+ * @description Component that renders multiple layers of scrolling images with parallax effects, including animated text. This component is usd is 'SaveTheDate'.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import React, { useRef } from "react";
 import images from "@/utils/imagesImport";
 import Image from "next/image";
@@ -5,7 +12,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { FaHeart } from "react-icons/fa";
 
 const ScrollingImages = () => {
-  const ref = useRef(null);
+  const ref = useRef(null); // Reference for the framer motion animation
 
   // Use useScroll with a ref to the container
   const { scrollYProgress } = useScroll({
@@ -13,7 +20,7 @@ const ScrollingImages = () => {
     offset: ["start end", "end start"],
   });
 
-  // Parallax effects for different layers using scrollYProgress (0 to 1)
+  // Parallax effects for different layers using scrollYProgress
   const layer1X = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const layer2X = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const layer3X = useTransform(scrollYProgress, [0, 1], [0, -150]);
@@ -21,6 +28,7 @@ const ScrollingImages = () => {
   // Parallax effect for text
   const textX = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
+  // Group for first layer of images
   const group1 = [
     images.g_1_1,
     images.g_1_2,
@@ -30,6 +38,7 @@ const ScrollingImages = () => {
     images.g_1_6,
   ];
 
+  // Group for second layer of images
   const group2 = [
     images.g_2_1,
     images.g_2_2,
@@ -39,6 +48,7 @@ const ScrollingImages = () => {
     images.g_2_6,
   ];
 
+  // Group for third layer of images
   const group3 = [
     images.g_3_1,
     images.g_3_2,

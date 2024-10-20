@@ -1,3 +1,12 @@
+/**
+ * @file InfoSection.js
+ * @description This component renders the information section of the homepage,
+ * including wedding details, accommodations, and travel information. Multilingual!
+ *
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import Link from "next/link";
 import React from "react";
 import images from "@/utils/imagesImport";
@@ -6,10 +15,12 @@ import { motion } from "framer-motion";
 import translations from "@/utils/translations";
 
 const InfoSection = ({ language }) => {
+  // Variants for framer motion animation
   const primaryVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
+  // Destructure translation strings
   const { title, details, accommodations, travel_transport, additional_info } =
     translations[language].info_section;
 

@@ -1,8 +1,15 @@
+/**
+ * @file Dashboard.js
+ * @description Displays the dashboard summary of guest data, including total guests and attending status, for both his side (Emanuele in this case) and
+ *              her side (Karolina in this case).
+ * @note Admin Panel is doen in English only.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase/config";
+import React from "react";
 
 const Dashboard = ({ guests }) => {
   // Calculations for each section
@@ -89,7 +96,7 @@ const Dashboard = ({ guests }) => {
             </p>
           </div>
 
-          {/* Section 3: Guests attending status from hisside */}
+          {/* Section 3: Guests attending status from his side */}
           <div className="mb-6 flex flex-col items-start border-b">
             <h6 className="font-sans font-bold text-left">
               Guests Attending Status {"("}Emanuele&apos;s Side{")"}

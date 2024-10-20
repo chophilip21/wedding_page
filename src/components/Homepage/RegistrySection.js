@@ -1,3 +1,11 @@
+/**
+ * @file RegistrySection.js
+ * @description This component handles the Registry section of the wedding website, allowing guests to unlock payment details via a password-protected dialog. It supports copying payment details to the clipboard.
+ *              Admin can use a different password that redirect to the admin panel when entered.
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import React, { useState, useRef, useEffect } from "react";
 import images from "@/utils/imagesImport";
 import Image from "next/image";
@@ -18,6 +26,7 @@ import { motion } from "framer-motion";
 import translations from "@/utils/translations";
 
 const RegistrySection = ({ language }) => {
+  // Destructure translation strings
   const {
     title,
     description_1,
@@ -47,14 +56,18 @@ const RegistrySection = ({ language }) => {
     copy_all,
   } = translations[language].registry_section;
 
+  // States for managing the input password and showing/hiding it
   const [password, setPassword] = useState("");
   const [viewPassword, setViewPassword] = useState(false);
+
   const [isValid, setIsValid] = useState(null); // null means no attempt yet
   const [loading, setLoading] = useState(false);
-  const [errorText, setErrorText] = useState("");
+  const [errorText, setErrorText] = useState(""); // Error message text
   const [paymentInfo, setPaymentInfo] = useState(null); // Stores payment info
-  const { toast } = useToast();
-  const dialogRef = useRef(null);
+  const { toast } = useToast(); // Hook to trigger toast messages
+  const dialogRef = useRef(null); // Reference to adjust the dialog position
+
+  // Variants for the framer motion animation
   const primaryVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -71,25 +84,28 @@ const RegistrySection = ({ language }) => {
     }
   };
 
+  // Render a custom dashed line on screen
   const dashedLine = Array(3)
     .fill()
     .map((_, index) => (
       <div key={index} className="w-[2px] h-[5px] my-[3px] bg-gold" />
     ));
 
+  // Handles submitting the password to retrieve payment information
   const handlePasswordSubmit = async (event) => {
     event.preventDefault();
 
     if (password.length > 0) {
       setLoading(true);
-      //path for opening admin page. No need to protect this too much as this is like a hidden button for convenience and admin page has an auth
+      // Path for opening admin page. No need to protect this too much as this is like a hidden button for convenience and admin page has an auth
       if (password === process.env.NEXT_PUBLIC_ADMIN_ACCESS_PASSWORD) {
-        window.open("/admin", "_blank");
+        window.open("/admin", "_blank"); // Redirect to admin page
         setLoading(false);
         setIsValid(false);
         setErrorText(error_incorrect_password);
       } else {
         try {
+          // Check password from the server
           const response = await fetch("/api/check-password", {
             method: "POST",
             headers: {
@@ -99,7 +115,7 @@ const RegistrySection = ({ language }) => {
           });
 
           const result = await response.json();
-
+          // Check if the password is correct
           if (result.success) {
             const response = await fetch("/api/get-payment-info", {
               method: "POST",
@@ -112,6 +128,7 @@ const RegistrySection = ({ language }) => {
             const paymentResult = await response.json();
 
             if (paymentResult.success) {
+              // Password is valid, and payment info is available
               setIsValid(true);
               setPaymentInfo(paymentResult.paymentInfo);
               console.log(paymentInfo);
@@ -125,6 +142,7 @@ const RegistrySection = ({ language }) => {
             setErrorText(error_incorrect_password);
           }
         } catch (error) {
+          // Handle any API errors
           setIsValid(false);
           setErrorText(error_from_api);
           console.log(error);
@@ -133,12 +151,13 @@ const RegistrySection = ({ language }) => {
         }
       }
     } else {
-      setErrorText(error_insert_password);
+      setErrorText(error_insert_password); // Show error if password is empty
       setLoading(false);
       setIsValid(null);
     }
   };
 
+  // Copies all payment details of a currency to the clipboard
   const copyToClipboardEntireBox = (currency) => {
     let copiedText = "";
 
@@ -183,6 +202,7 @@ const RegistrySection = ({ language }) => {
       });
   };
 
+  // Copies a specific text to the clipboard
   const copyTextToCLipboard = (text) => {
     let copiedText = `${text}`;
 
@@ -202,12 +222,13 @@ const RegistrySection = ({ language }) => {
       });
   };
 
+  // Format sort code from 123456 to 12-34-56
   const formatSortCode = (sortCode) => {
     return sortCode.replace(/(\d{2})(?=\d)/g, "$1-").slice(0, 8);
   };
 
+  // Effect to handle scrolling when inputs are focused (mobile)
   useEffect(() => {
-    // Optionally, listen for focus and blur events on inputs
     const inputElements = document.querySelectorAll("input");
     inputElements.forEach((input) => {
       input.addEventListener("focus", handleInputFocus);
@@ -403,7 +424,6 @@ const RegistrySection = ({ language }) => {
                       </button>
                     </div>
                     <div className="w-full flex flex-col items-start justify-start p-4 bg-gray-100">
-                      {/* <div className="w-full flex items-center justify-between gap-1"></div> */}
                       <div className="w-full flex items-center justify-between gap-1">
                         {" "}
                         <p

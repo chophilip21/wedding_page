@@ -1,10 +1,17 @@
-import { useState, useEffect } from "react";
+/**
+ * @file ScheduleSection.js
+ * @description This component renders the Schedule section, which is a timeline of the wedding. Multilingual!
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import images from "@/utils/imagesImport";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import translations from "@/utils/translations";
 
 const ScheduleSection = ({ language }) => {
+  // Variants for framer motion animations
   const primaryVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -18,9 +25,11 @@ const ScheduleSection = ({ language }) => {
     visible: { opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.1 } },
   };
 
+  // Destructure translation strings
   const { title, description, day_1, day_2 } =
     translations[language].schedule_section;
 
+  // Group timeline data for convenience
   const timelineData = [
     {
       day: day_1.title,

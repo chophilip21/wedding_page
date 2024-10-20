@@ -1,21 +1,29 @@
+/**
+ * @file Navbar.js
+ * @description This is the Navbar of the website. It includes also the menu visible from small screen. Multilingual!
+ *
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 "use client";
 
 import React, { useState, useEffect } from "react";
 import translations from "@/utils/translations";
-import Image from "next/image";
 import { Link as ScrollLink } from "react-scroll";
-import images from "@/utils/imagesImport";
 import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { TfiClose } from "react-icons/tfi";
 
 const Navbar = ({ language, detectedLanguage, setLanguage }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false); // State for the navbar to change style after scrolling
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for the menu visible from small screen
+  const [isMobile, setIsMobile] = useState(false); // If false, we are in large screen
 
+  // usEffect that defines if the website is opened from a large screen or small screen
   useEffect(() => {
     const handleResize = () => {
+      // define the desired screen size
       if (window.innerWidth < 1024) {
         setIsMobile(true);
       } else {
@@ -30,6 +38,7 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
     };
   }, []);
 
+  // useEffect that handle the scolling behavior for changing the styles of the navbar
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -43,9 +52,11 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Destructure translation strings
   const { welcome, save_the_date, schedule, info, rsvp, registry, music } =
     translations[language].navbar;
 
+  // Group Navbar elements for convenience
   const navElements = [
     { name: welcome, link: "welcome-section" },
     { name: save_the_date, link: "savethedate-section" },
@@ -73,8 +84,6 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
               smooth={true}
               duration={isMobile ? 2500 : 1900}
               offset={isMobile ? -50 : -62}
-              // spy={true}
-              // activeClass="text-gold-nav"
               className="cursor-pointer tracking-widest hover:text-gold max-xl:text-[18px]"
             >
               {el.name}

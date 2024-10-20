@@ -1,3 +1,10 @@
+/**
+ * @file Footer.js
+ * @description Footer of the website
+ * @author Emanuele Sgroi
+ * @date 19 October 2024
+ */
+
 import React from "react";
 import { IoIosHeart } from "react-icons/io";
 import translations from "@/utils/translations";
