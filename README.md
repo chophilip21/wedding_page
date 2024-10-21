@@ -31,44 +31,44 @@ This multilingual wedding website template is designed for an elegant and modern
 
 - **Save the Date**: A dedicated section to highlight the wedding date, presented in a simple yet elegant design.
 
-  ![Save The Date Section](./screenshots/savethedate.png)
+  ![Save The Date Section](./public/screenshots/savethedate.png)
 
 - **Wedding Timeline**: A modern timeline feature that outlines the wedding day schedule in a clear and visually appealing way.
 
-  ![Wedding Timeline Section](./screenshots/timeline.png)
+  ![Wedding Timeline Section](./public/screenshots/timeline.png)
 
 - **Details Section**: Provides important information about accommodation, transportation, and other wedding logistics.
 
-  ![Details Section Section](./screenshots/details.png)
+  ![Details Section Section](./public/screenshots/details.png)
 
 - **RSVP Section**: Allows guests to search for their names on the guest list and confirm their attendance. The system is smartly designed to handle guest relationships, enabling joint RSVPs for couples or families, and sends notifications via email once an RSVP is submitted.
 
-  ![RSVP Section](./screenshots/rsvp.png)
+  ![RSVP Section](./public/screenshots/rsvp.png)
 
 - **Gift Registry**: A clean and straightforward section for sharing gift registry information.
 
-  ![Gift Registry Section](./screenshots/registry.png)
+  ![Gift Registry Section](./public/screenshots/registry.png)
 
 - **Music Suggestion Section**: Guests can search for songs, preview them, and add their choices directly to a Spotify playlist for the wedding. Integrated with Spotify for seamless playlist management.
 
-  ![Music Suggestion Section](./screenshots/spotify.png)
+  ![Music Suggestion Section](./public/screenshots/spotify.png)
 
 - **Admin Panel**: Accessible via Google authentication, the admin panel allows for easy management of the guest list and gift registry bank details. Admins can view, edit, and delete guests or relationships and sort and search through the guest list.
 
-  ![Admin Panel](./screenshots/admin.png)
+  ![Admin Panel](./public/screenshots/admin.png)
 
 - **Gallery with Parallax Effect**: A visually engaging photo gallery with a smooth parallax effect.
 
-  ![Gallery with Parallax Effect](./screenshots/animation.png)
+  ![Gallery with Parallax Effect](./public/screenshots/animation.png)
 
 - **Multilingual Support**: The website automatically detects and displays the appropriate language (if supported) based on the user's browser settings. Currently, it supports English, Italian, and Polish, with the ability to easily add or remove languages.
 
-  ![Multilingual Support](./screenshots/multilingual.png)
+  ![Multilingual Support](./public/screenshots/multilingual.png)
 
 - **Password-Protected Bank Details**: For those wishing to send gifts via bank transfer, the website offers a secure, password-protected section for sharing bank details like IBAN.
 
-  ![Password-Input](./screenshots/password.png)
-  ![Password-Protected Bank Details](./screenshots/bank.png)
+  ![Password-Input](./public/screenshots/password.png)
+  ![Password-Protected Bank Details](./public/screenshots/bank.png)
 
 - The website is fully responsive.
 
