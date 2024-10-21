@@ -27,7 +27,7 @@ This multilingual wedding website template is designed for an elegant and modern
 
 - **Welcome Section**: full-screen hero section featuring the couple's photos, names, and a countdown to the wedding day.
 
-  ![Welcome Section](./screenshots/welcome.png)
+  ![Welcome Section](./public/screenshots/welcome.png)
 
 - **Save the Date**: A dedicated section to highlight the wedding date, presented in a simple yet elegant design.
 
