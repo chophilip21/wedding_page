@@ -64,27 +64,51 @@ const translations = {
             description:
               "Indulge in a delicious feast with family and friends.",
           },
+          dance: {
+            time: "6:00 PM",
+            title: "First Dance",
+          },
+          photo: {
+            time: "7:00 - 10:00 PM",
+            title: "Photo Booth",
+          },
           cake_cutting: {
-            time: "10:00 PM",
+            time: "12:00 AM",
             title: "Cake Cutting",
-            description: "Savor the sweetness as we cut the cake together.",
+            description: "Savor the sweetness as we cut the cake together.", // remove
+          },
+          games: {
+            time: "12:30 AM",
+            title: "Party Games",
           },
           party: {
             time: "All Night",
             title: "Eat, Drink, Dance, Repeat!",
             description:
-              "Celebrate the night away with music, drinks, and joy!",
+              "Celebrate the night away with music, drinks, and joy!", // remove
           },
         },
       },
       day_2: {
         title: "Day 2",
         events: {
+          after: {
+            time: "3:00 PM",
+            title: "After Party Starts",
+          },
+          vespa: {
+            time: "4:00 - 9:00 PM",
+            title: "Vespa Bar",
+          },
           party_continues: {
-            time: "2:00 PM - 10:00 PM",
+            time: "All Day",
             title: "Eat, Drink, Dance, Repeat!",
             description:
-              "Continue the festivities with more food, drinks, and dancing.",
+              "Continue the festivities with more food, drinks, and dancing.", //remove
+          },
+          end: {
+            time: "10:00 PM",
+            title: "The End",
           },
         },
       },
@@ -96,52 +120,63 @@ const translations = {
       },
       details: {
         when_where: "When & Where",
-        dates: ["Dates: ", { bold: true, text: "26th and 27th of July 2025" }],
+        dates: [
+          "Dates: ",
+          {
+            bold: true,
+            text: "Saturday, 26th of July & Sunday, 27th of July 2025.",
+          },
+        ],
         location: [
           "Location: ",
-          { bold: true, text: "Kolonia Łobudzice, Poland" },
+          {
+            bold: true,
+            text: 'Venue "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Poland.',
+          },
         ],
         same_location:
-          "Ceremony, Party and Accommodations are held in the same location.",
-        no_white_dresses: ["Please ", { bold: true, text: "No white dresses" }],
+          "Ceremony, Party and Accommodations are held in the same location.", // remove
+        no_white_dresses: ["Please ", { bold: true, text: "No white dresses" }], // remove
       },
       accommodations: {
         title: "Accommodations",
         description_1: [
-          "For our out-of-town guests, we are pleased to offer accommodation at the venue for ",
+          "For our international guests, we are pleased to offer accommodation at the venue's hotel on the ",
           {
             bold: true,
-            text: "Friday 25th July, Saturday 26th July, and Sunday 27th July.",
+            text: "Friday 25th of July, Saturday 26th of July, and Sunday 27th of July.",
           },
-          " If you need accommodation for additional days, please let us know, and we can help you arrange it, though the cost for extra nights will be at your own expense.",
+          " If you need accommodation for additional days, please let us know, and we can help you arrange it with the venue.",
         ],
         breakfast: [
           { bold: true, text: "Breakfast" },
           " is included with your stay and will be served from ",
-          { bold: true, text: "7 AM to 11 AM" },
-          " each morning.",
+          { bold: true, text: "9 AM to 11 AM" },
+          " each morning (this might change, please check the website closer to the wedding date).",
         ],
       },
       travel_transport: {
         title: "Travel & Transportation",
         description_1: [
-          "We are organizing transportation from ",
-          { bold: true, text: "Katowice Airport" },
-          " to the venue on ",
-          { bold: true, text: "Friday, 25th July" },
-          " and recommend all guests arrive by ",
-          { bold: true, text: "3PM" },
-          ". We’ll wait for everyone. On ",
-          { bold: true, text: "Monday, 28th July" },
-          ", we’ll provide transport back to the airport (time to be arranged).",
+          "For our international guests, we will provide transportation from the airport to the venue on Friday, 25th of July, and from the venue to the airport on Monday, 28th of July.",
         ],
         description_2: [
-          "If you arrive at a different airport or outside the scheduled times, you’ll need to arrange your own transport. The easiest option is to take a train or bus to ",
-          { bold: true, text: "Belchatow Central" },
-          ", then a bus to ",
-          { bold: true, text: "XXX Road" },
-          ", just a 3-minute walk from the venue.",
+          {
+            bold: true,
+            text: "Before booking your travel, please contact us to let us know the time and the airport that works best for you. We will then organize a group transport that fits the majority. Please do it before the 26th of May 2025.",
+          },
         ],
+        description_3: [
+          "The closest airports are Katowice Airport (KTW), Warsaw Modlin Airport (WMI), and Warsaw Chopin Airport (WAW).",
+        ],
+        description_4: [
+          "We will try our best to accommodate everyone. If you cannot land/depart at the same day/time as everyone else, we will help you organize another way of getting to and from the venue.",
+        ],
+      },
+      contact: {
+        title: "Contact Us",
+        // Email added on the front end
+        // numbers added on the front end
       },
       additional_info:
         "We will let you know more information about the accommodation and transportation in private. Or you can always contact us to ask more details.",
@@ -150,12 +185,11 @@ const translations = {
       top_title: "RSVP",
       title: { main: "Confirm your", sub: "Attendance" },
       description_1: [
-        "Please RSVP by ",
-        { bold: true, text: "15th May 2025" },
-        " to let us know if you will be attending. Simply search for your name on the form and confirm whether you will be joining us or not.",
+        { bold: true, text: "Please RSVP by the 26th of May 2025!" },
+        " Simply search for your name on the form and confirm your attendance.",
       ],
       description_2:
-        "You can also let us know if you have any special requests, such as dietary restrictions or other needs. We want to make sure everyone is comfortable and has a great time!",
+        "Please leave us a note if you have any special requests, dietary restrictions, or if there’s anything else you’d like to discuss. We want to make sure everyone is comfortable and has an amazing time!",
       label: "Search your name in the guests list",
       placeholder: "Search for your name",
       no_found: "No guests found with this name",
@@ -170,7 +204,8 @@ const translations = {
         "Select who is attending the wedding. We hope all of you can make it.",
       single_guest_1: {
         hi: "Hi ",
-        are_invited: " We're delighted to have you on our guest list!",
+        are_invited:
+          " you are warmly invited to join us on our special day. Celebrating with you will make it unforgettable!",
       },
       single_guest_2: "Are you attending the wedding?",
       answers: { yes: "Yes", no: "No", unknown: "Don't know yet" },
@@ -179,8 +214,8 @@ const translations = {
         thanks: "Thank you!",
         submitted: " Your RSVP has been submitted.",
         change_by: [
-          "Remember that you can change the attendancy any time by ",
-          { bold: true, text: "15th May 2025" },
+          "Remember that you can change the attendance any time before the ",
+          { bold: true, text: "26th of May 2025" },
           ".",
         ],
       },
@@ -311,11 +346,23 @@ const translations = {
             title: "Cena Servita",
             description: "Goditi una deliziosa cena con famiglia e amici.",
           },
+          dance: {
+            time: "18:00",
+            title: "Primo Ballo",
+          },
+          photo: {
+            time: "19:00 - 22:00",
+            title: "Cabina Fotografica",
+          },
           cake_cutting: {
-            time: "22:00",
+            time: "00:00",
             title: "Taglio della Torta",
             description:
               "Assapora la dolcezza mentre tagliamo la torta insieme.",
+          },
+          games: {
+            time: "00:30",
+            title: "Animazione con Giochi di Gruppo",
           },
           party: {
             time: "Tutta la notte",
@@ -327,11 +374,23 @@ const translations = {
       day_2: {
         title: "Giorno 2",
         events: {
+          after: {
+            time: "15:00",
+            title: "Inizia L'After!",
+          },
+          vespa: {
+            time: "16:00 - 21:00",
+            title: "Vespa Bar",
+          },
           party_continues: {
-            time: "14:00 - 22:00",
+            time: "Tutta la Giornata",
             title: "Mangia, Bevi, Balla, Ripeti!",
             description:
-              "Continua i festeggiamenti con altro cibo, drink e balli.",
+              "Continue the festivities with more food, drinks, and dancing.", //remove
+          },
+          end: {
+            time: "10:00 PM",
+            title: "Finita La Commedia!",
           },
         },
       },
@@ -343,10 +402,16 @@ const translations = {
       },
       details: {
         when_where: "Quando e Dove",
-        dates: ["Date: ", { bold: true, text: "26 e 27 Luglio 2025" }],
+        dates: [
+          "Date: ",
+          { bold: true, text: "Sabato 26 e Domenica 27 Luglio 2025" },
+        ],
         location: [
-          "Luogo: ",
-          { bold: true, text: "Kolonia Łobudzice, Polonia" },
+          "Location: ",
+          {
+            bold: true,
+            text: 'Luogo "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Polonia',
+          },
         ],
         same_location:
           "Cerimonia, festa e alloggio si terranno nello stesso luogo.",
@@ -358,40 +423,42 @@ const translations = {
       accommodations: {
         title: "Alloggi",
         description_1: [
-          "Per i nostri ospiti fuori città, offriamo alloggio nella sede per ",
+          "Per i nostri ospiti internazionali, offriamo alloggio in hotel per ",
           {
             bold: true,
             text: "Venerdì 25 Luglio, Sabato 26 Luglio e Domenica 27 Luglio.",
           },
-          " Se hai bisogno di alloggio per giorni aggiuntivi, faccelo sapere e ti aiuteremo a organizzarlo, ma il costo per le notti extra sarà a tuo carico.",
+          "L'hotel si trova nella stessa location. Facci sapere se vuoi restare per piú notti e ti aiuteremo con la prenotazione.",
         ],
         breakfast: [
           { bold: true, text: "La colazione" },
-          " è inclusa nel soggiorno e verrà servita dalle ",
-          { bold: true, text: "7 alle 11" },
-          " ogni mattina.",
+          " è inclusa con il soggiorno e verrà servita dalle ",
+          { bold: true, text: "9:00 alle 11:00" },
+          " ogni mattina (Qualora l'orario cambiasse, questo sito verrà aggiornato).",
         ],
       },
       travel_transport: {
-        title: "Viaggi e Trasporti",
+        title: "Travel & Transportation",
         description_1: [
-          "Stiamo organizzando il trasporto dall'aeroporto di ",
-          { bold: true, text: "Katowice" },
-          " alla sede per ",
-          { bold: true, text: "Venerdì 25 Luglio" },
-          " e consigliamo di arrivare entro le ",
-          { bold: true, text: "15:00" },
-          ". Lunedí ",
-          { bold: true, text: "28 Luglio" },
-          ", forniremo il trasporto di ritorno all'aeroporto (orario da concordare).",
+          "Per i nostri ospiti internazionali, forniremo il trasporto dall'aeroporto alla location venerdì 25 luglio e dalla location all'aeroporto lunedì 28 luglio.",
         ],
         description_2: [
-          "Se arrivi in un altro aeroporto o fuori dagli orari programmati, dovrai organizzare il trasporto autonomamente. L'opzione più semplice è prendere un treno o autobus per ",
-          { bold: true, text: "Belchatow Central" },
-          ", poi un autobus per ",
-          { bold: true, text: "Via XXX" },
-          ", a soli 3 minuti a piedi dalla sede.",
+          {
+            bold: true,
+            text: "Prima di prenotare il viaggio, vi preghiamo di contattarci e comunicarci l’orario e l’aeroporto che meglio si adattano al vostro programma. Organizzeremo quindi un trasporto di gruppo che soddisfi la maggioranza. Vi preghiamo di farlo entro il 26 maggio 2025.",
+          },
         ],
+        description_3: [
+          "Gli aeroporti più vicini sono l'Aeroporto di Katowice (KTW), l'Aeroporto di Varsavia Modlin (WMI) e l'Aeroporto di Varsavia Chopin (WAW).",
+        ],
+        description_4: [
+          "Faremo del nostro meglio per accontentare tutti. Se non riuscite ad arrivare o partire nello stesso giorno e/o orario degli altri, vi aiuteremo a organizzare un altro modo per raggiungere e lasciare la location.",
+        ],
+      },
+      contact: {
+        title: "Contattaci",
+        // Email added on the front end
+        // numbers added on the front end
       },
       additional_info:
         "Ti faremo sapere maggiori informazioni sugli alloggi e trasporti in privato. Puoi anche contattarci per ulteriori dettagli.",
@@ -400,14 +467,16 @@ const translations = {
       top_title: "RSVP",
       title: { main: "Conferma la tua", sub: "Presenza" },
       description_1: [
-        "Conferma la tua presenza entro il ",
-        { bold: true, text: "15 maggio 2025" },
-        " per farci sapere se parteciperai. Cerca il tuo nome nel modulo e conferma se parteciperai o meno.",
+        {
+          bold: true,
+          text: "Vi preghiamo di confermare la vostra presenza entro il 26 maggio 2025!",
+        },
+        "  Basta cercare il vostro nome nell'apposito campo e confermare la partecipazione.",
       ],
       description_2:
-        "Puoi anche farci sapere se hai richieste speciali, come restrizioni dietetiche o altre necessità. Vogliamo assicurarci che tutti siano a proprio agio e si divertano!",
-      label: "Cerca il tuo nome nella lista degli invitati",
-      placeholder: "Cerca il tuo nome",
+        "Vi preghiamo di lasciarci un messaggio se avete richieste speciali, restrizioni alimentari o qualsiasi altra cosa di cui vorreste parlarci. Vogliamo assicurarci che tutti siano a proprio agio e si divertano al massimo!",
+      label: "Cerca il tuo nome nella lista",
+      placeholder: "Digita il tuo nome",
       no_found: "Nessun invitato trovato con questo nome",
       multiple_guests_1: {
         hi: "Ciao",
@@ -421,24 +490,24 @@ const translations = {
       single_guest_1: {
         hi: "Ciao ",
         are_invited:
-          " Siamo felici di averti nella nostra lista degli invitati!",
+          " Con grande piacere, ti invitiamo a partecipare al nostro giorno speciale. La tua presenza lo renderà indimenticabile!",
       },
       single_guest_2: "Parteciperai al matrimonio?",
-      answers: { yes: "Sì", no: "No", unknown: "Non so ancora" },
+      answers: { yes: "Sì", no: "No", unknown: "Non lo so" },
       note_placeholder: "Vuoi lasciare un messaggio?",
       rsvp_success: {
         thanks: "Grazie!",
         submitted: " La tua conferma è stata inviata.",
         change_by: [
-          "Ricorda che puoi cambiare la tua partecipazione fino al ",
-          { bold: true, text: "15 maggio 2025" },
+          "Ricorda che puoi cambiare la tua partecipazione entro il ",
+          { bold: true, text: "26 Maggio 2025" },
           ".",
         ],
       },
       error_enter_name: "Per favore inserisci la tua risposta prima di inviare",
       error_submitting: "Errore nell'invio della conferma. Per favore riprova.",
       button: {
-        submit: "Invia RSVP",
+        submit: "Conferma",
         loading: "Un Momento...",
       },
     },
@@ -514,12 +583,12 @@ const translations = {
     },
     navbar: {
       welcome: "Witamy",
-      save_the_date: "Zapisz Datę",
-      schedule: "Harmonogram",
-      info: "Bliższe Dane",
+      save_the_date: "Zarezerwuj Datę",
+      schedule: "Harmonogram Przyjęcia",
+      info: "Szczegóły",
       rsvp: "RSVP",
       registry: "Lista Prezentów",
-      music: "Lista Odtwarzania",
+      music: "Playlista",
     },
     welcome_section: {
       small_text: "Ślub...",
@@ -531,13 +600,13 @@ const translations = {
       minute: "Minuta",
       seconds: "sekundy",
       second: "sekunda",
-      button: "Zapisz Datę",
+      button: "Zarezerwuj Datę",
     },
     saveTheDate_section: {
-      title: "ZAPISZ", //DATĘ
+      title: "ZAREZERWUJ", //DATĘ
       title_cursive: "Datę",
-      date: "26 lipca 2025",
-      place: "w Kolonii Łobudzice, Polska",
+      date: "26 lipca 2025 roku",
+      place: 'na sali "Przy Patykach" w Kolonii Łobudzice, Zelów',
       story_1: "Spotkaliśmy Się",
       story_2: "Zaręczyliśmy Się",
       story_3_future: "Weźmiemy Ślub",
@@ -545,8 +614,8 @@ const translations = {
     },
     schedule_section: {
       title: {
-        main: "WESELE",
-        sub: "Timeline",
+        main: "HARMONOGRAM",
+        sub: "Przyjęcia",
       },
       description:
         "Ślub oraz wesele odbędą się 26 lipca 2025 roku. Następnego dnia serdecznie zapraszamy na poprawiny!",
@@ -555,54 +624,87 @@ const translations = {
         events: {
           ceremony: {
             time: "16:00",
-            title: "Rozpoczęcie Ceremonii",
+            title: "Ceremonia Ślubu",
             description:
-              "Dołącz do nas, gdy powiemy sobie 'Tak' podczas pięknej ceremonii.",
+              "Dołącz do nas, gdy powiemy sobie 'Tak' podczas pięknej ceremonii.", //remove
           },
           dinner: {
             time: "17:00",
-            title: "Obiad Podany",
+            title: "Uroczysty Obiad",
             description:
-              "Rozkoszuj się pysznym posiłkiem z rodziną i przyjaciółmi.",
+              "Rozkoszuj się pysznym posiłkiem z rodziną i przyjaciółmi.", //remove
+          },
+          dance: {
+            time: "18:00",
+            title: "Pierwszy Taniec",
+          },
+          photo: {
+            time: "19:00 - 22:00",
+            title: "Fotobudka",
           },
           cake_cutting: {
-            time: "22:00",
-            title: "Krojenie Tortu",
-            description: "Delektuj się słodkościami, gdy razem kroimy tort.",
+            time: "00:00",
+            title: "Tort",
+            description: "Delektuj się słodkościami, gdy razem kroimy tort.", //remove
+          },
+          games: {
+            time: "00:30",
+            title: "Oczepiny",
           },
           party: {
-            time: "Całą noc",
-            title: "Jedz, Pij, Tańcz, Powtarzaj!",
-            description: "Świętuj całą noc z muzyką, napojami i radością!",
+            time: "Do Białego Rana",
+            title: "Jedzenie, Picie, i Zabawa!",
+            description: "Świętuj całą noc z muzyką, napojami i radością!", //remove
           },
         },
       },
       day_2: {
         title: "Dzień 2",
         events: {
+          after: {
+            time: "15:00",
+            title: "Rozpoczęcie Poprawin",
+          },
+          vespa: {
+            time: "16:00 - 21:00",
+            title: "Bar Vespa",
+          },
           party_continues: {
-            time: "14:00 - 22:00",
-            title: "Jedz, Pij, Tańcz, Powtarzaj!",
+            time: "Cały Dzień",
+            title: "Jedzenie, Picie, i Zabawa!",
             description:
-              "Kontynuuj zabawę z większą ilością jedzenia, napojów i tańców.",
+              "Continue the festivities with more food, drinks, and dancing.", //remove
+          },
+          end: {
+            time: "10:00 PM",
+            title: "Koniec",
           },
         },
       },
     },
     info_section: {
       title: {
-        main: "Oto",
+        main: "",
         sub: "Szczegóły",
       },
       details: {
         when_where: "Kiedy i Gdzie",
-        dates: ["Daty: ", { bold: true, text: "26 i 27 lipca 2025" }],
+        dates: [
+          "Daty: ",
+          {
+            bold: true,
+            text: "Sobota, 26 Lipca & Niedziela, 27 Lipca 2025 roku",
+          },
+        ],
         location: [
           "Lokalizacja: ",
-          { bold: true, text: "Kolonia Łobudzice, Polska" },
+          {
+            bold: true,
+            text: 'Sala "Przy Patykach", Kolonia Łobudzice 18c, 97-425',
+          },
         ],
         same_location:
-          "Ceremonia, przyjęcie i zakwaterowanie odbędą się w tym samym miejscu.",
+          "Miejsce zaślubin, sala weselna, oraz hotel znajdują się na tym samym terenie.",
         no_white_dresses: [
           "Prosimy, ",
           { bold: true, text: "bez białych sukienek" },
@@ -611,67 +713,72 @@ const translations = {
       accommodations: {
         title: "Zakwaterowanie",
         description_1: [
-          "Dla naszych gości spoza miasta oferujemy zakwaterowanie w miejscu ślubu w dniach ",
+          "Dla naszych zagranicznych gości oferujemy zakwaterowanie w hotelu przy sali w dniach: ",
           {
             bold: true,
             text: "Piątek, 25 lipca, Sobota, 26 lipca i Niedziela, 27 lipca.",
           },
-          " Jeśli potrzebujesz zakwaterowania na dodatkowe dni, daj nam znać, a pomożemy Ci je zorganizować, ale koszt za dodatkowe noce będzie na Twój rachunek.",
+          "",
         ],
         breakfast: [
           { bold: true, text: "Śniadanie" },
           " jest wliczone w cenę pobytu i będzie serwowane od ",
-          { bold: true, text: "7:00 do 11:00" },
-          " każdego ranka.",
+          { bold: true, text: "9:00 do 11:00" },
+          " każdego ranka (podane godziny mogą ulec zmianie, prosimy zaglądać na stronę bliżej daty ślubu).",
         ],
       },
       travel_transport: {
-        title: "Podróż i Transport",
+        title: "Travel & Transportation",
         description_1: [
-          "Organizujemy transport z lotniska ",
-          { bold: true, text: "Katowice" },
-          " do miejsca ślubu w piątek, 25 lipca. Zalecamy, aby wszyscy goście przybyli przed godziną ",
-          { bold: true, text: "15:00" },
-          ". Poczekamy na wszystkich. W poniedziałek ",
-          { bold: true, text: "28 lipca" },
-          ", zapewnimy transport z powrotem na lotnisko (godzina do ustalenia).",
+          "Naszym międzynarodowym gościom zapewniamy transport z lotniska na salę w piątek 25 lipca oraz z sali na lotnisko w poniedziałek 28 lipca.",
         ],
         description_2: [
-          "Jeśli przylecisz na inne lotnisko lub poza wyznaczonymi godzinami, będziesz musiał samodzielnie zorganizować transport. Najłatwiejszą opcją jest pociąg lub autobus do ",
-          { bold: true, text: "Belchatow Central" },
-          ", a następnie autobus do ",
-          { bold: true, text: "ulicy XXX" },
-          ", zaledwie 3 minuty spacerem od miejsca wesela.",
+          {
+            bold: true,
+            text: "",
+          },
         ],
+        description_3: [""],
+        description_4: [
+          "Dołożymy wszelkich starań, aby zadowolić każdego. Jeśli nie możesz wylądować/wylecieć tego samego dnia/godziny co wszyscy inni, pomożemy Ci zorganizować inny sposób dotarcia na miejsce i z powrotem.",
+        ],
+      },
+      contact: {
+        title: "Skontaktuj się z Nami",
+        // Email added on the front end
+        // numbers added on the front end
       },
       additional_info:
         "Więcej informacji na temat zakwaterowania i transportu przekażemy Ci prywatnie. Możesz się z nami skontaktować, aby uzyskać więcej szczegółów.",
     },
     rsvp_section: {
       top_title: "RSVP",
-      title: { main: "Potwierdź swoją", sub: "Obecność" },
+      title: { main: "Potwierdź Swoją", sub: "Obecność" },
       description_1: [
-        "Prosimy o potwierdzenie obecności do ",
-        { bold: true, text: "15 maja 2025" },
-        " aby poinformować nas, czy będziesz uczestniczyć. Wyszukaj swoje imię w formularzu i potwierdź, czy dołączysz do nas, czy nie.",
+        {
+          bold: true,
+          text: "Prosimy o potwierdzenie obecności do 26 maja 2025 roku!",
+        },
+        " Wpisz swoje imię i nazwisko w formularzu obok i potwierdź swoją obecność.",
       ],
       description_2:
-        "Możesz również poinformować nas o wszelkich specjalnych potrzebach, takich jak ograniczenia dietetyczne lub inne wymagania. Chcemy upewnić się, że wszyscy czują się komfortowo i dobrze się bawią!",
+        "Zostaw nam wiadomość, jeśli masz jakieś specjalne życzenia, ograniczenia dietetyczne lub jeśli jest coś jeszcze, co chciałbyś z Nami omówić. Zależy nam na tym, aby każdy czuł się komfortowo i świetnie się bawił!",
       label: "Wyszukaj swoje imię na liście gości",
       placeholder: "Wyszukaj swoje imię",
-      no_found: "Nie znaleziono gości o tym imieniu",
+      no_found: "Nie znaleziono osoby o tym imieniu i nazwisku na liście gości",
       multiple_guests_1: {
         hi: "Cześć ",
-        you: "! Ty ",
+        you: "! Ty, ",
         and: " i ",
         are_invited:
-          ", jesteście serdecznie zaproszeni, by dołączyć do nas w tym wyjątkowym dniu. Świętowanie z wami wszystkimi sprawi, że będzie niezapomniane!",
+          ", jesteście serdecznie zaproszeni na nasz wyjątkowy dzień. Nie możemy się doczekać by świętować razem z Wami!",
       },
       multiple_guests_2:
         "Wybierz, kto weźmie udział w weselu. Mamy nadzieję, że wszyscy będziecie mogli przyjść.",
       single_guest_1: {
         hi: "Cześć",
-        are_invited: " Cieszymy się, że jesteś na naszej liście gości!",
+        are_invited:
+          " Cieszymy się, że jesteś na naszej liście gości. Nie możemy się doczekać by świętować razem z Tobą!",
       },
       single_guest_2: "Czy weźmiesz udział w weselu?",
       answers: { yes: "Tak", no: "Nie", unknown: "Jeszcze nie wiem" },
@@ -681,14 +788,14 @@ const translations = {
         submitted: " Twoje potwierdzenie zostało przesłane.",
         change_by: [
           "Pamiętaj, że możesz zmienić swoją obecność do ",
-          { bold: true, text: "15 maja 2025" },
+          { bold: true, text: "26 maja 2025 roku" },
           ".",
         ],
       },
       error_enter_name: "Proszę podać odpowiedź przed wysłaniem",
       error_submitting: "Błąd podczas wysyłania RSVP. Spróbuj ponownie.",
       button: {
-        submit: "Wyślij RSVP",
+        submit: "Potwierdź Obecność",
         loading: "Ładowanie...",
       },
     },

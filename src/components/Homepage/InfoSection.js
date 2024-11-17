@@ -85,7 +85,7 @@ const InfoSection = ({ language }) => {
               ) : (
                 <span key={index} className="font-bold">
                   <Link
-                    href={`https://maps.app.goo.gl/YXrKUt2u3ceWP4DJ8`}
+                    href={`https://przypatykach.pl/`}
                     target="_blank"
                     className="underline underline-offset-4"
                   >
@@ -95,8 +95,8 @@ const InfoSection = ({ language }) => {
               )
             )}
           </p>
-          <p translate="no">{details.same_location}</p>
-          <p translate="no">
+          {/* <p translate="no">{details.same_location}</p> */}
+          {/* <p translate="no">
             {details.no_white_dresses.map((item, index) =>
               typeof item === "string" ? (
                 item
@@ -106,7 +106,7 @@ const InfoSection = ({ language }) => {
                 </span>
               )
             )}
-          </p>
+          </p> */}
         </div>
 
         <div className="static md:hidden h-px w-[50px] bg-black opacity-50" />
