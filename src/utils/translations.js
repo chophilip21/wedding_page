@@ -9,8 +9,8 @@ const translations = {
   // ENGLISH <---------------------------------------------------------------------------------------
   en: {
     couple: {
-      her: "Karoliny",
-      him: "Emanuela",
+      her: "Karolina",
+      him: "Emanuele",
     },
     navbar: {
       welcome: "Welcome",
@@ -256,8 +256,8 @@ const translations = {
   // ITALIAN <---------------------------------------------------------------------------------------
   it: {
     couple: {
-      her: "Karoliny",
-      him: "Emanuela",
+      her: "Karolina",
+      him: "Emanuele",
     },
     navbar: {
       welcome: "Benvenuti",
