@@ -11,6 +11,8 @@ const translations = {
     couple: {
       her: "Karolina",
       him: "Emanuele",
+      footer_her: "Karolina",
+      footer_him: "Emanuele",
     },
     navbar: {
       welcome: "Welcome",
@@ -121,22 +123,19 @@ const translations = {
       details: {
         when_where: "When & Where",
         dates: [
-          "Dates: ",
           {
             bold: true,
-            text: "Saturday, 26th of July & Sunday, 27th of July 2025.",
+            text: "Dates: ",
           },
+          "Saturday, 26th of July & Sunday, 27th of July 2025.",
         ],
         location: [
-          "Location: ",
           {
             bold: true,
-            text: 'Venue "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Poland.',
+            text: "Location: ",
           },
+          'Venue "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Poland.',
         ],
-        same_location:
-          "Ceremony, Party and Accommodations are held in the same location.", // remove
-        no_white_dresses: ["Please ", { bold: true, text: "No white dresses" }], // remove
       },
       accommodations: {
         title: "Accommodations",
@@ -178,8 +177,6 @@ const translations = {
         // Email added on the front end
         // numbers added on the front end
       },
-      additional_info:
-        "We will let you know more information about the accommodation and transportation in private. Or you can always contact us to ask more details.",
     },
     rsvp_section: {
       top_title: "RSVP",
@@ -229,16 +226,15 @@ const translations = {
     registry_section: {
       title: { main: "GIFT", sub: "Registry" },
       description_1:
-        "Your presence at our wedding is the greatest gift we could ask for.",
+        "Your presence at our wedding is truly the greatest gift we could ask for!",
       description_2:
-        "However, if you wish to honor us with a gift, we would greatly appreciate a monetary contribution to help us build our future together.",
+        "However, if you wish to honor us with a gift, we would greatly appreciate a monetary contribution to help us build our future together. We kindly ask our international guests to consider sending their gift via a bank transfer.",
       description_3:
-        "We kindly ask our international guests to consider sending their gift via IBAN transfer or a similar method such as Revolut. For our Polish guests, contributions can be made online or given in cash at the wedding, whichever is more convenient.",
+        "To access our bank details, please click the button below and enter the password that’s on your invitation. As always, feel free to contact us directly if you have any questions!",
       description_4:
-        "To access the IBAN details, please click the button below and enter the password you received with the invitation, or contact us directly for further information.",
-      description_5:
-        "In lieu of flowers, which we already have in abundance, we would be delighted to receive scratch cards or lottery tickets as a fun and exciting way to celebrate our new beginning.",
-      button: "Access Gift Transfer Info",
+        "In lieu of flowers, alcohol, and other physical gifts, we would be delighted to receive scratch cards or lottery tickets as a fun and exciting way to celebrate our new beginning.",
+      description_5: "",
+      button: "Access Bank Details",
       thanks: "THANK YOU",
       error_from_api: "There is a problem. Try again later or contact us",
       error_incorrect_password: "Incorrect password",
@@ -265,15 +261,16 @@ const translations = {
     music_section: {
       title: { main: "OUR", sub: "Playlist" },
       description:
-        "Help us shape the perfect soundtrack! Share your favorite songs for background vibes or dance floor fun, and we'll add them to our wedding playlist.",
+        "Add your favorite party songs to our playlist and help us shape the perfect soundtrack for our wedding! ",
       placeholder: "Enter the song name",
-      small_note: "* Some songs can't play here, but you can still add them.",
+      small_note:
+        "* Some songs can't be played here, but you can still add them to the playlist.",
       toast_success: {
-        title: "Song Added to the Playlist",
+        title: "Song added to the playlist",
         description: "Would you like to add another song?",
       },
       toast_error: {
-        title: "Unable to Add Song",
+        title: "Unable to add the song",
         description:
           "We're sorry, but something went wrong on our end. Please try again later.",
       },
@@ -293,6 +290,8 @@ const translations = {
     couple: {
       her: "Karolina",
       him: "Emanuele",
+      footer_her: "Karolina",
+      footer_him: "Emanuele",
     },
     navbar: {
       welcome: "Benvenuti",
@@ -403,21 +402,15 @@ const translations = {
       details: {
         when_where: "Quando e Dove",
         dates: [
-          "Date: ",
-          { bold: true, text: "Sabato 26 e Domenica 27 Luglio 2025" },
+          { bold: true, text: "Date: " },
+          "Sabato 26 e Domenica 27 Luglio 2025",
         ],
         location: [
-          "Location: ",
           {
             bold: true,
-            text: 'Luogo "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Polonia',
+            text: "Location",
           },
-        ],
-        same_location:
-          "Cerimonia, festa e alloggio si terranno nello stesso luogo.",
-        no_white_dresses: [
-          "Per favore, ",
-          { bold: true, text: "niente vestiti bianchi" },
+          'Agriturismo "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Polonia',
         ],
       },
       accommodations: {
@@ -438,7 +431,7 @@ const translations = {
         ],
       },
       travel_transport: {
-        title: "Travel & Transportation",
+        title: "Viaggio",
         description_1: [
           "Per i nostri ospiti internazionali, forniremo il trasporto dall'aeroporto alla location venerdì 25 luglio e dalla location all'aeroporto lunedì 28 luglio.",
         ],
@@ -460,8 +453,6 @@ const translations = {
         // Email added on the front end
         // numbers added on the front end
       },
-      additional_info:
-        "Ti faremo sapere maggiori informazioni sugli alloggi e trasporti in privato. Puoi anche contattarci per ulteriori dettagli.",
     },
     rsvp_section: {
       top_title: "RSVP",
@@ -514,15 +505,14 @@ const translations = {
     registry_section: {
       title: { main: "LISTA", sub: "Nozze" },
       description_1:
-        "La vostra presenza al nostro matrimonio è il regalo più grande che possiamo desiderare.",
+        "La vostra presenza al nostro matrimonio è davvero il regalo più grande che potremmo desiderare!",
       description_2:
-        "Tuttavia, se desiderate onorarci con un dono, vi saremmo grati per un contributo economico per aiutarci a costruire il nostro futuro insieme.",
+        "Tuttavia, se desiderate onorarci con un regalo, vi saremmo immensamente grati per un contributo monetario che ci aiuti a costruire il nostro futuro insieme. Chiediamo gentilmente ai nostri ospiti internazionali di considerare l’opzione di inviare il regalo tramite bonifico bancario.",
       description_3:
-        "Chiediamo gentilmente ai nostri ospiti internazionali di considerare l'invio del loro dono tramite bonifico IBAN o un metodo simile come Revolut. Per i nostri ospiti polacchi, i contributi possono essere effettuati online o consegnati in contanti durante il matrimonio, a seconda della vostra comodità.",
+        "Per accedere ai nostri dati bancari, cliccate sul pulsante qui sotto e inserite la password indicata nell’invito. Come sempre, non esitate a contattarci direttamente se avete domande!",
       description_4:
-        "Per accedere ai dettagli IBAN, fate clic sul pulsante qui sotto ed inserite la password ricevuta con l'invito, oppure contattateci direttamente per ulteriori informazioni.",
-      description_5:
-        "Invece dei fiori, che già abbiamo in abbondanza, ci farebbe piacere ricevere dei gratta e vinci o biglietti della lotteria come un modo divertente per celebrare il nostro nuovo inizio.",
+        "In alternativa a fiori, liquori e altri regali materiali, saremmo felici di ricevere gratta e vinci o biglietti della lotteria come modo divertente ed emozionante per celebrare il nostro nuovo inizio.",
+      description_5: "",
       button: "Accedi ai dettagli bancari",
       thanks: "GRAZIE",
       error_from_api:
@@ -551,16 +541,16 @@ const translations = {
     music_section: {
       title: { main: "LA", sub: "Playlist" },
       description:
-        "Aiutaci a creare la colonna sonora perfetta! Condividi le tue canzoni preferite per un bel sottofond o per divertirti sulla pista da ballo, e le aggiungeremo alla nostra playlist di matrimonio.",
-      placeholder: "Cerca canzoni",
+        "Aggiungi le tue canzoni preferite alla nostra playlist e aiutaci a creare la colonna sonora perfetta per il nostro matrimonio!",
+      placeholder: "Nome della canzone",
       small_note:
-        "* Alcune canzoni non possono essere riprodotte qui, ma puoi comunque aggiungerle.",
+        "* Alcune canzoni non possono essere riprodotte qui, ma puoi comunque aggiungerle alla playlist.",
       toast_success: {
-        title: "Canzone aggiunta alla Playlist",
+        title: "Canzone aggiunta alla playlist",
         description: "Vuoi aggiungerne un'altra?",
       },
       toast_error: {
-        title: "Impossibile aggiungere la canzone",
+        title: "Impossibile aggiungere la canzone alla playlist!",
         description:
           "Siamo spiacenti, ma qualcosa è andato storto da parte nostra. Per favore, riprova più tardi.",
       },
@@ -580,6 +570,8 @@ const translations = {
     couple: {
       her: "Karoliny",
       him: "Emanuela",
+      footer_her: "Karoline",
+      footer_him: "Emanuela",
     },
     navbar: {
       welcome: "Witamy",
@@ -690,24 +682,18 @@ const translations = {
       details: {
         when_where: "Kiedy i Gdzie",
         dates: [
-          "Daty: ",
           {
             bold: true,
-            text: "Sobota, 26 Lipca & Niedziela, 27 Lipca 2025 roku",
+            text: "Daty: ",
           },
+          "Sobota, 26 Lipca & Niedziela, 27 Lipca 2025 roku",
         ],
         location: [
-          "Lokalizacja: ",
           {
             bold: true,
-            text: 'Sala "Przy Patykach", Kolonia Łobudzice 18c, 97-425',
+            text: "Lokalizacja: ",
           },
-        ],
-        same_location:
-          "Miejsce zaślubin, sala weselna, oraz hotel znajdują się na tym samym terenie.",
-        no_white_dresses: [
-          "Prosimy, ",
-          { bold: true, text: "bez białych sukienek" },
+          'Sala "Przy Patykach", Kolonia Łobudzice 18c, 97-425',
         ],
       },
       accommodations: {
@@ -748,8 +734,6 @@ const translations = {
         // Email added on the front end
         // numbers added on the front end
       },
-      additional_info:
-        "Więcej informacji na temat zakwaterowania i transportu przekażemy Ci prywatnie. Możesz się z nami skontaktować, aby uzyskać więcej szczegółów.",
     },
     rsvp_section: {
       top_title: "RSVP",
@@ -800,17 +784,16 @@ const translations = {
       },
     },
     registry_section: {
-      title: { main: "PREZENT", sub: "Lista" },
+      title: { main: "LISTA", sub: "Prezentów" },
       description_1:
-        "Twoja obecność na naszym ślubie jest największym prezentem, o jaki moglibyśmy prosić.",
+        "Wasza obecność w tym wyjątkowym dniu będzie dla Nas największym prezentem!",
       description_2:
-        "Jeśli jednak chcielibyście nas uhonorować prezentem, bylibyśmy wdzięczni za wkład pieniężny, aby pomóc nam budować wspólną przyszłość.",
+        "Jeśli jednak chcielibyście obdarować nas w tym najważniejszym dla nas dniu, będziemy wdzięczni o wsparcie finansowe na budowę naszej wspólnej przyszłości.",
       description_3:
-        "Uprzejmie prosimy naszych międzynarodowych gości o rozważenie przesłania prezentu za pomocą przelewu IBAN lub podobnej metody, takiej jak Revolut. Dla naszych gości z Polski, wkłady można przekazać online lub w gotówce na weselu, w zależności od tego, co jest wygodniejsze.",
+        "Zamiast kwiatów, alkoholu i innych prezentów fizycznych, serdecznie prosimy o zdrapki lub losy na loterię!",
       description_4:
-        "Aby uzyskać dostęp do danych IBAN, kliknij poniższy przycisk i wprowadź hasło, które otrzymałeś wraz z zaproszeniem, lub skontaktuj się z nami bezpośrednio w celu uzyskania dalszych informacji.",
-      description_5:
-        "Zamiast kwiatów, których mamy już w nadmiarze, z przyjemnością przyjmiemy zdrapki lub losy na loterię jako zabawny i ekscytujący sposób na uczczenie naszego nowego początku.",
+        "Uprzejmie prosimy naszych gości z zagranicy o rozważenie przesłania prezentu przelewem bankowym. Aby uzyskać dostęp do danych bankowych, kliknij poniższy przycisk i wprowadź hasło znajdujące się w zaproszeniu. Jak zawsze, jeśli masz jakiekolwiek pytania, skontaktuj się z nami bezpośrednio!",
+      description_5: "",
       button: "Dostęp do danych przelewu",
       thanks: "DZIĘKUJEMY",
       error_from_api:
@@ -834,20 +817,20 @@ const translations = {
       copy_all: "Kopiuj wszystko",
     },
     music_section: {
-      title: { main: "NASZA", sub: "Playlist" },
+      title: { main: "NASZA", sub: "Playlista" },
       description:
-        "Pomóż nam stworzyć idealną ścieżkę dźwiękową! Podziel się swoimi ulubionymi piosenkami na tle lub na parkiet, a dodamy je do naszej playlisty weselnej.",
+        "Dodaj swoje ulubione piosenki do naszej playlisty i pomóż nam stworzyć idealną ścieżkę dźwiękową na nasze wesele!",
       placeholder: "Wpisz nazwę utworu",
       small_note:
-        "* Niektóre piosenki nie mogą być odtworzone tutaj, ale nadal możesz je dodać.",
+        "* Niektóre piosenki nie mogą być odtworzone, ale nadal możesz je dodać do naszej playlisty.",
       toast_success: {
-        title: "Piosenka dodana do Playlisty",
+        title: "Piosenka dodana do playlisty",
         description: "Czy chcesz dodać kolejną piosenkę?",
       },
       toast_error: {
         title: "Nie udało się dodać piosenki",
         description:
-          "Przepraszamy, coś poszło nie tak po naszej stronie. Spróbuj ponownie później.",
+          "Przepraszamy, coś poszło nie tak. Spróbuj ponownie później.",
       },
     },
     footer: {
