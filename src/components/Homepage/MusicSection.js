@@ -380,7 +380,7 @@ const MusicSection = ({ language }) => {
       </motion.div>
 
       {/* Background */}
-      <div className="absolute top-0 w-full h-[300px] bg-gradient-to-b from-blue via-[#0c142c5e] z-10"></div>
+      <div className="absolute top-0 w-full h-[300px] bg-gradient-to-b from-blue via-[#193b355e] z-10"></div>
       <div className="w-full h-full overlay z-[1] md:backdrop-blur-[2px]"></div>
       {!videoError && (
         <video

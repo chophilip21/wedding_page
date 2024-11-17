@@ -8,6 +8,10 @@
 const translations = {
   // ENGLISH <---------------------------------------------------------------------------------------
   en: {
+    couple: {
+      her: "Karoliny",
+      him: "Emanuela",
+    },
     navbar: {
       welcome: "Welcome",
       save_the_date: "Save the Date",
@@ -34,17 +38,18 @@ const translations = {
       title_cursive: "The Date",
       date: "26th of July 2025",
       place: "in Kolonia Łobudzice, Poland",
-      story_1: "We met",
-      story_2: "We got engaged",
-      story_3_future: "We will marry",
-      story_3_past: "We got married",
+      story_1: "We Met",
+      story_2: "We Got Engaged",
+      story_3_future: "We Will Marry",
+      story_3_past: "We Got Married",
     },
     schedule_section: {
       title: {
         main: "WEDDING",
         sub: "Timeline",
       },
-      description: "The wedding will be 2 days, 26th and 27th of July",
+      description:
+        "The wedding celebration will start on Saturday, 26th of July, and end on Sunday, 27th of July 2025.",
       day_1: {
         title: "Day 1",
         events: {
@@ -250,6 +255,10 @@ const translations = {
 
   // ITALIAN <---------------------------------------------------------------------------------------
   it: {
+    couple: {
+      her: "Karoliny",
+      him: "Emanuela",
+    },
     navbar: {
       welcome: "Benvenuti",
       save_the_date: "Segna la Data",
@@ -276,17 +285,18 @@ const translations = {
       title_cursive: "La Data",
       date: "26 Luglio 2025",
       place: "a Kolonia Łobudzice, Polonia",
-      story_1: "Ci siamo conosciuti",
-      story_2: "Ci siamo fidanzati",
-      story_3_future: "Ci sposiamo",
-      story_3_past: "Ci siamo sposati",
+      story_1: "Ci Siamo Conosciuti",
+      story_2: "Ci Siamo Fidanzati",
+      story_3_future: "Ci Sposiamo",
+      story_3_past: "Ci Siamo Sposati",
     },
     schedule_section: {
       title: {
         main: "TIMELINE",
         sub: "Matrimonio",
       },
-      description: "Il matrimonio durerà 2 giorni, 26 e 27 luglio",
+      description:
+        "La cerimonia inizia Sabato 26, e finisce Domenica 27 Luglio 2025.",
       day_1: {
         title: "Giorno 1",
         events: {
@@ -498,6 +508,10 @@ const translations = {
 
   // POLISH <---------------------------------------------------------------------------------------
   pl: {
+    couple: {
+      her: "Karoliny",
+      him: "Emanuela",
+    },
     navbar: {
       welcome: "Witamy",
       save_the_date: "Zapisz Datę",
@@ -524,17 +538,18 @@ const translations = {
       title_cursive: "Datę",
       date: "26 lipca 2025",
       place: "w Kolonii Łobudzice, Polska",
-      story_1: "Spotkaliśmy się",
-      story_2: "Zaręczyliśmy się",
-      story_3_future: "Weźmiemy ślub",
-      story_3_past: "Pobraliśmy się",
+      story_1: "Spotkaliśmy Się",
+      story_2: "Zaręczyliśmy Się",
+      story_3_future: "Weźmiemy Ślub",
+      story_3_past: "Pobraliśmy Się",
     },
     schedule_section: {
       title: {
         main: "WESELE",
         sub: "Timeline",
       },
-      description: "Wesele potrwa 2 dni, 26 i 27 lipca",
+      description:
+        "Ślub oraz wesele odbędą się 26 lipca 2025 roku. Następnego dnia serdecznie zapraszamy na poprawiny!",
       day_1: {
         title: "Dzień 1",
         events: {

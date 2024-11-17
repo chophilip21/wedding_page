@@ -156,17 +156,20 @@ const ScheduleSection = ({ language }) => {
                         {ev.time}
                       </p>
 
-                      <h5 translate="no" className="leading-3 text-gold">
+                      <h5
+                        translate="no"
+                        className="leading-3 text-gold max-md:mb-4"
+                      >
                         {ev.title}
                       </h5>
-                      <p
+                      {/* <p
                         translate="no"
                         className={`text-white max-md:text-center ${
                           evIndex % 2 === 0 ? "md:text-right" : "md:text-left"
                         }`}
                       >
                         {ev.description}
-                      </p>
+                      </p> */}
                     </motion.div>
                     <div
                       className={`max-lg:hidden h-px w-[50px] xl:w-[120px] bg-gold flex items-center ${
