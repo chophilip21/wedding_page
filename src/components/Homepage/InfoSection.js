@@ -88,6 +88,7 @@ const InfoSection = ({ language }) => {
             {details.location.map((item, index) =>
               typeof item === "string" ? (
                 <Link
+                  key={index}
                   href={`https://przypatykach.pl/`}
                   target="_blank"
                   className="underline underline-offset-4 decoration-1"
