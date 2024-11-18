@@ -229,7 +229,6 @@ const translations = {
         "In lieu of flowers, alcohol, and other physical gifts, we would be delighted to receive scratch cards or lottery tickets as a fun and exciting way to celebrate our new beginning.",
       description_4:
         "We kindly ask our international guests to consider sending their gift via a bank transfer. To access our bank details, please click the button below and enter the password that’s on your invitation. As always, feel free to contact us directly if you have any questions!",
-      description_5: "",
       button: "Access Bank Details",
       thanks: "THANK YOU",
       error_from_api: "There is a problem. Try again later or contact us",
@@ -504,7 +503,6 @@ const translations = {
         "In alternativa a fiori, liquori e altri regali materiali, saremmo felici di ricevere gratta e vinci o biglietti della lotteria come modo divertente ed emozionante per celebrare il nostro nuovo inizio.",
       description_4:
         "Chiediamo gentilmente ai nostri ospiti internazionali di considerare l’opzione di inviare il regalo tramite bonifico bancario. Per accedere ai nostri dati bancari, cliccate sul pulsante qui sotto e inserite la password indicata nell’invito. Come sempre, non esitate a contattarci direttamente se avete domande!",
-      description_5: "",
       button: "Accedi ai dettagli bancari",
       thanks: "GRAZIE",
       error_from_api:
@@ -781,7 +779,6 @@ const translations = {
         "Zamiast kwiatów, alkoholu i innych prezentów fizycznych, serdecznie prosimy o zdrapki lub losy na loterię!",
       description_4:
         "Uprzejmie prosimy naszych gości z zagranicy o rozważenie przesłania prezentu przelewem bankowym. Aby uzyskać dostęp do danych bankowych, kliknij poniższy przycisk i wprowadź hasło znajdujące się w zaproszeniu. Jak zawsze, jeśli masz jakiekolwiek pytania, skontaktuj się z nami bezpośrednio!",
-      description_5: "",
       button: "Dostęp do danych przelewu",
       thanks: "DZIĘKUJEMY",
       error_from_api:

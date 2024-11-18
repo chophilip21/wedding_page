@@ -33,7 +33,6 @@ const RegistrySection = ({ language }) => {
     description_2,
     description_3,
     description_4,
-    description_5,
     button,
     thanks,
     error_from_api,
@@ -328,7 +327,7 @@ const RegistrySection = ({ language }) => {
           <Dialog>
             <DialogTrigger
               translate="no"
-              className="bg-transparent text-gold border border-gold px-3 py-2 rounded-full mb-4 transition-all duration-300 hover:bg-gold hover:text-white"
+              className="bg-transparent text-gold border border-gold px-3 py-2 rounded-full my-6 mb-12 transition-all duration-300 hover:bg-gold hover:text-white"
             >
               {button}
             </DialogTrigger>
@@ -687,17 +686,6 @@ const RegistrySection = ({ language }) => {
           </Dialog>
         </motion.div>
 
-        {dashedLine}
-        <motion.p
-          initial="hidden"
-          whileInView="visible"
-          variants={secondaryVariants}
-          viewport={{ once: true, amount: 0.2 }}
-          translate="no"
-          className="text-center mt-4 mb-12"
-        >
-          {description_5}
-        </motion.p>
         <motion.h3
           initial="hidden"
           whileInView="visible"
