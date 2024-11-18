@@ -230,7 +230,7 @@ const translations = {
       description_4:
         "We kindly ask our international guests to consider sending their gift via a bank transfer. To access our bank details, please click the button below and enter the password that’s on your invitation. As always, feel free to contact us directly if you have any questions!",
       button: "Access Bank Details",
-      thanks: "THANK YOU",
+      thanks: "THANK YOU!",
       error_from_api: "There is a problem. Try again later or contact us",
       error_incorrect_password: "Incorrect password",
       error_insert_password: "Insert password",
@@ -504,7 +504,7 @@ const translations = {
       description_4:
         "Chiediamo gentilmente ai nostri ospiti internazionali di considerare l’opzione di inviare il regalo tramite bonifico bancario. Per accedere ai nostri dati bancari, cliccate sul pulsante qui sotto e inserite la password indicata nell’invito. Come sempre, non esitate a contattarci direttamente se avete domande!",
       button: "Accedi ai dettagli bancari",
-      thanks: "GRAZIE",
+      thanks: "GRAZIE!",
       error_from_api:
         "Si è verificato un problema. Riprova più tardi o contattaci",
       error_incorrect_password: "Password errata",
@@ -780,7 +780,7 @@ const translations = {
       description_4:
         "Uprzejmie prosimy naszych gości z zagranicy o rozważenie przesłania prezentu przelewem bankowym. Aby uzyskać dostęp do danych bankowych, kliknij poniższy przycisk i wprowadź hasło znajdujące się w zaproszeniu. Jak zawsze, jeśli masz jakiekolwiek pytania, skontaktuj się z nami bezpośrednio!",
       button: "Dostęp do danych przelewu",
-      thanks: "DZIĘKUJEMY",
+      thanks: "DZIĘKUJEMY!",
       error_from_api:
         "Wystąpił problem. Spróbuj ponownie później lub skontaktuj się z nami",
       error_incorrect_password: "Nieprawidłowe hasło",
