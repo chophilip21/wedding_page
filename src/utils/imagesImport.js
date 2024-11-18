@@ -35,11 +35,6 @@ import g_3_5 from "../../public/images/g_3_5.jpg";
 import g_3_6 from "../../public/images/g_3_6.jpg";
 import glass from "../../public/icons/glass.png";
 import glasses from "../../public/icons/glasses.png";
-import ceremony from "../../public/icons/ceremony.png";
-import cake from "../../public/icons/cake.png";
-import dinner from "../../public/icons/dinner.png";
-import dance from "../../public/icons/dance.png";
-import drink from "../../public/icons/drink.png";
 import bell from "../../public/icons/bell.png";
 import collage from "../../public/images/collage.png";
 import musicsect from "../../public/images/musicsect.jpg";
@@ -81,11 +76,6 @@ const images = {
   g_3_6,
   glass,
   glasses,
-  dance,
-  drink,
-  dinner,
-  ceremony,
-  cake,
   bell,
   collage,
   musicsect,

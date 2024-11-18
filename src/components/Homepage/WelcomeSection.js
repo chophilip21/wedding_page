@@ -170,7 +170,7 @@ const WelcomeSection = ({ language }) => {
         </div>
 
         {/* Second Image */}
-        <div className="h-full flex-1 max-sm:hidden z-0">
+        <div className="h-full flex-1 z-0">
           <Image
             src={images.welcome_2}
             alt={`welcom_2`}
@@ -182,7 +182,7 @@ const WelcomeSection = ({ language }) => {
         </div>
 
         {/* Third Image */}
-        <div className="h-full flex-1 z-0">
+        <div className="h-full flex-1  z-0">
           <Image
             src={images.welcome_3}
             alt={`welcom_3`}

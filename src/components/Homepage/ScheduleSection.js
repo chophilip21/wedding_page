@@ -37,42 +37,42 @@ const ScheduleSection = ({ language }) => {
         {
           time: day_1.events.ceremony.time,
           title: day_1.events.ceremony.title,
-          icon: images.ceremony,
+          icon: "/icons/ceremony.svg",
         },
         {
           time: day_1.events.dinner.time,
           title: day_1.events.dinner.title,
-          icon: images.dinner,
+          icon: "/icons/dinner.svg",
         },
         {
           time: day_1.events.dance.time,
           title: day_1.events.dance.title,
-          icon: images.dinner,
+          icon: "/icons/dance.svg",
         },
         {
           time: day_1.events.photo.time,
           title: day_1.events.photo.title,
-          icon: images.dinner,
+          icon: "/icons/photobooth.svg",
         },
         {
           time: day_1.events.pig.time,
           title: day_1.events.pig.title,
-          icon: images.dinner,
+          icon: "/icons/dish.svg",
         },
         {
           time: day_1.events.cake_cutting.time,
           title: day_1.events.cake_cutting.title,
-          icon: images.cake,
+          icon: "/icons/cake.svg",
         },
         {
           time: day_1.events.games.time,
           title: day_1.events.games.title,
-          icon: images.cake,
+          icon: "/icons/games.svg",
         },
         {
           time: day_1.events.party.time,
           title: day_1.events.party.title,
-          icon: images.drink,
+          icon: "/icons/repeat1.svg",
         },
       ],
     },
@@ -82,22 +82,22 @@ const ScheduleSection = ({ language }) => {
         {
           time: day_2.events.after.time,
           title: day_2.events.after.title,
-          icon: images.dance,
+          icon: "/icons/after.svg",
         },
         {
           time: day_2.events.vespa.time,
           title: day_2.events.vespa.title,
-          icon: images.dance,
+          icon: "/icons/vespa.svg",
         },
         {
           time: day_2.events.party_continues.time,
           title: day_2.events.party_continues.title,
-          icon: images.dance,
+          icon: "/icons/repeat2.svg",
         },
         {
           time: day_2.events.end.time,
           title: day_2.events.end.title,
-          icon: images.dance,
+          icon: "/icons/end.svg",
         },
       ],
     },
@@ -139,12 +139,12 @@ const ScheduleSection = ({ language }) => {
         </p>
       </motion.div>
       {/* Timeline */}
-      <div className="relative w-full flex flex-col items-center gap-12 mt-12">
-        <div className="absolute  top-0 w-px h-[90%] border border-gold border-dashed z-0"></div>
+      <div className="relative w-full flex flex-col items-center gap-8 mt-12">
+        <div className="absolute  top-0 w-px h-[100%] border border-gold border-dashed z-0"></div>
         {timelineData.map((day, dayIndex) => (
           <div
             key={dayIndex}
-            className="w-full flex flex-col items-center gap-12 z-10"
+            className="w-full flex flex-col items-center gap-8 z-10"
           >
             <div className="w-[103px] h-[103px] md:w-[128px] md:h-[128px] lg:w-[148px] lg:h-[148px] flex justify-center items-center rounded-full border border-gold bg-blue">
               <h3 translate="no" className="alex-brush mt-2 text-white">
@@ -201,17 +201,23 @@ const ScheduleSection = ({ language }) => {
                       <div className="h-[7px] w-[7px] rounded-full bg-gold"></div>
                     </div>
                   </div>
-                  <div className="relative w-[90px] h-[90px]  xl:w-[100px] xl:h-[100px] rounded-full bg-gold flex justify-center items-center">
-                    <div className="w-full h-full bg-gold absolute rounded-full z-[1]" />
-                    <Image
+                  <div className="relative w-[140px] h-[140px] md:w-[90px] md:h-[90px] lg:w-[120px] lg:h-[120px]  xl:w-[190px] xl:h-[190px] flex justify-center items-center p-4 xl:p-6">
+                    <div className="w-full h-full  absolute  z-[1] bg-white border-4 border-gold rounded-full" />
+                    {/* <Image
                       src={ev.icon}
                       alt={ev.title}
                       width={85}
                       height={85}
                       quality={100}
                       className=" w-[50px] xl:w-[65px] h-auto z-10"
+                    /> */}
+                    <img
+                      src={ev.icon}
+                      alt={ev.title}
+                      className="w-full h-auto z-10 "
                     />
                   </div>
+
                   <div
                     className={`max-md:hidden w-[50%] xl:w-[600px] ${
                       evIndex % 2 === 0 ? "items-start" : "items-end"
