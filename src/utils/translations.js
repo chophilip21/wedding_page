@@ -289,11 +289,11 @@ const translations = {
       footer_him: "Emanuele",
     },
     navbar: {
-      welcome: "Benvenuti",
+      welcome: "Vetrina",
       save_the_date: "Segna la Data",
       schedule: "Timeline Matrimonio",
       info: "Dettagli",
-      rsvp: "RSVP",
+      rsvp: "Conferma la Presenza",
       registry: "Lista Nozze",
       music: "Playlist",
     },
