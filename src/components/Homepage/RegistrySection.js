@@ -327,7 +327,7 @@ const RegistrySection = ({ language }) => {
           <Dialog>
             <DialogTrigger
               translate="no"
-              className="bg-transparent text-gold border border-gold px-3 py-2 rounded-full my-6 mb-12 transition-all duration-300 hover:bg-gold hover:text-white"
+              className="bg-transparent text-gold border border-gold px-3 py-2 rounded-full mt-6  transition-all duration-300 hover:bg-gold hover:text-white"
             >
               {button}
             </DialogTrigger>
@@ -685,6 +685,15 @@ const RegistrySection = ({ language }) => {
             </DialogContent>
           </Dialog>
         </motion.div>
+
+        <Image
+          src={images.divider}
+          alt={`divider`}
+          width={650}
+          height={0}
+          quality={100}
+          className={`w-[160px] h-auto mt-12 mb-8 `}
+        />
 
         <motion.h3
           initial="hidden"

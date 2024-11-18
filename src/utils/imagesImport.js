@@ -51,6 +51,7 @@ import spinner from "../../public/icons/spinner.png";
 import la1 from "../../public/images/la1.png";
 import la2 from "../../public/images/la2.png";
 import la3 from "../../public/images/la3.png";
+import divider from "../../public/icons/divider.png";
 
 const images = {
   welcome_1,
@@ -99,6 +100,7 @@ const images = {
   la1,
   la2,
   la3,
+  divider,
 };
 
 export default images;
