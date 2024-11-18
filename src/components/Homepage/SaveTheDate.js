@@ -58,12 +58,12 @@ const SaveTheDate = ({ language }) => {
 
   // Group story elements for convenience
   const story = [
-    { year: 2018, text: story_1, img: images.met },
-    { year: 2022, text: story_2, img: images.engaged },
+    { year: 2018, text: story_1, img: "/icons/met.svg" },
+    { year: 2022, text: story_2, img: "/icons/engaged.svg" },
     {
       year: 2025,
       text: countdown.message ? story_3_past : story_3_future,
-      img: images.marry,
+      img: "/icons/marry.svg",
     },
   ];
 
@@ -150,15 +150,12 @@ const SaveTheDate = ({ language }) => {
               whileInView="visible"
               variants={tertiaryVariants}
               viewport={{ once: true, amount: 0.2 }}
-              className="w-[140px] sm:w-[160px] h-[140px] sm:h-[160px] border-4 border-gold rounded-full flex justify-center items-center mb-3"
+              className="w-[140px] sm:w-[160px] h-[140px] sm:h-[160px] flex justify-center items-center mb-3"
             >
-              <Image
+              <img
                 src={item.img}
                 alt={item.text}
-                width={85}
-                height={85}
-                quality={100}
-                className={`w-[80px] sm:w-[100px] h-[80px] sm:h-[100px]   z-10`}
+                className="w-full h-auto z-10"
               />
             </motion.div>
             <motion.h4
