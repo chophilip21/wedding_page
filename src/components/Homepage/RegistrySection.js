@@ -161,26 +161,11 @@ const RegistrySection = ({ language }) => {
     let copiedText = "";
 
     if (currency === "eur") {
-      copiedText += `
-      ${account_holder} ${paymentInfo.EUR.accountHolder}
-  ${iban} ${paymentInfo.EUR.iban}
-  ${bank_name} ${paymentInfo.EUR.bankName}
-  ${bic} ${paymentInfo.EUR.bic}
-      `;
+      copiedText += `${account_holder} ${paymentInfo.EUR.accountHolder}\n${iban} ${paymentInfo.EUR.iban}\n${bank_name} ${paymentInfo.EUR.bankName}\n${bic} ${paymentInfo.EUR.bic}`;
     } else if (currency === "gbp") {
-      copiedText += `
-      ${account_holder} ${paymentInfo.GBP.accountHolder}
-  ${sort_code} ${paymentInfo.GBP.sortCode}
-  ${account_number} ${paymentInfo.GBP.accountNumber}
-  ${bank_name} ${paymentInfo.GBP.bankName}
-      `;
+      copiedText += `${account_holder} ${paymentInfo.GBP.accountHolder}\n${sort_code} ${paymentInfo.GBP.sortCode}\n${account_number} ${paymentInfo.GBP.accountNumber}\n${bank_name} ${paymentInfo.GBP.bankName}`;
     } else if (currency === "pln") {
-      copiedText += `
-       ${account_holder} ${paymentInfo.PLN.accountHolder}
-  ${iban} ${paymentInfo.PLN.iban}
-  ${bank_name} ${paymentInfo.PLN.bankName}
-  ${bic} ${paymentInfo.PLN.bic}
-      `;
+      copiedText += `${account_holder} ${paymentInfo.PLN.accountHolder}\n${iban} ${paymentInfo.PLN.iban}\n${account_number} ${paymentInfo.PLN.accountNumber}\n${bank_name} ${paymentInfo.PLN.bankName}`;
     } else {
       return;
     }
@@ -427,7 +412,7 @@ const RegistrySection = ({ language }) => {
                         {" "}
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col sm:gap-1"
                         >
                           <span className="font-semibold">
                             {account_holder}
@@ -446,7 +431,7 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col  sm:gap-1"
                         >
                           <span className="font-semibold">{iban}</span>
                           {paymentInfo.EUR.iban}
@@ -464,7 +449,7 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col  sm:gap-1"
                         >
                           <span className="font-semibold">{bank_name}</span>
                           {paymentInfo.EUR.bankName}
@@ -482,7 +467,7 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col sm:gap-1"
                         >
                           <span className="font-semibold">{bic}</span>
                           {paymentInfo.EUR.bic}
@@ -516,7 +501,7 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col sm:gap-1"
                         >
                           <span className="font-semibold">
                             {account_holder}
@@ -536,7 +521,7 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col sm:gap-1"
                         >
                           <span className="font-semibold">{sort_code}</span>
                           {formatSortCode(paymentInfo.GBP.sortCode)}
@@ -554,7 +539,7 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col sm:gap-1"
                         >
                           <span className="font-semibold">
                             {account_number}
@@ -574,7 +559,7 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col sm:gap-1"
                         >
                           <span className="font-semibold">{bank_name}</span>
                           {paymentInfo.GBP.bankName}
@@ -608,7 +593,7 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col sm:gap-1"
                         >
                           <span className="font-semibold">
                             {account_holder}
@@ -628,7 +613,7 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className=" font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className=" font-sans font-light text-left flex flex-col sm:gap-1"
                         >
                           <span className="font-semibold">{iban}</span>
                           {paymentInfo.PLN.iban}
@@ -646,14 +631,16 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col sm:gap-1"
                         >
-                          <span className="font-semibold">{bank_name}</span>
-                          {paymentInfo.PLN.bankName}
+                          <span className="font-semibold">
+                            {account_number}
+                          </span>
+                          {paymentInfo.PLN.accountNumber}
                         </p>
                         <button
                           onClick={() =>
-                            copyTextToCLipboard(paymentInfo.PLN.bankName)
+                            copyTextToCLipboard(paymentInfo.PLN.accountNumber)
                           }
                           className="mb-4"
                         >
@@ -664,14 +651,14 @@ const RegistrySection = ({ language }) => {
                       <div className="w-full flex items-center justify-between gap-1">
                         <p
                           translate="no"
-                          className="font-sans font-light text-left flex flex-col sm:flex-row sm:gap-1 tracking-wide break-all"
+                          className="font-sans font-light text-left flex flex-col sm:gap-1"
                         >
-                          <span className="font-semibold">{bic}</span>
-                          {paymentInfo.PLN.bic}
+                          <span className="font-semibold">{bank_name}</span>
+                          {paymentInfo.PLN.bankName}
                         </p>
                         <button
                           onClick={() =>
-                            copyTextToCLipboard(paymentInfo.PLN.bic)
+                            copyTextToCLipboard(paymentInfo.PLN.bankName)
                           }
                           className="mb-4"
                         >

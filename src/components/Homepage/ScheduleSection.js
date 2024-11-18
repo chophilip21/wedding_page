@@ -203,14 +203,6 @@ const ScheduleSection = ({ language }) => {
                   </div>
                   <div className="relative w-[140px] h-[140px] md:w-[90px] md:h-[90px] lg:w-[120px] lg:h-[120px]  xl:w-[190px] xl:h-[190px] flex justify-center items-center p-4 xl:p-6">
                     <div className="w-full h-full  absolute  z-[1] bg-white border-4 border-gold rounded-full" />
-                    {/* <Image
-                      src={ev.icon}
-                      alt={ev.title}
-                      width={85}
-                      height={85}
-                      quality={100}
-                      className=" w-[50px] xl:w-[65px] h-auto z-10"
-                    /> */}
                     <img
                       src={ev.icon}
                       alt={ev.title}
