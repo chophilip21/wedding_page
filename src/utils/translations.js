@@ -58,13 +58,10 @@ const translations = {
           ceremony: {
             time: "4:00 PM",
             title: "Ceremony Begins",
-            description: "Join us as we say 'I do' in a beautiful ceremony.",
           },
           dinner: {
             time: "5:00 PM",
             title: "Dinner Served",
-            description:
-              "Indulge in a delicious feast with family and friends.",
           },
           dance: {
             time: "6:00 PM",
@@ -74,10 +71,13 @@ const translations = {
             time: "7:00 - 10:00 PM",
             title: "Photo Booth",
           },
+          pig: {
+            time: "10:30 PM",
+            title: "Special Dish",
+          },
           cake_cutting: {
             time: "12:00 AM",
             title: "Cake Cutting",
-            description: "Savor the sweetness as we cut the cake together.", // remove
           },
           games: {
             time: "12:30 AM",
@@ -86,8 +86,6 @@ const translations = {
           party: {
             time: "All Night",
             title: "Eat, Drink, Dance, Repeat!",
-            description:
-              "Celebrate the night away with music, drinks, and joy!", // remove
           },
         },
       },
@@ -105,8 +103,6 @@ const translations = {
           party_continues: {
             time: "All Day",
             title: "Eat, Drink, Dance, Repeat!",
-            description:
-              "Continue the festivities with more food, drinks, and dancing.", //remove
           },
           end: {
             time: "10:00 PM",
@@ -228,11 +224,11 @@ const translations = {
       description_1:
         "Your presence at our wedding is truly the greatest gift we could ask for!",
       description_2:
-        "However, if you wish to honor us with a gift, we would greatly appreciate a monetary contribution to help us build our future together. We kindly ask our international guests to consider sending their gift via a bank transfer.",
+        "However, if you wish to honor us with a gift, we would greatly appreciate a monetary contribution to help us build our future together.",
       description_3:
-        "To access our bank details, please click the button below and enter the password that’s on your invitation. As always, feel free to contact us directly if you have any questions!",
-      description_4:
         "In lieu of flowers, alcohol, and other physical gifts, we would be delighted to receive scratch cards or lottery tickets as a fun and exciting way to celebrate our new beginning.",
+      description_4:
+        "We kindly ask our international guests to consider sending their gift via a bank transfer. To access our bank details, please click the button below and enter the password that’s on your invitation. As always, feel free to contact us directly if you have any questions!",
       description_5: "",
       button: "Access Bank Details",
       thanks: "THANK YOU",
@@ -330,20 +326,17 @@ const translations = {
         sub: "Matrimonio",
       },
       description:
-        "La cerimonia inizia Sabato 26, e finisce Domenica 27 Luglio 2025.",
+        "I festeggiamenti per il matrimonio inizieranno sabato 26 luglio e termineranno domenica 27 luglio 2025.",
       day_1: {
         title: "Giorno 1",
         events: {
           ceremony: {
             time: "16:00",
             title: "Inizio della Cerimonia",
-            description:
-              "Unisciti a noi mentre ci diciamo 'Sì' in una bellissima cerimonia.",
           },
           dinner: {
             time: "17:00",
             title: "Cena Servita",
-            description: "Goditi una deliziosa cena con famiglia e amici.",
           },
           dance: {
             time: "18:00",
@@ -353,11 +346,13 @@ const translations = {
             time: "19:00 - 22:00",
             title: "Cabina Fotografica",
           },
+          pig: {
+            time: "22:30",
+            title: "Piatto Speciale",
+          },
           cake_cutting: {
             time: "00:00",
             title: "Taglio della Torta",
-            description:
-              "Assapora la dolcezza mentre tagliamo la torta insieme.",
           },
           games: {
             time: "00:30",
@@ -366,7 +361,6 @@ const translations = {
           party: {
             time: "Tutta la notte",
             title: "Mangia, Bevi, Balla, Ripeti!",
-            description: "Festeggia tutta la notte con musica, drink e gioia!",
           },
         },
       },
@@ -384,8 +378,6 @@ const translations = {
           party_continues: {
             time: "Tutta la Giornata",
             title: "Mangia, Bevi, Balla, Ripeti!",
-            description:
-              "Continue the festivities with more food, drinks, and dancing.", //remove
           },
           end: {
             time: "10:00 PM",
@@ -507,11 +499,11 @@ const translations = {
       description_1:
         "La vostra presenza al nostro matrimonio è davvero il regalo più grande che potremmo desiderare!",
       description_2:
-        "Tuttavia, se desiderate onorarci con un regalo, vi saremmo immensamente grati per un contributo monetario che ci aiuti a costruire il nostro futuro insieme. Chiediamo gentilmente ai nostri ospiti internazionali di considerare l’opzione di inviare il regalo tramite bonifico bancario.",
+        "Tuttavia, se desiderate onorarci con un regalo, vi saremmo immensamente grati per un contributo monetario che ci aiuti a costruire il nostro futuro insieme.",
       description_3:
-        "Per accedere ai nostri dati bancari, cliccate sul pulsante qui sotto e inserite la password indicata nell’invito. Come sempre, non esitate a contattarci direttamente se avete domande!",
-      description_4:
         "In alternativa a fiori, liquori e altri regali materiali, saremmo felici di ricevere gratta e vinci o biglietti della lotteria come modo divertente ed emozionante per celebrare il nostro nuovo inizio.",
+      description_4:
+        "Chiediamo gentilmente ai nostri ospiti internazionali di considerare l’opzione di inviare il regalo tramite bonifico bancario. Per accedere ai nostri dati bancari, cliccate sul pulsante qui sotto e inserite la password indicata nell’invito. Come sempre, non esitate a contattarci direttamente se avete domande!",
       description_5: "",
       button: "Accedi ai dettagli bancari",
       thanks: "GRAZIE",
@@ -617,14 +609,10 @@ const translations = {
           ceremony: {
             time: "16:00",
             title: "Ceremonia Ślubu",
-            description:
-              "Dołącz do nas, gdy powiemy sobie 'Tak' podczas pięknej ceremonii.", //remove
           },
           dinner: {
             time: "17:00",
             title: "Uroczysty Obiad",
-            description:
-              "Rozkoszuj się pysznym posiłkiem z rodziną i przyjaciółmi.", //remove
           },
           dance: {
             time: "18:00",
@@ -634,10 +622,13 @@ const translations = {
             time: "19:00 - 22:00",
             title: "Fotobudka",
           },
+          pig: {
+            time: "22:30",
+            title: "Danie Specjalne",
+          },
           cake_cutting: {
             time: "00:00",
             title: "Tort",
-            description: "Delektuj się słodkościami, gdy razem kroimy tort.", //remove
           },
           games: {
             time: "00:30",
@@ -646,7 +637,6 @@ const translations = {
           party: {
             time: "Do Białego Rana",
             title: "Jedzenie, Picie, i Zabawa!",
-            description: "Świętuj całą noc z muzyką, napojami i radością!", //remove
           },
         },
       },
@@ -664,8 +654,6 @@ const translations = {
           party_continues: {
             time: "Cały Dzień",
             title: "Jedzenie, Picie, i Zabawa!",
-            description:
-              "Continue the festivities with more food, drinks, and dancing.", //remove
           },
           end: {
             time: "10:00 PM",
@@ -676,8 +664,8 @@ const translations = {
     },
     info_section: {
       title: {
-        main: "",
-        sub: "Szczegóły",
+        main: "WIĘCEJ",
+        sub: "Szczegółów",
       },
       details: {
         when_where: "Kiedy i Gdzie",
@@ -714,7 +702,7 @@ const translations = {
         ],
       },
       travel_transport: {
-        title: "Travel & Transportation",
+        title: "Transport",
         description_1: [
           "Naszym międzynarodowym gościom zapewniamy transport z lotniska na salę w piątek 25 lipca oraz z sali na lotnisko w poniedziałek 28 lipca.",
         ],

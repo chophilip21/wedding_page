@@ -37,25 +37,41 @@ const ScheduleSection = ({ language }) => {
         {
           time: day_1.events.ceremony.time,
           title: day_1.events.ceremony.title,
-          description: day_1.events.ceremony.description,
           icon: images.ceremony,
         },
         {
           time: day_1.events.dinner.time,
           title: day_1.events.dinner.title,
-          description: day_1.events.dinner.description,
+          icon: images.dinner,
+        },
+        {
+          time: day_1.events.dance.time,
+          title: day_1.events.dance.title,
+          icon: images.dinner,
+        },
+        {
+          time: day_1.events.photo.time,
+          title: day_1.events.photo.title,
+          icon: images.dinner,
+        },
+        {
+          time: day_1.events.pig.time,
+          title: day_1.events.pig.title,
           icon: images.dinner,
         },
         {
           time: day_1.events.cake_cutting.time,
           title: day_1.events.cake_cutting.title,
-          description: day_1.events.cake_cutting.description,
+          icon: images.cake,
+        },
+        {
+          time: day_1.events.games.time,
+          title: day_1.events.games.title,
           icon: images.cake,
         },
         {
           time: day_1.events.party.time,
           title: day_1.events.party.title,
-          description: day_1.events.party.description,
           icon: images.drink,
         },
       ],
@@ -64,9 +80,23 @@ const ScheduleSection = ({ language }) => {
       day: day_2.title,
       events: [
         {
+          time: day_2.events.after.time,
+          title: day_2.events.after.title,
+          icon: images.dance,
+        },
+        {
+          time: day_2.events.vespa.time,
+          title: day_2.events.vespa.title,
+          icon: images.dance,
+        },
+        {
           time: day_2.events.party_continues.time,
           title: day_2.events.party_continues.title,
-          description: day_2.events.party_continues.description,
+          icon: images.dance,
+        },
+        {
+          time: day_2.events.end.time,
+          title: day_2.events.end.title,
           icon: images.dance,
         },
       ],
@@ -162,14 +192,6 @@ const ScheduleSection = ({ language }) => {
                       >
                         {ev.title}
                       </h5>
-                      {/* <p
-                        translate="no"
-                        className={`text-white max-md:text-center ${
-                          evIndex % 2 === 0 ? "md:text-right" : "md:text-left"
-                        }`}
-                      >
-                        {ev.description}
-                      </p> */}
                     </motion.div>
                     <div
                       className={`max-lg:hidden h-px w-[50px] xl:w-[120px] bg-gold flex items-center ${
