@@ -204,22 +204,33 @@ const InfoSection = ({ language }) => {
               {coupleEmail}
             </a>
           </p>
-          <p translate="no">
+          <p translate="no" className="max-sm:flex max-sm:flex-col">
             <span className="font-bold">Karolina: </span>{" "}
             <a href={`tel:${herNumber.replace(/\s+/g, "")}`} target="_blank">
               {herNumber}
             </a>
           </p>
-          <p translate="no">
+          <p translate="no" className="max-sm:flex max-sm:flex-col">
             <span className="font-bold">Emanuele: </span>{" "}
-            <a href={`tel:${hisNumberUk.replace(/\s+/g, "")}`} target="_blank">
-              {hisNumberUk}
-            </a>{" "}
-            {"(UK)"}&nbsp;&nbsp;-&nbsp;&nbsp;
-            <a href={`tel:${hisNumberIt.replace(/\s+/g, "")}`} target="_blank">
-              {hisNumberIt}
-            </a>{" "}
-            {"(IT)"}
+            <span>
+              <a
+                href={`tel:${hisNumberUk.replace(/\s+/g, "")}`}
+                target="_blank"
+              >
+                {hisNumberUk}
+              </a>{" "}
+              {"(UK)"}
+              <span className="max-sm:hidden">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+            </span>
+            <span>
+              <a
+                href={`tel:${hisNumberIt.replace(/\s+/g, "")}`}
+                target="_blank"
+              >
+                {hisNumberIt}
+              </a>{" "}
+              {"(IT)"}
+            </span>
           </p>
         </div>
       </div>

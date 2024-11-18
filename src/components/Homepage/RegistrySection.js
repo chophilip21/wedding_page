@@ -321,7 +321,10 @@ const RegistrySection = ({ language }) => {
               className="max-h-[90vh] sm:max-w-[580px] max-sm:w-[95%] max-sm:p-2 max-sm:rounded-md"
             >
               <DialogHeader>
-                <DialogTitle translate="no" className="text-3xl font-bold">
+                <DialogTitle
+                  translate="no"
+                  className="text-[22px] md:text-3xl font-bold"
+                >
                   {!isValid && !paymentInfo
                     ? dialog_title.before
                     : dialog_title.after}

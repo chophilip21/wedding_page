@@ -148,7 +148,7 @@ const SaveTheDate = ({ language }) => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              variants={tertiaryVariants}
+              variants={secondaryVariants}
               viewport={{ once: true, amount: 0.2 }}
               className="w-[140px] sm:w-[160px] h-[140px] sm:h-[160px] flex justify-center items-center mb-3"
             >
