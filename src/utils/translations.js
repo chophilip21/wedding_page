@@ -503,7 +503,7 @@ const translations = {
         "In alternativa a fiori, liquori e altri regali materiali, saremmo felici di ricevere gratta e vinci o biglietti della lotteria come modo divertente ed emozionante per celebrare il nostro nuovo inizio.",
       description_4:
         "Chiediamo gentilmente ai nostri ospiti internazionali di considerare l’opzione di inviare il regalo tramite bonifico bancario. Per accedere ai nostri dati bancari, cliccate sul pulsante qui sotto e inserite la password indicata nell’invito. Come sempre, non esitate a contattarci direttamente se avete domande!",
-      button: "Accedi ai dettagli bancari",
+      button: "Accedi Dettagli Bancari",
       thanks: "GRAZIE!",
       error_from_api:
         "Si è verificato un problema. Riprova più tardi o contattaci",
