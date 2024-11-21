@@ -399,7 +399,7 @@ const translations = {
         location: [
           {
             bold: true,
-            text: "Location",
+            text: "Location: ",
           },
           'Agriturismo "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Polonia',
         ],
