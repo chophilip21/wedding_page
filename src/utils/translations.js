@@ -410,9 +410,9 @@ const translations = {
           "Per i nostri ospiti internazionali, offriamo alloggio in hotel per ",
           {
             bold: true,
-            text: "Venerdì 25 Luglio, Sabato 26 Luglio e Domenica 27 Luglio.",
+            text: "Venerdì 25, Sabato 26 e Domenica 27 Luglio.",
           },
-          "L'hotel si trova nella stessa location. Facci sapere se vuoi restare per piú notti e ti aiuteremo con la prenotazione.",
+          " L'hotel si trova nella stessa location. Facci sapere se vuoi restare per piú notti e ti aiuteremo con la prenotazione.",
         ],
         breakfast: [
           { bold: true, text: "La colazione" },
