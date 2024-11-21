@@ -132,6 +132,7 @@ const translations = {
           },
           'Venue "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Poland.',
         ],
+         button_loc:"SEE THE VENUE"
       },
       accommodations: {
         title: "Accommodations",
@@ -403,6 +404,7 @@ const translations = {
           },
           'Agriturismo "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Polonia',
         ],
+        button_loc:"VISITA IL LUOGO"
       },
       accommodations: {
         title: "Alloggi",
@@ -681,6 +683,7 @@ const translations = {
           },
           'Sala "Przy Patykach", Kolonia Łobudzice 18c, 97-425',
         ],
+        button_loc:"ZOBACZ LOKALIZACJĘ"
       },
       accommodations: {
         title: "Zakwaterowanie",

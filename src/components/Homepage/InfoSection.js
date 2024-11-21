@@ -107,7 +107,7 @@ const InfoSection = ({ language }) => {
                   target="_blank"
                   className="flex justify-center items-center gap-1 border border-gold rounded-lg px-2 py-1 mt-2 font-light text-sm"
                 >
-                  <Image src={images.location} alt="Location" className="w-auto h-[25px]"/> SEE THE VENUE
+                  <Image src={images.location} alt="Location" className="w-auto h-[25px]"/>{details.button_loc}
                 </Link>
 
         </div>
