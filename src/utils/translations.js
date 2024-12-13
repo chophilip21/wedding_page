@@ -273,6 +273,7 @@ const translations = {
     footer: {
       text_1: "Website created with ",
       text_2: "by ",
+      text_3: "Photos by",
     },
     not_found: {
       message: "The page you are looking for does not exist.",
@@ -548,6 +549,7 @@ const translations = {
     footer: {
       text_1: "Sito creato con ",
       text_2: "da ",
+      text_3: "Fotografie da",
     },
     not_found: {
       message: "La pagina che stai cercando non esiste.",
@@ -821,6 +823,7 @@ const translations = {
     footer: {
       text_1: "Strona stworzona z ",
       text_2: "przez ",
+      text_3: "Fotografie autorstwa",
     },
     not_found: {
       message: "Strona, której szukasz, nie istnieje.",
