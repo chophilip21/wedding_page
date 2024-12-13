@@ -87,14 +87,13 @@ const InfoSection = ({ language }) => {
           <p translate="no" className="mt-[-16px]">
             {details.location.map((item, index) =>
               typeof item === "string" ? (
-                <Link
+                <span
                   key={index}
-                  href={`https://przypatykach.pl/`}
-                  target="_blank"
-                  className="underline underline-offset-4 decoration-1"
+                
+             
                 >
                   {item}
-                </Link>
+                </span>
               ) : (
                 <span key={index} className="font-bold">
                   {item.text}
@@ -102,7 +101,18 @@ const InfoSection = ({ language }) => {
               )
             )}
           </p>
+
+          <Link
+                  href={`https://przypatykach.pl/`}
+                  target="_blank"
+                  className="flex justify-center items-center gap-1 border border-gold rounded-lg px-2 py-1 mt-2 font-light text-sm"
+                >
+                  <Image src={images.location} alt="Location" className="w-auto h-[25px]"/>{details.button_loc}
+                </Link>
+
         </div>
+        
+     
 
         <div className="static md:hidden h-px w-[50px] bg-black opacity-50" />
 
@@ -195,7 +205,7 @@ const InfoSection = ({ language }) => {
           <h5 translate="no" className="mb-4">
             {contact.title}
           </h5>
-          <p translate="no">
+          <p translate="no" className="max-sm:flex max-sm:flex-col">
             <span className="font-bold">Email: </span>{" "}
             <a
               href={`mailto:${coupleEmail}`}
