@@ -1,7 +1,7 @@
 /**
  * @file translation.js
  * @description Contains translations for the website in English, Italian, and Polish, covering various sections such as navbar, RSVP, registry, and more.
- * @author Emanuele Sgroi
+ * @author Philip Sgroi
  * @date 19 October 2024
  */
 
@@ -9,10 +9,10 @@ const translations = {
   // ENGLISH <---------------------------------------------------------------------------------------
   en: {
     couple: {
-      her: "Karolina",
-      him: "Emanuele",
-      footer_her: "Karolina",
-      footer_him: "Emanuele",
+      her: "Tamako",
+      him: "Philip",
+      footer_her: "Tamako",
+      footer_him: "Philip",
     },
     navbar: {
       welcome: "Welcome",
@@ -285,10 +285,10 @@ const translations = {
   // ITALIAN <---------------------------------------------------------------------------------------
   it: {
     couple: {
-      her: "Karolina",
-      him: "Emanuele",
-      footer_her: "Karolina",
-      footer_him: "Emanuele",
+      her: "Tamako",
+      him: "Philip",
+      footer_her: "Tamako",
+      footer_him: "Philip",
     },
     navbar: {
       welcome: "Vetrina",
