@@ -1,18 +1,12 @@
-/**
- * @file layout.js
- * @description Defines the global layout structure for the website, including providers and components like LanguageDetector and Toaster.
- * @author Emanuele Sgroi
- * @date 19 October 2024
- */
+// src/app/layout.js
 
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
-import LanguageDetector from "@/components/LanguageDetector/LanguageDetector";
-import { Toaster } from "@/components/ui/toaster";
+import ClientProviders from "./ClientProviders"; // adjust the path if needed
 
 const inter = Inter({ subsets: ["latin"] });
 
-// Metadata configuration (nice for social sharing)
+// Metadata configuration (for server components)
 export const metadata = {
   title: "Tamako & Philip",
   description:
@@ -39,10 +33,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" translate="no">
       <body className={inter.className}>
-        {/* Component to auto-detect and manage language */}
-        <LanguageDetector />
-        {children}
-        <Toaster />
+        <ClientProviders>
+          {children}
+        </ClientProviders>
       </body>
     </html>
   );

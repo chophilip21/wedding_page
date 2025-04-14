@@ -1,0 +1,11 @@
+{
+    "rsvpTitle": "RSVP",
+    "firstNameLabel": "First Name",
+    "lastNameLabel": "Last Name",
+    "emailLabel": "Email",
+    "submitButton": "Submit",
+    "rsvpSuccessMessage": "Thank you! Your RSVP has been recorded.",
+    "duplicateWarning": "This email is already registered.",
+    "generalErrorMessage": "An error occurred. Please try again later."
+  }
+  
