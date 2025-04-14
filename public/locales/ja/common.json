@@ -6,6 +6,7 @@
     "submitButton": "送信",
     "rsvpSuccessMessage": "ありがとうございます！出欠が記録されました。",
     "duplicateWarning": "このメールは既に登録されています。",
-    "generalErrorMessage": "エラーが発生しました。もう一度お試しください。"
+    "generalErrorMessage": "エラーが発生しました。もう一度お試しください。",
+    "submitting": "送信中..."
   }
   

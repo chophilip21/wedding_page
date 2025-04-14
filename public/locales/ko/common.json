@@ -1,11 +1,12 @@
 {
-    "rsvpTitle": "참석 여부 응답",
+    "rsvpTitle": "참석 여부 (RSVP)",
     "firstNameLabel": "이름",
     "lastNameLabel": "성",
     "emailLabel": "이메일",
     "submitButton": "제출하기",
     "rsvpSuccessMessage": "감사합니다! 참석 여부가 기록되었습니다.",
     "duplicateWarning": "이 이메일은 이미 등록되었습니다.",
-    "generalErrorMessage": "오류가 발생했습니다. 다시 시도해주세요."
+    "generalErrorMessage": "오류가 발생했습니다. 다시 시도해주세요.",
+    "submitting": "제출 중..."
   }
   
