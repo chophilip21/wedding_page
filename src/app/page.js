@@ -16,8 +16,6 @@ import {
   ScheduleSection,
   InfoSection,
   RSVPSection,
-  RegistrySection,
-  MusicSection,
 } from "@/components";
 import LanguageDetector from "@/components/LanguageDetector/LanguageDetector";
 
@@ -61,6 +59,10 @@ export default function Home() {
       <WelcomeSection language={language} />
 
       <div className="relative z-10">
+
+        {/* RSVP Section */}
+        <RSVPSection language={language} />
+
         {/* Save the Date Section */}
         <SaveTheDate language={language} />
 
@@ -70,8 +72,6 @@ export default function Home() {
         {/* Information Section */}
         <InfoSection language={language} />
 
-        {/* RSVP Section */}
-        <RSVPSection language={language} />
   
       </div>
     </main>

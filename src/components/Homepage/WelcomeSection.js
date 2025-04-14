@@ -141,7 +141,7 @@ const WelcomeSection = ({ language }) => {
 
         {!countdown.message && (
           <ScrollLink
-            to="savethedate-section"
+            to="rsvp-section"
             smooth={true}
             duration={1000}
             offset={-70}

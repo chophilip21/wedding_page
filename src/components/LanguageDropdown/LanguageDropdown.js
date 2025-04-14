@@ -30,8 +30,8 @@ const LanguageDropdown = ({ detectedLanguage, setLanguage }) => {
 
   // Group drop down elements for convenience
   const languages = [
-    { code: "it", label: "Italiano", flag: images.italian },
-    { code: "pl", label: "Polski", flag: images.polish },
+    { code: "ko", label: "Korean", flag: images.korean },
+    { code: "ja", label: "Japanese", flag: images.japanese },
     { code: "en", label: "English", flag: images.english },
   ];
 

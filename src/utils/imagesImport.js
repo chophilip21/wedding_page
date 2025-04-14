@@ -11,8 +11,6 @@ import welcome_3 from "../../public/images/welcome_3.jpg";
 import curved_it from "../../public/images/curved_it.png";
 import curved_en from "../../public/images/curved_en.png";
 import curved_pl from "../../public/images/curved_pl.png";
-import polish from "../../public/icons/polish.png";
-import italian from "../../public/icons/italian.png";
 import english from "../../public/icons/english.png";
 import dove from "../../public/icons/dove.png";
 import g_1_1 from "../../public/images/g_1_1.jpg";
@@ -45,6 +43,9 @@ import la2 from "../../public/images/la2.png";
 import la3 from "../../public/images/la3.png";
 import divider from "../../public/icons/divider.png";
 import location from "../../public/icons/location.png";
+import korean from "../../public/icons/korean.png";
+import japanese from "../../public/icons/japanese.png";
+
 
 const images = {
   welcome_1,
@@ -53,8 +54,8 @@ const images = {
   curved_it,
   curved_en,
   curved_pl,
-  polish,
-  italian,
+  korean,
+  japanese,
   english,
   dove,
   g_1_1,

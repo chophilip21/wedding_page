@@ -1,8 +1,7 @@
 /**
  * @file translation.js
- * @description Contains translations for the website in English, Italian, and Polish, covering various sections such as navbar, RSVP, registry, and more.
- * @author Philip Sgroi
- * @date 19 October 2024
+ * @description Contains translations for the website in English, Korean, and Japanese.
+ * (English remains unchanged; previous Italian and Polish have been replaced.)
  */
 
 const translations = {
@@ -28,12 +27,12 @@ const translations = {
       days: "Days",
       day: "Day",
       hours: "Hours",
-      hour: "Hours",
+      hour: "Hour",
       minutes: "Minutes",
       minute: "Minute",
       seconds: "Seconds",
-      second: "second",
-      button: "Save the Date",
+      second: "Second",
+      button: "RSVP",
     },
     saveTheDate_section: {
       title: "SAVE",
@@ -132,7 +131,7 @@ const translations = {
           },
           'Venue "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Poland.',
         ],
-         button_loc:"SEE THE VENUE"
+        button_loc:"SEE THE VENUE"
       },
       accommodations: {
         title: "Accommodations",
@@ -171,8 +170,6 @@ const translations = {
       },
       contact: {
         title: "Contact Us",
-        // Email added on the front end
-        // numbers added on the front end
       },
     },
     rsvp_section: {
@@ -282,8 +279,8 @@ const translations = {
     },
   },
 
-  // ITALIAN <---------------------------------------------------------------------------------------
-  it: {
+  // KOREAN <---------------------------------------------------------------------------------------
+  ko: {
     couple: {
       her: "Tamako",
       him: "Philip",
@@ -291,546 +288,532 @@ const translations = {
       footer_him: "Philip",
     },
     navbar: {
-      welcome: "Vetrina",
-      save_the_date: "Segna la Data",
-      schedule: "Timeline Matrimonio",
-      info: "Dettagli",
-      rsvp: "Conferma la Presenza",
-      registry: "Lista Nozze",
-      music: "Playlist",
+      welcome: "환영합니다",
+      save_the_date: "날짜 저장",
+      schedule: "웨딩 타임라인",
+      info: "세부 정보",
+      rsvp: "RSVP",
+      registry: "선물 목록",
+      music: "플레이리스트",
     },
     welcome_section: {
-      small_text: "Il matrimonio di...",
-      days: "Giorni",
-      day: "Giorno",
-      hours: "Ore",
-      hour: "Ora",
-      minutes: "Minuti",
-      minute: "Minuto",
-      seconds: "Secondi",
-      second: "secondo",
-      button: "Segna la Data",
+      small_text: "웨딩의 시작...",
+      days: "일",
+      day: "일",
+      hours: "시간",
+      hour: "시간",
+      minutes: "분",
+      minute: "분",
+      seconds: "초",
+      second: "초",
+      button: "참석 확인",
     },
     saveTheDate_section: {
-      title: "SEGNA",
-      title_cursive: "La Data",
-      date: "26 Luglio 2025",
-      place: "a Kolonia Łobudzice, Polonia",
-      story_1: "Ci Siamo Conosciuti",
-      story_2: "Ci Siamo Fidanzati",
-      story_3_future: "Ci Sposiamo",
-      story_3_past: "Ci Siamo Sposati",
+      title: "날짜",
+      title_cursive: "저장",
+      date: "2025년 7월 26일",
+      place: "폴란드, Kolonia Łobudzice",
+      story_1: "우리는 만났습니다",
+      story_2: "우리는 약혼했습니다",
+      story_3_future: "곧 결혼할 예정입니다",
+      story_3_past: "이미 결혼했습니다",
     },
     schedule_section: {
       title: {
-        main: "TIMELINE",
-        sub: "Matrimonio",
+        main: "웨딩",
+        sub: "타임라인",
       },
       description:
-        "I festeggiamenti per il matrimonio inizieranno sabato 26 luglio e termineranno domenica 27 luglio 2025.",
+        "웨딩 행사는 2025년 7월 26일 토요일에 시작하여 2025년 7월 27일 일요일에 종료됩니다.",
       day_1: {
-        title: "Giorno 1",
+        title: "1일차",
         events: {
           ceremony: {
-            time: "16:00",
-            title: "Inizio della Cerimonia",
+            time: "오후 4:00",
+            title: "결혼식 시작",
           },
           dinner: {
-            time: "17:00",
-            title: "Cena Servita",
+            time: "오후 5:00",
+            title: "만찬",
           },
           dance: {
-            time: "18:00",
-            title: "Primo Ballo",
+            time: "오후 6:00",
+            title: "첫 댄스",
           },
           photo: {
-            time: "19:00 - 22:00",
-            title: "Cabina Fotografica",
+            time: "오후 7:00 - 10:00",
+            title: "포토 부스",
           },
           pig: {
-            time: "22:30",
-            title: "Piatto Speciale",
+            time: "오후 10:30",
+            title: "특별 요리",
           },
           cake_cutting: {
-            time: "00:00",
-            title: "Taglio della Torta",
+            time: "자정",
+            title: "케이크 커팅",
           },
           games: {
-            time: "00:30",
-            title: "Animazione con Giochi di Gruppo",
+            time: "새벽 12:30",
+            title: "파티 게임",
           },
           party: {
-            time: "Tutta la notte",
-            title: "Mangia, Bevi, Balla, Ripeti!",
+            time: "밤새",
+            title: "먹고, 마시고, 춤추고, 즐기자!",
           },
         },
       },
       day_2: {
-        title: "Giorno 2",
+        title: "2일차",
         events: {
           after: {
-            time: "15:00",
-            title: "Inizia L'After!",
+            time: "오후 3:00",
+            title: "애프터 파티 시작",
           },
           vespa: {
-            time: "16:00 - 21:00",
-            title: "Vespa Bar",
+            time: "오후 4:00 - 9:00",
+            title: "베스파 바",
           },
           party_continues: {
-            time: "Tutta la Giornata",
-            title: "Mangia, Bevi, Balla, Ripeti!",
+            time: "하루 종일",
+            title: "먹고, 마시고, 춤추고, 즐기자!",
           },
           end: {
-            time: "10:00 PM",
-            title: "Finita La Commedia!",
+            time: "오후 10:00",
+            title: "마무리",
           },
         },
       },
     },
     info_section: {
       title: {
-        main: "I",
-        sub: "Dettagli",
+        main: "세부",
+        sub: "정보",
       },
       details: {
-        when_where: "Quando e Dove",
+        when_where: "시간 및 장소",
         dates: [
-          { bold: true, text: "Date: " },
-          "Sabato 26 e Domenica 27 Luglio 2025",
+          {
+            bold: true,
+            text: "날짜: ",
+          },
+          "2025년 7월 26일 & 2025년 7월 27일",
         ],
         location: [
           {
             bold: true,
-            text: "Location: ",
+            text: "장소: ",
           },
-          'Agriturismo "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Polonia',
+          'Venue "Przy Patykach", Kolonia Łobudzice 18c, 97-425, 폴란드',
         ],
-        button_loc:"VISITA IL LUOGO"
+        button_loc:"장소 보기"
       },
       accommodations: {
-        title: "Alloggi",
+        title: "숙박",
         description_1: [
-          "Per i nostri ospiti internazionali, offriamo alloggio in hotel per ",
-          {
-            bold: true,
-            text: "Venerdì 25, Sabato 26 e Domenica 27 Luglio.",
-          },
-          " L'hotel si trova nella stessa location. Facci sapere se vuoi restare per piú notti e ti aiuteremo con la prenotazione.",
+          "국제 손님을 위해, 7월 25일 금요일, 7월 26일 토요일, 7월 27일 일요일에 숙박을 제공합니다.",
         ],
         breakfast: [
-          { bold: true, text: "La colazione" },
-          " è inclusa con il soggiorno e verrà servita dalle ",
-          { bold: true, text: "9:00 alle 11:00" },
-          " ogni mattina (Qualora l'orario cambiasse, questo sito verrà aggiornato).",
+          { bold: true, text: "조식" },
+          "은 숙박에 포함되며 매일 ",
+          { bold: true, text: "오전 9시부터 11시까지" },
+          " 제공됩니다.",
         ],
       },
       travel_transport: {
-        title: "Viaggio",
+        title: "교통편",
         description_1: [
-          "Per i nostri ospiti internazionali, forniremo il trasporto dall'aeroporto alla location venerdì 25 luglio e dalla location all'aeroporto lunedì 28 luglio.",
+          "국제 손님을 위해, 7월 25일 금요일에는 공항에서 venue까지, 7월 28일 월요일에는 venue에서 공항까지의 교통편을 제공합니다.",
         ],
         description_2: [
           {
             bold: true,
-            text: "Prima di prenotare il viaggio, vi preghiamo di contattarci e comunicarci l’orario e l’aeroporto che meglio si adattano al vostro programma. Organizzeremo quindi un trasporto di gruppo che soddisfi la maggioranza. Vi preghiamo di farlo entro il 26 maggio 2025.",
+            text: "여행 예약 전에, 원하는 시간과 공항을 알려주세요. 이에 맞춰 단체 교통편을 마련하겠습니다. (2025년 5월 26일 전까지)",
           },
         ],
         description_3: [
-          "Gli aeroporti più vicini sono l'Aeroporto di Katowice (KTW), l'Aeroporto di Varsavia Modlin (WMI) e l'Aeroporto di Varsavia Chopin (WAW).",
+          "가장 가까운 공항: Katowice Airport (KTW), Warsaw Modlin Airport (WMI), Warsaw Chopin Airport (WAW).",
         ],
         description_4: [
-          "Faremo del nostro meglio per accontentare tutti. Se non riuscite ad arrivare o partire nello stesso giorno e/o orario degli altri, vi aiuteremo a organizzare un altro modo per raggiungere e lasciare la location.",
+          "모든 분들을 수용할 수 있도록 최선을 다하겠습니다. 다른 시간에 도착하거나 출발한다면, 별도의 교통편도 마련해드리겠습니다.",
         ],
       },
       contact: {
-        title: "Contattaci",
-        // Email added on the front end
-        // numbers added on the front end
+        title: "문의하기",
       },
     },
     rsvp_section: {
       top_title: "RSVP",
-      title: { main: "Conferma la tua", sub: "Presenza" },
+      title: { main: "참석", sub: "확인" },
       description_1: [
         {
           bold: true,
-          text: "Vi preghiamo di confermare la vostra presenza entro il 26 maggio 2025!",
+          text: "2025년 5월 26일 전까지 참석 여부를 확인해주세요!",
         },
-        "  Basta cercare il vostro nome nell'apposito campo e confermare la partecipazione.",
+        " 이름을 입력하고 참석 여부를 확인하세요.",
       ],
       description_2:
-        "Vi preghiamo di lasciarci un messaggio se avete richieste speciali, restrizioni alimentari o qualsiasi altra cosa di cui vorreste parlarci. Vogliamo assicurarci che tutti siano a proprio agio e si divertano al massimo!",
-      label: "Cerca il tuo nome nella lista",
-      placeholder: "Digita il tuo nome",
-      no_found: "Nessun invitato trovato con questo nome",
+        "특별한 요청이나 식단 제한이 있다면 메시지를 남겨주세요. 모두가 편안하게 즐길 수 있도록 준비하겠습니다.",
+      label: "게스트 리스트에서 이름을 검색하세요",
+      placeholder: "이름 입력",
+      no_found: "해당 이름의 게스트를 찾을 수 없습니다",
       multiple_guests_1: {
-        hi: "Ciao",
-        you: " Tu ",
-        and: " e ",
+        hi: "안녕하세요 ",
+        you: "님, ",
+        and: " 그리고 ",
         are_invited:
-          ", siete calorosamente invitati a partecipare al nostro giorno speciale. Festeggiare con tutti voi lo renderà indimenticabile!",
+          " 여러분은 특별한 날에 초대되었습니다. 함께 축하하면 잊지 못할 추억이 될 것입니다!",
       },
       multiple_guests_2:
-        "Seleziona chi parteciperà al matrimonio. Speriamo possiate venire tutti.",
+        "참석할 사람을 선택하세요. 모두가 함께 하길 바랍니다.",
       single_guest_1: {
-        hi: "Ciao ",
+        hi: "안녕하세요 ",
         are_invited:
-          " Con grande piacere, ti invitiamo a partecipare al nostro giorno speciale. La tua presenza lo renderà indimenticabile!",
+          "님, 당신은 저희 특별한 날에 초대되었습니다. 함께하면 더욱 뜻깊은 날이 될 것입니다!",
       },
-      single_guest_2: "Parteciperai al matrimonio?",
-      answers: { yes: "Sì", no: "No", unknown: "Non lo so" },
-      note_placeholder: "Vuoi lasciare un messaggio?",
+      single_guest_2: "결혼식에 참석하시겠습니까?",
+      answers: { yes: "예", no: "아니오", unknown: "미정" },
+      note_placeholder: "메시지를 남기시겠습니까?",
       rsvp_success: {
-        thanks: "Grazie!",
-        submitted: " La tua conferma è stata inviata.",
+        thanks: "감사합니다!",
+        submitted: " 당신의 참석 확인이 전송되었습니다.",
         change_by: [
-          "Ricorda che puoi cambiare la tua partecipazione entro il ",
-          { bold: true, text: "26 Maggio 2025" },
-          ".",
+          "2025년 5월 26일 전까지 참석 여부를 변경할 수 있습니다.",
         ],
       },
-      error_enter_name: "Per favore inserisci la tua risposta prima di inviare",
-      error_submitting: "Errore nell'invio della conferma. Per favore riprova.",
+      error_enter_name: "참석 여부를 입력해주세요",
+      error_submitting: "RSVP 전송 중 오류가 발생했습니다. 다시 시도해주세요.",
       button: {
-        submit: "Conferma",
-        loading: "Un Momento...",
+        submit: "참석 확인",
+        loading: "잠시만 기다려주세요...",
       },
     },
     registry_section: {
-      title: { main: "LISTA", sub: "Nozze" },
-      description_1:
-        "La vostra presenza al nostro matrimonio è davvero il regalo più grande che potremmo desiderare!",
+      title: { main: "선물", sub: "리스트" },
+      description_1: "결혼식에 참석하시는 것 자체가 최고의 선물입니다!",
       description_2:
-        "Tuttavia, se desiderate onorarci con un regalo, vi saremmo immensamente grati per un contributo monetario che ci aiuti a costruire il nostro futuro insieme.",
+        "하지만 만약 선물을 준비하고 싶으시다면, 저희의 미래를 위한 금전적 지원에 감사드립니다.",
       description_3:
-        "In alternativa a fiori, liquori e altri regali materiali, saremmo felici di ricevere gratta e vinci o biglietti della lotteria come modo divertente ed emozionante per celebrare il nostro nuovo inizio.",
+        "꽃, 술 등 물리적인 선물 대신 스크래치 카드나 복권을 선물해주셔도 좋습니다.",
       description_4:
-        "Chiediamo gentilmente ai nostri ospiti internazionali di considerare l’opzione di inviare il regalo tramite bonifico bancario. Per accedere ai nostri dati bancari, cliccate sul pulsante qui sotto e inserite la password indicata nell’invito. Come sempre, non esitate a contattarci direttamente se avete domande!",
-      button: "Accedi Dettagli Bancari",
-      thanks: "GRAZIE!",
-      error_from_api:
-        "Si è verificato un problema. Riprova più tardi o contattaci",
-      error_incorrect_password: "Password errata",
-      error_insert_password: "Inserisci la password",
-      account_holder: "Beneficiario: ",
+        "해외 고객님께서는 은행 송금을 통해 선물을 보내주시길 부탁드립니다. 아래 버튼을 눌러 초대장에 있는 비밀번호를 입력해주세요. 문의 사항이 있으시면 직접 연락 부탁드립니다.",
+      button: "은행 정보 보기",
+      thanks: "감사합니다!",
+      error_from_api: "문제가 발생했습니다. 나중에 다시 시도해주세요.",
+      error_incorrect_password: "비밀번호가 틀렸습니다",
+      error_insert_password: "비밀번호를 입력해주세요",
+      account_holder: "수취인: ",
       iban: "IBAN: ",
-      bank_name: "Intestato a: ",
+      bank_name: "은행 주소: ",
       bic: "BIC / SWIFT: ",
-      sort_code: "Codice Sort: ",
-      account_number: "Numero di conto: ",
-      eur: "Euro",
-      gbp: "Sterlina",
-      pln: "Zloty",
-      toast_copied: "Copiato negli appunti",
-      toast_error: "Non è stato possibile copiare",
+      sort_code: "Sort Code: ",
+      account_number: "계좌 번호: ",
+      eur: "유로",
+      gbp: "파운드",
+      pln: "폴란드 즈워티",
+      toast_copied: "클립보드에 복사됨",
+      toast_error: "복사에 실패했습니다",
       dialog_title: {
-        before: "Inserisci la password",
-        after: "La password è corretta",
+        before: "비밀번호를 입력하세요",
+        after: "비밀번호가 올바릅니다",
       },
-      placeholder: "Inserisci la password",
-      submit_button: { submit: "Invia", loading: "Verifica in corso..." },
-      copy_all: "Copia tutto",
+      placeholder: "비밀번호 입력",
+      submit_button: { submit: "전송", loading: "확인 중..." },
+      copy_all: "전체 복사",
     },
     music_section: {
-      title: { main: "LA", sub: "Playlist" },
+      title: { main: "우리의", sub: "플레이리스트" },
       description:
-        "Aggiungi le tue canzoni preferite alla nostra playlist e aiutaci a creare la colonna sonora perfetta per il nostro matrimonio!",
-      placeholder: "Nome della canzone",
+        "결혼식을 위한 완벽한 사운드트랙을 만들기 위해 좋아하는 노래를 추가해주세요!",
+      placeholder: "노래 제목 입력",
       small_note:
-        "* Alcune canzoni non possono essere riprodotte qui, ma puoi comunque aggiungerle alla playlist.",
+        "* 일부 노래는 재생되지 않을 수 있지만, 추가는 가능합니다.",
       toast_success: {
-        title: "Canzone aggiunta alla playlist",
-        description: "Vuoi aggiungerne un'altra?",
+        title: "노래가 추가되었습니다",
+        description: "다른 노래도 추가하시겠습니까?",
       },
       toast_error: {
-        title: "Impossibile aggiungere la canzone alla playlist!",
+        title: "노래 추가에 실패했습니다",
         description:
-          "Siamo spiacenti, ma qualcosa è andato storto da parte nostra. Per favore, riprova più tardi.",
+          "죄송합니다, 문제가 발생했습니다. 나중에 다시 시도해주세요.",
       },
     },
     footer: {
-      text_1: "Sito creato con ",
-      text_2: "da ",
-      text_3: "Fotografie da",
+      text_1: "웹사이트 제작: ",
+      text_2: "by ",
+      text_3: "사진 제공:",
     },
     not_found: {
-      message: "La pagina che stai cercando non esiste.",
-      button: "Torna Indietro",
+      message: "찾으시는 페이지가 존재하지 않습니다.",
+      button: "돌아가기",
     },
   },
 
-  // POLISH <---------------------------------------------------------------------------------------
-  pl: {
+  // JAPANESE <---------------------------------------------------------------------------------------
+  ja: {
     couple: {
-      her: "Karoliny",
-      him: "Emanuela",
-      footer_her: "Karoline",
-      footer_him: "Emanuela",
+      her: "Tamako",
+      him: "Philip",
+      footer_her: "Tamako",
+      footer_him: "Philip",
     },
     navbar: {
-      welcome: "Witamy",
-      save_the_date: "Zarezerwuj Datę",
-      schedule: "Harmonogram Przyjęcia",
-      info: "Szczegóły",
-      rsvp: "RSVP",
-      registry: "Lista Prezentów",
-      music: "Playlista",
+      welcome: "ようこそ",
+      save_the_date: "日付を保存",
+      schedule: "結婚式タイムライン",
+      info: "詳細",
+      rsvp: "出欠確認",
+      registry: "ギフトリスト",
+      music: "プレイリスト",
     },
     welcome_section: {
-      small_text: "Ślub...",
-      days: "dni",
-      day: "dzień",
-      hours: "godziny",
-      hour: "godzina",
-      minutes: "minuty",
-      minute: "Minuta",
-      seconds: "sekundy",
-      second: "sekunda",
-      button: "Zarezerwuj Datę",
+      small_text: "結婚式の始まり…",
+      days: "日",
+      day: "日",
+      hours: "時間",
+      hour: "時間",
+      minutes: "分",
+      minute: "分",
+      seconds: "秒",
+      second: "秒",
+      button: "出欠確認",
     },
     saveTheDate_section: {
-      title: "ZAREZERWUJ", //DATĘ
-      title_cursive: "Datę",
-      date: "26 lipca 2025 roku",
-      place: 'na sali "Przy Patykach" w Kolonii Łobudzice, Zelów',
-      story_1: "Spotkaliśmy Się",
-      story_2: "Zaręczyliśmy Się",
-      story_3_future: "Weźmiemy Ślub",
-      story_3_past: "Pobraliśmy Się",
+      title: "日付",
+      title_cursive: "保存",
+      date: "2025年7月26日",
+      place: "ポーランド, Kolonia Łobudzice",
+      story_1: "出会いました",
+      story_2: "婚約しました",
+      story_3_future: "まもなく結婚します",
+      story_3_past: "既に結婚しました",
     },
     schedule_section: {
       title: {
-        main: "HARMONOGRAM",
-        sub: "Przyjęcia",
+        main: "結婚式",
+        sub: "タイムライン",
       },
       description:
-        "Ślub oraz wesele odbędą się 26 lipca 2025 roku. Następnego dnia serdecznie zapraszamy na poprawiny!",
+        "結婚式は2025年7月26日（土）に始まり、2025年7月27日（日）に終了します。",
       day_1: {
-        title: "Dzień 1",
+        title: "1日目",
         events: {
           ceremony: {
             time: "16:00",
-            title: "Ceremonia Ślubu",
+            title: "挙式開始",
           },
           dinner: {
             time: "17:00",
-            title: "Uroczysty Obiad",
+            title: "ディナー",
           },
           dance: {
             time: "18:00",
-            title: "Pierwszy Taniec",
+            title: "ファーストダンス",
           },
           photo: {
             time: "19:00 - 22:00",
-            title: "Fotobudka",
+            title: "フォトブース",
           },
           pig: {
             time: "22:30",
-            title: "Danie Specjalne",
+            title: "スペシャルディッシュ",
           },
           cake_cutting: {
-            time: "00:00",
-            title: "Tort",
+            time: "0:00",
+            title: "ケーキカット",
           },
           games: {
-            time: "00:30",
-            title: "Oczepiny",
+            time: "0:30",
+            title: "パーティーゲーム",
           },
           party: {
-            time: "Do Białego Rana",
-            title: "Jedzenie, Picie, i Zabawa!",
+            time: "一晩中",
+            title: "食べて、飲んで、踊って、繰り返そう！",
           },
         },
       },
       day_2: {
-        title: "Dzień 2",
+        title: "2日目",
         events: {
           after: {
             time: "15:00",
-            title: "Rozpoczęcie Poprawin",
+            title: "アフターパーティ開始",
           },
           vespa: {
             time: "16:00 - 21:00",
-            title: "Bar Vespa",
+            title: "ヴェスパバー",
           },
           party_continues: {
-            time: "Cały Dzień",
-            title: "Jedzenie, Picie, i Zabawa!",
+            time: "終日",
+            title: "食べて、飲んで、踊って、繰り返そう！",
           },
           end: {
-            time: "10:00 PM",
-            title: "Koniec",
+            time: "22:00",
+            title: "終了",
           },
         },
       },
     },
     info_section: {
       title: {
-        main: "WIĘCEJ",
-        sub: "Szczegółów",
+        main: "詳細",
+        sub: "情報",
       },
       details: {
-        when_where: "Kiedy i Gdzie",
+        when_where: "日時・場所",
         dates: [
           {
             bold: true,
-            text: "Daty: ",
+            text: "日付: ",
           },
-          "Sobota, 26 Lipca & Niedziela, 27 Lipca 2025 roku",
+          "2025年7月26日（土） & 2025年7月27日（日）",
         ],
         location: [
           {
             bold: true,
-            text: "Lokalizacja: ",
+            text: "場所: ",
           },
-          'Sala "Przy Patykach", Kolonia Łobudzice 18c, 97-425',
+          'Venue "Przy Patykach", Kolonia Łobudzice 18c, 97-425, ポーランド',
         ],
-        button_loc:"ZOBACZ LOKALIZACJĘ"
+        button_loc:"会場を見る"
       },
       accommodations: {
-        title: "Zakwaterowanie",
+        title: "宿泊施設",
         description_1: [
-          "Dla naszych zagranicznych gości oferujemy zakwaterowanie w hotelu przy sali w dniach: ",
-          {
-            bold: true,
-            text: "Piątek, 25 lipca, Sobota, 26 lipca i Niedziela, 27 lipca.",
-          },
-          "",
+          "海外のお客様のために、2025年7月25日（金）、7月26日（土）、7月27日（日）に会場のホテルで宿泊をご用意しています。追加宿泊が必要な場合はお知らせください。",
         ],
         breakfast: [
-          { bold: true, text: "Śniadanie" },
-          " jest wliczone w cenę pobytu i będzie serwowane od ",
-          { bold: true, text: "9:00 do 11:00" },
-          " każdego ranka (podane godziny mogą ulec zmianie, prosimy zaglądać na stronę bliżej daty ślubu).",
+          { bold: true, text: "朝食" },
+          "は宿泊に含まれており、毎朝",
+          { bold: true, text: "9時から11時まで" },
+          "提供されます。",
         ],
       },
       travel_transport: {
-        title: "Transport",
+        title: "交通手段",
         description_1: [
-          "Naszym międzynarodowym gościom zapewniamy transport z lotniska na salę w piątek 25 lipca oraz z sali na lotnisko w poniedziałek 28 lipca.",
+          "海外のお客様のために、7月25日（金）は空港から会場まで、7月28日（月）は会場から空港までの送迎を提供します。",
         ],
         description_2: [
           {
             bold: true,
-            text: "",
+            text: "ご旅行の予約前に、ご希望の時間と空港をお知らせください。お客様に合わせた送迎を手配いたします。（2025年5月26日まで）",
           },
         ],
-        description_3: [""],
+        description_3: [
+          "最寄りの空港はKatowice Airport (KTW)、Warsaw Modlin Airport (WMI)、Warsaw Chopin Airport (WAW)です。",
+        ],
         description_4: [
-          "Dołożymy wszelkich starań, aby zadowolić każdego. Jeśli nie możesz wylądować/wylecieć tego samego dnia/godziny co wszyscy inni, pomożemy Ci zorganizować inny sposób dotarcia na miejsce i z powrotem.",
+          "皆様全員に対応できるよう努めます。もし他の日時での利用が必要な場合は、別の送迎手段もご用意いたします。",
         ],
       },
       contact: {
-        title: "Skontaktuj się z Nami",
-        // Email added on the front end
-        // numbers added on the front end
+        title: "お問い合わせ",
       },
     },
     rsvp_section: {
       top_title: "RSVP",
-      title: { main: "Potwierdź Swoją", sub: "Obecność" },
+      title: { main: "出欠", sub: "確認" },
       description_1: [
         {
           bold: true,
-          text: "Prosimy o potwierdzenie obecności do 26 maja 2025 roku!",
+          text: "2025年5月26日までに出欠を確認してください！",
         },
-        " Wpisz swoje imię i nazwisko w formularzu obok i potwierdź swoją obecność.",
+        " お名前を入力して出欠を確認してください。",
       ],
       description_2:
-        "Zostaw nam wiadomość, jeśli masz jakieś specjalne życzenia, ograniczenia dietetyczne lub jeśli jest coś jeszcze, co chciałbyś z Nami omówić. Zależy nam na tym, aby każdy czuł się komfortowo i świetnie się bawił!",
-      label: "Wyszukaj swoje imię na liście gości",
-      placeholder: "Wyszukaj swoje imię",
-      no_found: "Nie znaleziono osoby o tym imieniu i nazwisku na liście gości",
+        "特別なリクエストや食事制限がある場合はメッセージを残してください。皆様に快適にお過ごしいただくための準備をいたします。",
+      label: "ゲストリストからお名前を検索してください",
+      placeholder: "お名前を入力してください",
+      no_found: "該当するゲストが見つかりませんでした",
       multiple_guests_1: {
-        hi: "Cześć ",
-        you: "! Ty, ",
-        and: " i ",
+        hi: "こんにちは ",
+        you: " さん、",
+        and: " と ",
         are_invited:
-          ", jesteście serdecznie zaproszeni na nasz wyjątkowy dzień. Nie możemy się doczekać by świętować razem z Wami!",
+          "は皆様、特別な日にご招待しております。一緒に祝えば忘れられない一日になるでしょう！",
       },
       multiple_guests_2:
-        "Wybierz, kto weźmie udział w weselu. Mamy nadzieję, że wszyscy będziecie mogli przyjść.",
+        "出席される方を選んでください。皆様のご参加をお待ちしております。",
       single_guest_1: {
-        hi: "Cześć",
+        hi: "こんにちは",
         are_invited:
-          " Cieszymy się, że jesteś na naszej liście gości. Nie możemy się doczekać by świętować razem z Tobą!",
+          " さん、あなたは私たちの特別な日にご招待されています。ご一緒できることを楽しみにしています！",
       },
-      single_guest_2: "Czy weźmiesz udział w weselu?",
-      answers: { yes: "Tak", no: "Nie", unknown: "Jeszcze nie wiem" },
-      note_placeholder: "Chcesz zostawić wiadomość?",
+      single_guest_2: "結婚式に出席されますか？",
+      answers: { yes: "はい", no: "いいえ", unknown: "未定" },
+      note_placeholder: "メッセージを残しますか？",
       rsvp_success: {
-        thanks: "Dziękujemy!",
-        submitted: " Twoje potwierdzenie zostało przesłane.",
+        thanks: "ありがとうございます！",
+        submitted: " 出欠確認が送信されました。",
         change_by: [
-          "Pamiętaj, że możesz zmienić swoją obecność do ",
-          { bold: true, text: "26 maja 2025 roku" },
-          ".",
+          "2025年5月26日までに出欠の変更が可能です。",
         ],
       },
-      error_enter_name: "Proszę podać odpowiedź przed wysłaniem",
-      error_submitting: "Błąd podczas wysyłania RSVP. Spróbuj ponownie.",
+      error_enter_name: "送信前に出欠を入力してください",
+      error_submitting: "RSVP送信中にエラーが発生しました。再度お試しください。",
       button: {
-        submit: "Potwierdź Obecność",
-        loading: "Ładowanie...",
+        submit: "出欠を送信",
+        loading: "読み込み中...",
       },
     },
     registry_section: {
-      title: { main: "LISTA", sub: "Prezentów" },
-      description_1:
-        "Wasza obecność w tym wyjątkowym dniu będzie dla Nas największym prezentem!",
+      title: { main: "ギフト", sub: "リスト" },
+      description_1: "ご出席いただくだけで、私たちにとって最高の贈り物です！",
       description_2:
-        "Jeśli jednak chcielibyście obdarować nas w tym najważniejszym dla nas dniu, będziemy wdzięczni o wsparcie finansowe na budowę naszej wspólnej przyszłości.",
+        "もしご厚意でギフトをいただけるなら、私たちの未来への金銭的支援に感謝いたします。",
       description_3:
-        "Zamiast kwiatów, alkoholu i innych prezentów fizycznych, serdecznie prosimy o zdrapki lub losy na loterię!",
+        "花やアルコールなどの実物贈呈の代わり、スクラッチカードや抽選券でお祝いしていただければ幸いです。",
       description_4:
-        "Uprzejmie prosimy naszych gości z zagranicy o rozważenie przesłania prezentu przelewem bankowym. Aby uzyskać dostęp do danych bankowych, kliknij poniższy przycisk i wprowadź hasło znajdujące się w zaproszeniu. Jak zawsze, jeśli masz jakiekolwiek pytania, skontaktuj się z nami bezpośrednio!",
-      button: "Dostęp do danych przelewu",
-      thanks: "DZIĘKUJEMY!",
-      error_from_api:
-        "Wystąpił problem. Spróbuj ponownie później lub skontaktuj się z nami",
-      error_incorrect_password: "Nieprawidłowe hasło",
-      error_insert_password: "Wprowadź hasło",
-      account_holder: "Odbiorca: ",
+        "海外からのお客様は、銀行振込でのご送付をお願いいたします。以下のボタンを押して招待状に記載のパスワードを入力してください。ご不明な点があれば、お気軽にお問い合わせください。",
+      button: "銀行情報を見る",
+      thanks: "ありがとうございます！",
+      error_from_api: "問題が発生しました。後ほど再試行してください。",
+      error_incorrect_password: "パスワードが正しくありません",
+      error_insert_password: "パスワードを入力してください",
+      account_holder: "受取人: ",
       iban: "IBAN: ",
-      bank_name: "Adres: ",
+      bank_name: "銀行住所: ",
       bic: "BIC / SWIFT: ",
-      sort_code: "Sort code: ",
-      account_number: "Numer konta: ",
-      eur: "Euro",
-      gbp: "Funt",
-      pln: "Złoty",
-      toast_copied: "Skopiowano do schowka",
-      toast_error: "Nie udało się skopiować",
-      dialog_title: { before: "Wprowadź hasło", after: "Hasło jest poprawne" },
-      placeholder: "Wprowadź hasło",
-      submit_button: { submit: "Wyślij", loading: "Sprawdzanie..." },
-      copy_all: "Kopiuj wszystko",
+      sort_code: "Sort Code: ",
+      account_number: "口座番号: ",
+      eur: "ユーロ",
+      gbp: "ポンド",
+      pln: "ポーランドズウォティ",
+      toast_copied: "クリップボードにコピーされました",
+      toast_error: "コピーに失敗しました",
+      dialog_title: {
+        before: "パスワードを入力してください",
+        after: "パスワードが正しいです",
+      },
+      placeholder: "パスワードを入力",
+      submit_button: { submit: "送信", loading: "確認中..." },
+      copy_all: "すべてコピー",
     },
     music_section: {
-      title: { main: "NASZA", sub: "Playlista" },
+      title: { main: "私たちの", sub: "プレイリスト" },
       description:
-        "Dodaj swoje ulubione piosenki do naszej playlisty i pomóż nam stworzyć idealną ścieżkę dźwiękową na nasze wesele!",
-      placeholder: "Wpisz nazwę utworu",
+        "結婚式の完璧なサウンドトラックを作るために、お好きな曲を追加してください！",
+      placeholder: "曲名を入力",
       small_note:
-        "* Niektóre piosenki nie mogą być odtworzone, ale nadal możesz je dodać do naszej playlisty.",
+        "* 一部の曲は再生できない場合がありますが、追加は可能です。",
       toast_success: {
-        title: "Piosenka dodana do playlisty",
-        description: "Czy chcesz dodać kolejną piosenkę?",
+        title: "曲が追加されました",
+        description: "他の曲も追加しますか？",
       },
       toast_error: {
-        title: "Nie udało się dodać piosenki",
+        title: "曲の追加に失敗しました",
         description:
-          "Przepraszamy, coś poszło nie tak. Spróbuj ponownie później.",
+          "申し訳ありません。問題が発生しました。後ほど再試行してください。",
       },
     },
     footer: {
-      text_1: "Strona stworzona z ",
-      text_2: "przez ",
-      text_3: "Fotografie autorstwa",
+      text_1: "Website created with ",
+      text_2: "by ",
+      text_3: "Photos by",
     },
     not_found: {
-      message: "Strona, której szukasz, nie istnieje.",
-      button: "Wróć",
+      message: "お探しのページは存在しません。",
+      button: "戻る",
     },
   },
 };

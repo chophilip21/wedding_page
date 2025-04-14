@@ -3,9 +3,9 @@ import { NextResponse } from 'next/server';
 import { google } from 'googleapis';
 
 const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-const SERVICE_ACCOUNT_KEY = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, '\n');
-const SPREADSHEET_ID = process.env.GOOGLE_SHEET_ID;
-const SHEET_NAME = process.env.GOOGLE_SHEET_NAME || 'Sheet1';  // default to "Sheet1"
+const SERVICE_ACCOUNT_KEY = process.env.GOOGLE_SERVICE_ACCOUNT_KEY?.replace(/\\n/g, '\n');
+const SPREADSHEET_ID = process.env.GOOGLE_SHEETS_ID;
+const SHEET_NAME = process.env.GOOGLE_SHEETS_TAB_NAME || 'Sheet1';  // default to "Sheet1"
 
 // Only handle POST requests (Next.js will automatically handle other methods if not defined)
 export async function POST(request) {
