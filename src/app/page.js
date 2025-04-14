@@ -15,7 +15,7 @@ import {
   SaveTheDate,
   ScheduleSection,
   InfoSection,
-  RSVPSection,
+  // RSVPSection,
   RegistrySection,
   MusicSection,
 } from "@/components";
@@ -69,15 +69,7 @@ export default function Home() {
 
         {/* Information Section */}
         <InfoSection language={language} />
-
-        {/* RSVP Section */}
-        <RSVPSection language={language} />
-
-        {/* Gift Registry Section */}
-        <RegistrySection language={language} />
-
-        {/* Song Requests Section */}
-        <MusicSection language={language} />
+        
       </div>
     </main>
   );

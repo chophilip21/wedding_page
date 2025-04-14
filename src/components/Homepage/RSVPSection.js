@@ -11,7 +11,7 @@ import images from "@/utils/imagesImport";
 import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
-import { db } from "@/firebase/config";
+// import { db } from "@/firebase/config";
 import {
   Select,
   SelectContent,
@@ -46,18 +46,18 @@ const RSVPSection = ({ language }) => {
     button,
   } = translations[language].rsvp_section;
 
-  const [searchTerm, setSearchTerm] = useState(""); // For the search input
-  const [guestsList, setGuestsList] = useState([]); // Initialise empty array to store the guest list
-  const [filteredGuests, setFilteredGuests] = useState([]); // Initialise empty array to store the filtered guest list
-  const [selectedGuest, setSelectedGuest] = useState(null); // If null no guest is selected
-  const [specialRequests, setSpecialRequests] = useState(""); // to store special requests
-  const [guestsToRsvp, setGuestsToRsvp] = useState([]); // Initialise empty array to store the guests to rsvp
-  const [errorMessage, setErrorMessage] = useState(""); // Error message string
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false); // State to check submission of rsvp
-  const [showConfetti, setShowConfetti] = useState(false); // State to show confetti after submission
-  const [pageHeight, setPageHeight] = useState(0); // State to store the height of the page
-  const { width, height } = useWindowSize(); // Retrieve width and height from useWindowSize
+  // const [searchTerm, setSearchTerm] = useState(""); // For the search input
+  // const [guestsList, setGuestsList] = useState([]); // Initialise empty array to store the guest list
+  // const [filteredGuests, setFilteredGuests] = useState([]); // Initialise empty array to store the filtered guest list
+  // const [selectedGuest, setSelectedGuest] = useState(null); // If null no guest is selected
+  // const [specialRequests, setSpecialRequests] = useState(""); // to store special requests
+  // const [guestsToRsvp, setGuestsToRsvp] = useState([]); // Initialise empty array to store the guests to rsvp
+  // const [errorMessage, setErrorMessage] = useState(""); // Error message string
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [submitted, setSubmitted] = useState(false); // State to check submission of rsvp
+  // const [showConfetti, setShowConfetti] = useState(false); // State to show confetti after submission
+  // const [pageHeight, setPageHeight] = useState(0); // State to store the height of the page
+  // const { width, height } = useWindowSize(); // Retrieve width and height from useWindowSize
 
   // Variants for framer motion animation
   const containerVariants = {

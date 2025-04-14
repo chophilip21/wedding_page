@@ -61,10 +61,10 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
     { name: welcome, link: "welcome-section" },
     { name: save_the_date, link: "savethedate-section" },
     { name: schedule, link: "schedule-section" },
-    { name: info, link: "info-section" },
-    { name: rsvp, link: "rsvp-section" },
-    { name: registry, link: "gift-section" },
-    { name: music, link: "music-section" },
+    // { name: info, link: "info-section" },
+    // { name: rsvp, link: "rsvp-section" },
+    // { name: registry, link: "gift-section" },
+    // { name: music, link: "music-section" },
   ];
 
   return (
