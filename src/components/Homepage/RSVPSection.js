@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const RSVPSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation(); // access i18n to get the current language
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -17,10 +17,11 @@ const RSVPSection = () => {
     setSubmitting(true);
 
     try {
+      // Include the current language in the payload using i18n.language
       const response = await fetch('/api/submit-rsvp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName, lastName, email })
+        body: JSON.stringify({ firstName, lastName, email, language: i18n.language })
       });
 
       const data = await response.json();
@@ -93,7 +94,7 @@ const RSVPSection = () => {
               type="submit"
               disabled={submitting}
               className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold text-base rounded-lg shadow hover:bg-indigo-700 transition duration-150"
-              >
+            >
               {submitting ? t('submitting') : t('submitButton')}
             </button>
           </div>

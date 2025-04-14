@@ -1,7 +1,7 @@
 /**
  * @file LanguageDropdown.js
- * @description A component that displays a language selection dropdown, allowing users to switch between supported languages (English, Italian, Polish).
- *              This component handles its own dropdown menu and selection behavior without using Shadcn.
+ * @description A component that displays a language selection dropdown, allowing users to switch between supported languages (English, Korean, Japanese).
+ *              This component handles its own dropdown menu and selection behavior.
  * @author Emanuele Sgroi
  * @date 19 October 2024
  */
@@ -9,12 +9,14 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import images from "@/utils/imagesImport";
 
 const LanguageDropdown = ({ detectedLanguage, setLanguage }) => {
-  const [isScrolled, setIsScrolled] = useState(false); // State that listel to scroll behavior for changing the styles
+  const { i18n } = useTranslation();
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // useEffect for handling scrolling behaviour for changing the styles
+  // Handle scrolling behaviour
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -28,17 +30,17 @@ const LanguageDropdown = ({ detectedLanguage, setLanguage }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Group drop down elements for convenience
+  // Supported languages
   const languages = [
     { code: "ko", label: "Korean", flag: images.korean },
     { code: "ja", label: "Japanese", flag: images.japanese },
     { code: "en", label: "English", flag: images.english },
   ];
 
-  const [selectedLanguage, setSelectedLanguage] = useState(null); // Initially null
-  const [isOpen, setIsOpen] = useState(false); // if true, the drop down menu is open
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Set the selected language based on detectedLanguage when it's available
+  // Set the selected language based on detectedLanguage
   useEffect(() => {
     const initialLanguage = languages.find(
       (lang) => lang.code === detectedLanguage
@@ -46,11 +48,12 @@ const LanguageDropdown = ({ detectedLanguage, setLanguage }) => {
     setSelectedLanguage(initialLanguage);
   }, [detectedLanguage]);
 
-  // Handle language change
+  // Handle language change and update i18next
   const handleLanguageChange = (lang) => {
-    setSelectedLanguage(lang); // Update the selected language in the dropdown
-    setLanguage(lang.code); // Update the language in the parent component
-    setIsOpen(false); // Close the dropdown after selection
+    setSelectedLanguage(lang);             // Update local state for dropdown UI
+    setLanguage(lang.code);                // Update parent state if needed
+    i18n.changeLanguage(lang.code);        // Update the i18next instance globally
+    setIsOpen(false);                      // Close dropdown after selection
   };
 
   if (!selectedLanguage) {
@@ -59,7 +62,7 @@ const LanguageDropdown = ({ detectedLanguage, setLanguage }) => {
 
   return (
     <div className="absolute right-4 inline-block text-left z-[9999]">
-      {/* The Select (Closed Menu) */}
+      {/* Closed dropdown display */}
       <div
         className="flex items-center cursor-pointer"
         onMouseEnter={() => setIsOpen(true)}
@@ -74,13 +77,11 @@ const LanguageDropdown = ({ detectedLanguage, setLanguage }) => {
         />
         <FaChevronDown
           size={12}
-          className={`ml-2 ${
-            isScrolled ? "text-black" : "text-white"
-          } max-lg:text-black`}
+          className={`ml-2 ${isScrolled ? "text-black" : "text-white"} max-lg:text-black`}
         />
       </div>
 
-      {/* The Dropdown Menu */}
+      {/* Dropdown menu */}
       {isOpen && (
         <div
           className="absolute right-0 w-40 bg-cream shadow-lg drop-shadow-2xl rounded-md p-2"

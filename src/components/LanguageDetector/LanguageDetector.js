@@ -18,7 +18,7 @@ const LanguageDetector = () => {
     const browserLanguage = navigator.language || navigator.userLanguage;
 
     // We're only supporting a few languages, so let's normalize it
-    const supportedLanguages = ["en", "it", "pl"];
+    const supportedLanguages = ["en", "ja", "ko"];
     const detectedLanguage = supportedLanguages.includes(
       browserLanguage.slice(0, 2)
     )
