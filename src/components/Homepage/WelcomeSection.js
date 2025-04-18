@@ -60,9 +60,9 @@ const WelcomeSection = ({ language }) => {
         {!countdown.message && (
           <p
             translate="no"
-            className="font-semibold text-white tracking-widest mt-20"
-          >
-            {small_text.toUpperCase()}
+            className="font-normal text-white tracking-widest mt-20 [font-variant-numeric:lining-nums]"
+            >
+            {small_text}
           </p>
         )}
         <Tilt

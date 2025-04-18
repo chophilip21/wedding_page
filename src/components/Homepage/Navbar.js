@@ -58,7 +58,7 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
 
   // Group Navbar elements for convenience
   const navElements = [
-    { name: welcome, link: "welcome-section" },
+    { name: welcome, link: "rsvp-section" }, // should go to rsvp-section
     { name: save_the_date, link: "savethedate-section" },
     { name: schedule, link: "schedule-section" },
     // { name: info, link: "info-section" },

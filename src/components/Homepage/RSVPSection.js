@@ -1,15 +1,25 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const RSVPSection = () => {
-  const { t, i18n } = useTranslation(); // access i18n to get the current language
+const RSVPSection = ({ language }) => {
+  const { t, i18n, ready } = useTranslation();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [statusMessage, setStatusMessage] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+
+  // 1️⃣ Sync i18n to the incoming language prop
+  useEffect(() => {
+    if (language && i18n.language !== language) {
+      i18n.changeLanguage(language);
+    }
+  }, [language, i18n]);
+
+  // 2️⃣ Wait until translations have loaded
+  if (!ready) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,18 +27,20 @@ const RSVPSection = () => {
     setSubmitting(true);
 
     try {
-      // Include the current language in the payload using i18n.language
-      const response = await fetch('/api/submit-rsvp', {
+      const res = await fetch('/api/submit-rsvp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName, lastName, email, language: i18n.language })
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          language: i18n.language,
+        }),
       });
+      const data = await res.json();
 
-      const data = await response.json();
-
-      if (response.ok && data.status === 'success') {
+      if (res.ok && data.status === 'success') {
         setStatusMessage({ type: 'success', text: t('rsvpSuccessMessage') });
-        // Optionally clear the fields after successful submission
         setFirstName('');
         setLastName('');
         setEmail('');
@@ -37,8 +49,8 @@ const RSVPSection = () => {
       } else {
         setStatusMessage({ type: 'error', text: t('generalErrorMessage') });
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    } catch (err) {
+      console.error(err);
       setStatusMessage({ type: 'error', text: t('generalErrorMessage') });
     } finally {
       setSubmitting(false);
@@ -46,15 +58,18 @@ const RSVPSection = () => {
   };
 
   return (
-    <section id="rsvp-section" className="flex justify-center items-center min-h-screen bg-gray-50">
+    <section
+      id="rsvp-section"
+      className="flex justify-center items-center min-h-screen bg-gray-50"
+    >
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-md">
         <h2 className="text-2xl font-bold mb-6 text-center">{t('rsvpTitle')}</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="firstName" className="block text-gray-700">
               {t('firstNameLabel')}
             </label>
-            <input 
+            <input
               id="firstName"
               type="text"
               value={firstName}
@@ -67,7 +82,7 @@ const RSVPSection = () => {
             <label htmlFor="lastName" className="block text-gray-700">
               {t('lastNameLabel')}
             </label>
-            <input 
+            <input
               id="lastName"
               type="text"
               value={lastName}
@@ -76,11 +91,11 @@ const RSVPSection = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <div>
+          <div className="md:col-span-2">
             <label htmlFor="email" className="block text-gray-700">
               {t('emailLabel')}
             </label>
-            <input 
+            <input
               id="email"
               type="email"
               value={email}
@@ -89,8 +104,8 @@ const RSVPSection = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <div>
-            <button 
+          <div className="md:col-span-2">
+            <button
               type="submit"
               disabled={submitting}
               className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold text-base rounded-lg shadow hover:bg-indigo-700 transition duration-150"
@@ -100,7 +115,7 @@ const RSVPSection = () => {
           </div>
         </form>
         {statusMessage && (
-          <div 
+          <div
             className={`mt-4 text-center ${
               statusMessage.type === 'success'
                 ? 'text-green-600'

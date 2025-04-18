@@ -8,6 +8,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import {
   SplashScreen,
   Navbar,
@@ -15,64 +16,52 @@ import {
   SaveTheDate,
   ScheduleSection,
   InfoSection,
-  RSVPSection,
 } from "@/components";
 import LanguageDetector from "@/components/LanguageDetector/LanguageDetector";
 
-export default function Home() {
-  const [language, setLanguage] = useState("en"); // Set default Language
+// Dynamically import the RSVPSection named-export from your components bundle
+const RSVPSection = dynamic(
+  () =>
+    import("@/components").then((mod) => {
+      return mod.RSVPSection;
+    }),
+  { ssr: false }
+);
 
-  // Scroll to top on page load
+export default function Home() {
+  const [language, setLanguage] = useState("en");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Detect the browser's language and set it if supported, else default to English
   useEffect(() => {
     const browserLanguage = navigator.language || navigator.userLanguage;
-    const supportedLanguages = ["en", "it", "pl"]; // English, Italian and Polish are the current languages available for this website
-    const detectedLanguage = supportedLanguages.includes(
-      browserLanguage.slice(0, 2)
-    )
+    const supportedLanguages = ["en", "ko", "ja"];
+    const detected = supportedLanguages.includes(browserLanguage.slice(0, 2))
       ? browserLanguage.slice(0, 2)
       : "en";
-
-    setLanguage(detectedLanguage);
+    setLanguage(detected);
   }, []);
 
   return (
-    <main className={`relative w-full h-full`}>
-      {/* Splash Screen */}
+    <main className="relative w-full h-full">
       <SplashScreen />
-
-      {/* Detect Language */}
       <LanguageDetector />
-
-      {/* Navbar */}
       <Navbar
         language={language}
         detectedLanguage={language}
         setLanguage={setLanguage}
       />
-
-      {/* Welcome Section */}
       <WelcomeSection language={language} />
 
       <div className="relative z-10">
-
-        {/* RSVP Section */}
+        {/* RSVPSection is now client-only, so no hydration mismatch */}
         <RSVPSection language={language} />
 
-        {/* Save the Date Section */}
         <SaveTheDate language={language} />
-
-        {/* Wedding Agenda / Schedule Section */}
         <ScheduleSection language={language} />
-
-        {/* Information Section */}
         <InfoSection language={language} />
-
-  
       </div>
     </main>
   );

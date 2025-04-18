@@ -14,16 +14,16 @@ const translations = {
       footer_him: "Philip",
     },
     navbar: {
-      welcome: "Welcome",
-      save_the_date: "Save the Date",
-      schedule: "Wedding Timeline",
+      welcome: "RSVP Form", // Override
+      save_the_date: "Photo gallery",
+      schedule: "Information",
       info: "Details",
       rsvp: "RSVP",
       registry: "Registry",
       music: "Playlist",
     },
     welcome_section: {
-      small_text: "The wedding of...",
+      small_text: "9/21/2025 12:30PM, Hotel Gajoen Tokyo",
       days: "Days",
       day: "Day",
       hours: "Hours",
@@ -288,8 +288,8 @@ const translations = {
       footer_him: "Philip",
     },
     navbar: {
-      welcome: "환영합니다",
-      save_the_date: "날짜 저장",
+      welcome: "참석 확인",
+      save_the_date: "갤러리",
       schedule: "웨딩 타임라인",
       info: "세부 정보",
       rsvp: "RSVP",
@@ -297,7 +297,7 @@ const translations = {
       music: "플레이리스트",
     },
     welcome_section: {
-      small_text: "웨딩의 시작...",
+      small_text: "2025/9/21 오후 12시, 호텔 가조엔 도쿄",
       days: "일",
       day: "일",
       hours: "시간",
@@ -557,8 +557,8 @@ const translations = {
       footer_him: "Philip",
     },
     navbar: {
-      welcome: "ようこそ",
-      save_the_date: "日付を保存",
+      welcome: "結婚式出欠", // override
+      save_the_date: "ギャラリー",
       schedule: "結婚式タイムライン",
       info: "詳細",
       rsvp: "出欠確認",
@@ -566,7 +566,7 @@ const translations = {
       music: "プレイリスト",
     },
     welcome_section: {
-      small_text: "結婚式の始まり…",
+      small_text: "2025/9/21 午後12時 ホテル雅叙園東京",
       days: "日",
       day: "日",
       hours: "時間",
