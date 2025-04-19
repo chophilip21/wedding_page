@@ -58,10 +58,9 @@ export default function Home() {
       <div className="relative z-10">
         {/* RSVPSection is now client-only, so no hydration mismatch */}
         <RSVPSection language={language} />
-
-        <SaveTheDate language={language} />
-        <ScheduleSection language={language} />
+        {/* <ScheduleSection language={language} /> */}
         <InfoSection language={language} />
+        <SaveTheDate language={language} />
       </div>
     </main>
   );

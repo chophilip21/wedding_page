@@ -35,13 +35,13 @@ const translations = {
       button: "RSVP",
     },
     saveTheDate_section: {
-      title: "SAVE",
-      title_cursive: "The Date",
-      date: "26th of July 2025",
-      place: "in Kolonia Łobudzice, Poland",
-      story_1: "We Met",
-      story_2: "We Got Engaged",
-      story_3_future: "We Will Marry",
+      title: "Celebrate with us",
+      title_cursive: "On this day",
+      date: "21st of September 2025",
+      place: "in Japan, Tokyo",
+      story_1: "First date",
+      story_2: "Engagement",
+      story_3_future: "Marriage",
       story_3_past: "We Got Married",
     },
     schedule_section: {
@@ -122,14 +122,14 @@ const translations = {
             bold: true,
             text: "Dates: ",
           },
-          "Saturday, 26th of July & Sunday, 27th of July 2025.",
+          "Saturday, 21st of September, 12:00PM",
         ],
         location: [
           {
             bold: true,
             text: "Location: ",
           },
-          'Venue "Przy Patykach", Kolonia Łobudzice 18c, 97-425, Poland.',
+          'Hotel Gajoen Tokyo, 1 Chome-8-1 Shimo Meguro, Meguro City, Tokyo 153-0064, Japan',
         ],
         button_loc:"SEE THE VENUE"
       },
@@ -153,31 +153,28 @@ const translations = {
       travel_transport: {
         title: "Travel & Transportation",
         description_1: [
-          "For our international guests, we will provide transportation from the airport to the venue on Friday, 25th of July, and from the venue to the airport on Monday, 28th of July.",
+          "By train, it is three minutes walk from the Meguro Station (on the JR Yamanote Line, Tokyu Meguro Line, Subway Nanboku Line, Mita Line)",
         ],
-        description_2: [
-          {
-            bold: true,
-            text: "Before booking your travel, please contact us to let us know the time and the airport that works best for you. We will then organize a group transport that fits the majority. Please do it before the 26th of May 2025.",
-          },
-        ],
+        description_2: ["By car, it is three minutes drive from the Meguro Ramp on the 2nd Highway"],
         description_3: [
-          "The closest airports are Katowice Airport (KTW), Warsaw Modlin Airport (WMI), and Warsaw Chopin Airport (WAW).",
+          "There is also free shuttle bus that goes to the hotel from various locations. Please refer to the venue's website for more information.",
         ],
         description_4: [
-          "We will try our best to accommodate everyone. If you cannot land/depart at the same day/time as everyone else, we will help you organize another way of getting to and from the venue.",
+          "If you need any help with transportation, please let us know. We will do our best to accommodate everyone.",
         ],
       },
       contact: {
         title: "Contact Us",
+        email_label: "Email",
+        line_label: "Line ID",
+        kakao_label: "KakaoTalk ID",
       },
     },
     rsvp_section: {
       top_title: "RSVP",
       title: { main: "Confirm your", sub: "Attendance" },
       description_1: [
-        { bold: true, text: "Please RSVP by the 26th of May 2025!" },
-        " Simply search for your name on the form and confirm your attendance.",
+        { bold: true, text: "Please RSVP by the 26th of August 2025!" },
       ],
       description_2:
         "Please leave us a note if you have any special requests, dietary restrictions, or if there’s anything else you’d like to discuss. We want to make sure everyone is comfortable and has an amazing time!",
@@ -309,14 +306,14 @@ const translations = {
       button: "참석 확인",
     },
     saveTheDate_section: {
-      title: "날짜",
-      title_cursive: "저장",
-      date: "2025년 7월 26일",
-      place: "폴란드, Kolonia Łobudzice",
-      story_1: "우리는 만났습니다",
-      story_2: "우리는 약혼했습니다",
-      story_3_future: "곧 결혼할 예정입니다",
-      story_3_past: "이미 결혼했습니다",
+      title: "같이 축복해 주세요",
+      title_cursive: "저희와",
+      date: "2025년 9월 21일",
+      place: "일본, 도쿄에서",
+      story_1: "첫 데이트",
+      story_2: "약혼",
+      story_3_future: "결혼식",
+      story_3_past: "우리는 결혼했습니다",
     },
     schedule_section: {
       title: {
@@ -419,26 +416,27 @@ const translations = {
           " 제공됩니다.",
         ],
       },
-      travel_transport: {
-        title: "교통편",
-        description_1: [
-          "국제 손님을 위해, 7월 25일 금요일에는 공항에서 venue까지, 7월 28일 월요일에는 venue에서 공항까지의 교통편을 제공합니다.",
-        ],
-        description_2: [
-          {
-            bold: true,
-            text: "여행 예약 전에, 원하는 시간과 공항을 알려주세요. 이에 맞춰 단체 교통편을 마련하겠습니다. (2025년 5월 26일 전까지)",
-          },
-        ],
-        description_3: [
-          "가장 가까운 공항: Katowice Airport (KTW), Warsaw Modlin Airport (WMI), Warsaw Chopin Airport (WAW).",
-        ],
-        description_4: [
-          "모든 분들을 수용할 수 있도록 최선을 다하겠습니다. 다른 시간에 도착하거나 출발한다면, 별도의 교통편도 마련해드리겠습니다.",
-        ],
-      },
+      // KOREAN
+    travel_transport: {
+      title: "교통편",
+      description_1: [
+        "전철을 이용하실 경우 JR야마노테선, 도큐 메구로선, 지하철 난보쿠선, 미타선이 지나는 메구로역에서 도보로 3분 거리에 있습니다.",
+      ],
+      description_2: [
+        "자동차로는 제2고속도로 메구로 램프에서 차로 3분 거리입니다.",
+      ],
+      description_3: [
+        "여러 장소에서 호텔로 운행하는 무료 셔틀 버스가 있습니다. 자세한 내용은 행사장 웹사이트를 참조하세요.",
+      ],
+      description_4: [
+        "교통과 관련하여 도움이 필요하시다면 연락주세요. 모든 분을 수용할 수 있도록 최선을 다하겠습니다.",
+      ],
+    },
       contact: {
         title: "문의하기",
+        email_label: "이메일",
+        line_label: "라인 ID",
+        kakao_label: "카카오톡 ID",
       },
     },
     rsvp_section: {
@@ -447,9 +445,8 @@ const translations = {
       description_1: [
         {
           bold: true,
-          text: "2025년 5월 26일 전까지 참석 여부를 확인해주세요!",
+          text: "2025년 8월 26일 전까지 참석 여부를 확인해주세요!",
         },
-        " 이름을 입력하고 참석 여부를 확인하세요.",
       ],
       description_2:
         "특별한 요청이나 식단 제한이 있다면 메시지를 남겨주세요. 모두가 편안하게 즐길 수 있도록 준비하겠습니다.",
@@ -578,14 +575,14 @@ const translations = {
       button: "出欠確認",
     },
     saveTheDate_section: {
-      title: "日付",
-      title_cursive: "保存",
-      date: "2025年7月26日",
-      place: "ポーランド, Kolonia Łobudzice",
-      story_1: "出会いました",
-      story_2: "婚約しました",
-      story_3_future: "まもなく結婚します",
-      story_3_past: "既に結婚しました",
+      title: "一緒にお祝いしましょう",
+      title_cursive: "この日に",
+      date: "2025年9月21日",
+      place: "日本、東京で",
+      story_1: "初デート",
+      story_2: "婚約",
+      story_3_future: "結婚",
+      story_3_past: "私たちは結婚しました",
     },
     schedule_section: {
       title: {
@@ -688,26 +685,27 @@ const translations = {
           "提供されます。",
         ],
       },
-      travel_transport: {
-        title: "交通手段",
-        description_1: [
-          "海外のお客様のために、7月25日（金）は空港から会場まで、7月28日（月）は会場から空港までの送迎を提供します。",
-        ],
-        description_2: [
-          {
-            bold: true,
-            text: "ご旅行の予約前に、ご希望の時間と空港をお知らせください。お客様に合わせた送迎を手配いたします。（2025年5月26日まで）",
-          },
-        ],
-        description_3: [
-          "最寄りの空港はKatowice Airport (KTW)、Warsaw Modlin Airport (WMI)、Warsaw Chopin Airport (WAW)です。",
-        ],
-        description_4: [
-          "皆様全員に対応できるよう努めます。もし他の日時での利用が必要な場合は、別の送迎手段もご用意いたします。",
-        ],
-      },
+      // JAPANESE
+    travel_transport: {
+      title: "交通手段",
+      description_1: [
+        "電車をご利用の場合、JR山手線・東急目黒線・地下鉄南北線・三田線の目黒駅から徒歩3分です。",
+      ],
+      description_2: [
+        "お車の場合は第二京浜道路の目黒ランプから車で3分です。",
+      ],
+      description_3: [
+        "また、さまざまな場所からホテルへの無料シャトルバスも運行しています。詳細は会場のウェブサイトをご覧ください。",
+      ],
+      description_4: [
+        "交通手段についてご不明な点があればお知らせください。できる限り対応いたします。",
+      ],
+    },
       contact: {
         title: "お問い合わせ",
+        email_label: "メール",
+        line_label: "ライン ID",
+        kakao_label: "カカオトーク ID",
       },
     },
     rsvp_section: {
@@ -716,9 +714,8 @@ const translations = {
       description_1: [
         {
           bold: true,
-          text: "2025年5月26日までに出欠を確認してください！",
+          text: "2025年8月26日までに出欠を確認してください！",
         },
-        " お名前を入力して出欠を確認してください。",
       ],
       description_2:
         "特別なリクエストや食事制限がある場合はメッセージを残してください。皆様に快適にお過ごしいただくための準備をいたします。",

@@ -1,13 +1,13 @@
 /**
  * @file SaveTheDate.js
  * @description This component renders the 'Save the Date' section. Multilingual!
- * @author Emanuele Sgroi
- * @date 19 October 2024
+ * @author  
+ * @date   19 October 2024
  */
 
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import translations from "@/utils/translations";
 import images from "@/utils/imagesImport";
 import Image from "next/image";
@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 import { getCountdown } from "@/utils/countdownHelper";
 
 const SaveTheDate = ({ language }) => {
-  // Variants for framer motion animations
+  // Framer Motion variants
   const primaryVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -25,19 +25,15 @@ const SaveTheDate = ({ language }) => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.1 } },
   };
-  const tertiaryVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
-  };
   const quartaryVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 1.6, delay: 0.1 } },
   };
 
-  // Get the countdown from the helper function
+  // Get countdown message
   const countdown = getCountdown();
 
-  // Destructure translation strings
+  // Destructure translations
   const {
     title,
     title_cursive,
@@ -49,14 +45,14 @@ const SaveTheDate = ({ language }) => {
     story_3_past,
   } = translations[language].saveTheDate_section;
 
-  // Render custom dashed line
+  // Dashed line elements
   const dashedLine = Array(10)
     .fill()
-    .map((_, index) => (
-      <div key={index} className="w-[2px] h-[5px] my-[3px] bg-gold" />
+    .map((_, idx) => (
+      <div key={idx} className="w-[2px] h-[5px] my-[3px] bg-gold" />
     ));
 
-  // Group story elements for convenience
+  // Story timeline
   const story = [
     { year: 2018, text: story_1, img: "/icons/met.svg" },
     { year: 2022, text: story_2, img: "/icons/engaged.svg" },
@@ -85,7 +81,7 @@ const SaveTheDate = ({ language }) => {
             width={95}
             height={95}
             quality={100}
-            className="mb-4 "
+            className="mb-4"
           />
         </motion.div>
 
@@ -94,20 +90,21 @@ const SaveTheDate = ({ language }) => {
           whileInView="visible"
           variants={secondaryVariants}
           viewport={{ once: true, amount: 0.2 }}
-          className="flex flex-col justify-center items-center"
+          className="flex flex-col justify-center items-center space-y-2"
         >
-          <h3 translate="no" className=" font-bold z-20 ">
+          <h3 translate="no" className="font-bold text-2xl sm:text-3xl z-20 leading-snug">
             {title}
           </h3>
           <h3
             translate="no"
-            className="text-gold text-6xl sm:text-8xl alex-brush z-10 transform font-light -mt-8 md:-mt-10"
+            className="text-gold text-5xl sm:text-7xl alex-brush font-light leading-snug"
           >
             {title_cursive}
           </h3>
         </motion.div>
 
-        {dashedLine}
+        <div className="flex flex-col items-center my-4">{dashedLine}</div>
+
         <motion.h1
           initial="hidden"
           whileInView="visible"
@@ -129,10 +126,10 @@ const SaveTheDate = ({ language }) => {
         </motion.p>
       </div>
 
-      <div className="w-full flex flex-col sm:flex-row  justify-center items-center gap-8 md:gap-20 lg:gap-24 mt-12 sm:mt-16 lg:mt-20 px-4 z-10">
+      <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-20 lg:gap-24 mt-12 sm:mt-16 lg:mt-20 px-4 z-10">
         {story.map((item, index) => (
           <div
-            key={`${item.year} ${index}`}
+            key={`${item.year}-${index}`}
             className="flex flex-col justify-center items-center z-10"
           >
             <motion.h4
@@ -180,23 +177,24 @@ const SaveTheDate = ({ language }) => {
           </div>
         ))}
       </div>
-      {/* Parallax images are rendered here because are part of this section */}
+
+      {/* Parallax images */}
       <ScrollingImages />
       <Image
         src={images.la1}
-        alt={`Line art 1`}
+        alt="Line art 1"
         width={650}
         height={0}
         quality={100}
-        className={`max-md:hidden absolute max-md:w-[300px] max-lg:w-[220px] max-xl:w-[350px] max-2xl:w-[450px] max-md:bottom-[900px] md:top-72 right-0 md:right-16 z-0 opacity-10`}
+        className="max-md:hidden absolute max-md:w-[300px] max-lg:w-[220px] max-xl:w-[350px] max-2xl:w-[450px] max-md:bottom-[900px] md:top-72 right-0 md:right-16 z-0 opacity-10"
       />
       <Image
         src={images.la1}
-        alt={`Line art 1`}
+        alt="Line art 1"
         width={650}
         height={0}
         quality={100}
-        className={`max-md:hidden absolute max-lg:w-[250px] max-xl:w-[350px] top-72 left-16 z-0 opacity-10 transform scale-x-[-1]`}
+        className="max-md:hidden absolute max-lg:w-[250px] max-xl:w-[350px] top-72 left-16 z-0 opacity-10 transform scale-x-[-1]"
       />
     </section>
   );
