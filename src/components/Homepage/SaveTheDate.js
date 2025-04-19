@@ -55,7 +55,7 @@ const SaveTheDate = ({ language }) => {
   // Story timeline
   const story = [
     { year: 2018, text: story_1, img: "/icons/met.svg" },
-    { year: 2022, text: story_2, img: "/icons/engaged.svg" },
+    { year: 2024, text: story_2, img: "/icons/engaged.svg" },
     {
       year: 2025,
       text: countdown.message ? story_3_past : story_3_future,

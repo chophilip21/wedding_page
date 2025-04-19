@@ -1,6 +1,7 @@
 /**
  * @file InfoSection.js
- * @description Renders wedding details, travel info, and updated contact methods (Line/Kakao).
+ * @description Renders wedding details, travel info, and updated contact methods (Line/Kakao).  
+ *              Fixed spacing between the main and sub titles so they no longer overlap.  
  * @author  
  * @date   19 October 2024
  */
@@ -52,9 +53,14 @@ const InfoSection = ({ language }) => {
           height={95}
           className="mb-4 brightness-95"
         />
-        <div className="flex justify-center items-start">
-          <h3 className="font-bold -mr-8">{title.main}</h3>
-          <h3 className="text-gold text-6xl sm:text-8xl alex-brush font-light">
+        <div className="flex justify-center items-baseline space-x-4">
+          <h3 translate="no" className="font-bold text-3xl sm:text-4xl">
+            {title.main}
+          </h3>
+          <h3
+            translate="no"
+            className="text-gold text-6xl sm:text-8xl alex-brush font-light"
+          >
             {title.sub}
           </h3>
         </div>
@@ -111,18 +117,20 @@ const InfoSection = ({ language }) => {
           {/* Travel & Transportation */}
           <div className="w-full md:w-1/2 text-center md:text-left">
             <h5 className="mb-4">{travel_transport.title}</h5>
-            {[ 
-                travel_transport.description_1,
-                travel_transport.description_2,
-                travel_transport.description_3,
-                travel_transport.description_4
-             ].map((descArray, i) => (
+            {[
+              travel_transport.description_1,
+              travel_transport.description_2,
+              travel_transport.description_3,
+              travel_transport.description_4,
+            ].map((descArray, i) => (
               <p key={i} className={i > 0 ? "mt-2" : ""}>
                 {descArray.map((item, idx) =>
                   typeof item === "string" ? (
                     item
                   ) : (
-                    <span key={idx} className="font-bold">{item.text}</span>
+                    <span key={idx} className="font-bold">
+                      {item.text}
+                    </span>
                   )
                 )}
               </p>

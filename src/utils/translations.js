@@ -399,7 +399,7 @@ const translations = {
             bold: true,
             text: "장소: ",
           },
-          'Venue "Przy Patykach", Kolonia Łobudzice 18c, 97-425, 폴란드',
+          '호텔 가조엔, 일본 도쿄 메구로구 시모메구로 1-8-1',
         ],
         button_loc:"장소 보기"
       },
@@ -668,7 +668,7 @@ const translations = {
             bold: true,
             text: "場所: ",
           },
-          'Venue "Przy Patykach", Kolonia Łobudzice 18c, 97-425, ポーランド',
+          'ホテル雅叙園東京, 日本、〒153-0064 東京都目黒区下目黒１丁目８−１',
         ],
         button_loc:"会場を見る"
       },
