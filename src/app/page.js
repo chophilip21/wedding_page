@@ -1,7 +1,7 @@
 /**
  * @file page.js
- * @description Homepage structure including various sections like welcome, save the date, RSVP, and more for the wedding website.
- * @author Emanuele Sgroi
+ * @description Homepage structure including various sections like welcome, save the date, RSVP, and more for the wedding website, now with a footer at the bottom.  
+ * @author  
  * @date 19 October 2024
  */
 
@@ -16,10 +16,11 @@ import {
   SaveTheDate,
   ScheduleSection,
   InfoSection,
+  Footer,
 } from "@/components";
 import LanguageDetector from "@/components/LanguageDetector/LanguageDetector";
 
-// Dynamically import the RSVPSection named-export from your components bundle
+// Dynamically import the RSVPSection named-export to avoid SSR mismatch
 const RSVPSection = dynamic(
   () =>
     import("@/components").then((mod) => {
@@ -31,10 +32,12 @@ const RSVPSection = dynamic(
 export default function Home() {
   const [language, setLanguage] = useState("en");
 
+  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Detect browser language once
   useEffect(() => {
     const browserLanguage = navigator.language || navigator.userLanguage;
     const supportedLanguages = ["en", "ko", "ja"];
@@ -45,23 +48,32 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative w-full h-full">
+  <main className="min-h-screen flex flex-col">
+{/* Splash and language setup */}
       <SplashScreen />
       <LanguageDetector />
+
+      {/* Navbar */}
       <Navbar
         language={language}
         detectedLanguage={language}
         setLanguage={setLanguage}
       />
+
+      {/* Hero */}
       <WelcomeSection language={language} />
 
-      <div className="relative z-10">
-        {/* RSVPSection is now client-only, so no hydration mismatch */}
+      {/* Main content */}
+      <div className="relative z-10 flex-grow">
         <RSVPSection language={language} />
+        {/* You can re-enable ScheduleSection when ready */}
         {/* <ScheduleSection language={language} /> */}
         <InfoSection language={language} />
         <SaveTheDate language={language} />
       </div>
+
+      {/* Footer */}
+      <Footer language={language} />
     </main>
   );
 }

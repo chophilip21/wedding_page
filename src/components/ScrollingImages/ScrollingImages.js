@@ -132,7 +132,7 @@ const ScrollingImages = () => {
         </motion.div>
       </div>
 
-      {/* Animated Text */}
+      {/* Animated Text
       <motion.div
         className="absolute bottom-[-12%]  md:bottom-[-15%] lg:bottom-[-16%] xl:bottom-[-18%] right-0 z-[3] flex items-center opacity-90"
         style={{ x: textX }}
@@ -144,7 +144,7 @@ const ScrollingImages = () => {
         <h1 className="text-gold font-bold text-[180px] md:text-[280px] lg:text-[380px] xl:text-[480px] drop-shadow-lg">
           E
         </h1>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 };
