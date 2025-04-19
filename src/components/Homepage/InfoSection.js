@@ -25,13 +25,11 @@ const InfoSection = ({ language }) => {
     title,
     details,
     travel_transport,
-    contact: { title: contactTitle, email_label, line_label, kakao_label },
+    contact: { title: contactTitle, email_label },
   } = translations[language].info_section;
 
-  // Environment IDs
+  // Environment ID
   const coupleEmail = process.env.NEXT_PUBLIC_EMAIL;
-  const tamakoLineId = process.env.NEXT_PUBLIC_TAMAKO_LINE_ID;
-  const philipKakaoId = process.env.NEXT_PUBLIC_PHILIP_KAKAO_ID;
 
   return (
     <section
@@ -112,10 +110,10 @@ const InfoSection = ({ language }) => {
         {/* Divider on mobile */}
         <div className="h-px w-[50px] bg-black opacity-50 md:hidden" />
 
-        {/* Travel & Transportation | Contact Us */}
-        <div className="w-full flex flex-col md:flex-row md:justify-between items-start gap-8">
+        {/* Travel & Transportation and Contact Us */}
+        <div className="w-full flex flex-col items-center gap-8">
           {/* Travel & Transportation */}
-          <div className="w-full md:w-1/2 text-center md:text-left">
+          <div className="w-full text-center">
             <h5 className="mb-4">{travel_transport.title}</h5>
             {[
               travel_transport.description_1,
@@ -137,11 +135,8 @@ const InfoSection = ({ language }) => {
             ))}
           </div>
 
-          {/* Divider on mobile */}
-          <div className="h-px w-[50px] bg-black opacity-50 md:hidden" />
-
           {/* Contact Us */}
-          <div className="w-full md:w-1/2 text-center md:text-right">
+          <div className="w-full text-center">
             <h5 className="mb-4">{contactTitle}</h5>
             {/* Email */}
             <p>
@@ -151,28 +146,6 @@ const InfoSection = ({ language }) => {
                 className="underline underline-offset-4"
               >
                 {coupleEmail}
-              </a>
-            </p>
-            {/* Tamako: Line */}
-            <p className="mt-2">
-              <span className="font-bold">{line_label}: </span>
-              <a
-                href={`https://line.me/R/ti/p/${tamakoLineId}`}
-                target="_blank"
-                className="underline underline-offset-4"
-              >
-                {tamakoLineId}
-              </a>
-            </p>
-            {/* Philip: KakaoTalk */}
-            <p className="mt-2">
-              <span className="font-bold">{kakao_label}: </span>
-              <a
-                href={`https://open.kakao.com/o/${philipKakaoId}`}
-                target="_blank"
-                className="underline underline-offset-4"
-              >
-                {philipKakaoId}
               </a>
             </p>
           </div>

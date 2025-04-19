@@ -29,6 +29,23 @@
   font-weight: 400;
   font-style: normal;
 }
+
+/* Godo Font for Korean */
+@font-face {
+  font-family: 'Godo';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//fastly.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//fastly.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
+}
+
+/* Honoka Shin Mincho Font */
+@font-face {
+  font-family: "Honoka Shin Mincho";
+  src: url("/fonts/honoka_mincho/Honoka_Shin_Mincho_L.woff2") format("woff2"), url('/fonts/honoka_mincho/Honoka_Shin_Mincho_L.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --color-white: #fff;
   --color-gold: #dcb46d;
@@ -40,6 +57,14 @@
 
   --sloop-script-font: "Sloop Script Pro", sans-serif;
   --cormorant-font: "Cormorant Garamond", serif;
+}
+
+body.korean-font {
+  --cormorant-font: 'Godo', sans-serif;
+}
+
+body.honoka-font {
+  --cormorant-font: "Honoka Shin Mincho", serif;
 }
 
 html,

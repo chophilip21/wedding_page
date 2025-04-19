@@ -26,27 +26,22 @@ const SplashScreen = () => {
     };
   }, []);
 
+  const [loadingText, setLoadingText] = useState('');
+
+  useEffect(() => {
+    const browserLang = (navigator.language || navigator.userLanguage).slice(0, 2);
+    const lang = ['en', 'ko', 'ja'].includes(browserLang) ? browserLang : 'en';
+    let msg = 'Loading...';
+    if (lang === 'ko') msg = '로딩 중...';
+    else if (lang === 'ja') msg = '読み込み中...';
+    setLoadingText(msg);
+  }, []);
+
   return (
     <>
       <div className={styles.splashScreen}>
-        {/* Italian, Polish and English */}
-        {["안녕하세요", "こんにちは", "Hello"].map((text, index) => (
-          <div key={index} className={styles.textContainer}>
-            <p translate="no" className={`${styles.word} alex-brush`}>
-              {text}
-            </p>
-          </div>
-        ))}
-        {/* Italian, Polish and English */}
-        {["안녕하세요", "こんにちは", "Hello"].map((text, index) => (
-          <p
-            key={index}
-            translate="no"
-            className={`${styles.word_mobile} alex-brush`}
-          >
-            {text}
-          </p>
-        ))}
+        <p translate="no" className={`${styles.word} alex-brush`}>{loadingText}</p>
+        <p translate="no" className={`${styles.word_mobile} alex-brush`}>{loadingText}</p>
       </div>
     </>
   );
