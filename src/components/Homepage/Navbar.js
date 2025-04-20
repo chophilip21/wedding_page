@@ -60,7 +60,7 @@ const Navbar = ({ language, detectedLanguage, setLanguage }) => {
   const navElements = [
     { name: welcome, link: "rsvp-section" }, // should go to rsvp-section
     { name: info, link: "info-section" },
-    { name: save_the_date, link: "savethedate-section" },
+    // { name: save_the_date, link: "savethedate-section" },
     // { name: schedule, link: "schedule-section" },
     // { name: rsvp, link: "rsvp-section" },
     // { name: registry, link: "gift-section" },

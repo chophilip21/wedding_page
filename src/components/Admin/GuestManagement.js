@@ -1,7 +1,7 @@
 /**
  * @file GuestManagement.js
  * @description This component handles guest management functionality including viewing, adding, editing, and managing relationships between guests.
- * @author Emanuele Sgroi
+ * @author Philip Sgroi
  * @date 19 October 2024
  */
 
@@ -217,12 +217,12 @@ const ViewGuestsList = ({
           return a.name.localeCompare(b.name);
         case "name-reverse":
           return b.name.localeCompare(a.name);
-        case "karolina":
-          return a.guestSide === "Karolina" && b.guestSide !== "Karolina"
+        case "Tamako":
+          return a.guestSide === "Tamako" && b.guestSide !== "Tamako"
             ? -1
             : 1;
-        case "emanuele":
-          return a.guestSide === "Emanuele" && b.guestSide !== "Emanuele"
+        case "Philip":
+          return a.guestSide === "Philip" && b.guestSide !== "Philip"
             ? -1
             : 1;
         case "status-yes":
@@ -274,11 +274,11 @@ const ViewGuestsList = ({
                 <option value="name-reverse" className="max-sm:text-[15px]">
                   Sort by Name {"("}Z-A{")"}
                 </option>
-                <option value="karolina" className="max-sm:text-[15px]">
-                  Sort by Karolina&apos;s Side
+                <option value="Tamako" className="max-sm:text-[15px]">
+                  Sort by Tamako&apos;s Side
                 </option>
-                <option value="emanuele" className="max-sm:text-[15px]">
-                  Sort by Emanuele&apos;s Side
+                <option value="Philip" className="max-sm:text-[15px]">
+                  Sort by Philip&apos;s Side
                 </option>
                 <option value="status-yes" className="max-sm:text-[15px]">
                   Sort by Status: Yes
@@ -490,8 +490,8 @@ const EditAddGuest = ({
           <option value="" disabled>
             Select Side
           </option>
-          <option value="Emanuele">Emanuele</option>
-          <option value="Karolina">Karolina</option>
+          <option value="Philip">Philip</option>
+          <option value="Tamako">Tamako</option>
         </select>
       </div>
       <div className="max-sm:w-full sm:min-w-[500px] flex flex-col gap-1">
@@ -550,12 +550,12 @@ const ManageRelationships = ({ guests, setGuests }) => {
           return a.name.localeCompare(b.name);
         case "name-reverse":
           return b.name.localeCompare(a.name);
-        case "karolina":
-          return a.guestSide === "Karolina" && b.guestSide !== "Karolina"
+        case "Tamako":
+          return a.guestSide === "Tamako" && b.guestSide !== "Tamako"
             ? -1
             : 1;
-        case "emanuele":
-          return a.guestSide === "Emanuele" && b.guestSide !== "Emanuele"
+        case "Philip":
+          return a.guestSide === "Philip" && b.guestSide !== "Philip"
             ? -1
             : 1;
         case "with-relationships":
@@ -749,8 +749,8 @@ const ManageRelationships = ({ guests, setGuests }) => {
                 <option value="id">Sort by ID</option>
                 <option value="name">Sort by Name (A-Z)</option>
                 <option value="name-reverse">Sort by Name (Z-A)</option>
-                <option value="karolina">Sort by Karolina&apos;s Side</option>
-                <option value="emanuele">Sort by Emanuele&apos;s Side</option>
+                <option value="Tamako">Sort by Tamako&apos;s Side</option>
+                <option value="Philip">Sort by Philip&apos;s Side</option>
                 <option value="with-relationships">With Relationships</option>
                 <option value="without-relationships">
                   Without Relationships

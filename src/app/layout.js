@@ -28,6 +28,11 @@ export const metadata = {
     type: "website",
   },
   robots: { index: false, follow: false },
+  icons: {
+    icon: '/favicon/favicon.ico',
+    shortcut: '/favicon/favicon-32x32.png',
+    apple: '/favicon/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({ children }) {
