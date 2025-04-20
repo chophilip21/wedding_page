@@ -41,7 +41,6 @@ const SplashScreen = () => {
     <>
       <div className={styles.splashScreen}>
         <p translate="no" className={`${styles.word} alex-brush`}>{loadingText}</p>
-        <p translate="no" className={`${styles.word_mobile} alex-brush`}>{loadingText}</p>
       </div>
     </>
   );
