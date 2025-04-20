@@ -6,6 +6,7 @@
     "submitButton": "Submit",
     "rsvpSuccessMessage": "Thank you! Your RSVP has been recorded.",
     "duplicateWarning": "This email is already registered.",
-    "generalErrorMessage": "An error occurred. Please try again later."
+    "generalErrorMessage": "An error occurred. Please try again later.",
+    "submitting": "Submitting..."
   }
   
