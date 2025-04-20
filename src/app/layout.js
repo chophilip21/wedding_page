@@ -10,16 +10,16 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Tamako & Philip",
   description:
-    "You are invited to our Wedding | Sei invitato al nostro Matrimonio |  Jesteś zaproszony na nasz Ślub",
+    "You are invited to our Wedding | 결혼식에 초대합니다 | 結婚式に招待します",
   openGraph: {
     title: "Tamako & Philip",
     description:
-      "You are invited to our Wedding | Sei invitato al nostro Matrimonio |  Jesteś zaproszony na nasz Ślub",
-    url: "https://emanuelekarolina.vercel.app/",
+      "You are invited to our Wedding | 결혼식에 초대합니다 | 結婚式に招待します",
+    url: "https://wedding-page-sable.vercel.app",
     siteName: "Tamako & Philip",
     images: [
       {
-        url: "https://emanuelekarolina.vercel.app/images/og-image.jpg",
+        url: "https://wedding-page-sable.vercel.app/images/welcome_1.jpg",
         width: 1200,
         height: 600,
         alt: "Tamako & Philip Wedding Website",
