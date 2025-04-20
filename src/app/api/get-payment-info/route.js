@@ -6,7 +6,6 @@
  */
 
 import { NextResponse } from "next/server";
-import { db } from "@/firebase/admin"; // Admin SDK instance
 
 export async function POST() {
   try {

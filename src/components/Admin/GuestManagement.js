@@ -22,7 +22,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { doc, deleteDoc, updateDoc, setDoc } from "firebase/firestore";
 import {
   Dialog,
   DialogContent,

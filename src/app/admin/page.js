@@ -8,7 +8,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import Loading from "@/components/Loading/Loading";
@@ -20,7 +19,6 @@ import {
 import { MdDashboard } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import { GiTakeMyMoney } from "react-icons/gi";
-import { collection, getDocs } from "firebase/firestore";
 
 export default function Admin() {
   const [user, setUser] = useState(null); // If null, the Admin is logged out
