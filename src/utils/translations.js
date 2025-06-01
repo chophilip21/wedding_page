@@ -179,7 +179,7 @@ const translations = {
       top_title: "RSVP",
       title: { main: "Confirm your", sub: "Attendance" },
       description_1: [
-        { bold: true, text: "Please RSVP by the 17th of August 2025!" },
+        { bold: true, text: "Please RSVP by the August 17th, 2025!" },
       ],
       description_2:
         "Please leave us a note if you have any special requests, dietary restrictions, or if there’s anything else you’d like to discuss. We want to make sure everyone is comfortable and has an amazing time!",
