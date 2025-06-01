@@ -38,7 +38,7 @@ const translations = {
     saveTheDate_section: {
       title: "Celebrate with us",
       title_cursive: "On this day",
-      date: "21st of September 2025",
+      date: "20th of September 2025",
       place: "in Japan, Tokyo",
       story_1: "First date",
       story_2: "Engagement",
@@ -51,7 +51,7 @@ const translations = {
         sub: "Timeline",
       },
       description:
-        "The wedding celebration will start on Saturday, 26th of July, and end on Sunday, 27th of July 2025.",
+        "The wedding celebration will start on Saturday, 17th of July, and end on Sunday, 27th of July 2025.",
       day_1: {
         title: "Day 1",
         events: {
@@ -123,7 +123,7 @@ const translations = {
             bold: true,
             text: "Dates: ",
           },
-          "Saturday, 21st of September, 12:00PM",
+          "Saturday, 20th of September, 12:00PM",
         ],
         location: [
           {
@@ -131,6 +131,10 @@ const translations = {
             text: "Location: ",
           },
           'Hotel Gajoen Tokyo, 1 Chome-8-1 Shimo Meguro, Meguro City, Tokyo 153-0064, Japan',
+        ],
+        schedule: [
+          { bold: true, text: "Schedule: " },
+          "\n\nFamily Arrival: 13:10\nFriends Arrival: 13:30\nWedding Ceremony: 14:00\nReception: 15:10 - 18:10",
         ],
         button_loc:"SEE THE VENUE"
       },
@@ -140,7 +144,7 @@ const translations = {
           "For our international guests, we are pleased to offer accommodation at the venue's hotel on the ",
           {
             bold: true,
-            text: "Friday 25th of July, Saturday 26th of July, and Sunday 27th of July.",
+            text: "Friday 25th of July, Saturday 17th of July, and Sunday 27th of July.",
           },
           " If you need accommodation for additional days, please let us know, and we can help you arrange it with the venue.",
         ],
@@ -175,7 +179,7 @@ const translations = {
       top_title: "RSVP",
       title: { main: "Confirm your", sub: "Attendance" },
       description_1: [
-        { bold: true, text: "Please RSVP by the 26th of August 2025!" },
+        { bold: true, text: "Please RSVP by the 17th of August 2025!" },
       ],
       description_2:
         "Please leave us a note if you have any special requests, dietary restrictions, or if there’s anything else you’d like to discuss. We want to make sure everyone is comfortable and has an amazing time!",
@@ -204,7 +208,7 @@ const translations = {
         submitted: " Your RSVP has been submitted.",
         change_by: [
           "Remember that you can change the attendance any time before the ",
-          { bold: true, text: "26th of May 2025" },
+          { bold: true, text: "17th of May 2025" },
           ".",
         ],
       },
@@ -309,7 +313,7 @@ const translations = {
     saveTheDate_section: {
       title: "같이 축복해 주세요",
       title_cursive: "저희와",
-      date: "2025년 9월 21일",
+      date: "2025년 9월 20일",
       place: "일본, 도쿄에서",
       story_1: "첫 데이트",
       story_2: "약혼",
@@ -322,7 +326,7 @@ const translations = {
         sub: "타임라인",
       },
       description:
-        "웨딩 행사는 2025년 7월 26일 토요일에 시작하여 2025년 7월 27일 일요일에 종료됩니다.",
+        "웨딩 행사는 2025년 7월 17일 토요일에 시작하여 2025년 7월 27일 일요일에 종료됩니다.",
       day_1: {
         title: "1일차",
         events: {
@@ -388,27 +392,31 @@ const translations = {
         sub: "정보",
       },
       details: {
-        when_where: "시간 및 장소",
+        when_where: "날짜 & 장소",
         dates: [
           {
             bold: true,
             text: "날짜: ",
           },
-          "2025년 7월 26일 & 2025년 7월 27일",
+          "2025년 7월 17일 & 2025년 7월 27일",
         ],
         location: [
           {
             bold: true,
             text: "장소: ",
           },
-          '호텔 가조엔, 일본 도쿄 메구로구 시모메구로 1-8-1',
+          "호텔 가조엔 도쿄, 1 Chome-8-1 Shimomeguro, Meguro City, Tokyo 153-0064, 일본",
+        ],
+        schedule: [
+          { bold: true, text: "일정: " },
+          "\n\n가족 도착: 13:10\n친구 도착: 13:30\n결혼식: 14:00\n피로연: 15:10 - 18:10",
         ],
         button_loc:"장소 보기"
       },
       accommodations: {
         title: "숙박",
         description_1: [
-          "국제 손님을 위해, 7월 25일 금요일, 7월 26일 토요일, 7월 27일 일요일에 숙박을 제공합니다.",
+          "국제 손님을 위해, 7월 25일 금요일, 7월 17일 토요일, 7월 27일 일요일에 숙박을 제공합니다.",
         ],
         breakfast: [
           { bold: true, text: "조식" },
@@ -446,7 +454,7 @@ const translations = {
       description_1: [
         {
           bold: true,
-          text: "2025년 8월 26일 전까지 참석 여부를 확인해주세요!",
+          text: "2025년 8월 17일 전까지 참석 여부를 확인해주세요!",
         },
       ],
       description_2:
@@ -475,7 +483,7 @@ const translations = {
         thanks: "감사합니다!",
         submitted: " 당신의 참석 확인이 전송되었습니다.",
         change_by: [
-          "2025년 5월 26일 전까지 참석 여부를 변경할 수 있습니다.",
+          "2025년 5월 17일 전까지 참석 여부를 변경할 수 있습니다.",
         ],
       },
       error_enter_name: "참석 여부를 입력해주세요",
@@ -579,7 +587,7 @@ const translations = {
     saveTheDate_section: {
       title: "一緒にお祝いしましょう",
       title_cursive: "この日に",
-      date: "2025年9月21日",
+      date: "2025年9月20日",
       place: "日本、東京で",
       story_1: "初デート",
       story_2: "婚約",
@@ -592,7 +600,7 @@ const translations = {
         sub: "タイムライン",
       },
       description:
-        "結婚式は2025年7月26日（土）に始まり、2025年7月27日（日）に終了します。",
+        "結婚式は2025年7月17日（土）に始まり、2025年7月27日（日）に終了します。",
       day_1: {
         title: "1日目",
         events: {
@@ -658,27 +666,31 @@ const translations = {
         sub: "情報",
       },
       details: {
-        when_where: "日時・場所",
+        when_where: "日時 & 場所",
         dates: [
           {
             bold: true,
             text: "日付: ",
           },
-          "2025年7月26日（土） & 2025年7月27日（日）",
+          "2025年7月17日（土） & 2025年7月27日（日）",
         ],
         location: [
           {
             bold: true,
             text: "場所: ",
           },
-          'ホテル雅叙園東京, 日本、〒153-0064 東京都目黒区下目黒１丁目８−１',
+          "ホテル雅叙園東京、〒153-0064 東京都目黒区下目黒1丁目8−1",
+        ],
+        schedule: [
+          { bold: true, text: "スケジュール: " },
+          "\n\nご家族到着: 13:10\nご友人到着: 13:30\n挙式: 14:00\n披露宴: 15:10 - 18:10",
         ],
         button_loc:"会場を見る"
       },
       accommodations: {
         title: "宿泊施設",
         description_1: [
-          "海外のお客様のために、2025年7月25日（金）、7月26日（土）、7月27日（日）に会場のホテルで宿泊をご用意しています。追加宿泊が必要な場合はお知らせください。",
+          "海外のお客様のために、2025年7月25日（金）、7月17日（土）、7月27日（日）に会場のホテルで宿泊をご用意しています。追加宿泊が必要な場合はお知らせください。",
         ],
         breakfast: [
           { bold: true, text: "朝食" },
@@ -716,7 +728,7 @@ const translations = {
       description_1: [
         {
           bold: true,
-          text: "2025年8月26日までに出欠を確認してください！",
+          text: "2025年8月17日までに出欠を確認してください！",
         },
       ],
       description_2:
@@ -745,7 +757,7 @@ const translations = {
         thanks: "ありがとうございます！",
         submitted: " 出欠確認が送信されました。",
         change_by: [
-          "2025年5月26日までに出欠の変更が可能です。",
+          "2025年5月17日までに出欠の変更が可能です。",
         ],
       },
       error_enter_name: "送信前に出欠を入力してください",

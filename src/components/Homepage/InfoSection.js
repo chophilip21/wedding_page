@@ -106,6 +106,23 @@ const InfoSection = ({ language }) => {
             />
             {details.button_loc}
           </Link>
+
+          {/* Schedule */}
+          {details.schedule && (
+            <div className="mt-6">
+              <p>
+                {details.schedule.map((item, idx) =>
+                  typeof item === "string" ? (
+                    <span key={idx} className="whitespace-pre-line">{item}</span>
+                  ) : (
+                    <span key={idx} className="font-bold">
+                      {item.text}
+                    </span>
+                  )
+                )}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Divider on mobile */}
