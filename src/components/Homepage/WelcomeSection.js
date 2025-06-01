@@ -78,7 +78,7 @@ const WelcomeSection = ({ language }) => {
               smooth={true}
               duration={1000}
               offset={-70}
-              className="btn btn-gold"
+              className="btn btn-gold font-light tracking-wider text-sm md:text-base"
               translate="no"
             >
               {button}

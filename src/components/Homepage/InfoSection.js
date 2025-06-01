@@ -106,6 +106,33 @@ const InfoSection = ({ language }) => {
             />
             {details.button_loc}
           </Link>
+          
+          {/* Google Maps */}
+          <div className="flex justify-center w-full mt-4">
+            <div className="w-full max-w-md h-[250px] rounded-lg overflow-hidden shadow-md relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.4780445825424!2d139.7004115!3d35.6500833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b5df600af57%3A0x94e4adcff5fb7bb5!2sHotel%20Gajoen%20Tokyo!5e0!3m2!1sen!2sus!4v1717017267158!5m2!1sen!2sus&z=17&iwloc=B&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Hotel Gajoen Tokyo Map"
+              ></iframe>
+              
+              {/* Transparent overlay to make the entire map clickable */}
+              <a 
+                href="https://www.google.com/maps/place/Hotel+Gajoen+Tokyo/@35.6317881,139.7112133,17z/data=!3m1!4b1!4m9!3m8!1s0x60188b1e513116f9:0x2f76f0da5a3ba9dc!5m2!4m1!1i2!8m2!3d35.6317881!4d139.7137936!16s%2Fg%2F122nzdk6?hl=en&entry=ttu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 z-10 bg-transparent flex items-center justify-center hover:bg-black/10 transition-colors duration-200"
+                aria-label="View Hotel Gajoen Tokyo on Google Maps"
+              >
+                <span className="sr-only">View on Google Maps</span>
+              </a>
+            </div>
+          </div>
 
           {/* Schedule */}
           {details.schedule && (
