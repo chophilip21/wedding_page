@@ -23,7 +23,7 @@ const translations = {
       music: "Playlist",
     },
     welcome_section: {
-      small_text: "9/21/2025 12:30PM, Hotel Gajoen Tokyo",
+      small_text: "9/20/2025, Hotel Gajoen Tokyo",
       days: "Days",
       day: "Day",
       hours: "Hours",
@@ -293,7 +293,7 @@ const translations = {
       music: "플레이리스트",
     },
     welcome_section: {
-      small_text: "2025/9/21 오후 12시, 호텔 가조엔 도쿄",
+      small_text: "2025/9/20, 호텔 가조엔 도쿄",
       days: "일",
       day: "일",
       hours: "시간",
@@ -562,7 +562,7 @@ const translations = {
       music: "プレイリスト",
     },
     welcome_section: {
-      small_text: "2025/9/21 午後12時 ホテル雅叙園東京",
+      small_text: "2025/9/20 ホテル雅叙園東京",
       days: "日",
       day: "日",
       hours: "時間",

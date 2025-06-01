@@ -7,11 +7,12 @@
  */
 
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import images from "@/utils/imagesImport";
 import translations from "@/utils/translations";
+import { getCountdown } from "@/utils/countdownHelper";
 
 const InfoSection = ({ language }) => {
   // Framer‑Motion variants
@@ -150,8 +151,68 @@ const InfoSection = ({ language }) => {
             </p>
           </div>
         </div>
+
+        {/* Countdown Section */}
+        <CountdownTimer language={language} />
       </div>
     </section>
+  );
+};
+
+const CountdownTimer = ({ language }) => {
+  const [countdown, setCountdown] = useState(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    setCountdown(getCountdown());
+
+    const intervalId = setInterval(() => {
+      setCountdown(getCountdown());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  if (!isClient || !countdown) return null;
+
+  const { days, day, hours, hour, minutes, minute, seconds, second } = 
+    translations[language].welcome_section;
+
+  if (countdown.message) return null; // Don't show countdown if wedding has passed
+
+  return (
+    <div className="w-full mt-12 text-center">
+      <h5 className="mb-6">
+        {language === 'en' ? 'Counting Down' : language === 'ko' ? '카운트다운' : 'カウントダウン'}
+      </h5>
+      <div className="flex justify-center gap-4 md:gap-8">
+        <div className="flex flex-col items-center">
+          <span className="text-2xl font-bold">{countdown.days}</span>
+          <span className="text-sm">
+            {countdown.days === 1 ? day : days}
+          </span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-2xl font-bold">{countdown.hours}</span>
+          <span className="text-sm">
+            {countdown.hours === 1 ? hour : hours}
+          </span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-2xl font-bold">{countdown.minutes}</span>
+          <span className="text-sm">
+            {countdown.minutes === 1 ? minute : minutes}
+          </span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-2xl font-bold">{countdown.seconds}</span>
+          <span className="text-sm">
+            {countdown.seconds === 1 ? second : seconds}
+          </span>
+        </div>
+      </div>
+    </div>
   );
 };
 
