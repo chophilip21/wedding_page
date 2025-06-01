@@ -18,7 +18,7 @@ import Tilt from "react-parallax-tilt";
 const WelcomeSection = ({ language }) => {
   // Destructure translation strings
   const { her, him } = translations[language].couple;
-  const { small_text, button } = translations[language].welcome_section;
+  const { small_text, gratitude_message, button } = translations[language].welcome_section;
 
   return (
     <section
@@ -51,6 +51,11 @@ const WelcomeSection = ({ language }) => {
             <h1 className="sloop-script welcome-names ">{him}</h1>
           </div>
         </Tilt>
+
+        {/* Gratitude Message */}
+        <div className="text-white text-base md:text-lg mt-6 mb-6 text-center max-w-2xl px-4 whitespace-pre-line leading-relaxed tracking-wider">
+          {gratitude_message}
+        </div>
 
         <ScrollLink
           to="rsvp-section"
