@@ -123,18 +123,18 @@ const translations = {
             bold: true,
             text: "Dates: ",
           },
-          "Saturday, 20th of September, 12:00PM",
+          "Saturday, July 26, 2025 & Sunday, July 27, 2025",
         ],
         location: [
           {
             bold: true,
             text: "Location: ",
           },
-          'Hotel Gajoen Tokyo, 1 Chome-8-1 Shimo Meguro, Meguro City, Tokyo 153-0064, Japan',
+          "Hotel Gajoen Tokyo, 1 Chome-8-1 Shimomeguro, Meguro City, Tokyo 153-0064",
         ],
         schedule: [
           { bold: true, text: "Schedule: " },
-          "\n\nFamily Arrival: 13:10\nFriends Arrival: 13:30\nWedding Ceremony: 14:00\nReception: 15:10 - 18:10",
+          "\n\nCeremony: 2:00 PM\nReception: 3:10 PM - 6:10 PM\n\nGuests: 30 minutes before ceremony\nFamily: 50 minutes before ceremony",
         ],
         button_loc:"SEE THE VENUE"
       },
@@ -409,7 +409,7 @@ const translations = {
         ],
         schedule: [
           { bold: true, text: "일정: " },
-          "\n\n가족 도착: 13:10\n친구 도착: 13:30\n결혼식: 14:00\n피로연: 15:10 - 18:10",
+          "\n\n결혼식: 14:00\n피로연: 15:10 - 18:10\n\n내빈: 결혼식 30분 전\n가족: 결혼식 50분 전",
         ],
         button_loc:"장소 보기"
       },
@@ -683,7 +683,7 @@ const translations = {
         ],
         schedule: [
           { bold: true, text: "スケジュール: " },
-          "\n\nご家族到着: 13:10\nご友人到着: 13:30\n挙式: 14:00\n披露宴: 15:10 - 18:10",
+          "\n\n挙式: 14:00\n披露宴: 15:10 - 18:10\n\nご来賓: 挙式時間30分前\nご親族: 挙式時間50分前",
         ],
         button_loc:"会場を見る"
       },

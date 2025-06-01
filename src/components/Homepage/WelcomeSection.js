@@ -23,13 +23,13 @@ const WelcomeSection = ({ language }) => {
   return (
     <section
       id="welcome-section"
-      className="min-h-svh w-full relative overflow-hidden"
+      className="w-full relative overflow-x-hidden pb-8 pt-16 md:pt-0 md:min-h-svh"
     >
       {/* Text Section */}
-      <div className="absolute w-full h-full flex flex-col justify-center items-center z-10 gap-0 py-16">
+      <div className="relative w-full flex flex-col justify-center items-center z-10 gap-0 py-4 md:py-16 md:absolute md:h-full">
         <p
           translate="no"
-          className="font-normal text-white tracking-widest mt-20 [font-variant-numeric:lining-nums]"
+          className="font-normal text-white tracking-widest mt-4 md:mt-20 [font-variant-numeric:lining-nums]"
         >
           {small_text}
         </p>
@@ -53,7 +53,7 @@ const WelcomeSection = ({ language }) => {
         </Tilt>
 
         {/* Gratitude Message */}
-        <div className="w-full max-w-md mx-auto mt-8 mb-8 px-6 py-8 bg-black/30 rounded-lg border-2 border-white/40 shadow-lg relative">
+        <div className="w-full max-w-md mx-auto mt-6 mb-4 md:mt-8 md:mb-8 px-4 md:px-6 py-6 md:py-8 bg-black/30 rounded-lg border-2 border-white/40 shadow-lg relative">
           <div className={`text-white text-center font-light tracking-wider mb-6
             ${language === 'ja' ? 'whitespace-pre-wrap text-sm md:text-base leading-relaxed' : ''}
             ${language === 'en' ? 'text-sm md:text-base leading-loose' : ''}
@@ -88,7 +88,7 @@ const WelcomeSection = ({ language }) => {
       </div>
 
       {/* Background */}
-      <div className="absolute h-full w-full flex justify-center items-center z-0">
+      <div className="absolute inset-0 w-full flex justify-center items-center z-0">
         <div className="overlay"></div>
 
         {/* First Image */}
