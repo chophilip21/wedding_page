@@ -18,3 +18,7 @@
 
 Visit [http://localhost:3000](http://localhost:3000) to view the website locally.
 ---
+
+### Deployment
+
+Use Vercel to deploy the website. Link: wedding-page-sable.vercel.app  

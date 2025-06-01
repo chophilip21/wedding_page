@@ -23,10 +23,10 @@ const WelcomeSection = ({ language }) => {
   return (
     <section
       id="welcome-section"
-      className="h-svh min-h-svh w-full relative overflow-hidden"
+      className="min-h-svh w-full relative overflow-hidden"
     >
       {/* Text Section */}
-      <div className="absolute w-full h-full min-h-svh flex flex-col justify-center items-center z-10 gap-0">
+      <div className="absolute w-full h-full flex flex-col justify-center items-center z-10 gap-0 py-16">
         <p
           translate="no"
           className="font-normal text-white tracking-widest mt-20 [font-variant-numeric:lining-nums]"
@@ -40,7 +40,7 @@ const WelcomeSection = ({ language }) => {
           tiltMaxAngleY={3}
           perspective={1000}
         >
-          <div className="flex flex-col md:flex-row w-[240px] md:w-full h-[240px] md:h-auto justify-center md:gap-4 max-md:border max-md:border-[#eec87e] rounded-full max-md:p-4 cursor-default">
+          <div className="flex flex-col md:flex-row w-[200px] md:w-full h-[200px] md:h-auto justify-center md:gap-4 max-md:border max-md:border-[#eec87e] rounded-full max-md:p-4 cursor-default">
             <h1 translate="no" className="sloop-script welcome-names">
               {her}
             </h1>
@@ -53,7 +53,7 @@ const WelcomeSection = ({ language }) => {
         </Tilt>
 
         {/* Gratitude Message */}
-        <div className="w-full max-w-md mx-auto mt-8 mb-8 px-6 py-8 bg-black/30 rounded-lg border-2 border-white/40 shadow-lg">
+        <div className="w-full max-w-md mx-auto mt-8 mb-8 px-6 py-8 bg-black/30 rounded-lg border-2 border-white/40 shadow-lg relative">
           <div className={`text-white text-center font-light tracking-wider mb-6
             ${language === 'ja' ? 'whitespace-pre-wrap text-sm md:text-base leading-relaxed' : ''}
             ${language === 'en' ? 'text-sm md:text-base leading-loose' : ''}
@@ -88,7 +88,7 @@ const WelcomeSection = ({ language }) => {
       </div>
 
       {/* Background */}
-      <div className="absolute md:fixed h-full w-full flex min-h-svh justify-center items-center z-0">
+      <div className="absolute h-full w-full flex justify-center items-center z-0">
         <div className="overlay"></div>
 
         {/* First Image */}
