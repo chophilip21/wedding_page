@@ -53,8 +53,13 @@ const WelcomeSection = ({ language }) => {
         </Tilt>
 
         {/* Gratitude Message */}
-        <div className="text-white text-base md:text-lg mt-6 mb-6 text-center max-w-2xl px-4 whitespace-pre-line leading-relaxed tracking-wider">
-          {gratitude_message}
+        <div className="w-full max-w-md mx-auto mt-8 mb-8 px-6 py-8 bg-black/30 rounded-lg border-2 border-white/40 shadow-lg">
+          <div className={`text-white text-center font-light tracking-wider
+            ${language === 'ja' ? 'whitespace-pre-wrap text-sm md:text-base' : 'whitespace-pre-line text-base md:text-lg'}
+            leading-relaxed
+          `}>
+            {gratitude_message}
+          </div>
         </div>
 
         <ScrollLink
