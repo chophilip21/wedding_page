@@ -81,12 +81,12 @@ const InfoSection = ({ language }) => {
               )
             )}
           </p>
-          <p className="mt-[-16px]">
+          <p className="mt-[-16px] break-keep" style={{ wordBreak: 'keep-all', wordWrap: 'break-word' }}>
             {details.location.map((item, idx) =>
               typeof item === "string" ? (
-                <span key={idx}>{item}</span>
+                <span key={idx} className="whitespace-nowrap">{item}</span>
               ) : (
-                <span key={idx} className="font-bold">
+                <span key={idx} className="font-bold whitespace-nowrap">
                   {item.text}
                 </span>
               )

@@ -23,7 +23,7 @@ const WelcomeSection = ({ language }) => {
   return (
     <section
       id="welcome-section"
-      className="w-full relative overflow-x-hidden pb-8 pt-16 md:pt-0 md:min-h-svh"
+      className="w-full relative overflow-x-hidden pb-8 pt-24 md:pt-28 lg:pt-0 lg:min-h-svh"
     >
       {/* Text Section */}
       <div className="relative w-full flex flex-col justify-center items-center z-10 gap-0 py-4 md:py-16 md:absolute md:h-full">
@@ -54,11 +54,11 @@ const WelcomeSection = ({ language }) => {
 
         {/* Gratitude Message */}
         <div className="w-full max-w-md mx-auto mt-6 mb-4 md:mt-8 md:mb-8 px-4 md:px-6 py-6 md:py-8 bg-black/30 rounded-lg border-2 border-white/40 shadow-lg relative">
-          <div className={`text-white text-center font-light tracking-wider mb-6
-            ${language === 'ja' ? 'whitespace-pre-wrap text-sm md:text-base leading-relaxed' : ''}
-            ${language === 'en' ? 'text-sm md:text-base leading-loose' : ''}
-            ${language === 'ko' ? 'whitespace-pre-line text-base md:text-lg leading-relaxed' : ''}
-          `}>
+          <div className={`text-white text-center font-light tracking-wider mb-6 px-2
+            ${language === 'ja' ? 'whitespace-pre-wrap text-sm md:text-[15px] leading-relaxed' : ''}
+            ${language === 'en' ? 'text-sm md:text-[15px] leading-loose' : ''}
+            ${language === 'ko' ? 'whitespace-pre-line text-base md:text-[16px] leading-relaxed' : ''}
+          `} style={{ wordBreak: 'keep-all' }}> 
             {language === 'en' ? (
               <>
                 {gratitude_message.split('\n\n').map((paragraph, index) => (
@@ -88,7 +88,7 @@ const WelcomeSection = ({ language }) => {
       </div>
 
       {/* Background */}
-      <div className="absolute inset-0 w-full flex justify-center items-center z-0">
+      <div className="absolute inset-0 w-full flex justify-center items-center z-0 pt-16 lg:pt-0">
         <div className="overlay"></div>
 
         {/* First Image */}
