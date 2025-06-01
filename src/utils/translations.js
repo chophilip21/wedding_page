@@ -32,7 +32,7 @@ const translations = {
       minute: "Minute",
       seconds: "Seconds",
       second: "Second",
-      gratitude_message: "Hello everyone,\n\nWe're excited to share that we're getting married, and we'd love to celebrate with you. To show our appreciation for all your support over the years, we're planning a small, casual reception.\n\nWe know life can be busy, but it would mean the world to us if you could join in the celebration.\n\nPhilip Cho & Tamako Aoki",
+      gratitude_message: "Hello everyone,\n\nWe're excited to share that we're getting married! To show our appreciation for all your support over the years, we're planning a small, casual reception.\n\nWe know life can be busy, but it would mean the world to us if you could come and celebrate with us.\n\nPhilip Cho & Tamako Aoki",
       button: "RSVP",
     },
     saveTheDate_section: {
@@ -303,7 +303,7 @@ const translations = {
       minute: "분",
       seconds: "초",
       second: "초",
-      gratitude_message: "안녕하세요 여러분,\n\n모두 잘 지내고 계신가요?\n\n저희가 결혼하게 되어, 고마운 분들께 감사의 마음을 전하고자 작은 자리를 마련했습니다. 바쁘신 중에 대단히 송구스럽지만, 부디 참석하시어 자리를 빛내 주시기를 부탁드립니다.\n\n조윤수 · 아오키 타마코 드림",
+      gratitude_message: "안녕하세요 여러분, 모두 잘 지내고 계신가요?\n\n저희가 결혼하게 되어, 고마운 분들께 감사의 마음을 전하고자 작은 자리를 마련했습니다. 바쁘신 중에 대단히 송구스럽지만, 부디 참석하시어 자리를 빛내 주시기를 부탁드립니다.\n\n조윤수 · 아오키 타마코 드림",
       button: "참석 확인",
     },
     saveTheDate_section: {

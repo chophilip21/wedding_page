@@ -54,24 +54,37 @@ const WelcomeSection = ({ language }) => {
 
         {/* Gratitude Message */}
         <div className="w-full max-w-md mx-auto mt-8 mb-8 px-6 py-8 bg-black/30 rounded-lg border-2 border-white/40 shadow-lg">
-          <div className={`text-white text-center font-light tracking-wider
-            ${language === 'ja' ? 'whitespace-pre-wrap text-sm md:text-base' : 'whitespace-pre-line text-base md:text-lg'}
-            leading-relaxed
+          <div className={`text-white text-center font-light tracking-wider mb-6
+            ${language === 'ja' ? 'whitespace-pre-wrap text-sm md:text-base leading-relaxed' : ''}
+            ${language === 'en' ? 'text-sm md:text-base leading-loose' : ''}
+            ${language === 'ko' ? 'whitespace-pre-line text-base md:text-lg leading-relaxed' : ''}
           `}>
-            {gratitude_message}
+            {language === 'en' ? (
+              <>
+                {gratitude_message.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className={index > 0 ? 'mt-4' : ''}>
+                    {paragraph}
+                  </p>
+                ))}
+              </>
+            ) : (
+              gratitude_message
+            )}
+          </div>
+          
+          <div className="flex justify-center">
+            <ScrollLink
+              to="rsvp-section"
+              smooth={true}
+              duration={1000}
+              offset={-70}
+              className="btn btn-gold"
+              translate="no"
+            >
+              {button}
+            </ScrollLink>
           </div>
         </div>
-
-        <ScrollLink
-          to="rsvp-section"
-          smooth={true}
-          duration={1000}
-          offset={-70}
-          className="mt-20 btn btn-gold"
-          translate="no"
-        >
-          {button}
-        </ScrollLink>
       </div>
 
       {/* Background */}
