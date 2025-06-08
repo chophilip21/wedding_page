@@ -85,17 +85,19 @@ const InfoSection = ({ language }) => {
               )
             )}
           </p>
-          <p className="mt-[-16px]">
-            {details.location.map((item, idx) =>
-              typeof item === "string" ? (
-                <span key={idx}>{item}</span>
-              ) : (
-                <span key={idx} className="font-bold">
-                  {item.text}
-                </span>
-              )
-            )}
-          </p>
+          <div className="mt-[-16px] px-4">
+            <p className="text-center break-words" style={{ wordBreak: 'keep-all' }}>
+              {details.location.map((item, idx) =>
+                typeof item === "string" ? (
+                  <span key={idx} className="inline">{item}</span>
+                ) : (
+                  <span key={idx} className="font-bold">
+                    {item.text}
+                  </span>
+                )
+              )}
+            </p>
+          </div>
           <Link
             href={language === 'ja' ? 'https://www.hotelgajoen-tokyo.com/access' : 'https://en.hotelgajoen-tokyo.com/access/'}
             target="_blank"

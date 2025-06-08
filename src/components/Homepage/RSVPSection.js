@@ -104,8 +104,24 @@ const RSVPSection = ({ language }) => {
           </div>
         </form>
         {statusMessage && (
-          <div className={`mt-4 text-center ${statusMessage.type==='success'?'text-green-300':statusMessage.type==='warning'?'text-yellow-300':'text-red-300'}`}>{statusMessage.text}</div>
+          <div className={`mt-4 text-center ${statusMessage.type==='success'?'text-green-300':statusMessage.type==='warning'?'text-yellow-300':'text-red-300'}`}>
+            {statusMessage.text}
+          </div>
         )}
+        <div className="mt-6 text-center text-sm text-gray-200">
+          <a 
+            href="https://caneat.jp/event/42899708?488417" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gold hover:underline"
+          >
+            {language === 'ja' 
+              ? 'アレルギー・食事制限がある方はこちら' 
+              : language === 'ko'
+                ? '알레르기나 식이 제한이 있으신 분은 여기를 클릭해주세요'
+                : 'Click here to report your dietary restrictions'}
+          </a>
+        </div>
       </div>
     </section>
   );

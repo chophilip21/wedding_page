@@ -123,7 +123,7 @@ const translations = {
             bold: true,
             text: "Dates: ",
           },
-          "Saturday, July 26, 2025 & Sunday, July 27, 2025",
+          "Saturday, September 20, 2025",
         ],
         location: [
           {
@@ -180,7 +180,7 @@ const translations = {
       top_title: "RSVP",
       title: { main: "Confirm your", sub: "Attendance" },
       description_1: [
-        { bold: true, text: "Please RSVP by the 17th of August 2025!" },
+        { bold: true, text: "Please RSVP by the August 17th, 2025!" },
       ],
       description_2:
         "Please leave us a note if you have any special requests, dietary restrictions, or if there’s anything else you’d like to discuss. We want to make sure everyone is comfortable and has an amazing time!",
@@ -399,7 +399,7 @@ const translations = {
             bold: true,
             text: "날짜: ",
           },
-          "2025년 7월 17일 & 2025년 7월 27일",
+          "2025년 9월 20일 (토)",
         ],
         location: [
           {
@@ -674,7 +674,7 @@ const translations = {
             bold: true,
             text: "日付: ",
           },
-          "2025年7月17日（土） & 2025年7月27日（日）",
+          "2025年9月20日（土）",
         ],
         location: [
           {

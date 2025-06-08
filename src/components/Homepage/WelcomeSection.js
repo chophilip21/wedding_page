@@ -130,7 +130,7 @@ const WelcomeSection = ({ language }) => {
       </div>
 
       {/* Background */}
-      <div className="absolute inset-0 w-full flex justify-center items-center z-0">
+      <div className="absolute inset-0 w-full flex justify-center items-center z-0 pt-16 lg:pt-0">
         <div className="overlay"></div>
 
         {/* First Image */}
