@@ -66,10 +66,12 @@ const InfoSection = ({ language }) => {
 
       {/* Content */}
       <div className="w-full flex flex-col items-center gap-12 z-10">
-        {/* More Info Message */}
-        <p className="text-center max-w-2xl px-4">
-          {details.more_info}
-        </p>
+        {/* More Info Message - Hidden for Japanese */}
+        {language !== 'ja' && (
+          <p className="text-center max-w-2xl px-4">
+            {details.more_info}
+          </p>
+        )}
         
         {/* When & Where */}
         <div className="text-center">
