@@ -26,7 +26,6 @@ const InfoSection = ({ language }) => {
     title,
     details,
     travel_transport,
-    contact: { title: contactTitle, email_label },
   } = translations[language].info_section;
 
   // Environment ID
@@ -67,6 +66,11 @@ const InfoSection = ({ language }) => {
 
       {/* Content */}
       <div className="w-full flex flex-col items-center gap-12 z-10">
+        {/* More Info Message */}
+        <p className="text-center max-w-2xl px-4">
+          {details.more_info}
+        </p>
+        
         {/* When & Where */}
         <div className="text-center">
           <h5 className="mb-4">{details.when_where}</h5>
@@ -93,9 +97,9 @@ const InfoSection = ({ language }) => {
             )}
           </p>
           <Link
-            href="https://www.hotelgajoen-tokyo.com/"
+            href={language === 'ja' ? 'https://www.hotelgajoen-tokyo.com/access' : 'https://en.hotelgajoen-tokyo.com/access/'}
             target="_blank"
-            className="inline-flex items-center gap-1 border border-gold rounded-lg px-2 py-1 mt-2 font-light text-sm"
+            className="inline-flex items-center gap-2 border-2 border-gold rounded-lg px-4 py-2 mt-3 font-medium text-base hover:bg-gold hover:bg-opacity-10 transition-colors duration-200"
           >
             <Image
               src={images.location}
@@ -155,45 +159,27 @@ const InfoSection = ({ language }) => {
         {/* Divider on mobile */}
         <div className="h-px w-[50px] bg-black opacity-50 md:hidden" />
 
-        {/* Travel & Transportation and Contact Us */}
-        <div className="w-full flex flex-col items-center gap-8">
-          {/* Travel & Transportation */}
-          <div className="w-full text-center">
-            <h5 className="mb-4">{travel_transport.title}</h5>
-            {[
-              travel_transport.description_1,
-              travel_transport.description_2,
-              travel_transport.description_3,
-              travel_transport.description_4,
-            ].map((descArray, i) => (
-              <p key={i} className={i > 0 ? "mt-2" : ""}>
-                {descArray.map((item, idx) =>
-                  typeof item === "string" ? (
-                    item
-                  ) : (
-                    <span key={idx} className="font-bold">
-                      {item.text}
-                    </span>
-                  )
-                )}
-              </p>
-            ))}
-          </div>
-
-          {/* Contact Us */}
-          <div className="w-full text-center">
-            <h5 className="mb-4">{contactTitle}</h5>
-            {/* Email */}
-            <p>
-              <span className="font-bold">{email_label}: </span>
-              <a
-                href={`mailto:${coupleEmail}`}
-                className="underline underline-offset-4"
-              >
-                {coupleEmail}
-              </a>
+        {/* Travel & Transportation */}
+        <div className="w-full text-center">
+          <h5 className="mb-4">{travel_transport.title}</h5>
+          {[
+            travel_transport.description_1,
+            travel_transport.description_2,
+            travel_transport.description_3,
+            travel_transport.description_4,
+          ].map((descArray, i) => (
+            <p key={i} className={i > 0 ? "mt-2" : ""}>
+              {descArray.map((item, idx) =>
+                typeof item === "string" ? (
+                  item
+                ) : (
+                  <span key={idx} className="font-bold">
+                    {item.text}
+                  </span>
+                )
+              )}
             </p>
-          </div>
+          ))}
         </div>
 
         {/* Countdown Section */}

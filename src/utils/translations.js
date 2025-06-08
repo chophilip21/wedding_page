@@ -132,11 +132,12 @@ const translations = {
           },
           "Hotel Gajoen Tokyo, 1 Chome-8-1 Shimomeguro, Meguro City, Tokyo 153-0064",
         ],
+        more_info: "For more information regarding the wedding venue and the time, please refer to the section below.",
         schedule: [
           { bold: true, text: "Schedule: " },
-          "\n\nCeremony: 2:00 PM\nReception: 3:10 PM - 6:10 PM\n\nGuests: 30 minutes before ceremony\nFamily: 50 minutes before ceremony",
+          "\n\nCeremony: 2:00 PM\nReception: 3:10 PM\n\nGuests: 30 minutes before ceremony\nFamily: 50 minutes before ceremony",
         ],
-        button_loc:"SEE THE VENUE"
+        button_loc:"Hotel page link"
       },
       accommodations: {
         title: "Accommodations",
@@ -307,7 +308,7 @@ const translations = {
       minute: "분",
       seconds: "초",
       second: "초",
-      gratitude_message: "안녕하세요 여러분, 모두 잘 지내고 계신가요?\n\n저희가 결혼하게 되어, 고마운 분들께 감사의 마음을 전하고자 작은 자리를 마련했습니다. 바쁘신 중에 대단히 송구스럽지만, 부디 참석하시어 자리를 빛내 주시기를 부탁드립니다.\n\n조윤수 · 아오키 타마코 드림",
+      gratitude_message: "안녕하세요 여러분, 모두 잘 지내고 계신가요?\n\n저희가 결혼하게 되어, 고마운 분들께 감사의 마음을 전하고자 작은 자리를 마련했습니다. 부디 참석하시어 자리를 빛내 주시기를 부탁드립니다.\n\n조윤수 · 아오키 타마코 드림",
       button: "참석 확인",
     },
     saveTheDate_section: {
@@ -407,11 +408,12 @@ const translations = {
           },
           "호텔 가조엔 도쿄, 1 Chome-8-1 Shimomeguro, Meguro City, Tokyo 153-0064, 일본",
         ],
+        more_info: "장소와 시간에 대한 자세한 내용은 아래를 참조해 주세요.",
         schedule: [
           { bold: true, text: "일정: " },
-          "\n\n결혼식: 14:00\n피로연: 15:10 - 18:10\n\n내빈: 결혼식 30분 전\n가족: 결혼식 50분 전",
+          "\n\n결혼식: 14:00\n피로연: 15:10 \n\n내빈: 결혼식 30분 전\n가족: 결혼식 50분 전",
         ],
-        button_loc:"장소 보기"
+        button_loc:"호텔 페이지 링크"
       },
       accommodations: {
         title: "숙박",
@@ -679,13 +681,14 @@ const translations = {
             bold: true,
             text: "場所: ",
           },
-          "ホテル雅叙園東京、〒153-0064 東京都目黒区下目黒1丁目8−1",
+          "ホテル雅叙園東京 〒153-0064 東京都目黒区下目黒1丁目8-1",
         ],
+        more_info: "尚ご多用中恐縮に存じますが結婚式にご列席賜り度くご来館時間をご案内申し上げます",
         schedule: [
           { bold: true, text: "スケジュール: " },
-          "\n\n挙式: 14:00\n披露宴: 15:10 - 18:10\n\nご来賓: 挙式時間30分前\nご親族: 挙式時間50分前",
+          "\n\n挙式: 14:00\n披露宴: 15:10\n\nご来賓: 挙式時間30分前\nご親族: 挙式時間50分前",
         ],
-        button_loc:"会場を見る"
+        button_loc:"ホテルページリンク"
       },
       accommodations: {
         title: "宿泊施設",
@@ -703,16 +706,16 @@ const translations = {
     travel_transport: {
       title: "交通手段",
       description_1: [
-        "電車をご利用の場合、JR山手線・東急目黒線・地下鉄南北線・三田線の目黒駅から徒歩3分です。",
+        "電車をご利用の場合JR山手線 東急目黒線 地下鉄南北線 三田線の目黒駅から徒歩3分です",
       ],
       description_2: [
-        "お車の場合は第二京浜道路の目黒ランプから車で3分です。",
+        "お車の場合は第二京浜道路の目黒ランプから車で3分です",
       ],
       description_3: [
-        "また、さまざまな場所からホテルへの無料シャトルバスも運行しています。詳細は会場のウェブサイトをご覧ください。",
+        "さまざまな場所からホテルへの無料シャトルバスも運行しています 詳細は会場のウェブサイトをご覧ください",
       ],
       description_4: [
-        "交通手段についてご不明な点があればお知らせください。できる限り対応いたします。",
+        "交通手段についてご不明な点があればお知らせください できる限り対応いたします",
       ],
     },
       contact: {
