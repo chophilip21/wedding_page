@@ -24,7 +24,7 @@ const mailTemplates = {
   ko: {
     subject: "웨딩 RSVP 확인",
     html: (firstName, lastName) => `
-      <p>안녕하세요 ${firstName} ${lastName}님,</p>
+      <p>안녕하세요 ${lastName} ${firstName} 님,</p>
       <p>RSVP를 확인해주셔서 감사합니다. 함께 축하할 날을 기대합니다!</p>
       <p>감사합니다,<br/>타마코 & 필립 (조윤수)</p>
     `,
@@ -32,7 +32,7 @@ const mailTemplates = {
   ja: {
     subject: "ウェディング RSVP 確認",
     html: (firstName, lastName) => `
-      <p>${firstName} ${lastName} 様,</p>
+      <p>${lastName} ${firstName} 様,</p>
       <p>RSVPをご確認いただきありがとうございます。皆様とお祝いできることを心より楽しみにしております！</p>
       <p>よろしくお願いいたします。<br/>Tamako & Philip</p>
     `,
@@ -42,19 +42,60 @@ const mailTemplates = {
 // -------------------------------------------------------------------------
 // Helper function to send Telegram notifications
 async function sendTelegramNotification({ firstName, lastName, email }) {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
-  const text = `New Wedding RSVP submission:\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}`;
+  try {
+    console.log('Sending Telegram notification...');
+    const token = process.env.TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.TELEGRAM_CHAT_ID;
+    
+    console.log('Environment variables:', { 
+      hasToken: !!token, 
+      hasChatId: !!chatId,
+      isVercel: !!process.env.VERCEL
+    });
 
-  const url = `https://api.telegram.org/bot${token}/sendMessage`;
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: chatId, text }),
-  });
+    const text = `New Wedding RSVP submission:\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}`;
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+    
+    console.log('Sending to URL:', url.replace(token, 'TOKEN_REDACTED'));
+    
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text }),
+    });
 
-  if (!res.ok) {
-    console.error("Telegram notification error", await res.text());
+    const responseText = await res.text();
+    console.log('Telegram API response:', {
+      status: res.status,
+      statusText: res.statusText,
+      response: responseText
+    });
+
+    if (!res.ok) {
+      console.error('Telegram API error:', responseText);
+      // Log the full error in development
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Full error details:', {
+          url: url.replace(token, 'TOKEN_REDACTED'),
+          chatId,
+          text
+        });
+      }
+    } else {
+      console.log('Successfully sent Telegram notification');
+    }
+    
+    return res.ok;
+  } catch (error) {
+    console.error('Error in sendTelegramNotification:', {
+      message: error.message,
+      stack: error.stack,
+      env: {
+        hasToken: !!process.env.TELEGRAM_BOT_TOKEN,
+        hasChatId: !!process.env.TELEGRAM_CHAT_ID
+      }
+    });
+    return false;
   }
 }
 

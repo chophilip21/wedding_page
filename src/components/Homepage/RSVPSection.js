@@ -98,8 +98,14 @@ const RSVPSection = ({ language }) => {
             <input id="email" type="email" required value={email} onChange={e => setEmail(e.target.value)} className="w-full px-4 py-2 bg-white text-black rounded-md focus:ring-2 focus:ring-gold" />
           </div>
           <div className="md:col-span-2">
-            <button type="submit" disabled={submitting} className="w-full py-2 bg-gold text-blue font-semibold rounded-lg shadow hover:bg-yellow-500 transition">
-              {submitting ? t('submitButton') : t('submitButton')}
+            <button 
+              type="submit" 
+              disabled={submitting} 
+              className={`w-full py-2 font-semibold rounded-lg shadow transition ${submitting 
+                ? 'bg-gray-400 cursor-not-allowed' 
+                : 'bg-gold text-blue hover:bg-yellow-500'}`}
+            >
+              {t('submitButton')}
             </button>
           </div>
         </form>
